@@ -1,66 +1,65 @@
 "use client";
-import { Suspense, useRef } from "react";
-import { Canvas, useFrame, useLoader } from "@react-three/fiber";
+import React, { useRef, useEffect, Suspense } from "react";
+import { useLoader } from "@react-three/fiber";
 import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader";
+import { MTLLoader } from "three/examples/jsm/loaders/MTLLoader";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { TextureLoader } from "three";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls, Environment } from "@react-three/drei";
+import dynamic from "next/dynamic";
+import MangoModel from "./MangoModel";
+import LemonModel from "./LemonModel";
+import { motion } from "framer-motion";
+import { extend } from "@react-three/fiber";
+extend({ OrbitControls, motion });
 
-export default function CanModel() {
-  const ref = useRef();
-  const obj = useLoader(OBJLoader, "/redbull.obj");
-
-  useFrame((state) => {
-    const t = state.clock.getElapsedTime();
-    ref.current.rotation.set(
-      0.2 + Math.cos(t / 4.5) / 5,
-      Math.sin(t / 4) / 4,
-      0.4 - (1 + Math.sin(t / 4)) / 5
-    );
-    ref.current.position.y = -2.5;
-    ref.current.position.x = 0;
-  });
-
-  return <primitive ref={ref} object={obj} />;
-}
-
-export function CanScene() {
+export function CanSceneTransition() {
   return (
-    <div className="h-[80vh] w-[30vw] flex flex-col items-end bg-transparent">
+    <div className=" w-full h-full  flex flex-col ">
       <Canvas
         camera={{
           fov: 75,
           near: 0.1,
           far: 1000,
-          position: [4, 0, 0],
+          position: [16, 0, 0],
         }}
       >
-        <ambientLight intensity={0.5} />
+        <ambientLight />
         <spotLight position={[0, 0, 0]} angle={0.1} penumbra={1} />
         <directionalLight color="red" position={[0, 0, 0]} />
         <pointLight position={[10, 10, 10]} />
+        <OrbitControls enableZoom={false} enablePan={false} />
+        <Environment preset={"sunset"} />
         <Suspense fallback={null}>
-          <CanModel />
+          <MangoModel positiony={-8} positionx={0} positionz={0} />
+          <LemonModel positiony={-8} positionx={-2} positionz={8} />
         </Suspense>
       </Canvas>
     </div>
   );
 }
 
-export function CanSceneHome() {
+export function LandingSceneLemon() {
   return (
-    <div className="h-[50vh] w-[30vw] flex flex-col items-end bg-transparent">
+    <div className=" w-full h-full  flex flex-col ">
       <Canvas
         camera={{
           fov: 75,
           near: 0.1,
           far: 1000,
-          position: [4, 0, 0],
+          position: [16, 0, -5],
         }}
       >
-        <ambientLight intensity={0.5} />
-        <spotLight position={[0, 0, 0]} angle={0.1} penumbra={1} />
+        <ambientLight />
+        <spotLight position={[0, 5, 0]} angle={0.1} penumbra={1} />
         <directionalLight color="red" position={[0, 0, 0]} />
         <pointLight position={[10, 10, 10]} />
+        <OrbitControls enableZoom={false} enablePan={false} />
+        <Environment preset={"sunset"} />
         <Suspense fallback={null}>
-          <CanModel />
+          <LemonModel fast={"a"} positiony={-8} positionx={0} positionz={-2} />
+          <MangoModel fast={"a"} positiony={-8} positionx={2} positionz={8} />
         </Suspense>
       </Canvas>
     </div>
