@@ -3,26 +3,12 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Transition from "@/components/Transition";
 import { motion } from "framer-motion";
-import { CanSceneHome } from "@/components/CanModel";
+import { CanSceneTransition, LandingSceneLemon } from "@/components/CanModel";
 
 export default function Home() {
   return (
     <Transition>
-      <div className="flex min-h-screen bg-white w-screen h-screen z-20 flex-col items-center ">
-        <div className="absolute top-[10vh] ">
-          <p className="text-[14rem] text-[#00000009] leading-[12rem]">
-            HYDROSHARK
-          </p>
-          <p className="text-[14rem] text-black/10 leading-[12rem]">
-            HYDROSHARK
-          </p>
-          <p className="text-[14rem] text-black/15 leading-[12rem]">
-            HYDROSHARK
-          </p>
-          <p className="text-[14rem] text-black/20 leading-[12rem]">
-            HYDROSHARK
-          </p>
-        </div>
+      <div className="flex min-h-screen bg-white w-screen z-20 flex-col items-center ">
         <div class="absolute overflow-hidden [--offset:40vw] bg-black rotate-[4deg] top-[90vh] z-40 [--move-initial:calc(-25%_+_var(--offset))] [--move-final:calc(-50%_+_var(--offset))] ">
           <div
             class="min-w-screen w-[100vw] flex flex-row py-1 items-center relative  transform-[translate3d(var(--move-initial),0,0)] animate-marqueebanner [animation-play-state:running]"
@@ -80,17 +66,42 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="flex flex-row w-[90vw] mt-[20vh] relative">
-          <div
-            style={{ transform: "rotate(15deg)" }}
-            className=" h-[60vh] w-[50vh]  animate-bounce transform rotate-[-6deg] absolute z-20 top-[25vh] left-[30%]"
-          >
-            <Image src={"/redbullcan.png"} objectFit="contain" layout="fill" />
+        <div className="flex flex-row h-screen w-screen px-[5vw] pt-[10vh] mt-[10vh] relative ">
+          <div className="absolute left-0 top-0">
+            <p className="text-[14rem] text-[#00000009] leading-[12rem]">
+              HYDROSHARK
+            </p>
+            <p className="text-[14rem] text-black/10 leading-[12rem]">
+              HYDROSHARK
+            </p>
+            <p className="text-[14rem] text-black/15 leading-[12rem]">
+              HYDROSHARK
+            </p>
+            <p className="text-[14rem] text-black/20 leading-[12rem]">
+              HYDROSHARK
+            </p>
           </div>
-
-          <div className=" h-[60vh] w-[60vh]  animate-bounce transform rotate-3 absolute z-20 top-[25vh] left-[45%]">
-            <Image src={"/redbullcan.png"} objectFit="contain" layout="fill" />
+          <div className="absolute left-[25vw]  h-[60vh] w-[50vw]">
+            <motion.div
+              initial={{ y: "80vh" }}
+              animate={{ y: "20vh", opacity: [0, 1, 1] }}
+              className="z-20 w-full h-full"
+              transition={{ duration: 2.5, delay: 3.5, times: [0, 0.3, 1] }}
+            >
+              <LandingSceneLemon />
+            </motion.div>
           </div>
+          {/* <div className=" absolute bg-transparent top-[20vh] w-[60vw] left-[20vw] overflow-hidden h-[60vh]">
+            <video
+              src="/bgwatervideo.mp4"
+              autoPlay
+              muted
+              loop={false}
+              playsInline
+              duration={2.5}
+              className="w-full h-screen object-cover"
+            />
+          </div> */}
 
           <div className="flex flex-col w-1/2 items-start">
             <h2 className=" text-black text-[5rem] font-bold leading-[5rem]">
@@ -157,6 +168,7 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <div className="flex flex-row h-screen w-[90vw] mt-[20vh] relative "></div>
       </div>
     </Transition>
   );

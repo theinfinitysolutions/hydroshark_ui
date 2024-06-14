@@ -19,7 +19,7 @@ module.exports = {
         marqueebanner: "marquee 5s linear infinite",
         slideUp: "slideUp 2s deplay-[1000ms] ease-in-out forwards",
         rotate: "rotate 8s linear infinite",
-        bounce: "bounce1 2s infinite",
+        bounce: "bounce1 5s infinite",
       },
       keyframes: {
         marquee: {
@@ -45,8 +45,8 @@ module.exports = {
             rotate: "rotate(8deg)",
           },
           "50%": {
-            transform: "translateY(-3vh)",
-            rotate: "rotate(8deg)",
+            transform: "translateY(-5vh)",
+            rotate: "rotate(-8deg)",
           },
           "100%": {
             transform: "translateY(0)",
