@@ -2,7 +2,11 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { CanScene } from "./CanModel";
+import {
+  LandingSceneLemon,
+  LandingSceneMango,
+  CanSceneTransition,
+} from "./CanModel";
 import MarqeeLanding from "./MarqeeLanding";
 
 const getRandomColor = () => {
@@ -42,21 +46,25 @@ const Transition = ({ children }) => {
           y: ["0vh", "0vh", "0vh", "100vh"],
         }}
         transition={{
-          duration: 4,
+          duration: 6,
           times: [0, 0.3, 0.8, 1],
           ease: [0.6, 1, 0.2, 1],
         }}
       >
         <MarqeeLanding textColor={currentColor} />
+
         <motion.div
           initial={{ x: "-20vw" }}
-          animate={{ x: "65vw", opacity: [0, 1, 1] }}
-          className="z-20 mt-[10vh]"
-          transition={{ duration: 2, delay: 0.5, times: [0, 0.3, 1] }}
+          animate={{ x: "55vw", opacity: [0, 1, 1] }}
+          className="z-20 mt-[10vh] h-[70vh] w-[40vw]"
+          transition={{ duration: 2.5, delay: 0.5, times: [0, 0.3, 1] }}
         >
-          <CanScene />
+          <div className=" h-[70vh] w-[40vw] ">
+            <CanSceneTransition />
+          </div>
         </motion.div>
-        <div className="h-[50vh] w-[50vh] z-0 absolute top-[25vh] left-[10vw]">
+
+        <div className="h-[30vw] w-[30vw] z-0 absolute left-[5vw] top-[20vh]">
           <Image src={"/hydroshark_logo.png"} layout="fill" />
         </div>
       </motion.div>
