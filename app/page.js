@@ -1,14 +1,29 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Transition from "@/components/Transition";
-import { motion } from "framer-motion";
-import { CanSceneTransition, LandingSceneLemon } from "@/components/CanModel";
+import { motion, useScroll } from "framer-motion";
+import {
+  CanSceneTransition,
+  LandingSceneLemon,
+  ReplaceScene,
+} from "@/components/CanModel";
+import { flavorData } from "@/utils/consts";
+import RevealOnScroll from "@/components/RevealOnScroll";
+import { FaArrowLeft } from "react-icons/fa6";
+import { FaArrowRight } from "react-icons/fa";
+import BackgroundRipple from "@/components/BackgroundRipple";
 
 export default function Home() {
+  const ref = useRef();
+  const [currentFlavour, setCurrentFlavour] = useState(0);
+
   return (
     <Transition>
-      <div className="flex min-h-screen bg-white w-screen z-20 flex-col items-center ">
+      <div
+        ref={ref}
+        className="flex min-h-screen bg-[#f1f3f5] w-screen z-20 flex-col items-center "
+      >
         <div class="absolute overflow-hidden [--offset:40vw] bg-black rotate-[4deg] top-[90vh] z-40 [--move-initial:calc(-25%_+_var(--offset))] [--move-final:calc(-50%_+_var(--offset))] ">
           <div
             class="min-w-screen w-[100vw] flex flex-row py-1 items-center relative  transform-[translate3d(var(--move-initial),0,0)] animate-marqueebanner [animation-play-state:running]"
@@ -66,6 +81,17 @@ export default function Home() {
           </div>
         </div>
 
+        <div className="absolute left-[25vw] z-50 h-[60vh] w-[50vw]">
+          <motion.div
+            initial={{ y: "80vh" }}
+            animate={{ y: "40vh", opacity: [0, 1, 1] }}
+            className="z-20 w-full h-full"
+            transition={{ duration: 2.5, delay: 3.5, times: [0, 0.3, 1] }}
+          >
+            <LandingSceneLemon />
+          </motion.div>
+        </div>
+
         <div className="flex flex-row h-screen w-screen px-[5vw] pt-[10vh] mt-[10vh] relative ">
           <div className="absolute left-0 top-0">
             <p className="text-[14rem] text-[#00000009] leading-[12rem]">
@@ -81,16 +107,7 @@ export default function Home() {
               HYDROSHARK
             </p>
           </div>
-          <div className="absolute left-[25vw]  h-[60vh] w-[50vw]">
-            <motion.div
-              initial={{ y: "80vh" }}
-              animate={{ y: "20vh", opacity: [0, 1, 1] }}
-              className="z-20 w-full h-full"
-              transition={{ duration: 2.5, delay: 3.5, times: [0, 0.3, 1] }}
-            >
-              <LandingSceneLemon />
-            </motion.div>
-          </div>
+
           {/* <div className=" absolute bg-transparent top-[20vh] w-[60vw] left-[20vw] overflow-hidden h-[60vh]">
             <video
               src="/bgwatervideo.mp4"
@@ -168,7 +185,126 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="flex flex-row h-screen w-[90vw] mt-[20vh] relative "></div>
+        <RevealOnScroll addedClasses="flex flex-row h-screen z-20 w-[100vw] px-[5vw] relative overflow-hidden ">
+          <BackgroundRipple
+            currentColor={
+              flavorData[currentFlavour].id == 1 ? "#308918" : "#dfd434"
+            }
+          />
+          <div className=" absolute right-0 -z-10 top-0">
+            <BackgroundRipple
+              currentColor={
+                flavorData[currentFlavour].id == 1 ? "#308918" : "#dfd434"
+              }
+            />
+          </div>
+
+          <div className="flex flex-row justify-center  items-center">
+            <div className="flex flex-col items-end w-1/3">
+              <p className=" text-xs text-[#5C6262]">DISCOVER OUR DRINKS</p>
+              <h2
+                className={` text-[4rem] font-semibold ${
+                  flavorData[currentFlavour].id == 1
+                    ? "text-[#308918]"
+                    : "text-[#dfd434]"
+                } `}
+              >
+                {flavorData[currentFlavour].title}
+              </h2>
+              <div className="flex flex-col items-end">
+                <p className=" text-xs text-cyan-600">Quantity</p>
+                <p className=" text-base text-black">
+                  {flavorData[currentFlavour].quanity}
+                </p>
+              </div>
+              <div className="flex flex-col items-end mt-[10vh]">
+                <p className=" text-xs text-cyan-600">Ingredients</p>
+                <p className=" text-base text-end text-black">
+                  {flavorData[currentFlavour].ingredients}
+                </p>
+              </div>
+            </div>
+            <div className="flex flex-col items-center  w-1/3 px-[5vw]">
+              <div className=" border-[1px] border-[#5C6262] border-dashed z-0 w-full h-[60vh] p-2 flex flex-col rounded-[2rem] items-center justify-center">
+                <div className="w-full h-full relative border-[1px] border-[#5C6262]/40 rounded-[3rem]">
+                  <ReplaceScene
+                    scene={
+                      flavorData[currentFlavour].id == 1 ? "lemon" : "mango"
+                    }
+                  />
+                </div>
+              </div>
+              <div className="flex flex-row justify-center mt-4 z-20 items-center gap-x-4">
+                <button
+                  onClick={() => {
+                    setCurrentFlavour((currentFlavour - 1) % 2);
+                  }}
+                  className=" p-2 cursor-pointer rounded-full border-[0.5px] border-[#5C6262]"
+                >
+                  <FaArrowLeft className="text-[#5C6262]" />
+                </button>
+                <p
+                  className={` text-[1rem] font-semibold ${
+                    flavorData[currentFlavour].id == 1
+                      ? "text-[#308918]"
+                      : "text-[#dfd434]"
+                  } `}
+                >
+                  {flavorData[currentFlavour].title}
+                </p>
+                <button
+                  onClick={() => {
+                    setCurrentFlavour((currentFlavour + 1) % 2);
+                  }}
+                  className=" p-2 cursor-pointer rounded-full border-[0.5px] border-[#5C6262]"
+                >
+                  <FaArrowRight className="text-[#5C6262]" />
+                </button>
+              </div>
+            </div>
+            <div className="flex flex-col items-start w-1/3">
+              <p className=" text-xs text-[#5C6262]">
+                EXPERIANCE HYDRATION WITH OUR{" "}
+                <span
+                  className={` font-semibold ${
+                    flavorData[currentFlavour].id == 1
+                      ? "text-[#308918]"
+                      : "text-[#dfd434]"
+                  } `}
+                >
+                  {flavorData[currentFlavour].title}
+                </span>{" "}
+                FlAVOUR
+              </p>
+              <p className=" text-black text-xl">
+                {flavorData[currentFlavour].description}
+              </p>
+
+              <div className="flex flex-col w-9/12 items-start border-y-[1px] border-dashed border-[#5C6262] mt-[10vh] py-2">
+                <div className="flex flex-row w-full justify-between items-center border-b-[0.5px] border-[#5C6262]">
+                  <div className=" flex flex-col w-1/2 items-center justify-center p-6 border-r-[1px] border-[#5C6262]">
+                    <p className=" text-xs text-cyan-600">Temperature</p>
+                    <p className=" text-2xl text-black">{"15-20°C"}</p>
+                  </div>
+                  <div className=" flex flex-col w-1/2  items-center justify-center p-6">
+                    <p className=" text-xs text-cyan-600">Calories</p>
+                    <p className=" text-2xl text-black">{"99 Kcal"}</p>
+                  </div>
+                </div>
+                <div className="flex flex-row w-full justify-between items-center ">
+                  <div className=" flex flex-col w-1/2  items-center justify-center p-6 border-r-[1px] border-[#5C6262]">
+                    <p className=" text-xs text-cyan-600">Caffeine</p>
+                    <p className=" text-2xl text-black">{"120 mg"}</p>
+                  </div>
+                  <div className=" flex flex-col w-1/2  items-center justify-center p-6">
+                    <p className=" text-xs text-cyan-600">Vitamins</p>
+                    <p className=" text-2xl text-black">{"B - 2,6,12"}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </RevealOnScroll>
       </div>
     </Transition>
   );
