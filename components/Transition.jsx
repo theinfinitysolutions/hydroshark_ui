@@ -6,6 +6,9 @@ import {
   LandingSceneLemon,
   LandingSceneMango,
   CanSceneTransition,
+  CanTransitionMango,
+  CanSceneTransitionRight,
+  CanSceneTransitionLeft,
 } from "./CanModel";
 import MarqeeLanding from "./MarqeeLanding";
 
@@ -32,44 +35,189 @@ const Transition = ({ children }) => {
   useEffect(() => {
     setTimeout(() => {
       setShowContent(true);
-    }, 2000);
+    }, 5000);
   }, []);
 
   return (
-    <main className="min-h-screen w-screen bg-transparent flex">
-      {showContent ? children : <div></div>}
-
+    <main className="min-h-screen w-screen bg-transparent relative flex">
+      {children}
       <motion.div
-        style={{ background: "#181818" }}
-        className={`slide-in w-full h-full fixed top-0 left-0 z-50`}
-        animate={{
-          y: ["0vh", "0vh", "0vh", "100vh"],
-        }}
-        transition={{
-          duration: 6,
-          times: [0, 0.3, 0.8, 1],
-          ease: [0.6, 1, 0.2, 1],
-        }}
+        style={{ zIndex: showContent ? -1 : 50 }}
+        className={`slide-in w-full bg-transparent  h-full fixed top-0 flex flex-row justify-between left-0 z-50`}
       >
-        <MarqeeLanding textColor={currentColor} />
-
         <motion.div
-          initial={{ x: "-20vw" }}
-          animate={{ x: "55vw", opacity: [0, 1, 1] }}
-          className="z-20 mt-[10vh] h-[70vh] w-[40vw]"
-          transition={{ duration: 2.5, delay: 0.5, times: [0, 0.3, 1] }}
+          animate={{
+            x: ["0vw", "0vw", "0vw", "-50vw"],
+          }}
+          transition={{
+            duration: 6,
+            times: [0, 0.1, 0.6, 1],
+          }}
+          className=" w-1/2 h-screen bg-[#f1f3f5] relative overflow-hidden"
         >
-          <div className=" h-[70vh] w-[40vw] ">
-            <CanSceneTransition />
-          </div>
-        </motion.div>
+          <motion.div
+            initial={{
+              transform: "rotate(360deg)",
+            }}
+            animate={{
+              transform: "rotate(0deg)",
+            }}
+            transition={{
+              duration: 3.5,
+              times: [0, 0.1, 0.1, 1],
+            }}
+            className="h-[75vh] w-[75vh] bg-black rounded-full  z-50 absolute top-[12.5vh] -right-[37.5vh]"
+          >
+            <Image src={"/loading.png"} layout="fill" />
+          </motion.div>
+          <motion.div
+            initial={{
+              transform: "rotate(0deg)",
+            }}
+            animate={{
+              transform: "rotate(360deg)",
+            }}
+            transition={{
+              duration: 3,
+              times: [0, 0.1, 0.1, 1],
+            }}
+            className="h-[60vh] bg-white rounded-full w-[60vh] z-50 absolute top-[20vh] -right-[30vh]"
+          >
+            <Image src={"/loading1.png"} layout="fill" />
+          </motion.div>
+          <motion.div
+            initial={{
+              transform: "rotate(360deg)",
+            }}
+            animate={{
+              transform: "rotate(0deg)",
+            }}
+            transition={{
+              duration: 2.75,
+              times: [0, 0.1, 0.1, 1],
+            }}
+            className="h-[45vh] w-[45vh] rounded-full bg-black z-50 absolute top-[27.5vh]  -right-[22.5vh]"
+          >
+            <Image src={"/loading.png"} layout="fill" />
+          </motion.div>
 
-        <div className="h-[30vw] w-[30vw] z-0 absolute left-[5vw] top-[20vh]">
-          <Image src={"/hydroshark_logo.png"} layout="fill" />
-        </div>
+          <motion.div
+            initial={{
+              transform: "rotate(0deg)",
+            }}
+            animate={{
+              transform: "rotate(360deg)",
+            }}
+            transition={{
+              duration: 2.5,
+              times: [0, 0.1, 0.1, 1],
+            }}
+            className="h-[30vh] w-[30vh] z-50 absolute top-[35vh] -right-[15vh]"
+          >
+            <Image src={"/hydroshark_logo.png"} layout="fill" />
+          </motion.div>
+        </motion.div>
+        <motion.div
+          animate={{
+            x: ["0vw", "0vw", "0vw", "50vw"],
+          }}
+          transition={{
+            duration: 6,
+            times: [0, 0.1, 0.6, 1],
+          }}
+          initial
+          className=" w-1/2 h-screen bg-[#f1f3f5] relative overflow-hidden"
+        >
+          <motion.div
+            initial={{
+              transform: "rotate(360deg)",
+            }}
+            animate={{
+              transform: "rotate(0deg)",
+            }}
+            transition={{
+              duration: 3.5,
+              times: [0, 0.1, 0.1, 1],
+            }}
+            className="h-[75vh] w-[75vh] bg-black rounded-full  z-50 absolute top-[12.5vh] -left-[37.5vh]"
+          >
+            <Image src={"/loading.png"} layout="fill" />
+          </motion.div>
+          <motion.div
+            initial={{
+              transform: "rotate(0deg)",
+            }}
+            animate={{
+              transform: "rotate(360deg)",
+            }}
+            transition={{
+              duration: 3,
+              times: [0, 0.1, 0.1, 1],
+            }}
+            className="h-[60vh] bg-white rounded-full w-[60vh] z-50 absolute top-[20vh] -left-[30vh]"
+          >
+            <Image src={"/loading1.png"} layout="fill" />
+          </motion.div>
+          <motion.div
+            initial={{
+              transform: "rotate(360deg)",
+            }}
+            animate={{
+              transform: "rotate(0deg)",
+            }}
+            transition={{
+              duration: 2.75,
+              times: [0, 0.1, 0.1, 1],
+            }}
+            className="h-[45vh] w-[45vh] rounded-full bg-black z-50 absolute top-[27.5vh] -left-[22.5vh]"
+          >
+            <Image src={"/loading.png"} layout="fill" />
+          </motion.div>
+          <motion.div
+            initial={{
+              transform: "rotate(0deg)",
+            }}
+            animate={{
+              transform: "rotate(360deg)",
+            }}
+            transition={{
+              duration: 2.5,
+              times: [0, 0.1, 0.1, 1],
+            }}
+            className="h-[30vh] w-[30vh] z-50 absolute top-[35vh] -left-[15vh]"
+          >
+            <Image src={"/hydroshark_logo.png"} layout="fill" />
+          </motion.div>
+        </motion.div>
       </motion.div>
     </main>
   );
 };
 
 export default Transition;
+
+{
+  /* <motion.div
+            initial={{ y: "50vh" }}
+            animate={{ y: "5vh", opacity: [0, 1, 1] }}
+            className="z-20 mt-[10vh] h-[70vh] w-[50vw] absolute left-0"
+            transition={{ duration: 2.5, delay: 0.5, times: [0, 0.3, 1] }}
+          >
+            <div className="w-full h-full">
+              <CanSceneTransitionRight />
+            </div>
+          </motion.div> */
+}
+
+{
+  /* <motion.div
+            initial={{ y: "50vh" }}
+            animate={{ y: "5vh", opacity: [0, 1, 1] }}
+            className="z-20 mt-[10vh] h-[70vh] w-[50vw] absolute right-0"
+            transition={{ duration: 2.5, delay: 0.5, times: [0, 0.3, 1] }}
+          >
+            <div className="w-full h-full">
+              <CanSceneTransitionLeft />
+            </div>
+          </motion.div> */
+}
