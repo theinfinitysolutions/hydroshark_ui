@@ -15,7 +15,7 @@ export default function MangoModel(props) {
     const t = state.clock.getElapsedTime();
     props.fast
       ? ref.current.rotation.set(-0.1, t / 1.25, 0.1)
-      : ref.current.rotation.set(-0.1, t / 3, 0.1);
+      : ref.current.rotation.set(-0.1, t / 2, 0.1);
     ref.current.position.y = props.positiony;
     ref.current.position.x = props.positionx;
     ref.current.position.z = props.positionz;
