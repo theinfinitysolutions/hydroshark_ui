@@ -97,7 +97,7 @@ export default function Home() {
           </motion.div>
         </div>
 
-        <div className="fixed left-0 top-[5vh]">
+        <div className="fixed left-0 top-[5vh] -z-10">
           <p className="text-[14rem] text-black/5 leading-[13rem]">
             HYDROSHARK
           </p>
