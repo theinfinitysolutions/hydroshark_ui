@@ -8,13 +8,19 @@ const About = () => {
   return (
     <div className="w-full min-h-screen relative bg-[#f0f2f4] flex flex-col items-center">
       <div className=" h-[90vh] w-[90vh] z-0  fixed animate-rotate">
-        <Image src="/assetring1.png" layout="fill" />
+        <Image
+          src={process.env.NEXT_PUBLIC_API_URL + "/assetring1.png"}
+          layout="fill"
+        />
       </div>
       <div class="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:72px_72px]"></div>
       <div className="w-9/12 flex flex-col items-start mt-[10vh]  ">
         <div className=" w-full h-[70vh] z-20 flex flex-row justify-between items-center">
           <div className="h-full w-1/2 flex relative ">
-            <Image src="/img10.jpeg" layout="fill" />
+            <Image
+              src={process.env.NEXT_PUBLIC_API_URL + "/img10.jpeg"}
+              layout="fill"
+            />
           </div>
           <div className="bg-black w-1/2 h-full flex flex-col items-start justify-center px-8">
             <RevealOnScroll
@@ -34,7 +40,10 @@ const About = () => {
         </div>
         <div className=" w-full h-[70vh] z-20 flex flex-row-reverse justify-between items-center mt-[10vh]">
           <div className="h-full w-1/2 flex relative ">
-            <Image src="/img11.jpeg" layout="fill" />
+            <Image
+              src={process.env.NEXT_PUBLIC_API_URL + "/img11.jpeg"}
+              layout="fill"
+            />
           </div>
           <div className="bg-black w-1/2 h-full flex flex-col items-start justify-center px-8">
             <RevealOnScroll
@@ -54,7 +63,10 @@ const About = () => {
         </div>
         <div className=" w-full h-[70vh] z-20 flex flex-row justify-between items-center mt-[10vh]">
           <div className="h-full w-1/2 flex relative ">
-            <Image src="/img8.jpeg" layout="fill" />
+            <Image
+              src={process.env.NEXT_PUBLIC_API_URL + "/img8.jpeg"}
+              layout="fill"
+            />
           </div>
           <div className="bg-black w-1/2 h-full flex flex-col items-start justify-center px-8">
             <RevealOnScroll
@@ -74,7 +86,10 @@ const About = () => {
         </div>
         <div className=" w-full h-[70vh] z-20 flex flex-row-reverse justify-between items-center my-[10vh]">
           <div className="h-full w-1/3 flex relative ">
-            <Image src="/img2.jpeg" layout="fill" />
+            <Image
+              src={process.env.NEXT_PUBLIC_API_URL + "/img2.jpeg"}
+              layout="fill"
+            />
           </div>
           <div className="bg-black w-2/3 h-full flex flex-col items-start justify-center px-8">
             <RevealOnScroll
@@ -110,7 +125,10 @@ const About = () => {
             >
               <div className=" flex w-full flex-row bg-black items-center p-4">
                 <div className="h-10 w-10 relative">
-                  <Image src={item.image} layout="fill" />
+                  <Image
+                    src={process.env.NEXT_PUBLIC_API_URL + item.image}
+                    layout="fill"
+                  />
                 </div>
                 <h3 className=" text-[1rem] text-white ml-2 mt-1">
                   {item.title}

@@ -26,7 +26,10 @@ export default function Home() {
         className="flex min-h-screen bg-[#f0f2f4] w-screen z-20 flex-col overflow-hidden relative items-center "
       >
         <div className="h-[8vh] w-[8vh] absolute right-[10vw] top-[50vh] animate-rotate -mt-2 ">
-          <Image src={"/asset5.png"} layout="fill" />
+          <Image
+            src={process.env.NEXT_PUBLIC_API_URL + "/asset5.png"}
+            layout="fill"
+          />
         </div>
 
         <div class="absolute overflow-hidden [--offset:40vw] bg-black rotate-[4deg] top-[75vh] z-40 [--move-initial:calc(-25%_+_var(--offset))] [--move-final:calc(-50%_+_var(--offset))] ">
@@ -154,26 +157,50 @@ export default function Home() {
             <div className="flex flex-row justify-between w-10/12 px-8">
               <div className="h-[15vh] w-[15vh] relative flex flex-col items-center justify-center">
                 <div className="w-full h-full animate-rotate absolute">
-                  <Image src={"/caffeine_curved.png"} layout="fill" />
+                  <Image
+                    src={
+                      process.env.NEXT_PUBLIC_API_URL + "/caffeine_curved.png"
+                    }
+                    layout="fill"
+                  />
                 </div>
                 <div className=" w-[10vh] h-[10vh] relative">
-                  <Image src={"/logo_caffeine.png"} layout="fill" />
+                  <Image
+                    src={process.env.NEXT_PUBLIC_API_URL + "/logo_caffeine.png"}
+                    layout="fill"
+                  />
                 </div>
               </div>
               <div className="h-[15vh] w-[15vh] relative flex flex-col items-center justify-center">
                 <div className="w-full h-full animate-rotate absolute">
-                  <Image src={"/vitamins_curved.png"} layout="fill" />
+                  <Image
+                    src={
+                      process.env.NEXT_PUBLIC_API_URL + "/vitamins_curved.png"
+                    }
+                    layout="fill"
+                  />
                 </div>
                 <div className=" w-[10vh] h-[10vh] relative">
-                  <Image src={"/logo_vitamins.png"} layout="fill" />
+                  <Image
+                    src={process.env.NEXT_PUBLIC_API_URL + "/logo_vitamins.png"}
+                    layout="fill"
+                  />
                 </div>
               </div>
               <div className="h-[15vh] w-[15vh] relative flex flex-col items-center justify-center">
                 <div className="w-full h-full animate-rotate absolute">
-                  <Image src={"/zerosugar_curved.png"} layout="fill" />
+                  <Image
+                    src={
+                      process.env.NEXT_PUBLIC_API_URL + "/zerosugar_curved.png"
+                    }
+                    layout="fill"
+                  />
                 </div>
                 <div className=" w-[10vh] h-[10vh] relative">
-                  <Image src={"/logo_sugar.png"} layout="fill" />
+                  <Image
+                    src={process.env.NEXT_PUBLIC_API_URL + "/logo_sugar.png"}
+                    layout="fill"
+                  />
                 </div>
               </div>
             </div>
@@ -196,13 +223,22 @@ export default function Home() {
           addedClasses="flex flex-row justify-between items-center h-screen z-20 w-[100vw] px-[5vw] relative overflow-hidden "
         >
           <div className="h-[8vh] w-[8vh] absolute right-[20vw] top-[10vh] animate-rotate -mt-2 ">
-            <Image src={"/asset5.png"} layout="fill" />
+            <Image
+              src={process.env.NEXT_PUBLIC_API_URL + "/asset5.png"}
+              layout="fill"
+            />
           </div>
           <div className="h-[8vh] w-[8vh] absolute left-[10vw] top-[50vh] animate-rotate -mt-2 ">
-            <Image src={"/asset5.png"} layout="fill" />
+            <Image
+              src={process.env.NEXT_PUBLIC_API_URL + "/asset5.png"}
+              layout="fill"
+            />
           </div>
           <div className="h-[8vh] w-[8vh] absolute right-[30vw] top-[80vh] animate-rotate -mt-2 ">
-            <Image src={"/asset5.png"} layout="fill" />
+            <Image
+              src={process.env.NEXT_PUBLIC_API_URL + "/asset5.png"}
+              layout="fill"
+            />
           </div>
           <div className=" absolute right-0 -z-10 bottom-0">
             <BackgroundRipple

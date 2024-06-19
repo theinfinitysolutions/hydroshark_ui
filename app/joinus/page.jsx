@@ -13,7 +13,10 @@ const JoinUs = () => {
   return (
     <div className="w-full relative bg-[#f0f2f4] flex flex-col items-center">
       <div className=" h-[90vh] w-[90vh] z-0  fixed animate-rotate">
-        <Image src="/assetring1.png" layout="fill" />
+        <Image
+          src={process.env.NEXT_PUBLIC_API_URL + "/assetring1.png"}
+          layout="fill"
+        />
       </div>
       <div class="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:72px_72px]"></div>
       <motion.div className=" h-[300vh] flex flex-row relative ">
@@ -42,7 +45,10 @@ const JoinUs = () => {
           <div className=" w-[70vw] mr-[10vw] relative h-[60vh] rounded-2xl bg-[#ede361] flex flex-row justify-center items-center">
             <div className=" flex flex-col w-5/12 items-center z-20 justify-between">
               <div className="w-9/12 h-[50vh] relative">
-                <Image src={"/img3.jpeg"} layout="fill" />
+                <Image
+                  src={process.env.NEXT_PUBLIC_API_URL + "/img3.jpeg"}
+                  layout="fill"
+                />
               </div>
             </div>
             <div className=" w-7/12 flex flex-col items-start pr-[2.5vw]">
@@ -75,7 +81,10 @@ const JoinUs = () => {
             </div>
             <div className=" flex flex-col w-4/12 items-center z-20 justify-between">
               <div className="w-9/12 h-[50vh] relative">
-                <Image src={"/influencer.jpeg"} layout="fill" />
+                <Image
+                  src={process.env.NEXT_PUBLIC_API_URL + "/influencer.jpeg"}
+                  layout="fill"
+                />
               </div>
             </div>
           </div>
