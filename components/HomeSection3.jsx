@@ -66,43 +66,73 @@ const HomeSection3 = () => {
             ATHLETES
           </p>
           <div className="h-[8vh] w-[8vh] -mt-2 relative">
-            <Image src={"/asset2.svg"} layout="fill" />
+            <Image
+              src={process.env.NEXT_PUBLIC_API_URL + "/asset2.svg"}
+              layout="fill"
+            />
           </div>
           <p className=" text-[4rem] font-semibold col-span-3 text-black">
             GAMERS
           </p>
           <div className="h-[6vh] w-[6vh] -mt-2 relative">
-            <Image src={"/asset3.png"} layout="fill" />
+            <Image
+              src={process.env.NEXT_PUBLIC_API_URL + "/asset3.png"}
+              layout="fill"
+            />
           </div>
         </div>
         <div className=" flex flex-row gap-x-2 justify-start items-center">
           <div className="h-[8vh] w-[8vh]  -mt-2 relative">
-            <Image src={"/asset7.png"} layout="fill" />
+            <Image
+              src={process.env.NEXT_PUBLIC_API_URL + "/asset7.png"}
+              layout="fill"
+            />
           </div>
           <p className=" text-[4rem] font-semibold col-span-3 text-black">
             DAREDEVILS
           </p>
           <div className="h-[8vh] w-[8vh]   -mt-2 relative">
-            <Image src={"/asset5.png"} layout="fill" />
+            <Image
+              src={process.env.NEXT_PUBLIC_API_URL + "/asset5.png"}
+              layout="fill"
+            />
           </div>
         </div>
         <div className="h-[15vh] w-[15vh] mt-4 animate-rotate absolute right-[10vh] bottom-[10vh]">
-          <Image src="/hydroshark.png" layout="fill" />
+          <Image
+            src={process.env.NEXT_PUBLIC_API_URL + "/hydroshark.png"}
+            layout="fill"
+          />
         </div>
         <div className=" h-[30vh]  w-[10vw] transform rotate-[-80deg] absolute right-[25vw] -bottom-[5vh] ">
-          <Image src={"/lemoncan.png"} layout="fill" />
+          <Image
+            src={process.env.NEXT_PUBLIC_API_URL + "/lemoncan.png"}
+            layout="fill"
+          />
         </div>
         <div className=" h-[30vh]  w-[10vw] transform rotate-[-60deg] absolute right-[22.5vw] bottom-[10vh] ">
-          <Image src={"/mangocan.png"} layout="fill" />
+          <Image
+            src={process.env.NEXT_PUBLIC_API_URL + "/mangocan.png"}
+            layout="fill"
+          />
         </div>
         <div className=" h-[30vh]  w-[10vw] transform rotate-[-40deg] absolute right-[16vw] bottom-[25vh] ">
-          <Image src={"/lemoncan.png"} layout="fill" />
+          <Image
+            src={process.env.NEXT_PUBLIC_API_URL + "/lemoncan.png"}
+            layout="fill"
+          />
         </div>
         <div className=" h-[30vh]  w-[10vw] transform rotate-[-20deg] absolute right-[8vw] bottom-[35vh] ">
-          <Image src={"/mangocan.png"} layout="fill" />
+          <Image
+            src={process.env.NEXT_PUBLIC_API_URL + "/mangocan.png"}
+            layout="fill"
+          />
         </div>
         <div className=" h-[30vh]  w-[10vw] transform rotate-[0deg] absolute -right-4 bottom-[37.5vh] ">
-          <Image src={"/lemoncan.png"} layout="fill" />
+          <Image
+            src={process.env.NEXT_PUBLIC_API_URL + "/lemoncan.png"}
+            layout="fill"
+          />
         </div>
       </div>
     </div>

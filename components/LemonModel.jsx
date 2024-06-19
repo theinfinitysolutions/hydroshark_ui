@@ -9,7 +9,7 @@ import { useFrame } from "@react-three/fiber";
 
 export default function LemonModel(props) {
   const ref = useRef();
-  const { nodes, materials } = useGLTF("/can_lemon/model.gltf");
+  const { nodes, materials } = useGLTF("/model_lemon/model.gltf");
 
   useFrame((state) => {
     const t = state.clock.getElapsedTime();

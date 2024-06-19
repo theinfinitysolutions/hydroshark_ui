@@ -68,7 +68,10 @@ const Transition = ({ children }) => {
             }}
             className="h-[75vh] w-[75vh] bg-black rounded-full  z-50 absolute top-[12.5vh] -right-[37.5vh]"
           >
-            <Image src={"/loading.png"} layout="fill" />
+            <Image
+              src={process.env.NEXT_PUBLIC_API_URL + "/loading.png"}
+              layout="fill"
+            />
           </motion.div>
           <motion.div
             initial={{
@@ -83,7 +86,10 @@ const Transition = ({ children }) => {
             }}
             className="h-[60vh] bg-white rounded-full w-[60vh] z-50 absolute top-[20vh] -right-[30vh]"
           >
-            <Image src={"/loading1.png"} layout="fill" />
+            <Image
+              src={process.env.NEXT_PUBLIC_API_URL + "/loading1.png"}
+              layout="fill"
+            />
           </motion.div>
           <motion.div
             initial={{
@@ -98,7 +104,10 @@ const Transition = ({ children }) => {
             }}
             className="h-[45vh] w-[45vh] rounded-full bg-black z-50 absolute top-[27.5vh]  -right-[22.5vh]"
           >
-            <Image src={"/loading.png"} layout="fill" />
+            <Image
+              src={process.env.NEXT_PUBLIC_API_URL + "/loading.png"}
+              layout="fill"
+            />
           </motion.div>
 
           <motion.div
@@ -114,7 +123,10 @@ const Transition = ({ children }) => {
             }}
             className="h-[30vh] w-[30vh] z-50 absolute top-[35vh] -right-[15vh]"
           >
-            <Image src={"/hydroshark_logo.png"} layout="fill" />
+            <Image
+              src={process.env.NEXT_PUBLIC_API_URL + "/hydroshark_logo.png"}
+              layout="fill"
+            />
           </motion.div>
         </motion.div>
         <motion.div
@@ -141,7 +153,10 @@ const Transition = ({ children }) => {
             }}
             className="h-[75vh] w-[75vh] bg-black rounded-full  z-50 absolute top-[12.5vh] -left-[37.5vh]"
           >
-            <Image src={"/loading.png"} layout="fill" />
+            <Image
+              src={process.env.NEXT_PUBLIC_API_URL + "/loading.png"}
+              layout="fill"
+            />
           </motion.div>
           <motion.div
             initial={{
@@ -156,7 +171,10 @@ const Transition = ({ children }) => {
             }}
             className="h-[60vh] bg-white rounded-full w-[60vh] z-50 absolute top-[20vh] -left-[30vh]"
           >
-            <Image src={"/loading1.png"} layout="fill" />
+            <Image
+              src={process.env.NEXT_PUBLIC_API_URL + "/loading1.png"}
+              layout="fill"
+            />
           </motion.div>
           <motion.div
             initial={{
@@ -171,7 +189,10 @@ const Transition = ({ children }) => {
             }}
             className="h-[45vh] w-[45vh] rounded-full bg-black z-50 absolute top-[27.5vh] -left-[22.5vh]"
           >
-            <Image src={"/loading.png"} layout="fill" />
+            <Image
+              src={process.env.NEXT_PUBLIC_API_URL + "/loading.png"}
+              layout="fill"
+            />
           </motion.div>
           <motion.div
             initial={{
@@ -186,7 +207,10 @@ const Transition = ({ children }) => {
             }}
             className="h-[30vh] w-[30vh] z-50 absolute top-[35vh] -left-[15vh]"
           >
-            <Image src={"/hydroshark_logo.png"} layout="fill" />
+            <Image
+              src={process.env.NEXT_PUBLIC_API_URL + "/hydroshark_logo.png"}
+              layout="fill"
+            />
           </motion.div>
         </motion.div>
       </motion.div>

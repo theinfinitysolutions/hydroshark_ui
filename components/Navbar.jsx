@@ -55,7 +55,10 @@ const Navbar = () => {
         }}
         className="h-[10vh] cursor-pointer w-[10vh] mt-4 relative"
       >
-        <Image src="/hydroshark.png" layout="fill" />
+        <Image
+          src={process.env.NEXT_PUBLIC_API_URL + "/hydroshark.png"}
+          layout="fill"
+        />
       </a>
       <div className="flex flex-row w-4/12 justify-end z-50 border-b-[1px] border-[#181818] px-4">
         <div className="flex flex-row justify-between w-8/12 ">

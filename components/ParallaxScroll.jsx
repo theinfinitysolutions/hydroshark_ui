@@ -19,8 +19,11 @@ const ParallaxScroll = (props, ref) => {
       <motion.div style={{ y: y }} className=" h-full w-1/2">
         {[1, 2, 3, 1, 4, 3, 4].map((item, index) => {
           return (
-            <div className=" h-[50vh] w-full relative">
-              <Image src={`/img${item}.jpeg`} layout="fill" />
+            <div key={index} className=" h-[50vh] w-full relative">
+              <Image
+                src={process.env.NEXT_PUBLIC_API_URL + `/img${item}.jpeg`}
+                layout="fill"
+              />
             </div>
           );
         })}
@@ -28,8 +31,11 @@ const ParallaxScroll = (props, ref) => {
       <motion.div style={{ y: y2 }} className=" h-full w-1/2">
         {[2, 1, 4, 3, 2, 1, 3].map((item, index) => {
           return (
-            <div className=" h-[50vh] w-full relative">
-              <Image src={`/img${item}.jpeg`} layout="fill" />
+            <div key={index} className=" h-[50vh] w-full relative">
+              <Image
+                src={process.env.NEXT_PUBLIC_API_URL + `/img${item}.jpeg`}
+                layout="fill"
+              />
             </div>
           );
         })}
