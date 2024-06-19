@@ -38,7 +38,7 @@ const altItems = [
 
 const Navbar = () => {
   return (
-    <div className=" fixed z-50 max-w-screen h-[12.5vh] w-screen flex flex-row justify-between items-center bg-transparent px-[5vw]">
+    <div className=" z-50 max-w-screen h-[12.5vh] w-screen flex flex-row justify-between items-center bg-[#f0f2f4]  px-[5vw]">
       <div className="flex flex-row justify-between w-4/12 border-b-[1px] border-[#181818] px-4">
         {navItems.map((item, index) => (
           <Link
@@ -50,7 +50,7 @@ const Navbar = () => {
           </Link>
         ))}
       </div>
-      <div className="h-[12.5vh] w-[12.5vh] mt-8 relative">
+      <div className="h-[10vh] w-[10vh] mt-4 relative">
         <Image src="/hydroshark.png" layout="fill" />
       </div>
       <div className="flex flex-row w-4/12 justify-end border-b-[1px] border-[#181818] px-4">
