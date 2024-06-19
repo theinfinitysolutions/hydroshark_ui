@@ -1,6 +1,8 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const navItems = [
   {
@@ -30,40 +32,50 @@ const altItems = [
     title: "Contact",
     path: "/contact",
   },
-  {
-    title: "Shop",
-    path: "/shop",
-  },
 ];
 
 const Navbar = () => {
+  const router = useRouter();
   return (
     <div className=" z-50 max-w-screen h-[12.5vh] w-screen flex flex-row justify-between items-center bg-[#f0f2f4]  px-[5vw]">
-      <div className="flex flex-row justify-between w-4/12 border-b-[1px] border-[#181818] px-4">
+      <div className="flex flex-row justify-between z-50 w-4/12 border-b-[1px] border-[#181818] px-4">
         {navItems.map((item, index) => (
           <Link
             href={item.path}
             key={index}
-            className=" text-base group text-[#181818] py-2"
+            className=" cursor-pointer text-base group text-[#181818] py-2"
           >
             {item.title}
           </Link>
         ))}
       </div>
-      <div className="h-[10vh] w-[10vh] mt-4 relative">
+      <a
+        onClick={() => {
+          router.push("/");
+        }}
+        className="h-[10vh] cursor-pointer w-[10vh] mt-4 relative"
+      >
         <Image src="/hydroshark.png" layout="fill" />
-      </div>
-      <div className="flex flex-row w-4/12 justify-end border-b-[1px] border-[#181818] px-4">
+      </a>
+      <div className="flex flex-row w-4/12 justify-end z-50 border-b-[1px] border-[#181818] px-4">
         <div className="flex flex-row justify-between w-8/12 ">
           {altItems.map((item, index) => (
             <Link
               href={item.path}
               key={index}
-              className=" text-base text-[#181818] py-2"
+              className=" cursor-pointer text-base text-[#181818] py-2"
             >
               {item.title}
             </Link>
           ))}
+          <button
+            onClick={() => {
+              router.push("/joinus");
+            }}
+            className=" px-4 py-2 bg-black text-white"
+          >
+            Join Us
+          </button>
         </div>
       </div>
     </div>
