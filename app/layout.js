@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import localFont from "next/font/local";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const local = localFont({ src: "../public/ITCAvantGardePro-Md.otf" });
 
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
       <body className={`${local.className} `}>
         <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );

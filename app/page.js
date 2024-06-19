@@ -13,6 +13,7 @@ import RevealOnScroll from "@/components/RevealOnScroll";
 import { FaArrowLeft } from "react-icons/fa6";
 import { FaArrowRight } from "react-icons/fa";
 import BackgroundRipple from "@/components/BackgroundRipple";
+import HomeSection3 from "@/components/HomeSection3";
 
 export default function Home() {
   const ref = useRef();
@@ -22,9 +23,13 @@ export default function Home() {
     <Transition>
       <div
         ref={ref}
-        className="flex min-h-screen bg-[#f1f3f5] w-screen z-20 flex-col items-center "
+        className="flex min-h-screen bg-[#f0f2f4] w-screen z-20 flex-col overflow-hidden relative items-center "
       >
-        <div class="absolute overflow-hidden [--offset:40vw] bg-black rotate-[4deg] top-[90vh] z-40 [--move-initial:calc(-25%_+_var(--offset))] [--move-final:calc(-50%_+_var(--offset))] ">
+        <div className="h-[8vh] w-[8vh] absolute right-[10vw] top-[50vh] animate-rotate -mt-2 ">
+          <Image src={"/asset5.png"} layout="fill" />
+        </div>
+
+        <div class="absolute overflow-hidden [--offset:40vw] bg-black rotate-[4deg] top-[75vh] z-40 [--move-initial:calc(-25%_+_var(--offset))] [--move-final:calc(-50%_+_var(--offset))] ">
           <div
             class="min-w-screen w-[100vw] flex flex-row py-1 items-center relative  transform-[translate3d(var(--move-initial),0,0)] animate-marqueebanner [animation-play-state:running]"
             aria-hidden="true"
@@ -52,7 +57,7 @@ export default function Home() {
             <span className="h-2 w-2 rounded-full bg-white"></span>
           </div>
         </div>
-        <div class="absolute overflow-hidden [--offset:40vw] bg-black rotate-[-4deg] top-[90vh] z-40 [--move-initial:calc(-25%_+_var(--offset))] [--move-final:calc(-50%_+_var(--offset))] ">
+        <div class="absolute overflow-hidden [--offset:40vw] bg-black rotate-[-4deg] top-[75vh] z-40 [--move-initial:calc(-25%_+_var(--offset))] [--move-final:calc(-50%_+_var(--offset))] ">
           <div
             class="min-w-screen w-[100vw] flex flex-row py-1 items-center relative  transform-[translate3d(var(--move-initial),0,0)] animate-marqueebanner [animation-play-state:running]"
             aria-hidden="true"
@@ -83,8 +88,8 @@ export default function Home() {
 
         <div className="absolute left-[25vw] z-50 h-[60vh] w-[50vw]">
           <motion.div
-            initial={{ y: "80vh" }}
-            animate={{ y: "40vh", opacity: [0, 1, 1] }}
+            initial={{ y: "70vh" }}
+            animate={{ y: "30vh", opacity: [0, 1, 1] }}
             className="z-20 w-full h-full"
             transition={{ duration: 2.5, delay: 3.5, times: [0, 0.3, 1] }}
           >
@@ -92,22 +97,22 @@ export default function Home() {
           </motion.div>
         </div>
 
-        <div className="flex flex-row h-screen w-screen px-[5vw] pt-[10vh] mt-[10vh] relative ">
-          <div className="absolute left-0 top-0">
-            <p className="text-[14rem] text-[#00000009] leading-[12rem]">
-              HYDROSHARK
-            </p>
-            <p className="text-[14rem] text-black/10 leading-[12rem]">
-              HYDROSHARK
-            </p>
-            <p className="text-[14rem] text-black/15 leading-[12rem]">
-              HYDROSHARK
-            </p>
-            <p className="text-[14rem] text-black/20 leading-[12rem]">
-              HYDROSHARK
-            </p>
-          </div>
+        <div className="fixed left-0 top-[5vh]">
+          <p className="text-[14rem] text-black/5 leading-[13rem]">
+            HYDROSHARK
+          </p>
+          <p className="text-[14rem] text-black/5 leading-[13rem]">
+            HYDROSHARK
+          </p>
+          <p className="text-[14rem] text-black/5 leading-[13rem]">
+            HYDROSHARK
+          </p>
+          <p className="text-[14rem] text-black/5 leading-[13rem]">
+            HYDROSHARK
+          </p>
+        </div>
 
+        <div className="flex flex-row h-[90vh] w-screen px-[5vw] overflow-hidden pt-[5vh] relative ">
           {/* <div className=" absolute bg-transparent top-[20vh] w-[60vw] left-[20vw] overflow-hidden h-[60vh]">
             <video
               src="/bgwatervideo.mp4"
@@ -185,13 +190,28 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <RevealOnScroll addedClasses="flex flex-row h-screen z-20 w-[100vw] px-[5vw] relative overflow-hidden ">
-          <BackgroundRipple
-            currentColor={
-              flavorData[currentFlavour].id == 1 ? "#308918" : "#dfd434"
-            }
-          />
-          <div className=" absolute right-0 -z-10 top-0">
+
+        <RevealOnScroll
+          threshold={0.2}
+          addedClasses="flex flex-row justify-between items-center h-screen z-20 w-[100vw] px-[5vw] relative overflow-hidden "
+        >
+          <div className="h-[8vh] w-[8vh] absolute right-[20vw] top-[10vh] animate-rotate -mt-2 ">
+            <Image src={"/asset5.png"} layout="fill" />
+          </div>
+          <div className="h-[8vh] w-[8vh] absolute left-[10vw] top-[50vh] animate-rotate -mt-2 ">
+            <Image src={"/asset5.png"} layout="fill" />
+          </div>
+          <div className="h-[8vh] w-[8vh] absolute right-[30vw] top-[80vh] animate-rotate -mt-2 ">
+            <Image src={"/asset5.png"} layout="fill" />
+          </div>
+          <div className=" absolute right-0 -z-10 bottom-0">
+            <BackgroundRipple
+              currentColor={
+                flavorData[currentFlavour].id == 1 ? "#308918" : "#dfd434"
+              }
+            />
+          </div>
+          <div className=" absolute left-0 -z-10 top-0">
             <BackgroundRipple
               currentColor={
                 flavorData[currentFlavour].id == 1 ? "#308918" : "#dfd434"
@@ -199,7 +219,7 @@ export default function Home() {
             />
           </div>
 
-          <div className="flex flex-row justify-center  items-center">
+          <div className="flex flex-row justify-center mt-[10vh]  items-center">
             <div className="flex flex-col items-end w-1/3">
               <p className=" text-xs text-[#5C6262]">DISCOVER OUR DRINKS</p>
               <h2
@@ -294,7 +314,7 @@ export default function Home() {
                 <div className="flex flex-row w-full justify-between items-center ">
                   <div className=" flex flex-col w-1/2  items-center justify-center p-6 border-r-[1px] border-[#5C6262]">
                     <p className=" text-xs text-cyan-600">Caffeine</p>
-                    <p className=" text-2xl text-black">{"120 mg"}</p>
+                    <p className=" text-2xl text-black">{"0 mg"}</p>
                   </div>
                   <div className=" flex flex-col w-1/2  items-center justify-center p-6">
                     <p className=" text-xs text-cyan-600">Vitamins</p>
@@ -305,6 +325,7 @@ export default function Home() {
             </div>
           </div>
         </RevealOnScroll>
+        <HomeSection3 />
       </div>
     </Transition>
   );
