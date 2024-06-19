@@ -20,6 +20,7 @@ module.exports = {
         slideUp: "slideUp 2s deplay-[1000ms] ease-in-out forwards",
         rotate: "rotate 8s linear infinite",
         bounce: "bounce1 5s infinite",
+        bounceX: "bounceX 3s infinite",
       },
       keyframes: {
         marquee: {
@@ -51,6 +52,17 @@ module.exports = {
           "100%": {
             transform: "translateY(0)",
             rotate: "rotate(8deg)",
+          },
+        },
+        bounceX: {
+          "0%": {
+            transform: "translateX(0)",
+          },
+          "50%": {
+            transform: "translateX(-5vh)",
+          },
+          "100%": {
+            transform: "translateX(0)",
           },
         },
       },
