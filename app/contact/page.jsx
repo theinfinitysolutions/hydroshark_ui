@@ -16,7 +16,7 @@ const ContactUs = () => {
 
   return (
     <div className="w-full min-h-screen relative bg-[#f0f2f4] flex flex-col items-center">
-      <div class="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:72px_72px]"></div>
+      <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:72px_72px]"></div>
       <div className="w-11/12 h-[75vh] bg-black  mt-[7.5vh] flex flex-row justify-between items-center">
         <div className=" hidden md:flex w-4/12 h-full  flex-col items-start ">
           <div className=" w-full h-full z-0 relative ">

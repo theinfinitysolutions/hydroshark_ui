@@ -32,59 +32,71 @@ export default function Home() {
           />
         </div>
 
-        <div class="absolute overflow-hidden [--offset:40vw] bg-black rotate-[4deg] top-[75vh] z-40 [--move-initial:calc(-25%_+_var(--offset))] [--move-final:calc(-50%_+_var(--offset))] ">
+        <div className="absolute overflow-hidden [--offset:40vw] bg-black rotate-[4deg] top-[75vh] z-40 [--move-initial:calc(-25%_+_var(--offset))] [--move-final:calc(-50%_+_var(--offset))] ">
           <div
-            class="min-w-screen w-[100vw] flex flex-row py-1 items-center relative  transform-[translate3d(var(--move-initial),0,0)] animate-marqueebanner [animation-play-state:running]"
+            className="min-w-screen w-[100vw] flex flex-row py-1 items-center relative  transform-[translate3d(var(--move-initial),0,0)] animate-marqueebanner [animation-play-state:running]"
             aria-hidden="true"
           >
             <span className="h-2 w-2 rounded-full bg-white"></span>
-            <span class="text-sm p-[0_2vw] text-white">{"225mg caffine"}</span>
+            <span className="text-sm p-[0_2vw] text-white">
+              {"225mg caffine"}
+            </span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
-            <span class="text-sm p-[0_2vw] text-white">{"0g sugar"}</span>
+            <span className="text-sm p-[0_2vw] text-white">{"0g sugar"}</span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
-            <span class="text-sm p-[0_2vw] text-white">{"Electrolytes"}</span>
+            <span className="text-sm p-[0_2vw] text-white">
+              {"Electrolytes"}
+            </span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
-            <span class="text-sm p-[0_2vw] text-white">{"vitamins"}</span>
+            <span className="text-sm p-[0_2vw] text-white">{"vitamins"}</span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
-            <span class="text-sm p-[0_2vw] text-white">{"minerals"}</span>
+            <span className="text-sm p-[0_2vw] text-white">{"minerals"}</span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
-            <span class="text-sm p-[0_2vw] text-white">{"0g sugar"}</span>
+            <span className="text-sm p-[0_2vw] text-white">{"0g sugar"}</span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
-            <span class="text-sm p-[0_2vw] text-white">{"225mg caffine"}</span>
+            <span className="text-sm p-[0_2vw] text-white">
+              {"225mg caffine"}
+            </span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
-            <span class="text-sm p-[0_2vw] text-white">{"0g sugar"}</span>
+            <span className="text-sm p-[0_2vw] text-white">{"0g sugar"}</span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
-            <span class="text-sm p-[0_2vw] text-white">{"minerals"}</span>
+            <span className="text-sm p-[0_2vw] text-white">{"minerals"}</span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
-            <span class="text-sm p-[0_2vw] text-white">{"0g sugar"}</span>
+            <span className="text-sm p-[0_2vw] text-white">{"0g sugar"}</span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
           </div>
         </div>
-        <div class="absolute overflow-hidden [--offset:40vw] bg-black rotate-[-4deg] top-[75vh] z-40 [--move-initial:calc(-25%_+_var(--offset))] [--move-final:calc(-50%_+_var(--offset))] ">
+        <div className="absolute overflow-hidden [--offset:40vw] bg-black rotate-[-4deg] top-[75vh] z-40 [--move-initial:calc(-25%_+_var(--offset))] [--move-final:calc(-50%_+_var(--offset))] ">
           <div
-            class="min-w-screen w-[100vw] flex flex-row py-1 items-center relative  transform-[translate3d(var(--move-initial),0,0)] animate-marqueebanner [animation-play-state:running]"
+            className="min-w-screen w-[100vw] flex flex-row py-1 items-center relative  transform-[translate3d(var(--move-initial),0,0)] animate-marqueebanner [animation-play-state:running]"
             aria-hidden="true"
           >
             <span className="h-2 w-2 rounded-full bg-white"></span>
-            <span class="text-sm p-[0_2vw] text-white">{"225mg caffine"}</span>
+            <span className="text-sm p-[0_2vw] text-white">
+              {"225mg caffine"}
+            </span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
-            <span class="text-sm p-[0_2vw] text-white">{"0g sugar"}</span>
+            <span className="text-sm p-[0_2vw] text-white">{"0g sugar"}</span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
-            <span class="text-sm p-[0_2vw] text-white">{"Electrolytes"}</span>
+            <span className="text-sm p-[0_2vw] text-white">
+              {"Electrolytes"}
+            </span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
-            <span class="text-sm p-[0_2vw] text-white">{"vitamins"}</span>
+            <span className="text-sm p-[0_2vw] text-white">{"vitamins"}</span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
-            <span class="text-sm p-[0_2vw] text-white">{"minerals"}</span>
+            <span className="text-sm p-[0_2vw] text-white">{"minerals"}</span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
-            <span class="text-sm p-[0_2vw] text-white">{"0g sugar"}</span>
+            <span className="text-sm p-[0_2vw] text-white">{"0g sugar"}</span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
-            <span class="text-sm p-[0_2vw] text-white">{"225mg caffine"}</span>
+            <span className="text-sm p-[0_2vw] text-white">
+              {"225mg caffine"}
+            </span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
-            <span class="text-sm p-[0_2vw] text-white">{"0g sugar"}</span>
+            <span className="text-sm p-[0_2vw] text-white">{"0g sugar"}</span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
-            <span class="text-sm p-[0_2vw] text-white">{"minerals"}</span>
+            <span className="text-sm p-[0_2vw] text-white">{"minerals"}</span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
-            <span class="text-sm p-[0_2vw] text-white">{"0g sugar"}</span>
+            <span className="text-sm p-[0_2vw] text-white">{"0g sugar"}</span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
           </div>
         </div>
