@@ -9,7 +9,10 @@ const Athletes = () => {
       <div className=" flex flex-col items-center w-11/12 ">
         <div className=" w-full bg-[#495057] z-20 h-[60vh] mt-[2.5vh] flex flex-row justify-between items-center px-[5vw]">
           <div className=" h-[30vh] w-[30vh] relative">
-            <Image src="/hydroshark.png" layout="fill" />
+            <Image
+              src={process.env.NEXT_PUBLIC_API_URL + "/hydroshark.png"}
+              layout="fill"
+            />
           </div>
 
           <div className="flex">
@@ -19,21 +22,30 @@ const Athletes = () => {
 
         <div className=" h-[50vh] w-full flex flex-row justify-between items-center mt-[5vh]">
           <div className=" w-6/12 h-[50vh] relative group">
-            <Image src={"/athlete1.jpeg"} layout="fill" />
+            <Image
+              src={process.env.NEXT_PUBLIC_API_URL + "/athlete1.jpeg"}
+              layout="fill"
+            />
             <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
               <h3 className=" text-white text-4xl">{"Athlete 1"}</h3>
               <p className=" text-white/80 text-base">Sport</p>
             </div>
           </div>
           <div className=" w-[22.5%] h-[50vh] relative group">
-            <Image src={"/athlete2.jpeg"} layout="fill" />
+            <Image
+              src={process.env.NEXT_PUBLIC_API_URL + "/athlete2.jpeg"}
+              layout="fill"
+            />
             <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
               <h3 className=" text-white text-4xl">{"Athlete 2"}</h3>
               <p className=" text-white/80 text-base">Sport</p>
             </div>
           </div>
           <div className="w-[22.5%] h-[50vh] relative group">
-            <Image src={"/athlete3.jpeg"} layout="fill" />
+            <Image
+              src={process.env.NEXT_PUBLIC_API_URL + "/athlete3.jpeg"}
+              layout="fill"
+            />
             <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
               <h3 className=" text-white text-4xl">{"Athlete 3"}</h3>
               <p className=" text-white/80 text-base">Sport</p>
@@ -43,7 +55,10 @@ const Athletes = () => {
 
         <div className=" h-[20vh] bg-black/90 w-full flex mt-[5vh] flex-row gap-x-8 items-center justify-center">
           <div className=" h-[10vh] w-[10vh] relative">
-            <Image src="/hydroshark.png" layout="fill" />
+            <Image
+              src={process.env.NEXT_PUBLIC_API_URL + "/hydroshark.png"}
+              layout="fill"
+            />
           </div>
           <h3 className=" text-[] italic text-4xl">
             {"Experience the Hydroshark Difference"}
@@ -54,7 +69,10 @@ const Athletes = () => {
           {[4, 2, 3, 4].map((item, index) => {
             return (
               <div key={index} className="w-[23%] h-[50vh] relative group">
-                <Image src={`/athlete${item}.jpeg`} layout="fill" />
+                <Image
+                  src={process.env.NEXT_PUBLIC_API_URL + `/athlete${item}.jpeg`}
+                  layout="fill"
+                />
                 <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
                   <h3 className=" text-white text-4xl">{`Athlete ${item}`}</h3>
                   <p className=" text-white/80 text-base">Sport</p>

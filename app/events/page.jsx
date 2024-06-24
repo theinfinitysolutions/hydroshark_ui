@@ -27,14 +27,22 @@ const Events = () => {
                       index == 0 ? "border-[#343a40]" : "border-[#adb5bd]"
                     } rounded-md overflow-hidden`}
                   >
-                    <Image src={`/img${item + 2}.jpeg`} layout="fill" />
+                    <Image
+                      src={
+                        process.env.NEXT_PUBLIC_API_URL + `/img${item + 2}.jpeg`
+                      }
+                      layout="fill"
+                    />
                   </div>
                 );
               })}
             </div>
             <div className=" flex flex-row w-10/12 items-start group h-[57.5vh] relative overflow-hidden bg-white border-[0.5px] border-[#c7c7c7]/70 rounded-xl shadow-sm ">
               <div className=" w-8/12 h-full relative z-0">
-                <Image src={"/img7.jpeg"} layout="fill" />
+                <Image
+                  src={process.env.NEXT_PUBLIC_API_URL + "/img7.jpeg"}
+                  layout="fill"
+                />
               </div>
               <div className=" flex flex-col w-4/12 h-full items-start justify-center px-8">
                 <h1 className="text-[2.5rem] leading-[2.5rem] text-[#181818]">
