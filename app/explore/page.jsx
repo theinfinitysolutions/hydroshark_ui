@@ -2,10 +2,49 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import RevealOnScroll from "@/components/RevealOnScroll";
+import { motion } from "framer-motion";
+import useMeasure from "react-use-measure";
+import { useMotionValue, animate } from "framer-motion";
+
+const FAST_DURATION = 50;
+const SLOW_DURATION = 120;
 
 const Explore = () => {
+  let [ref, { width }] = useMeasure();
+  const [duration, setDuration] = useState(FAST_DURATION);
+  const xTranslation = useMotionValue(0);
+
+  const [mustFinish, setMustFinish] = useState(false);
+  const [rerender, setRerender] = useState(false);
+
+  useEffect(() => {
+    let controls;
+    let finalPosition = -width / 2 - 8;
+
+    if (mustFinish) {
+      controls = animate(xTranslation, [xTranslation.get(), finalPosition], {
+        ease: "linear",
+        duration: duration * (1 - xTranslation.get() / finalPosition),
+        onComplete: () => {
+          setMustFinish(false);
+          setRerender(!rerender);
+        },
+      });
+    } else {
+      controls = animate(xTranslation, [0, finalPosition], {
+        ease: "linear",
+        duration: duration,
+        repeat: Infinity,
+        repeatType: "loop",
+        repeatDelay: 0,
+      });
+    }
+
+    return controls?.stop;
+  }, [rerender, xTranslation, duration, width]);
+
   return (
-    <div className="w-full min-h-screen relative bg-[#f0f2f4] flex flex-col items-center">
+    <div className="w-full min-h-screen relative bg-[#f0f2f4] flex flex-col items-center overflow-hidden">
       <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:72px_72px]"></div>
       <div className=" flex flex-col items-center w-11/12 z-20 ">
         <div className=" flex flex-col items-center w-full mt-[10vh]">
@@ -36,10 +75,10 @@ const Explore = () => {
               </div>
             </div>
             <p className=" text-[#181818] text-base mt-2 font-semibold">
-              Low-Sugar
+              Caffeine-Free
             </p>
             <p className=" text-[#181818]/80 text-xs text-center ">
-              {"Enjoy a tasty drink without the health risks"}
+              {"Pure hydration without the jitters."}
             </p>
           </div>
           <div className=" flex flex-col items-center w-[20vh]">
@@ -81,19 +120,55 @@ const Explore = () => {
                 />
               </div>
             </div>
+
             <p className=" text-[#181818] text-base mt-2 font-semibold">
-              Caffeine-Free
+              Low-Sugar
             </p>
             <p className=" text-[#181818]/80 text-xs text-center ">
-              {"Pure hydration without the jitters."}
+              {"Enjoy a tasty drink without the health risks"}
             </p>
           </div>
+        </div>
+        <div className=" my-[5vh]">
+          <motion.div
+            className="h-[25vh] lg:h-[50vh] mt-[5vh] left-0 flex gap-4"
+            style={{ x: xTranslation }}
+            ref={ref}
+            onHoverStart={() => {
+              setMustFinish(true);
+              setDuration(SLOW_DURATION);
+            }}
+            onHoverEnd={() => {
+              setMustFinish(true);
+              setDuration(FAST_DURATION);
+            }}
+          >
+            {Array(20)
+              .fill(1)
+              .map((item, idx) => (
+                <motion.div
+                  key={idx}
+                  className=" w-[20vh] h-[20vh] lg:w-[70vh] lg:h-[50vh] relative"
+                  whileHover={{ scale: 1.1 }}
+                >
+                  <Image
+                    src={
+                      process.env.NEXT_PUBLIC_API_URL +
+                      `/img${(idx % 6) + 4}.jpeg`
+                    }
+                    layout="fill"
+                    alt={`gallery${idx}`}
+                    objectFit="cover"
+                  />
+                </motion.div>
+              ))}
+          </motion.div>
         </div>
         <RevealOnScroll
           threshold={0.3}
           addedClasses=" flex flex-col items-center w-full mt-[10vh]"
         >
-          <h2 className=" text-base animate-slideUp text-[#408289]">
+          <h2 className=" text-base text-[#408289]">
             {"Let's make waves with Hydroshark!"}
           </h2>
           <p className=" text-4xl text-[#181818]">{"Explore our products"}</p>
