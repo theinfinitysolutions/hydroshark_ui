@@ -14,13 +14,13 @@ const navItems = [
     path: "/athletes",
   },
   {
-    title: "Events",
+    title: "Events & Media",
     path: "/events",
   },
-  {
-    title: "Media",
-    path: "/media",
-  },
+  // {
+  //   title: "Media",
+  //   path: "/media",
+  // },
 ];
 
 const altItems = [

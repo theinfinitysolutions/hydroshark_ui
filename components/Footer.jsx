@@ -43,7 +43,7 @@ const altItems = [
 
 const Footer = () => {
   return (
-    <div className=" flex flex-col w-full items-center bg-[#181818] py-8 h-[50vh] z-50 relative">
+    <div className=" flex flex-col w-full items-center bg-[#181818] py-8 h-[50vh] z-40 relative">
       <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:72px_72px]"></div>
       <div className="flex flex-row justify-between items-start w-10/12">
         <div className=" h-[10vh] w-[10vh] relative">
@@ -52,7 +52,7 @@ const Footer = () => {
             layout="fill"
           />
         </div>
-        <div className="w-3/12 flex flex-row justify-between">
+        <div className="w-3/12 flex flex-row justify-between z-20">
           <div className=" flex flex-col items-start gap-y-1">
             {navItems.map((item, index) => (
               <Link
