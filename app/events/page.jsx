@@ -22,6 +22,7 @@ const Events = () => {
               {[1, 2, 3, 4].map((item, index) => {
                 return (
                   <div
+                    key={index}
                     className={`h-[12.5vh] w-[12.5vh] relative mb-4 border-[2px] ${
                       index == 0 ? "border-[#343a40]" : "border-[#adb5bd]"
                     } rounded-md overflow-hidden`}
@@ -94,9 +95,13 @@ const Events = () => {
           <div className="flex flex-row w-full justify-between items-start mt-[2.5vh]">
             {[1, 2, 3].map((item, index) => {
               return (
-                <a className=" flex cursor-pointer flex-col items-start group h-[45vh] relative w-[30%] overflow-hidden bg-white border-[0.5px] border-[#c7c7c7]/70 rounded-md shadow-sm ">
+                <a
+                  key={index}
+                  className=" flex cursor-pointer flex-col items-start group h-[45vh] relative w-[30%] overflow-hidden bg-white border-[0.5px] border-[#c7c7c7]/70 rounded-md shadow-sm "
+                >
                   <div className=" w-full h-[30vh] relative z-0">
                     <Image
+                      key={index}
                       src={process.env.NEXT_PUBLIC_API_URL + "/img2.jpeg"}
                       layout="fill"
                       objectFit="cover"
@@ -132,7 +137,10 @@ const Events = () => {
           <div className=" grid grid-cols-3 gap-4 w-full justify-between items-center mt-[2.5vh]">
             {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item, index) => {
               return (
-                <div className=" flex h-[40vh] w-full relative overflow-hidden group">
+                <div
+                  key={index}
+                  className=" flex h-[40vh] w-full relative overflow-hidden group"
+                >
                   <Image
                     src={`/img${item}.jpeg`}
                     layout="fill"

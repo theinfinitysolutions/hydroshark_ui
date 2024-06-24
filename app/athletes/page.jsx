@@ -53,7 +53,7 @@ const Athletes = () => {
         <div className=" h-[50vh] w-full flex flex-row justify-between items-center my-[5vh]">
           {[4, 2, 3, 4].map((item, index) => {
             return (
-              <div className="w-[23%] h-[50vh] relative group">
+              <div key={index} className="w-[23%] h-[50vh] relative group">
                 <Image src={`/athlete${item}.jpeg`} layout="fill" />
                 <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
                   <h3 className=" text-white text-4xl">{`Athlete ${item}`}</h3>
