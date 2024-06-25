@@ -91,7 +91,13 @@ export default function MobileSidebar() {
             return <MenuItem key={index} name={item.title} route={item.link} />;
           })}
 
-          <button className=" w-11/12 py-2 bg-[#181818] text-white mx-4 mt-">
+          <button
+            onClick={() => {
+              router.push("/joinus");
+              setter((oldVal) => !oldVal);
+            }}
+            className=" w-11/12 py-2 bg-[#181818] text-white mx-4 mt-"
+          >
             Join Us !
           </button>
         </div>
