@@ -18,7 +18,7 @@ const ContactUs = () => {
     <div className="w-full min-h-screen relative bg-[#f0f2f4] flex flex-col items-center">
       <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:72px_72px]"></div>
       <div className="w-11/12 h-[75vh] bg-black  mt-[7.5vh] flex flex-row justify-between items-center">
-        <div className=" hidden md:flex w-4/12 h-full  flex-col items-start ">
+        <div className=" hidden lg:flex w-4/12 h-full  flex-col items-start ">
           <div className=" w-full h-full z-0 relative ">
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/img4.jpeg"}
@@ -26,7 +26,7 @@ const ContactUs = () => {
             />
           </div>
         </div>
-        <div className=" w-full md:w-7/12 h-full pr-8 flex flex-col items-start justify-center ">
+        <div className=" w-full lg:w-7/12 h-full pr-8 flex flex-col items-start justify-center ">
           <h1 className="text-[3rem] leading-[2.5rem] text-[#DEE2E6]">
             Contact Us
           </h1>
