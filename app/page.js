@@ -275,7 +275,7 @@ export default function Home() {
               </p>
               <p className="text-black/80 mt-1 w-7/12 text-[0.75rem] text-end leading-[1rem]">
                 {
-                  "Hydroshark is a new energy drink that is designed to keep you"
+                  "Join us on our mission to change the way India hydrates. Let’s make every sip a step towards a healthier, more adventurous life."
                 }
                 <span> hydrated</span> {"and energized throughout the day"}
               </p>
