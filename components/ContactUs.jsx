@@ -14,7 +14,7 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="flex flex-col w-full px-0 md:px-8 py-4">
+    <div className="flex flex-col w-full px-0 lg:px-8 py-4">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col w-full mt-4"

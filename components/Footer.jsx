@@ -43,16 +43,16 @@ const altItems = [
 
 const Footer = () => {
   return (
-    <div className=" flex flex-col w-full items-center bg-[#181818] py-8 h-[50vh] z-40 relative">
-      <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:72px_72px]"></div>
-      <div className="flex flex-row justify-between items-start w-10/12">
+    <div className=" flex flex-col w-[100vw] max-w-screen items-center overflow-hidden bg-[#181818] py-8 h-[50vh] z-40 relative">
+      <div className="absolute inset-0 h-full w-screen bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:72px_72px]"></div>
+      <div className="flex flex-col lg:flex-row lg:justify-between items-center lg:items-start w-full lg:w-10/12">
         <div className=" h-[10vh] w-[10vh] relative">
           <Image
             src={process.env.NEXT_PUBLIC_API_URL + "/hydroshark.png"}
             layout="fill"
           />
         </div>
-        <div className="w-3/12 flex flex-row justify-between z-20">
+        <div className="w-6/12 lg:w-3/12 mt-8 mf:mt-0 flex flex-row justify-between z-20">
           <div className=" flex flex-col items-start gap-y-1">
             {navItems.map((item, index) => (
               <Link
@@ -76,7 +76,7 @@ const Footer = () => {
             ))}
           </div>
         </div>
-        <div className="flex flex-row w-1/12 justify-between items-center">
+        <div className="flex flex-row w-4/12 lg:w-1/12 mt-8 lg:mt-0 justify-between items-center">
           <a onClick={() => {}}>
             <FaInstagram className="text-[#DEE2E6] text-base" />
           </a>
@@ -91,21 +91,21 @@ const Footer = () => {
           </a>
         </div>
       </div>
-      <div className="w-full flex flex-col items-center -mt-8">
+      <div className="w-full max-w-screen overflow-hidden flex flex-col items-center lg:-mt-8">
         <p
           style={{
             transform: `perspective(1000px) rotateX(45deg)`,
           }}
-          className=" text-[12rem] text-[#DEE2E6]"
+          className=" text-[3.5rem] lg:text-[9rem] xl:text-[12rem] text-[#DEE2E6]"
         >
           HYDROSHARK
         </p>
       </div>
-      <div className="w-full mt-6 flex absolute bottom-0 p-2 flex-col-reverse items-center  md:flex-row md:justify-between">
+      <div className="w-full mt-6 flex absolute bottom-0 p-2 flex-col-reverse items-center  lg:flex-row lg:justify-between">
         <p className="text-center text-xs text-[#DEE2E6]">
           &copy; {new Date().getFullYear()} Hydroshark. All rights reserved.
         </p>
-        <div className="flex flex-row text-sm justify-end w-full  md:w-3/12 mb-4 md:mb-0 text-[#DEE2E6]">
+        <div className="flex flex-row text-sm justify-center lg:justify-end w-full  lg:w-3/12 mb-4 lg:mb-0 text-[#DEE2E6]">
           <p className="text-[12px]">Developed and Maintained By </p>
           <a
             href="https://theinfinitysolutions.net"

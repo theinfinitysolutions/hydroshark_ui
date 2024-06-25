@@ -35,15 +35,17 @@ const Transition = ({ children }) => {
   useEffect(() => {
     setTimeout(() => {
       setShowContent(true);
-    }, 5000);
+    }, 6000);
   }, []);
 
   return (
-    <main className="min-h-screen w-screen bg-transparent relative flex">
+    <main className="min-h-screen max-w-screen w-[100vw] bg-transparent relative flex">
       {children}
       <motion.div
         style={{ zIndex: showContent ? -1 : 50 }}
-        className={`slide-in w-full bg-transparent  h-full fixed top-0 flex flex-row justify-between left-0 z-50`}
+        className={`slide-in w-full bg-transparent  h-full ${
+          showContent ? "hidden" : "fixed"
+        } fixed top-0 flex flex-row justify-between left-0 z-50`}
       >
         <motion.div
           animate={{
@@ -66,7 +68,7 @@ const Transition = ({ children }) => {
               duration: 3.5,
               times: [0, 0.1, 0.1, 1],
             }}
-            className="h-[75vh] w-[75vh] bg-black rounded-full  z-50 absolute top-[12.5vh] -right-[37.5vh]"
+            className=" h-[45vw] w-[45vw] lg:h-[75vh] lg:w-[75vh] bg-black rounded-full  z-50 absolute top-[12.5vh] -right-[22.5vw] lg:-right-[37.5vh]"
           >
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/loading.png"}
@@ -84,7 +86,7 @@ const Transition = ({ children }) => {
               duration: 3,
               times: [0, 0.1, 0.1, 1],
             }}
-            className="h-[60vh] bg-white rounded-full w-[60vh] z-50 absolute top-[20vh] -right-[30vh]"
+            className=" w-[37.5vw] h-[37.5vw]  lg:h-[60vh] lg:w-[60vh] bg-white rounded-full  z-50 absolute top-[20vh] -right-[18.75vw]  lg:-right-[30vh]"
           >
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/loading1.png"}
@@ -102,7 +104,7 @@ const Transition = ({ children }) => {
               duration: 2.75,
               times: [0, 0.1, 0.1, 1],
             }}
-            className="h-[45vh] w-[45vh] rounded-full bg-black z-50 absolute top-[27.5vh]  -right-[22.5vh]"
+            className=" w-[20vw] h-[20vw] lg:h-[45vh] lg:w-[45vh] rounded-full bg-black z-50 absolute top-[27.5vh] -right-[10vw]  lg:-right-[22.5vh]"
           >
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/loading.png"}
@@ -121,7 +123,7 @@ const Transition = ({ children }) => {
               duration: 2.5,
               times: [0, 0.1, 0.1, 1],
             }}
-            className="h-[30vh] w-[30vh] z-50 absolute top-[35vh] -right-[15vh]"
+            className=" h-[15vw] w-[15vw]  lg:h-[30vh] lg:w-[30vh] z-50 absolute top-[35vh] -right-[7.5vw] lg:-right-[15vh]"
           >
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/hydroshark_logo.png"}
@@ -151,7 +153,7 @@ const Transition = ({ children }) => {
               duration: 3.5,
               times: [0, 0.1, 0.1, 1],
             }}
-            className="h-[75vh] w-[75vh] bg-black rounded-full  z-50 absolute top-[12.5vh] -left-[37.5vh]"
+            className="h-[40vw] w-[40vw] lg:h-[75vh] lg:w-[75vh] bg-black rounded-full  z-50 absolute top-[12.5vh] -left-[37.5vh]"
           >
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/loading.png"}
@@ -169,7 +171,7 @@ const Transition = ({ children }) => {
               duration: 3,
               times: [0, 0.1, 0.1, 1],
             }}
-            className="h-[60vh] bg-white rounded-full w-[60vh] z-50 absolute top-[20vh] -left-[30vh]"
+            className="w-[30vw] h-[30vw]  lg:h-[60vh] lg:w-[60vh] bg-white rounded-full z-50 absolute top-[20vh] -left-[30vh]"
           >
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/loading1.png"}
@@ -187,7 +189,7 @@ const Transition = ({ children }) => {
               duration: 2.75,
               times: [0, 0.1, 0.1, 1],
             }}
-            className="h-[45vh] w-[45vh] rounded-full bg-black z-50 absolute top-[27.5vh] -left-[22.5vh]"
+            className=" w-[20vw] h-[20vw]  lg:h-[45vh] lg:w-[45vh] rounded-full bg-black z-50 absolute top-[27.5vh] -left-[22.5vh]"
           >
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/loading.png"}

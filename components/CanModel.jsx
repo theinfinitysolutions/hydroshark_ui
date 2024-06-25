@@ -124,19 +124,9 @@ export function ReplaceScene(props) {
 
         <Suspense fallback={null}>
           {props.scene === "mango" ? (
-            <MangoModel
-              fast={"a"}
-              positiony={-8}
-              positionx={0}
-              positionz={-2}
-            />
+            <MangoModel fast={"a"} positiony={-8} positionx={0} positionz={1} />
           ) : (
-            <LemonModel
-              fast={"a"}
-              positiony={-8}
-              positionx={0}
-              positionz={-2}
-            />
+            <LemonModel fast={"a"} positiony={-8} positionx={0} positionz={1} />
           )}
         </Suspense>
         <OrbitControls />
