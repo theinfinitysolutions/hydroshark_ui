@@ -1,18 +1,49 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { useForm } from "react-hook-form";
+import emailjs from "@emailjs/browser";
 
 let formDiv = "flex flex-col  items-start mb-4";
 let input = "w-full p-2 border-gray-300 mt-1 text-black text-md rounded-md";
 
 const ContactUs = () => {
+  const [emailSent, setEmailSent] = useState(false);
   const { register, handleSubmit, reset, resetField } = useForm();
 
   const onSubmit = (data) => {
     console.log(data);
-    // Handle form submission logic here
+    emailjs
+      .send(
+        "service_vb4wq9q",
+        "template_1e53gs5",
+        {
+          from_name: data.name,
+          from_query: data.query,
+          from_email: data.email,
+          from_phone: data.phoneNumber,
+          from_message: data.message,
+        },
+        {
+          publicKey: "h789tmXFbcca8_uBo",
+        }
+      )
+      .then((res) => {
+        setEmailSent(true);
+        reset();
+      })
+      .catch((err) => {
+        console.log("error", err);
+      });
   };
+
+  useEffect(() => {
+    if (emailSent) {
+      setTimeout(() => {
+        setEmailSent(false);
+      }, 3000);
+    }
+  }, [emailSent]);
 
   return (
     <div className="w-full min-h-screen relative bg-[#f0f2f4] flex flex-col items-center">
@@ -39,7 +70,7 @@ const ContactUs = () => {
           >
             <div className="flex flex-row w-full justify-between items-center">
               <div className={`${formDiv} w-[47.5%]`}>
-                <label htmlFor="firstname">Name</label>
+                <label htmlFor="name">Name</label>
                 <input
                   className={`${input}`}
                   type="text"
@@ -73,11 +104,11 @@ const ContactUs = () => {
             </div>
 
             <div className={`${formDiv} w-full`}>
-              <label htmlFor="phonenumber">Phone Number</label>
+              <label htmlFor="phoneNumber">Phone Number</label>
               <input
                 className={`${input}`}
-                type="phonenumber"
-                id="phonenumber"
+                type="phoneNumber"
+                id="phoneNumber"
                 placeholder="Phone Number"
                 {...register("phoneNumber")}
               />
@@ -95,10 +126,12 @@ const ContactUs = () => {
 
             <div className="flex flex-row justify-end w-full">
               <button
-                className="px-8 py-2 bg-white text-[black] rounded-md"
+                className={`px-8 py-2  ${
+                  emailSent ? "bg-green-600" : "bg-white"
+                }  text-[black] rounded-md`}
                 type="submit"
               >
-                Submit
+                {emailSent ? "Sent" : "Submit"}
               </button>
             </div>
           </form>
