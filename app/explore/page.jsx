@@ -190,6 +190,7 @@ const Explore = () => {
                 <Image
                   src={process.env.NEXT_PUBLIC_API_URL + "/lemoncan.png"}
                   layout="fill"
+                  objectFit="contain"
                 />
               </div>
             </div>
@@ -210,6 +211,7 @@ const Explore = () => {
                 <Image
                   src={process.env.NEXT_PUBLIC_API_URL + "/mangocan.png"}
                   layout="fill"
+                  objectFit="contain"
                 />
               </div>
             </div>
