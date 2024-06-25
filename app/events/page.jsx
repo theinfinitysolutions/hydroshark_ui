@@ -5,8 +5,8 @@ import { IoLocationSharp } from "react-icons/io5";
 
 const Events = () => {
   return (
-    <div className="w-full min-h-screen relative bg-[#f0f2f4] flex flex-col justify-center items-center">
-      <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:72px_72px]"></div>
+    <div className="w-screen min-h-screen overflow-hidden relative bg-[#f0f2f4] flex flex-col justify-center items-center">
+      <div className="absolute inset-0 h-full w-screen bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:72px_72px]"></div>
 
       {/* <div className=" flex flex-col items-start w-10/12 h-full z-20">
         <div className="flex flex-col items-start mt-[5vh] w-full">

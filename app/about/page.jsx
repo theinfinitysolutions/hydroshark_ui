@@ -6,23 +6,23 @@ import RevealOnScroll from "@/components/RevealOnScroll";
 
 const About = () => {
   return (
-    <div className="w-full min-h-screen relative bg-[#f0f2f4] flex flex-col items-center">
-      <div className=" h-[90vh] w-[90vh] z-0  fixed animate-rotate">
+    <div className="w-screen overflow-hidden min-h-screen relative bg-[#f0f2f4] flex flex-col items-center">
+      <div className=" h-[80vw] w-[80vw]   lg:h-[90vh] lg:w-[90vh] z-0  fixed animate-rotate">
         <Image
           src={process.env.NEXT_PUBLIC_API_URL + "/assetring1.png"}
           layout="fill"
         />
       </div>
       <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:72px_72px]"></div>
-      <div className="w-9/12 flex flex-col items-start mt-[10vh]  ">
-        <div className=" w-full h-[70vh] z-20 flex flex-row justify-between items-center">
-          <div className="h-full w-1/2 flex relative ">
+      <div className=" w-11/12 lg:w-9/12 flex flex-col items-start mt-[10vh]  ">
+        <div className=" w-full  h-full lg:h-[70vh] z-20 flex flex-col lg:flex-row justify-between items-center">
+          <div className="h-[30vh] lg:h-full w-full lg:w-1/2 flex relative ">
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/img10.jpeg"}
               layout="fill"
             />
           </div>
-          <div className="bg-black w-1/2 h-full flex flex-col items-start justify-center px-8">
+          <div className="bg-black w-full lg:w-1/2 h-full flex flex-col items-start py-8 lg:py-0 justify-center px-8">
             <RevealOnScroll
               threshold={0.3}
               addedClasses="flex flex-col items-start"
@@ -38,14 +38,14 @@ const About = () => {
             </RevealOnScroll>
           </div>
         </div>
-        <div className=" w-full h-[70vh] z-20 flex flex-row-reverse justify-between items-center mt-[10vh]">
-          <div className="h-full w-1/2 flex relative ">
+        <div className=" w-full  h-full lg:h-[70vh] z-20 flex flex-col-reverse lg:flex-row-reverse justify-between items-center mt-[10vh]">
+          <div className="h-[30vh] lg:h-full w-full lg:w-1/2 flex relative ">
             <Image
-              src={process.env.NEXT_PUBLIC_API_URL + "/img11.jpeg"}
+              src={process.env.NEXT_PUBLIC_API_URL + "/img5.jpeg"}
               layout="fill"
             />
           </div>
-          <div className="bg-black w-1/2 h-full flex flex-col items-start justify-center px-8">
+          <div className="bg-black w-full lg:w-1/2 h-full flex flex-col items-start py-8 lg:py-0 justify-center px-8">
             <RevealOnScroll
               threshold={0.3}
               addedClasses="flex flex-col items-start"
@@ -61,14 +61,14 @@ const About = () => {
             </RevealOnScroll>
           </div>
         </div>
-        <div className=" w-full h-[70vh] z-20 flex flex-row justify-between items-center mt-[10vh]">
-          <div className="h-full w-1/2 flex relative ">
+        <div className=" w-full  h-full lg:h-[70vh] z-20 flex flex-col lg:flex-row justify-between items-center mt-[10vh]">
+          <div className="h-[30vh] lg:h-full w-full lg:w-1/2 flex relative ">
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/img8.jpeg"}
               layout="fill"
             />
           </div>
-          <div className="bg-black w-1/2 h-full flex flex-col items-start justify-center px-8">
+          <div className="bg-black w-full lg:w-1/2 h-full flex flex-col items-start py-8 lg:py-0 justify-center px-8">
             <RevealOnScroll
               threshold={0.3}
               addedClasses="flex flex-col items-start"
@@ -84,14 +84,14 @@ const About = () => {
             </RevealOnScroll>
           </div>
         </div>
-        <div className=" w-full h-[70vh] z-20 flex flex-row-reverse justify-between items-center my-[10vh]">
-          <div className="h-full w-1/3 flex relative ">
+        <div className=" w-full h-full lg:h-[70vh] z-20 flex flex-col-reverse lg:flex-row-reverse justify-between items-center my-[10vh]">
+          <div className=" h-[30vh] lg:h-full w-full lg:w-1/3 flex relative ">
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/img2.jpeg"}
               layout="fill"
             />
           </div>
-          <div className="bg-black w-2/3 h-full flex flex-col items-start justify-center px-8">
+          <div className="bg-black w-full lg:w-2/3 h-full flex flex-col items-start justify-center py-8 lg:py-0 px-8">
             <RevealOnScroll
               threshold={0.3}
               addedClasses="flex flex-col items-start"
@@ -109,15 +109,15 @@ const About = () => {
         </div>
       </div>
 
-      <div className=" w-full bg-white/95 h-screen z-30 flex flex-col items-center py-[5vh]">
+      <div className=" w-full h-full bg-white/95 lg:h-screen z-30 flex flex-col items-center py-[5vh]">
         <div className=" flex flex-col items-center mt-4">
-          <h3 className=" text-[3rem] leading-[2.75rem] text-[#181818]">
+          <h3 className=" text-[2rem] lg:text-[3rem] text-center leading-[2.75rem] text-[#181818]">
             WHY CHOOSE HYDROSHARK ?
           </h3>
           <div className=" rounded-full w-9/12 h-1 bg-[#99E9F2]" />
         </div>
 
-        <div className=" mt-[10vh] w-10/12 grid grid-cols-3 gap-8">
+        <div className=" mt-[5vh] lg:mt-[10vh] w-11/12 lg:w-10/12 grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-8">
           {whyUs.map((item, index) => (
             <div
               className="flex flex-col items-start border-[1px] border-[#c7c7c7]"

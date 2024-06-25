@@ -4,11 +4,13 @@ import Image from "next/image";
 import { motion, useTransform, useScroll } from "framer-motion";
 import { GoArrowRight } from "react-icons/go";
 import ContactUs from "@/components/ContactUs";
+import { useRouter } from "next/navigation";
 
 const JoinUs = () => {
   const ref = useRef();
+  const router = useRouter();
   const { scrollYProgress } = useScroll();
-  const x = useTransform(scrollYProgress, [0, 0.7], ["-2.5%", "-85%"]);
+  const x = useTransform(scrollYProgress, [0, 0.7], ["-11.5%", "-90%"]);
 
   return (
     <div className="w-full relative bg-[#f0f2f4] flex flex-col items-center">
@@ -23,10 +25,10 @@ const JoinUs = () => {
         <motion.div
           style={{ x: x }}
           ref={ref}
-          className=" fixed top-[27.5vh] flex flex-row justify-start items-center"
+          className=" fixed top-[15vh] lg:top-[27.5vh] flex flex-row justify-start items-center"
         >
-          <div className=" w-[70vw] mr-[10vw] relative h-[60vh] rounded-2xl bg-black flex flex-row justify-center items-center">
-            <div className=" w-9/12 flex flex-col items-start px-[2.5vw]">
+          <div className=" w-[90vw] h-[80vh] lg:w-[70vw] mr-[10vw] relative lg:h-[60vh] rounded-2xl bg-black flex flex-col lg:flex-row justify-center items-center">
+            <div className=" w-11/12 lg:w-9/12 flex flex-col items-start px-[2.5vw] ">
               <p className=" text-[3rem] leading-[2.75rem] text-[#DEE2E6]">
                 Unlock Opportunities with Hydroshark
               </p>
@@ -36,22 +38,22 @@ const JoinUs = () => {
                 }
               </p>
             </div>
-            <div className=" flex flex-col items-start justify-between  px-[2.5vw]">
+            <div className=" flex flex-col items-start justify-between mt-8 lg:mt-0  px-[2.5vw]">
               <div className=" p-4 border-[1px] rounded-full animate-bounceX border-[#DEE2E6]">
                 <GoArrowRight className=" text-[#DEE2E6]" />
               </div>
             </div>
           </div>
-          <div className=" w-[70vw] mr-[10vw] relative h-[60vh] rounded-2xl bg-[#ede361] flex flex-row justify-center items-center">
+          <div className=" w-[90vw] h-[80vh] lg:w-[70vw] mr-[10vw] relative lg:h-[60vh] rounded-2xl bg-[#ede361] flex flex-col lg:flex-row justify-center items-center">
             <div className=" flex flex-col w-5/12 items-center z-20 justify-between">
-              <div className="w-9/12 h-[50vh] relative">
+              <div className="hidden lg:block w-full lg:w-9/12 h-[30vh] lg:h-[50vh] relative">
                 <Image
                   src={process.env.NEXT_PUBLIC_API_URL + "/img3.jpeg"}
                   layout="fill"
                 />
               </div>
             </div>
-            <div className=" w-7/12 flex flex-col items-start pr-[2.5vw]">
+            <div className=" w-11/12 lg:w-7/12 flex flex-col items-start pr-[2.5vw]">
               <p className=" text-[3rem] leading-[2.75rem] text-[#5C6262]">
                 Distributors
               </p>
@@ -60,13 +62,18 @@ const JoinUs = () => {
                   "Are you looking to expand your portfolio with a unique, high-demand product? Become an area-based distributor for Hydroshark and join us in our mission to redefine hydration. Our extensive support and comprehensive marketing strategies ensure a seamless distribution experience."
                 }
               </p>
-              <button className=" px-4 py-2 mt-4 text-white bg-[#181818]">
+              <button
+                onClick={() => {
+                  router.push("/contactus");
+                }}
+                className=" px-4 py-2 mt-4 text-white bg-[#181818]"
+              >
                 Reach Out to Us
               </button>
             </div>
           </div>
-          <div className=" w-[70vw] mr-[10vw] relative h-[60vh] rounded-2xl bg-[#308918] flex flex-row justify-center items-center">
-            <div className=" w-7/12 flex flex-col items-start pl-[2.5vw]">
+          <div className=" w-[90vw] h-[80vh] lg:w-[70vw] mr-[10vw] relative lg:h-[60vh] rounded-2xl bg-[#308918] flex flex-row justify-center items-center">
+            <div className=" w-11/12 lg:w-7/12  flex-col items-start pl-[2.5vw]">
               <p className=" text-[3rem] leading-[2.75rem] text-[#DEE2E6]">
                 Influencers
               </p>
@@ -75,11 +82,16 @@ const JoinUs = () => {
                   "Are you passionate about promoting healthier lifestyle choices? Partner with Hydroshark to create engaging content and share our story with your audience. Together, we can inspire others to make better hydration choices and embrace a healthier lifestyle"
                 }
               </p>
-              <button className=" px-4 py-2 mt-4 text-white bg-[#181818]">
+              <button
+                onClick={() => {
+                  router.push("/contactus");
+                }}
+                className=" px-4 py-2 mt-4 text-white bg-[#181818]"
+              >
                 Reach Out to Us
               </button>
             </div>
-            <div className=" flex flex-col w-4/12 items-center z-20 justify-between">
+            <div className=" hidden lg:flex flex-col w-4/12 items-center z-20 justify-between">
               <div className="w-9/12 h-[50vh] relative">
                 <Image
                   src={process.env.NEXT_PUBLIC_API_URL + "/influencer.jpeg"}
@@ -88,18 +100,18 @@ const JoinUs = () => {
               </div>
             </div>
           </div>
-          <div className=" w-[70vw] mr-[10vw] relative h-[60vh] rounded-2xl bg-[#91979d] flex flex-row justify-center items-center">
-            <div className=" w-1/2 flex flex-col items-start pl-[2.5vw]">
+          <div className=" w-[90vw] h-[80vh] lg:w-[70vw] mr-[10vw] relative lg:h-[60vh] rounded-2xl bg-[#91979d] flex flex-col lg:flex-row justify-center items-center">
+            <div className=" w-11/12 lg:w-1/2 flex flex-col  items-start lg:pl-[2.5vw]">
               <p className=" text-[3rem] leading-[2.75rem] text-[#181818]">
                 Join Us Today
               </p>
-              <p className=" text-base text-[#181818] mt-4">
+              <p className=" hidden lg:block text-base text-[#181818] mt-4">
                 {
                   "Ready to make a splash with Hydroshark? Fill out the contact form below, and let’s start a conversation about how we can work together to achieve great things."
                 }
               </p>
             </div>
-            <div className=" flex flex-col items-center justify-center w-1/2 h-full">
+            <div className=" flex flex-col  items-center justify-center w-11/12 lg:w-1/2 ">
               <ContactUs />
             </div>
           </div>

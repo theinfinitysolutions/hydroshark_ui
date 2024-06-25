@@ -26,7 +26,7 @@ const ContactUs = () => {
             />
           </div>
         </div>
-        <div className=" w-full lg:w-7/12 h-full pr-8 flex flex-col items-start justify-center ">
+        <div className=" w-full lg:w-7/12 h-full lg:pr-8 flex flex-col items-center lg:items-start justify-center ">
           <h1 className="text-[3rem] leading-[2.5rem] text-[#DEE2E6]">
             Contact Us
           </h1>
@@ -35,7 +35,7 @@ const ContactUs = () => {
           </p>
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="flex flex-col z-20 w-full mt-8"
+            className="flex flex-col z-20 items-center mt-8 px-4 lg:px-0 w-full"
           >
             <div className="flex flex-row w-full justify-between items-center">
               <div className={`${formDiv} w-[47.5%]`}>
@@ -61,7 +61,7 @@ const ContactUs = () => {
               </div>
             </div>
 
-            <div className={`${formDiv}`}>
+            <div className={`${formDiv} w-full`}>
               <label htmlFor="email">Email</label>
               <input
                 className={`${input}`}
@@ -72,7 +72,7 @@ const ContactUs = () => {
               />
             </div>
 
-            <div className={`${formDiv}`}>
+            <div className={`${formDiv} w-full`}>
               <label htmlFor="phonenumber">Phone Number</label>
               <input
                 className={`${input}`}
@@ -83,7 +83,7 @@ const ContactUs = () => {
               />
             </div>
 
-            <div className={`${formDiv}`}>
+            <div className={`${formDiv} w-full`}>
               <label htmlFor="message">Message</label>
               <textarea
                 className={`${input}`}
@@ -93,7 +93,7 @@ const ContactUs = () => {
               />
             </div>
 
-            <div className="flex flex-row justify-end">
+            <div className="flex flex-row justify-end w-full">
               <button
                 className="px-8 py-2 bg-white text-[black] rounded-md"
                 type="submit"

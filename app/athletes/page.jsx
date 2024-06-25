@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const Athletes = () => {
   return (
-    <div className="w-full h-screen relative bg-[#f0f2f4] flex flex-col justify-center z-30 items-center">
+    <div className="w-screen h-screen overflow-hidden relative bg-[#f0f2f4] flex flex-col justify-center z-30 items-center">
       <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:72px_72px]"></div>
       {/* <div className=" flex flex-col items-center w-11/12 ">
         <div className=" w-full bg-[#495057] z-20 h-[60vh] mt-[2.5vh] flex flex-row justify-between items-center px-[5vw]">
