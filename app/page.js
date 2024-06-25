@@ -23,16 +23,16 @@ export default function Home() {
     <Transition>
       <div
         ref={ref}
-        className="flex min-h-screen bg-[#f0f2f4] w-screen z-20 flex-col overflow-hidden relative items-center "
+        className="flex min-h-screen bg-[#f0f2f4]  w-[100vw] z-20 flex-col overflow-hidden relative items-center "
       >
-        <div className="h-[8vh] w-[8vh] absolute right-[10vw] top-[50vh] animate-rotate -mt-2 ">
+        <div className=" h-[10vw] w-[10vw] lg:h-[8vh] lg:w-[8vh] absolute right-[80vw] lg:right-[10vw] top-[35vh] lg:top-[50vh] animate-rotate -mt-2 ">
           <Image
             src={process.env.NEXT_PUBLIC_API_URL + "/asset5.png"}
             layout="fill"
           />
         </div>
 
-        <div className="absolute overflow-hidden [--offset:40vw] bg-black rotate-[4deg] top-[75vh] z-40 [--move-initial:calc(-25%_+_var(--offset))] [--move-final:calc(-50%_+_var(--offset))] ">
+        {/* <div className="absolute overflow-hidden [--offset:40vw] bg-black rotate-[4deg] top-[75vh] z-40 [--move-initial:calc(-25%_+_var(--offset))] [--move-final:calc(-50%_+_var(--offset))] ">
           <div
             className="min-w-screen w-[100vw] flex flex-row py-1 items-center relative  transform-[translate3d(var(--move-initial),0,0)] animate-marqueebanner [animation-play-state:running]"
             aria-hidden="true"
@@ -99,9 +99,9 @@ export default function Home() {
             <span className="text-sm p-[0_2vw] text-white">{"0g sugar"}</span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
           </div>
-        </div>
+        </div> */}
 
-        <div className="absolute left-[25vw] z-50 h-[60vh] w-[50vw]">
+        <div className=" hidden lg:block absolute left-[25vw] z-50 h-[60vh] w-[50vw]">
           <motion.div
             initial={{ y: "70vh" }}
             animate={{ y: "30vh", opacity: [0, 1, 1] }}
@@ -112,39 +112,62 @@ export default function Home() {
           </motion.div>
         </div>
 
+        <div className=" block lg:hidden absolute left-[10vw] z-50 h-[40vh] w-[100vw]">
+          <motion.div
+            initial={{ y: "80vh" }}
+            animate={{ y: "45vh", opacity: [0, 1, 1] }}
+            className="z-20 w-full h-full"
+            transition={{ duration: 2.5, delay: 3.5, times: [0, 0.3, 1] }}
+          >
+            <LandingSceneLemon />
+          </motion.div>
+        </div>
+
         <div className="fixed left-0 top-[5vh] -z-10">
-          <p className="text-[14rem] text-black/5 leading-[13rem]">
+          <p className=" text-[5rem] lg:text-[14rem] text-black/5 leading-[5rem] lg:leading-[13rem]">
             HYDROSHARK
           </p>
-          <p className="text-[14rem] text-black/5 leading-[13rem]">
+          <p className=" text-[5rem] lg:text-[14rem] text-black/5 leading-[5rem] lg:leading-[13rem]">
             HYDROSHARK
           </p>
-          <p className="text-[14rem] text-black/5 leading-[13rem]">
+          <p className=" text-[5rem] lg:text-[14rem] text-black/5 leading-[5rem] lg:leading-[13rem]">
             HYDROSHARK
           </p>
-          <p className="text-[14rem] text-black/5 leading-[13rem]">
+          <p className=" text-[5rem] lg:text-[14rem] text-black/5 leading-[5rem] lg:leading-[13rem]">
+            HYDROSHARK
+          </p>
+          <p className=" block lg:hidden text-[5rem] lg:text-[14rem] text-black/5 leading-[5rem] lg:leading-[13rem]">
+            HYDROSHARK
+          </p>
+          <p className="  block lg:hidden text-[5rem] lg:text-[14rem] text-black/5 leading-[5rem] lg:leading-[13rem]">
+            HYDROSHARK
+          </p>
+          <p className="  block lg:hidden text-[5rem] lg:text-[14rem] text-black/5 leading-[5rem] lg:leading-[13rem]">
+            HYDROSHARK
+          </p>
+          <p className="  block lg:hidden text-[5rem] lg:text-[14rem] text-black/5 leading-[5rem] lg:leading-[13rem]">
+            HYDROSHARK
+          </p>
+          <p className="  block lg:hidden text-[5rem] lg:text-[14rem] text-black/5 leading-[5rem] lg:leading-[13rem]">
+            HYDROSHARK
+          </p>
+          <p className="  block lg:hidden text-[5rem] lg:text-[14rem] text-black/5 leading-[5rem] lg:leading-[13rem]">
+            HYDROSHARK
+          </p>
+          <p className="  block lg:hidden text-[5rem] lg:text-[14rem] text-black/5 leading-[5rem] lg:leading-[13rem]">
+            HYDROSHARK
+          </p>{" "}
+          <p className="  block lg:hidden text-[5rem] lg:text-[14rem] text-black/5 leading-[5rem] lg:leading-[13rem]">
             HYDROSHARK
           </p>
         </div>
 
-        <div className="flex flex-row h-[90vh] w-screen px-[5vw] overflow-hidden pt-[5vh] relative ">
-          {/* <div className=" absolute bg-transparent top-[20vh] w-[60vw] left-[20vw] overflow-hidden h-[60vh]">
-            <video
-              src="/bgwatervideo.mp4"
-              autoPlay
-              muted
-              loop={false}
-              playsInline
-              duration={2.5}
-              className="w-full h-screen object-cover"
-            />
-          </div> */}
-
-          <div className="flex flex-col w-1/2 items-start">
-            <h2 className=" text-black text-[5rem] font-bold leading-[5rem]">
+        <div className="flex flex-col lg:flex-row h-[90vh] w-full px-[5vw] overflow-hidden pt-[5vh] relative ">
+          <div className="flex flex-col w-full lg:w-1/2 items-start">
+            <h2 className=" text-black text-[3rem] lg:text-[5rem] font-bold leading-[3rem] lg:leading-[5rem]">
               {"One stop for all your"} <span>Hydration</span> {"needs"}
             </h2>
-            <div className=" w-7/12 flex flex-col mt-[5vh]">
+            <div className=" hidden  w-7/12 lg:flex flex-col mt-[5vh]">
               <div className="flex flex-row justify-between items-center">
                 <p className=" text-black text-base">Energy</p>
                 <div className="w-9/12 border-[1px] border-[#181818] h-[1vh] rounded-full">
@@ -165,10 +188,10 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="flex flex-col items-end w-1/2 ">
-            <div className="flex flex-row justify-between w-10/12 px-8">
-              <div className="h-[15vh] w-[15vh] relative flex flex-col items-center justify-center">
-                <div className="w-full h-full animate-rotate absolute">
+          <div className="flex flex-col items-start lg:items-end mt-4 lg:mt-0 w-full lg:w-1/2 ">
+            <div className="flex flex-row justify-between w-full lg:w-10/12 px-4 lg:px-8">
+              <div className="w-[25vw] h-[25vw] lg:w-[15vh] lg:h-[15vh] relative flex flex-col items-center justify-center">
+                <div className="w-[25vw] h-[25vw] lg:w-[15vh] lg:h-[15vh] animate-rotate absolute">
                   <Image
                     src={
                       process.env.NEXT_PUBLIC_API_URL + "/caffeine_curved.png"
@@ -183,8 +206,8 @@ export default function Home() {
                   />
                 </div>
               </div>
-              <div className="h-[15vh] w-[15vh] relative flex flex-col items-center justify-center">
-                <div className="w-full h-full animate-rotate absolute">
+              <div className="w-[25vw] h-[25vw] lg:w-[15vh] lg:h-[15vh] relative flex flex-col items-center justify-center">
+                <div className="w-[25vw] h-[25vw] lg:w-[15vh] lg:h-[15vh] animate-rotate absolute">
                   <Image
                     src={
                       process.env.NEXT_PUBLIC_API_URL + "/vitamins_curved.png"
@@ -192,15 +215,15 @@ export default function Home() {
                     layout="fill"
                   />
                 </div>
-                <div className=" w-[10vh] h-[10vh] relative">
+                <div className="  w-[17.5vw] h-[17.5vw] lg:w-[10vh] lg:h-[10vh] relative">
                   <Image
                     src={process.env.NEXT_PUBLIC_API_URL + "/logo_vitamins.png"}
                     layout="fill"
                   />
                 </div>
               </div>
-              <div className="h-[15vh] w-[15vh] relative flex flex-col items-center justify-center">
-                <div className="w-full h-full animate-rotate absolute">
+              <div className="w-[25vw] h-[25vw] lg:w-[15vh] lg:h-[15vh] relative flex flex-col items-center justify-center">
+                <div className="w-[25vw] h-[25vw] lg:w-[15vh] lg:h-[15vh] animate-rotate absolute">
                   <Image
                     src={
                       process.env.NEXT_PUBLIC_API_URL + "/zerosugar_curved.png"
@@ -208,7 +231,7 @@ export default function Home() {
                     layout="fill"
                   />
                 </div>
-                <div className=" w-[10vh] h-[10vh] relative">
+                <div className=" w-[17.5vw] h-[17.5vw] lg:w-[10vh] lg:h-[10vh] relative">
                   <Image
                     src={process.env.NEXT_PUBLIC_API_URL + "/logo_sugar.png"}
                     layout="fill"
@@ -216,7 +239,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            <div className="w-full flex flex-col items-end mt-[5vh]">
+            <div className="w-full flex flex-col items-end mt-4 lg:mt-[5vh]">
               <p className=" text-black text-xl font-semibold ">
                 Why choose Hydroshark?
               </p>
@@ -232,21 +255,21 @@ export default function Home() {
 
         <RevealOnScroll
           threshold={0.2}
-          addedClasses="flex flex-row justify-between items-center h-screen z-20 w-[100vw] px-[5vw] relative overflow-hidden "
+          addedClasses="flex flex-row justify-between items-center lg:h-screen z-20 w-[100vw] px-[5vw] relative overflow-hidden "
         >
-          <div className="h-[8vh] w-[8vh] absolute right-[20vw] top-[10vh] animate-rotate -mt-2 ">
+          <div className=" h-[8vw] w-[8vw] lg:h-[8vh] absolute right-[20vw] top-[10vh] animate-rotate -mt-2 ">
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/asset5.png"}
               layout="fill"
             />
           </div>
-          <div className="h-[8vh] w-[8vh] absolute left-[10vw] top-[50vh] animate-rotate -mt-2 ">
+          <div className=" h-[8vw] w-[8vw] lg:h-[8vh] absolute left-[10vw] top-[50vh] animate-rotate -mt-2 ">
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/asset5.png"}
               layout="fill"
             />
           </div>
-          <div className="h-[8vh] w-[8vh] absolute right-[30vw] top-[80vh] animate-rotate -mt-2 ">
+          <div className=" h-[8vw] w-[8vw] lg:h-[8vh] lg:w-[8vh] absolute right-[30vw] top-[80vh] animate-rotate -mt-2 ">
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/asset5.png"}
               layout="fill"
@@ -267,8 +290,8 @@ export default function Home() {
             />
           </div>
 
-          <div className="flex flex-row justify-center mt-[10vh]  items-center">
-            <div className="flex flex-col items-end w-1/3">
+          <div className="flex flex-col lg:flex-row justify-center mt-[10vh] w-full items-center">
+            <div className="flex flex-col items-center lg:items-end w-full lg:w-1/3">
               <p className=" text-xs text-[#5C6262]">DISCOVER OUR DRINKS</p>
               <h2
                 className={` text-[4rem] font-semibold ${
@@ -285,14 +308,14 @@ export default function Home() {
                   {flavorData[currentFlavour].quanity}
                 </p>
               </div>
-              <div className="flex flex-col items-end mt-[10vh]">
+              <div className=" hidden lg:flex flex-col items-end mt-[10vh]">
                 <p className=" text-xs text-cyan-600">Ingredients</p>
                 <p className=" text-base text-end text-black">
                   {flavorData[currentFlavour].ingredients}
                 </p>
               </div>
             </div>
-            <div className="flex flex-col items-center  w-1/3 px-[5vw]">
+            <div className="flex flex-col items-center mt-8 lg:mt-0 w-full lg:w-1/3 px-[5vw]">
               <div className=" border-[1px] border-[#5C6262] border-dashed z-0 w-full h-[60vh] p-2 flex flex-col rounded-[2rem] items-center justify-center">
                 <div className="w-full h-full relative border-[1px] border-[#5C6262]/40 rounded-[3rem]">
                   <ReplaceScene
@@ -330,7 +353,7 @@ export default function Home() {
                 </button>
               </div>
             </div>
-            <div className="flex flex-col items-start w-1/3">
+            <div className="flex flex-col items-center lg:items-start w-full mt-8 lg:mt-0 lg:w-1/3">
               <p className=" text-xs text-[#5C6262]">
                 EXPERIANCE HYDRATION WITH OUR{" "}
                 <span
@@ -344,29 +367,35 @@ export default function Home() {
                 </span>{" "}
                 FlAVOUR
               </p>
-              <p className=" text-black text-xl">
+              <p className=" text-black text-center lg:text-start text-xl">
                 {flavorData[currentFlavour].description}
               </p>
 
-              <div className="flex flex-col w-9/12 items-start border-y-[1px] border-dashed border-[#5C6262] mt-[10vh] py-2">
+              <div className="flex flex-col w-9/12 items-start border-y-[1px] border-dashed border-[#5C6262] my-[5vh] lg:mt-[10vh] py-2">
                 <div className="flex flex-row w-full justify-between items-center border-b-[0.5px] border-[#5C6262]">
                   <div className=" flex flex-col w-1/2 items-center justify-center p-6 border-r-[1px] border-[#5C6262]">
                     <p className=" text-xs text-cyan-600">Temperature</p>
-                    <p className=" text-2xl text-black">{"15-20°C"}</p>
+                    <p className="  text-xl lg:text-2xl text-black">
+                      {"15-20°C"}
+                    </p>
                   </div>
                   <div className=" flex flex-col w-1/2  items-center justify-center p-6">
                     <p className=" text-xs text-cyan-600">Calories</p>
-                    <p className=" text-2xl text-black">{"99 Kcal"}</p>
+                    <p className=" text-xl lg:text-2xl text-black">
+                      {"99 Kcal"}
+                    </p>
                   </div>
                 </div>
                 <div className="flex flex-row w-full justify-between items-center ">
                   <div className=" flex flex-col w-1/2  items-center justify-center p-6 border-r-[1px] border-[#5C6262]">
                     <p className=" text-xs text-cyan-600">Caffeine</p>
-                    <p className=" text-2xl text-black">{"0 mg"}</p>
+                    <p className="  text-xl lg:text-2xl text-black">{"0 mg"}</p>
                   </div>
                   <div className=" flex flex-col w-1/2  items-center justify-center p-6">
                     <p className=" text-xs text-cyan-600">Vitamins</p>
-                    <p className=" text-2xl text-black">{"B - 2,6,12"}</p>
+                    <p className="  text-xl lg:text-2xl text-black">
+                      {"B - 2,6,12"}
+                    </p>
                   </div>
                 </div>
               </div>

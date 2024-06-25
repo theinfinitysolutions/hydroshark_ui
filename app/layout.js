@@ -3,6 +3,7 @@ import "./globals.css";
 import localFont from "next/font/local";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import MobileSidebar from "@/components/MobileSidebar";
 
 const local = localFont({ src: "../public/ITCAvantGardePro-Md.otf" });
 
@@ -16,10 +17,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${local.className} `}>
+      <body className={`${local.className} w-screen max-w-screen`}>
         <Navbar />
         {children}
         <Footer />
+        <MobileSidebar />
       </body>
     </html>
   );
