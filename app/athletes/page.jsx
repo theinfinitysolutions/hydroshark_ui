@@ -4,9 +4,9 @@ import Image from "next/image";
 
 const Athletes = () => {
   return (
-    <div className="w-full min-h-screen relative bg-[#f0f2f4] flex flex-col z-40 items-center">
+    <div className="w-full h-screen relative bg-[#f0f2f4] flex flex-col justify-center z-30 items-center">
       <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:72px_72px]"></div>
-      <div className=" flex flex-col items-center w-11/12 ">
+      {/* <div className=" flex flex-col items-center w-11/12 ">
         <div className=" w-full bg-[#495057] z-20 h-[60vh] mt-[2.5vh] flex flex-row justify-between items-center px-[5vw]">
           <div className=" h-[30vh] w-[30vh] relative">
             <Image
@@ -81,7 +81,13 @@ const Athletes = () => {
             );
           })}
         </div>
-      </div>
+      </div> */}
+      <h2 className=" text-3xl lg:text-[4rem] text-[#181818] mb-[32.5vh] lg:mb-[20vh] ">
+        Coming Soon !
+      </h2>
+      <p className=" absolute top-[30vh] text-[5rem] md:text-[9rem] lg:text-[14rem] text-black/5 leading-[5rem] lg:leading-[13rem] ">
+        HYDROSHARK
+      </p>
     </div>
   );
 };

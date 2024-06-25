@@ -5,10 +5,10 @@ import { IoLocationSharp } from "react-icons/io5";
 
 const Events = () => {
   return (
-    <div className="w-full min-h-screen relative bg-[#f0f2f4] flex flex-col items-center">
+    <div className="w-full min-h-screen relative bg-[#f0f2f4] flex flex-col justify-center items-center">
       <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:72px_72px]"></div>
 
-      <div className=" flex flex-col items-start w-10/12 h-full z-20">
+      {/* <div className=" flex flex-col items-start w-10/12 h-full z-20">
         <div className="flex flex-col items-start mt-[5vh] w-full">
           <h2 className="text-[3rem] leading-[2.5rem] text-[#181818]">
             Events
@@ -64,34 +64,7 @@ const Events = () => {
               </div>
             </div>
 
-            {/* {[1, 2, 3].map((item, index) => {
-              return (
-                <div className=" flex flex-col items-start group h-[40vh] relative w-[30%] overflow-hidden bg-white border-[0.5px] border-[#c7c7c7]/70 rounded-md shadow-sm ">
-                  <div className=" w-full h-full absolute z-0">
-                    <img
-                      src={process.env.NEXT_PUBLIC_API_URL + "/img2.jpeg"}
-                      className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500 ease-in-out"
-                    />
-                  </div>
-                  <div className="flex flex-col z-20 items-start justify-end w-full h-full px-4 py-2 bg-gradient-to-t from-black/80 to-transparent">
-                    <div className=" flex flex-row w-full justify-between items-center">
-                      <div className=" flex flex-col items-start">
-                        <h1 className="text-[1.5rem] leading-[1.5rem] text-white">
-                          Event {item}
-                        </h1>
-                        <p className=" text-base text-white">
-                          {" Event description "}
-                        </p>
-                      </div>
-                      <div className=" flex flex-col  bg-[#868e96] rounded-md items-center p-2 mb-2">
-                        <p className=" text-sm text-white">12</p>
-                        <p className=" text-[10px] text-white">{"Dec'24"}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })} */}
+           
           </div>
         </div>
         <div className="flex flex-col items-start mt-[10vh] w-full">
@@ -159,7 +132,14 @@ const Events = () => {
             })}
           </div>
         </div>
-      </div>
+      </div> */}
+
+      <h2 className=" text-3xl lg:text-[4rem] text-[#181818] mb-[35vh] lg:mb-[20vh] ">
+        Coming Soon !
+      </h2>
+      <p className=" absolute top-[30vh] text-[5rem] md:text-[9rem] lg:text-[14rem] text-black/5 leading-[5rem] lg:leading-[13rem] ">
+        HYDROSHARK
+      </p>
     </div>
   );
 };
