@@ -117,7 +117,11 @@ const HomeSection3 = () => {
           />
         </div>
         <div className=" absolute bottom-0 right-0 w-[80vw] h-[80vw] lg:h-[60vh] lg:w-[60vh]">
-          <Image src={"/curvedCans.png"} objectFit="cover" layout="fill" />
+          <Image
+            src={process.env.NEXT_PUBLIC_API_URL + "/curvedCans.png"}
+            objectFit="cover"
+            layout="fill"
+          />
         </div>
       </div>
     </div>
