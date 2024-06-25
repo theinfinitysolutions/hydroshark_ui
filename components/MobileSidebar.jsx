@@ -83,15 +83,15 @@ export default function MobileSidebar() {
   return (
     <>
       <div className={`${className}${appendClass}`}>
-        <div className="text-md px-2 mt-[20px] -mb-2 border-b-2 border-black">
-          <p className=" text-secondaryText text-lg pl-2">Menu</p>
+        <div className="text-md px-2 mt-[20px] -mb-2 border-b-2 border-[#c7c7c7]">
+          <p className=" text-[#181818] text-lg pl-2">Menu</p>
         </div>
         <div className="flex flex-col mt-2">
           {navbarList.map((item, index) => {
             return <MenuItem key={index} name={item.title} route={item.link} />;
           })}
 
-          <button className=" w-11/12 py-2 bg-[#181818] text-white mx-4 mt-6">
+          <button className=" w-11/12 py-2 bg-[#181818] text-white mx-4 mt-">
             Join Us !
           </button>
         </div>
