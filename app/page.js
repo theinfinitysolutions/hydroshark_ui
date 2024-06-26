@@ -25,7 +25,7 @@ export default function Home() {
         ref={ref}
         className="flex min-h-screen bg-[#f0f2f4]  w-[100vw] z-20 flex-col overflow-hidden relative items-center "
       >
-        <div className=" h-[10vw] w-[10vw] lg:h-[8vh] lg:w-[8vh] absolute right-[80vw] lg:right-[10vw] top-[35vh] lg:top-[50vh] animate-rotate -mt-2 ">
+        <div className=" h-[10vw] w-[10vw] lg:h-[8vh] lg:w-[8vh] absolute right-[80vw] lg:right-[10vw] top-[45vh] lg:top-[50vh] animate-rotate -mt-2 ">
           <Image
             src={process.env.NEXT_PUBLIC_API_URL + "/asset5.png"}
             layout="fill"
