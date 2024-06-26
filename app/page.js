@@ -131,25 +131,28 @@ export default function Home() {
           </div>
         </div>
 
-        <div className=" hidden lg:block absolute left-[25vw] z-50 h-[60vh] w-[50vw]">
+        <div className=" hidden lg:block absolute left-[25vw] z-50 h-[60vh] w-[50vw] ">
           <motion.div
             initial={{ y: "70vh" }}
             animate={{ y: "30vh", opacity: [0, 1, 1] }}
             className="z-20 w-full h-full"
             transition={{ duration: 2.5, delay: 3.5, times: [0, 0.3, 1] }}
           >
-            <LandingSceneLemon />
+            <LandingSceneLemon orbital={true} />
           </motion.div>
         </div>
 
-        <div className=" block lg:hidden absolute left-[10vw] z-50 h-[40vh] w-[100vw]">
+        <div
+          disabled
+          className=" block lg:hidden absolute left-[10vw] z-50 h-[40vh] w-[100vw]  pointer-events-none"
+        >
           <motion.div
             initial={{ y: "80vh" }}
             animate={{ y: "45vh", opacity: [0, 1, 1] }}
             className="z-20 w-full h-full"
             transition={{ duration: 2.5, delay: 3.5, times: [0, 0.3, 1] }}
           >
-            <LandingSceneLemon />
+            <LandingSceneLemon orbital={false} />
           </motion.div>
         </div>
 
@@ -347,11 +350,20 @@ export default function Home() {
             </div>
             <div className="flex flex-col items-center mt-8 lg:mt-0 w-full lg:w-1/3 px-[5vw]">
               <div className=" border-[1px] border-[#5C6262] border-dashed z-0 w-full h-[60vh] p-2 flex flex-col rounded-[2rem] items-center justify-center">
-                <div className="w-full h-full relative border-[1px] border-[#5C6262]/40 rounded-[3rem]">
+                <div className=" flex lg:hidden w-full h-full relative border-[1px] border-[#5C6262]/40 rounded-[3rem] pointer-events-none  ">
                   <ReplaceScene
                     scene={
                       flavorData[currentFlavour].id == 1 ? "lemon" : "mango"
                     }
+                    orbital={false}
+                  />
+                </div>
+                <div className=" hidden lg:flex w-full h-full relative border-[1px] border-[#5C6262]/40 rounded-[3rem] pointer-events-none  ">
+                  <ReplaceScene
+                    scene={
+                      flavorData[currentFlavour].id == 1 ? "lemon" : "mango"
+                    }
+                    orbital={true}
                   />
                 </div>
               </div>
