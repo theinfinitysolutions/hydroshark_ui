@@ -41,7 +41,10 @@ const Navbar = () => {
   const { setShow } = useStore();
 
   return (
-    <div className=" z-50 max-w-screen h-[12.5vh] w-[100vw] flex flex-row justify-between items-center bg-[#f0f2f4]  px-[5vw]">
+    <div
+      style={{ zIndex: 100 }}
+      className="  max-w-screen h-[12.5vh] w-[100vw] flex flex-row justify-between items-center bg-[#f0f2f4]  px-[5vw]"
+    >
       <div className="hidden lg:flex flex-row justify-between z-50 w-4/12 border-b-[1px] border-[#181818] px-4">
         {navItems.map((item, index) => (
           <Link
@@ -85,7 +88,7 @@ const Navbar = () => {
           </button>
         </div>
       </div>
-      <div className=" flex lg:hidden z-40 ">
+      <div className=" flex lg:hidden z-50  ">
         <button
           onClick={() => {
             setShow({

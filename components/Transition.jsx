@@ -42,7 +42,7 @@ const Transition = ({ children }) => {
     <main className="min-h-screen max-w-screen w-[100vw] bg-transparent relative flex">
       {children}
       <motion.div
-        style={{ zIndex: showContent ? -1 : 50 }}
+        style={{ zIndex: showContent ? -1 : 110 }}
         className={`slide-in w-full bg-transparent  h-full ${
           showContent ? "hidden" : "fixed"
         } fixed top-0 flex flex-row justify-between left-0 z-50`}
