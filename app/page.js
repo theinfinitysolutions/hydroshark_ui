@@ -144,11 +144,11 @@ export default function Home() {
 
         <div
           disabled
-          className=" block lg:hidden absolute left-[10vw] z-50 h-[40vh] w-[100vw]  pointer-events-none"
+          className=" block lg:hidden absolute left-0 z-50 h-[35vh] w-[60vw]  pointer-events-none"
         >
           <motion.div
-            initial={{ y: "80vh" }}
-            animate={{ y: "45vh", opacity: [0, 1, 1] }}
+            initial={{ y: "90vh" }}
+            animate={{ y: "50vh", opacity: [0, 1, 1] }}
             className="z-20 w-full h-full"
             transition={{ duration: 2.5, delay: 3.5, times: [0, 0.3, 1] }}
           >
@@ -197,7 +197,7 @@ export default function Home() {
 
         <div className="flex flex-col lg:flex-row h-[90vh] w-full px-[5vw] overflow-hidden pt-[5vh] relative ">
           <div className="flex flex-col w-full lg:w-1/2 items-start">
-            <h2 className=" text-black text-[3rem] lg:text-[5rem] font-bold leading-[3rem] lg:leading-[5rem]">
+            <h2 className=" text-black text-[2.5rem] lg:text-[5rem] font-bold leading-[3rem] lg:leading-[5rem]">
               {"India's First Carbonated Hydration Drink"}
             </h2>
             <div className=" hidden  w-7/12 lg:flex flex-col mt-[5vh]">
@@ -223,8 +223,8 @@ export default function Home() {
           </div>
           <div className="flex flex-col items-start lg:items-end mt-4 lg:mt-0 w-full lg:w-1/2 ">
             <div className="flex flex-row justify-between w-full lg:w-10/12 px-4 lg:px-8">
-              <div className="w-[25vw] h-[25vw] lg:w-[15vh] lg:h-[15vh] relative flex flex-col items-center justify-center">
-                <div className="w-[25vw] h-[25vw] lg:w-[15vh] lg:h-[15vh] animate-rotate absolute">
+              <div className="w-[22.5vw] h-[22.5vw] lg:w-[15vh] lg:h-[15vh] relative flex flex-col items-center justify-center">
+                <div className="w-[22.5vw] h-[22.5vw] lg:w-[15vh] lg:h-[15vh] animate-rotate absolute">
                   <Image
                     src={
                       process.env.NEXT_PUBLIC_API_URL + "/caffeine_curved.png"
@@ -232,15 +232,15 @@ export default function Home() {
                     layout="fill"
                   />
                 </div>
-                <div className=" w-[10vh] h-[10vh] relative">
+                <div className=" w-[15vw] h-[15vw] lg:w-[10vh] lg:h-[10vh] relative">
                   <Image
                     src={process.env.NEXT_PUBLIC_API_URL + "/logo_caffeine.png"}
                     layout="fill"
                   />
                 </div>
               </div>
-              <div className="w-[25vw] h-[25vw] lg:w-[15vh] lg:h-[15vh] relative flex flex-col items-center justify-center">
-                <div className="w-[25vw] h-[25vw] lg:w-[15vh] lg:h-[15vh] animate-rotate absolute">
+              <div className="w-[22.5vw] h-[22.5vw] lg:w-[15vh] lg:h-[15vh] relative flex flex-col items-center justify-center">
+                <div className="w-[22.5vw] h-[22.5vw] lg:w-[15vh] lg:h-[15vh] animate-rotate absolute">
                   <Image
                     src={
                       process.env.NEXT_PUBLIC_API_URL + "/vitamins_curved.png"
@@ -248,15 +248,15 @@ export default function Home() {
                     layout="fill"
                   />
                 </div>
-                <div className="  w-[17.5vw] h-[17.5vw] lg:w-[10vh] lg:h-[10vh] relative">
+                <div className="  w-[15vw] h-[15vw] lg:w-[10vh] lg:h-[10vh] relative">
                   <Image
                     src={process.env.NEXT_PUBLIC_API_URL + "/logo_vitamins.png"}
                     layout="fill"
                   />
                 </div>
               </div>
-              <div className="w-[25vw] h-[25vw] lg:w-[15vh] lg:h-[15vh] relative flex flex-col items-center justify-center">
-                <div className="w-[25vw] h-[25vw] lg:w-[15vh] lg:h-[15vh] animate-rotate absolute">
+              <div className="w-[22.5vw] h-[22.5vw] lg:w-[15vh] lg:h-[15vh] relative flex flex-col items-center justify-center">
+                <div className="w-[22.5vw] h-[22.5vw] lg:w-[15vh] lg:h-[15vh] animate-rotate absolute">
                   <Image
                     src={
                       process.env.NEXT_PUBLIC_API_URL + "/zerosugar_curved.png"
@@ -264,7 +264,7 @@ export default function Home() {
                     layout="fill"
                   />
                 </div>
-                <div className=" w-[17.5vw] h-[17.5vw] lg:w-[10vh] lg:h-[10vh] relative">
+                <div className=" w-[15vw] h-[15vw] lg:w-[10vh] lg:h-[10vh] relative">
                   <Image
                     src={process.env.NEXT_PUBLIC_API_URL + "/logo_sugar.png"}
                     layout="fill"
