@@ -38,7 +38,7 @@ export default function MobileSidebar() {
   }, [sidebar.show]);
   // Define our base class
   const className =
-    "bg-[#ffffff] w-[80vw] lg:hidden transition-[margin-right] ease-in-out duration-500 fixed lg:static top-0 bottom-0 right-0 z-40";
+    "bg-[#ffffff] w-[80vw] lg:hidden transition-[margin-right] ease-in-out duration-500 fixed lg:static top-0 bottom-0 right-0 z-50";
   // Append class based on state of sidebar visiblity
   const appendClass = show ? " mr-[0]" : " mr-[-80vw] lg:mr-0";
 
@@ -72,7 +72,6 @@ export default function MobileSidebar() {
     <div
       className={`flex lg:hidden fixed top-0 right-0 bottom-0 left-0 bg-black/50 z-30`}
       onClick={() => {
-        setter((oldVal) => !oldVal);
         setShow({
           show: false,
         });
@@ -94,9 +93,11 @@ export default function MobileSidebar() {
           <button
             onClick={() => {
               router.push("/joinus");
-              setter((oldVal) => !oldVal);
+              setShow({
+                show: false,
+              });
             }}
-            className=" w-11/12 py-2 bg-[#181818] text-white mx-4 mt-"
+            className=" w-11/12 py-2 bg-[#181818] text-white mx-4 mt-8"
           >
             Join Us !
           </button>

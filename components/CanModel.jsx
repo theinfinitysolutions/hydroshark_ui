@@ -78,7 +78,7 @@ export function CanSceneTransitionRight() {
   );
 }
 
-export function LandingSceneLemon() {
+export function LandingSceneLemon({ orbital }) {
   return (
     <div className=" w-full h-full  flex flex-col ">
       <Canvas
@@ -93,7 +93,9 @@ export function LandingSceneLemon() {
         <spotLight position={[0, 5, 0]} angle={0.1} penumbra={1} />
         <directionalLight color="red" position={[0, 0, 0]} />
         <pointLight position={[10, 10, 10]} />
-        <OrbitControls enableZoom={false} enablePan={false} />
+        {orbital ? (
+          <OrbitControls enableZoom={false} enablePan={false} />
+        ) : null}
         <Environment preset={"sunset"} />
         <Suspense fallback={null}>
           <LemonModel fast={"a"} positiony={-8} positionx={0} positionz={-2} />
@@ -129,7 +131,7 @@ export function ReplaceScene(props) {
             <LemonModel fast={"a"} positiony={-8} positionx={0} positionz={1} />
           )}
         </Suspense>
-        <OrbitControls />
+        {props.orbital ? <OrbitControls enableZoom={false} /> : null}
       </Canvas>
     </div>
   );
