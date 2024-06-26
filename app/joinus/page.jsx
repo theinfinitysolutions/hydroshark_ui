@@ -13,8 +13,8 @@ const JoinUs = () => {
   const x = useTransform(scrollYProgress, [0, 0.7], ["-11.5%", "-90%"]);
 
   return (
-    <div className="w-full relative bg-[#f0f2f4] flex flex-col items-center">
-      <div className=" h-[90vh] w-[90vh] z-0  fixed animate-rotate">
+    <div className="w-full relative bg-[#f0f2f4] flex overflow-hidden flex-col items-center">
+      <div className=" h-[70vh] w-[70vh] top-[20vh] lg:top-0 lg:h-[90vh] lg:w-[90vh] z-0  fixed animate-rotate">
         <Image
           src={process.env.NEXT_PUBLIC_API_URL + "/assetring1.png"}
           layout="fill"
