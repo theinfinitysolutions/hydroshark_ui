@@ -204,13 +204,13 @@ export default function Home() {
               <div className="flex flex-row justify-between items-center">
                 <p className=" text-black text-base">Energy</p>
                 <div className="w-9/12 border-[1px] border-[#181818] h-[1vh] rounded-full">
-                  <div className="w-11/12 bg-black h-full rounded-full"></div>
+                  <div className="w-12/12 bg-black h-full rounded-full"></div>
                 </div>
               </div>
               <div className="flex flex-row justify-between items-center mt-2">
-                <p className=" text-black text-base">Caffeine</p>
+                <p className=" text-black text-base">Hydration</p>
                 <div className="w-9/12 border-[1px] border-[#181818] h-[1vh] rounded-full">
-                  <div className="w-/12 bg-black h-full rounded-full"></div>
+                  <div className="w-11/12 bg-black h-full rounded-full"></div>
                 </div>
               </div>
               <div className="flex flex-row justify-between items-center mt-2">
