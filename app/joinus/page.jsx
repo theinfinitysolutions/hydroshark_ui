@@ -14,7 +14,7 @@ const JoinUs = () => {
 
   return (
     <div className="w-full relative bg-[#f0f2f4] flex overflow-hidden flex-col items-center">
-      <div className=" h-[70vh] w-[70vh] top-[20vh] lg:top-0 lg:h-[90vh] lg:w-[90vh] z-0  fixed animate-rotate">
+      <div className=" h-[70vh] w-[70vh] top-[20vh] lg:top-[15vh] lg:h-[85vh] lg:w-[85vh] z-0  fixed animate-rotate">
         <Image
           src={process.env.NEXT_PUBLIC_API_URL + "/assetring1.png"}
           layout="fill"
