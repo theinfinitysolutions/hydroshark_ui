@@ -24,4 +24,4 @@ export default function LemonModelAlt(props) {
   );
 }
 
-useGLTF.preload("/model.gltf");
+useGLTF.preload("/model_lemon/model.gltf");

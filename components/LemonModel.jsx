@@ -29,4 +29,4 @@ export default function LemonModel(props) {
   );
 }
 
-useGLTF.preload("/model.gltf");
+useGLTF.preload("/model_lemon/model.gltf");

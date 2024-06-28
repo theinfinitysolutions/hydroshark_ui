@@ -11,7 +11,7 @@ const local = localFont({ src: "../public/ITCAvantGardePro-Md.otf" });
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Hydroshark",
+  title: "Hydroshark - India's First Carbonated Hydration Drink",
   description: "India's First Carbonated Hydration Drink",
 };
 
@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
           name="keywords"
           content="hydroshark, hydration, drink, carbonated, india, healthy, lifestyle, choice , water, soda, sparkling, water, health, fitness, wellness, beverage, energy, athletics, workout, hydration drinks, prime, gatorade"
         />
-        <title>Hydroshark</title>
+        <title>{"Hydroshark - India's First Carbonated Hydration Drink"}</title>
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         <link
           rel="apple-touch-icon"

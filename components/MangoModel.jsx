@@ -33,4 +33,4 @@ export default function MangoModel(props) {
   );
 }
 
-useGLTF.preload("/model.gltf");
+useGLTF.preload("/model_mango/model.gltf");

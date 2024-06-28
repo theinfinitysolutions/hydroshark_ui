@@ -11,6 +11,10 @@ import {
   CanSceneTransitionLeft,
 } from "./CanModel";
 import MarqeeLanding from "./MarqeeLanding";
+import { useGLTF } from "@react-three/drei";
+
+useGLTF.preload("/model_mango/model.gltf");
+useGLTF.preload("/model_lemon/model.gltf");
 
 const getRandomColor = () => {
   const letters = "0123456789ABCDEF";
