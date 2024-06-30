@@ -106,10 +106,12 @@ const Footer = () => {
           &copy; {new Date().getFullYear()} Hydroshark. All rights reserved.
         </p>
         <div className="flex flex-row text-sm justify-center lg:justify-end w-full  lg:w-3/12 mb-4 lg:mb-0 text-[#DEE2E6]">
-          <p className="text-[12px]">Developed and Maintained By </p>
+          <p className=" text-[11px] sm:text-[12px]">
+            Developed and Maintained By{" "}
+          </p>
           <a
             href="https://theinfinitysolutions.net"
-            className="underline font-bold text-[12px] ml-2"
+            className="underline font-bold text-[11px] sm:text-[12px] ml-2"
           >
             The Infinity Solutions
           </a>
