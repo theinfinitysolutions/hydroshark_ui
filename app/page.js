@@ -34,49 +34,49 @@ export default function Home() {
 
         <div className="absolute overflow-hidden [--offset:40vw] bg-black rotate-[4deg] top-[75vh] z-40 [--move-initial:calc(-25%_+_var(--offset))] [--move-final:calc(-50%_+_var(--offset))] ">
           <div
-            className="min-w-screen w-[100vw] flex flex-row lg:py-1 items-center relative  transform-[translate3d(var(--move-initial),0,0)] animate-marqueebanner [animation-play-state:running]"
+            className="min-w-screen w-[100vw] flex flex-row  lg:py-1 items-center relative  transform-[translate3d(var(--move-initial),0,0)] animate-marqueebanner [animation-play-state:running]"
             aria-hidden="true"
           >
             <span className="h-2 w-2 rounded-full bg-white"></span>
             <span className=" text-[10px] lg:text-sm p-[0_2vw] text-white">
-              {"0mg caffine"}
+              {"No caffeine"}
             </span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
             <span className="text-[10px] lg:text-sm p-[0_2vw] text-white">
-              {"low sugar"}
+              {"No sugar"}
             </span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
             <span className="text-[10px] lg:text-sm p-[0_2vw] text-white">
-              {"electrolytes"}
+              {"Electrolytes"}
             </span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
             <span className="text-[10px] lg:text-sm p-[0_2vw] text-white">
-              {"vitamins"}
+              {"Vitamins"}
             </span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
             <span className="text-[10px] lg:text-sm p-[0_2vw] text-white">
-              {"minerals"}
+              {"No minerals"}
             </span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
 
             <span className=" hidden lg:block text-[10px] lg:text-sm p-[0_2vw] text-white">
-              {"0mg caffine"}
+              {"No caffeine"}
             </span>
             <span className=" hidden lg:block h-2 w-2 rounded-full bg-white"></span>
             <span className=" hidden lg:block text-[10px] lg:text-sm p-[0_2vw] text-white">
-              {"low sugar"}
+              {"No sugar"}
             </span>
             <span className="hidden lg:block h-2 w-2 rounded-full bg-white"></span>
             <span className="hidden lg:block text-[10px] lg:text-sm p-[0_2vw] text-white">
-              {"electrolytes"}
+              {"Electrolytes"}
             </span>
             <span className="hidden lg:block h-2 w-2 rounded-full bg-white"></span>
             <span className="hidden lg:block text-[10px] lg:text-sm p-[0_2vw] text-white">
-              {"vitamins"}
+              {"Vitamins"}
             </span>
             <span className="hidden lg:block h-2 w-2 rounded-full bg-white"></span>
             <span className="hidden lg:block text-[10px] lg:text-sm p-[0_2vw] text-white">
-              {"minerals"}
+              {"No minerals"}
             </span>
             <span className="hidden lg:block h-2 w-2 rounded-full bg-white"></span>
           </div>
@@ -88,44 +88,44 @@ export default function Home() {
           >
             <span className="h-2 w-2 rounded-full bg-white"></span>
             <span className=" text-[10px] lg:text-sm p-[0_2vw] text-white">
-              {"0mg caffine"}
+              {"No caffeine"}
             </span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
             <span className="text-[10px] lg:text-sm p-[0_2vw] text-white">
-              {"low sugar"}
+              {"No sugar"}
             </span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
             <span className="text-[10px] lg:text-sm p-[0_2vw] text-white">
-              {"electrolytes"}
+              {"Electrolytes"}
             </span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
             <span className="text-[10px] lg:text-sm p-[0_2vw] text-white">
-              {"vitamins"}
+              {"Vitamins"}
             </span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
             <span className="text-[10px] lg:text-sm p-[0_2vw] text-white">
-              {"minerals"}
+              {"No minerals"}
             </span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
 
             <span className=" hidden lg:block text-[10px] lg:text-sm p-[0_2vw] text-white">
-              {"0mg caffine"}
+              {"No caffeine"}
             </span>
             <span className=" hidden lg:block h-2 w-2 rounded-full bg-white"></span>
             <span className=" hidden lg:block text-[10px] lg:text-sm p-[0_2vw] text-white">
-              {"low sugar"}
+              {"No sugar"}
             </span>
             <span className="hidden lg:block h-2 w-2 rounded-full bg-white"></span>
             <span className="hidden lg:block text-[10px] lg:text-sm p-[0_2vw] text-white">
-              {"electrolytes"}
+              {"Electrolytes"}
             </span>
             <span className="hidden lg:block h-2 w-2 rounded-full bg-white"></span>
             <span className="hidden lg:block text-[10px] lg:text-sm p-[0_2vw] text-white">
-              {"vitamins"}
+              {"Vitamins"}
             </span>
             <span className="hidden lg:block h-2 w-2 rounded-full bg-white"></span>
             <span className="hidden lg:block text-[10px] lg:text-sm p-[0_2vw] text-white">
-              {"minerals"}
+              {"No minerals"}
             </span>
             <span className="hidden lg:block h-2 w-2 rounded-full bg-white"></span>
           </div>
