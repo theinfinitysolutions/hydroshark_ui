@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import MobileSidebar from "@/components/MobileSidebar";
 import Head from "next/head";
+import "normalize.css/normalize.css";
 
 const local = localFont({ src: "../public/ITCAvantGardePro-Md.otf" });
 
