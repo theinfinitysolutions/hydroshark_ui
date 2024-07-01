@@ -25,9 +25,9 @@ const JoinUs = () => {
         <motion.div
           style={{ x: x }}
           ref={ref}
-          className=" fixed top-[15vh] lg:top-[27.5vh] flex flex-row justify-start items-center"
+          className=" fixed top-[15vh] lg:top-[25vh] flex flex-row justify-start items-center"
         >
-          <div className=" w-[90vw] h-[80vh] lg:w-[70vw] mr-[10vw] relative lg:h-[60vh] rounded-2xl bg-black flex flex-col lg:flex-row justify-center items-center">
+          <div className=" w-[90vw] h-[80vh] lg:w-[70vw] mr-[10vw] relative lg:h-[65vh] rounded-2xl bg-black flex flex-col lg:flex-row justify-center items-center">
             <div className=" w-11/12 lg:w-9/12 flex flex-col items-start px-[2.5vw] ">
               <p className=" text-[3rem] leading-[2.75rem] text-[#DEE2E6]">
                 Unlock Opportunities with Hydroshark
@@ -44,7 +44,7 @@ const JoinUs = () => {
               </div>
             </div>
           </div>
-          <div className=" w-[90vw] h-[80vh] lg:w-[70vw] mr-[10vw] relative lg:h-[60vh] rounded-2xl bg-[#ede361] flex flex-col lg:flex-row justify-center items-center">
+          <div className=" w-[90vw] h-[80vh] lg:w-[70vw] mr-[10vw] relative lg:h-[65vh] rounded-2xl bg-[#ede361] flex flex-col lg:flex-row justify-center items-center">
             <div className=" flex flex-col w-5/12 items-center z-20 justify-between">
               <div className="hidden lg:block w-full lg:w-9/12 h-[30vh] lg:h-[50vh] relative">
                 <Image
@@ -72,7 +72,7 @@ const JoinUs = () => {
               </button>
             </div>
           </div>
-          <div className=" w-[90vw] h-[80vh] lg:w-[70vw] mr-[10vw] relative lg:h-[60vh] rounded-2xl bg-[#308918] flex flex-row justify-center items-center">
+          <div className=" w-[90vw] h-[80vh] lg:w-[70vw] mr-[10vw] relative lg:h-[65vh] rounded-2xl bg-[#308918] flex flex-row justify-center items-center">
             <div className=" w-11/12 lg:w-7/12  flex-col items-start pl-[2.5vw]">
               <p className=" text-[3rem] leading-[2.75rem] text-[#DEE2E6]">
                 Influencers
@@ -100,7 +100,7 @@ const JoinUs = () => {
               </div>
             </div>
           </div>
-          <div className=" w-[90vw] h-[80vh] lg:w-[70vw] mr-[10vw] relative lg:h-[60vh] rounded-2xl bg-[#91979d] flex flex-col lg:flex-row justify-center items-center">
+          <div className=" w-[90vw] h-[80vh] lg:w-[70vw] mr-[10vw] relative lg:h-[65vh] rounded-2xl bg-[#91979d] flex flex-col lg:flex-row justify-center items-center">
             <div className=" w-11/12 lg:w-1/2 flex flex-col  items-start lg:pl-[2.5vw]">
               <p className=" text-[3rem] leading-[2.75rem] text-[#181818]">
                 Join Us Today

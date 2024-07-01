@@ -109,7 +109,7 @@ const About = () => {
         </div>
       </div>
 
-      <div className=" w-full h-full bg-white/95 lg:h-screen z-30 flex flex-col items-center py-[5vh]">
+      <div className=" w-full h-full bg-white/95 lg:h-full z-30 flex flex-col items-center py-[5vh]">
         <div className=" flex flex-col items-center mt-4">
           <h3 className=" text-[2rem] lg:text-[3rem] text-center leading-[2.75rem] text-[#181818]">
             WHY CHOOSE HYDROSHARK ?

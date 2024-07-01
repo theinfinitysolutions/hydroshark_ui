@@ -48,7 +48,7 @@ const ContactUs = () => {
   return (
     <div className="w-full min-h-screen relative bg-[#f0f2f4] flex flex-col items-center">
       <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:72px_72px]"></div>
-      <div className="w-11/12 h-[75vh] bg-black  mt-[7.5vh] flex flex-row justify-between items-center">
+      <div className="w-11/12 h-[85vh] z-30 bg-black  mt-[7.5vh] flex flex-row justify-between items-start">
         <div className=" hidden lg:flex w-4/12 h-full  flex-col items-start ">
           <div className=" w-full h-full z-0 relative ">
             <Image
@@ -58,19 +58,19 @@ const ContactUs = () => {
           </div>
         </div>
         <div className=" w-full lg:w-7/12 h-full lg:pr-8 flex flex-col items-center lg:items-start justify-center ">
-          <h1 className="text-[3rem] leading-[2.5rem] text-[#DEE2E6]">
-            Contact Us
-          </h1>
+          <h1 className="text-[2.5rem] m-0  text-[#DEE2E6]">Contact Us</h1>
           <p className=" text-base text-[#DEE2E6]">
             {" Please reach out to us for any queries "}
           </p>
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="flex flex-col z-20 items-center mt-8 px-4 lg:px-0 w-full"
+            className="flex flex-col z-20 items-center mt-6 px-4 lg:px-0 w-full"
           >
             <div className="flex flex-row w-full justify-between items-center">
               <div className={`${formDiv} w-[47.5%]`}>
-                <label htmlFor="name">Name</label>
+                <label htmlFor="name" className=" text-white text-base">
+                  Name
+                </label>
                 <input
                   className={`${input}`}
                   type="text"
@@ -81,7 +81,9 @@ const ContactUs = () => {
               </div>
 
               <div className={`${formDiv} w-[47.5%]`}>
-                <label htmlFor="lastname">Query</label>
+                <label htmlFor="lastname" className=" text-white text-base">
+                  Query
+                </label>
                 <input
                   className={`${input}`}
                   type="text"
@@ -93,7 +95,9 @@ const ContactUs = () => {
             </div>
 
             <div className={`${formDiv} w-full`}>
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email" className=" text-white text-base">
+                Email
+              </label>
               <input
                 className={`${input}`}
                 type="email"
@@ -104,7 +108,9 @@ const ContactUs = () => {
             </div>
 
             <div className={`${formDiv} w-full`}>
-              <label htmlFor="phoneNumber">Phone Number</label>
+              <label htmlFor="phoneNumber" className=" text-white text-base">
+                Phone Number
+              </label>
               <input
                 className={`${input}`}
                 type="phoneNumber"
@@ -115,7 +121,9 @@ const ContactUs = () => {
             </div>
 
             <div className={`${formDiv} w-full`}>
-              <label htmlFor="message">Message</label>
+              <label htmlFor="message" className=" text-white text-base">
+                Message
+              </label>
               <textarea
                 className={`${input}`}
                 id="message"
