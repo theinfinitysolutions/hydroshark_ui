@@ -21,11 +21,21 @@ module.exports = {
         rotate: "rotate 8s linear infinite",
         bounce: "bounce1 5s infinite",
         bounceX: "bounceX 3s infinite",
+        marquee1: "marquee1 5s linear infinite",
+        marquee2: "marquee2 5s linear infinite",
       },
       keyframes: {
         marquee: {
           "0%": { transform: "translate3d(var(--move-initial), 0, 0)" },
           "100%": { transform: "translate3d(var(--move-final), 0, 0)" },
+        },
+        marquee1: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-100%)" },
+        },
+        marquee2: {
+          "0%": { transform: "translateX(100%)" },
+          "100%": { transform: "translateX(0%)" },
         },
         slideUp: {
           "0%": { opacity: 0.5, transform: "translateY(5vh)" },
