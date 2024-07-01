@@ -39,9 +39,7 @@ const HomeSection3 = () => {
             <span className="h-2 w-2 rounded-full bg-white"></span>
             <span className="text-sm p-[0_2vw] text-white">{"Vitamins"}</span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
-            <span className="text-sm p-[0_2vw] text-white">
-              {"No minerals"}
-            </span>
+            <span className="text-sm p-[0_2vw] text-white">{"Minerals"}</span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
             <span className="text-sm p-[0_2vw] text-white">{"No sugar"}</span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
@@ -51,9 +49,7 @@ const HomeSection3 = () => {
             <span className="h-2 w-2 rounded-full bg-white"></span>
             <span className="text-sm p-[0_2vw] text-white">{"No sugar"}</span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
-            <span className="text-sm p-[0_2vw] text-white">
-              {"No minerals"}
-            </span>
+            <span className="text-sm p-[0_2vw] text-white">{"Minerals"}</span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
             <span className="text-sm p-[0_2vw] text-white">{"No sugar"}</span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
@@ -65,20 +61,20 @@ const HomeSection3 = () => {
             <span className="text-sm p-[0_2vw] text-white">{"Vitamins"}</span>
           </div>
         </div>
-        <p className=" text-xl lg:text-4xl text-[#3997a1] italic mt-[5vh] lg:mt-[10vh]">
+        <p className=" text-xlgl w-full lg:text-3xl text-[#3997a1] italic mt-[5vh] lg:mt-[10vh]">
           {"Experience the Hydroshark Difference "}
         </p>
         <div className=" flex flex-row  gap-x-2 justify-start items-center ">
           <p
-            className={`${caveat.className} text-[1.1rem] lg:text-[2.5rem] lg:mr-4 font-semibold text-black`}
+            className={`${caveat.className} text-[1rem] lg:text-[2.15rem] lg:mr-4 font-semibold text-black`}
           >
             Loved by{" "}
           </p>
           <div className=" flex flex-row items-center gap-x-1 justify-start">
-            <p className=" text-[2rem] lg:text-[3rem] lg:text-[4rem] font-semibold  text-black">
+            <p className=" text-[1.8rem] lg:text-[3.5rem] font-semibold lg:leading-[3.5rem]  text-black">
               ATHLETES
             </p>
-            <div className=" h-[5vw] w-[5vw]  lg:h-[8vh] lg:w-[8vh] -mt-2 relative">
+            <div className=" h-[4vw] w-[4vw]  lg:h-[8vh] lg:w-[8vh] -mt-2 relative">
               <Image
                 src={process.env.NEXT_PUBLIC_API_URL + "/asset2.svg"}
                 layout="fill"
@@ -86,10 +82,10 @@ const HomeSection3 = () => {
             </div>
           </div>
           <div className=" flex flex-row items-center gap-x-1 justify-start">
-            <p className=" text-[2rem] lg:text-[3rem] lg:text-[4rem] font-semibold col-span-3 text-black">
+            <p className=" text-[2rem] lg:text-[3.5rem] font-semibold lg:leading-[3.5rem] col-span-3 text-black">
               GAMERS
             </p>
-            <div className="h-[5vw] w-[5vw]  lg:h-[6vh] lg:w-[6vh] -mt-2 relative">
+            <div className="h-[4vw] w-[4vw]  lg:h-[8vh] lg:w-[8vh]  relative">
               <Image
                 src={process.env.NEXT_PUBLIC_API_URL + "/asset3.png"}
                 layout="fill"
@@ -98,13 +94,13 @@ const HomeSection3 = () => {
           </div>
         </div>
         <div className=" flex flex-row gap-x-2 justify-start items-center">
-          <div className="h-[5vw] w-[5vw]  lg:h-[8vh] lg:w-[8vh]  -mt-2 relative">
+          <div className="h-[4vw] w-[4vw]  lg:h-[8vh] lg:w-[8vh]  -mt-2 relative">
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/asset7.png"}
               layout="fill"
             />
           </div>
-          <p className=" text-[2rem] lg:text-[3rem] lg:text-[4rem] font-semibold col-span-3 text-black">
+          <p className=" text-[2rem] lg:text-[3.5rem] font-semibold col-span-3 text-black">
             DAREDEVILS
           </p>
           <div className="h-[5vw] w-[5vw]  lg:h-[8vh] lg:w-[8vh]   -mt-2 relative">

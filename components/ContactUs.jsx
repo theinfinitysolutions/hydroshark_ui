@@ -52,7 +52,9 @@ const ContactUs = () => {
       >
         <div className="flex flex-row w-full justify-between items-center">
           <div className={`${formDiv} w-[47.5%]`}>
-            <label htmlFor="name">Name</label>
+            <label htmlFor="name" className="text-sm text-black">
+              Name
+            </label>
             <input
               className={`${input}`}
               type="text"
@@ -63,7 +65,9 @@ const ContactUs = () => {
           </div>
 
           <div className={`${formDiv} w-[47.5%]`}>
-            <label htmlFor="query">Query</label>
+            <label htmlFor="query" className="text-sm text-black">
+              Query
+            </label>
             <input
               className={`${input}`}
               type="text"
@@ -75,7 +79,9 @@ const ContactUs = () => {
         </div>
 
         <div className={`${formDiv}`}>
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email" className="text-sm text-black">
+            Email
+          </label>
           <input
             className={`${input}`}
             type="email"
@@ -86,7 +92,9 @@ const ContactUs = () => {
         </div>
 
         <div className={`${formDiv}`}>
-          <label htmlFor="phonenumber">Phone Number</label>
+          <label htmlFor="phonenumber" className="text-sm text-black">
+            Phone Number
+          </label>
           <input
             className={`${input}`}
             type="phonenumber"
@@ -97,7 +105,9 @@ const ContactUs = () => {
         </div>
 
         <div className={`${formDiv}`}>
-          <label htmlFor="message">Message</label>
+          <label htmlFor="message" className="text-sm text-black">
+            Message
+          </label>
           <textarea
             className={`${input}`}
             id="message"
