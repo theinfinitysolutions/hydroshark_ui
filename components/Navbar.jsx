@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { IoMenuOutline } from "react-icons/io5";
 import { useStore } from "@/utils/store";
+import { usePathname } from "next/navigation";
 
 const navItems = [
   {
@@ -38,12 +39,15 @@ const altItems = [
 
 const Navbar = () => {
   const router = useRouter();
+  const pathname = usePathname();
   const { setShow } = useStore();
 
   return (
     <div
       style={{ zIndex: 100 }}
-      className="  max-w-screen h-[12.5vh] w-[100vw] flex flex-row justify-between items-center bg-[#f0f2f4]  px-[5vw]"
+      className={` ${
+        pathname == "/joinus" ? "fixed" : ""
+      }  max-w-screen h-[12.5vh] w-[100vw] flex flex-row justify-between items-center bg-[#f0f2f4]  px-[5vw]`}
     >
       <div className="hidden lg:flex flex-row justify-between z-50 w-4/12 border-b-[1px] border-[#181818] px-4">
         {navItems.map((item, index) => (
@@ -68,7 +72,7 @@ const Navbar = () => {
         />
       </a>
       <div className=" hidden lg:flex flex-row w-4/12 justify-end z-50 border-b-[1px] border-[#181818] px-4">
-        <div className="flex flex-row justify-between w-8/12 ">
+        <div className="flex flex-row justify-between w-10/12 ">
           {altItems.map((item, index) => (
             <Link
               href={item.path}

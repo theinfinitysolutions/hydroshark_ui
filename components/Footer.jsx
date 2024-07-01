@@ -43,7 +43,7 @@ const altItems = [
 
 const Footer = () => {
   return (
-    <div className=" flex flex-col w-[100vw] max-w-screen items-center overflow-hidden bg-[#181818] py-8 h-[50vh] z-40 relative">
+    <div className=" flex flex-col w-[100vw] max-w-screen h-full items-center overflow-hidden bg-[#181818] py-8 z-40 relative">
       <div className="absolute inset-0 h-full w-screen bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:72px_72px]"></div>
       <div className="flex flex-col lg:flex-row lg:justify-between items-center lg:items-start w-full lg:w-10/12">
         <div className=" h-[10vh] w-[10vh] relative">
@@ -52,7 +52,7 @@ const Footer = () => {
             layout="fill"
           />
         </div>
-        <div className="w-6/12 lg:w-3/12 mt-8 mf:mt-0 flex flex-row justify-between z-20">
+        <div className="w-6/12 lg:w-3/12 mt-8 lg:mt-0 flex flex-row justify-between z-20">
           <div className=" flex flex-col items-start gap-y-1">
             {navItems.map((item, index) => (
               <Link
@@ -91,7 +91,7 @@ const Footer = () => {
           </a>
         </div>
       </div>
-      <div className="w-full max-w-screen overflow-hidden flex flex-col items-center lg:-mt-8">
+      <div className="w-full max-w-screen overflow-hidden flex mt-4 mb-8 flex-col items-center lg:-mt-8">
         <p
           style={{
             transform: `perspective(1000px) rotateX(45deg)`,
