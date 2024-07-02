@@ -18,7 +18,7 @@ const About = () => {
         <div className=" w-full  h-full lg:h-[70vh] z-20 flex flex-col lg:flex-row justify-between items-center">
           <div className=" h-[35vh] lg:h-full w-full lg:w-1/2 flex relative ">
             <Image
-              src={process.env.NEXT_PUBLIC_API_URL + "/img10.jpeg"}
+              src={process.env.NEXT_PUBLIC_API_URL + "/img10.webp"}
               layout="fill"
             />
           </div>
@@ -41,7 +41,7 @@ const About = () => {
         <div className=" w-full  h-full lg:h-[70vh] z-20 flex flex-col-reverse lg:flex-row-reverse justify-between items-center mt-[10vh]">
           <div className="h-[35vh] lg:h-full w-full lg:w-1/2 flex relative ">
             <Image
-              src={process.env.NEXT_PUBLIC_API_URL + "/img5.jpeg"}
+              src={process.env.NEXT_PUBLIC_API_URL + "/img5.webp"}
               layout="fill"
             />
           </div>
@@ -64,7 +64,7 @@ const About = () => {
         <div className=" w-full  h-full lg:h-[70vh] z-20 flex flex-col lg:flex-row justify-between items-center mt-[10vh]">
           <div className="h-[35vh] lg:h-full w-full lg:w-1/2 flex relative ">
             <Image
-              src={process.env.NEXT_PUBLIC_API_URL + "/img8.jpeg"}
+              src={process.env.NEXT_PUBLIC_API_URL + "/img8.webp"}
               layout="fill"
             />
           </div>
@@ -87,7 +87,7 @@ const About = () => {
         <div className=" w-full h-full lg:h-[70vh] z-20 flex flex-col-reverse lg:flex-row-reverse justify-between items-center my-[10vh]">
           <div className=" h-[35vh] lg:h-full w-full lg:w-1/3 flex relative ">
             <Image
-              src={process.env.NEXT_PUBLIC_API_URL + "/img2.jpeg"}
+              src={process.env.NEXT_PUBLIC_API_URL + "/img2.webp"}
               layout="fill"
             />
           </div>

@@ -52,7 +52,7 @@ const ContactUs = () => {
         <div className=" hidden lg:flex w-4/12 h-full  flex-col items-start ">
           <div className=" w-full h-full z-0 relative ">
             <Image
-              src={process.env.NEXT_PUBLIC_API_URL + "/img4.jpeg"}
+              src={process.env.NEXT_PUBLIC_API_URL + "/img4.webp"}
               layout="fill"
             />
           </div>

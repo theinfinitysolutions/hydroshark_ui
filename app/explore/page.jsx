@@ -154,7 +154,7 @@ const Explore = () => {
                   <Image
                     src={
                       process.env.NEXT_PUBLIC_API_URL +
-                      `/img${(idx % 6) + 4}.jpeg`
+                      `/img${(idx % 6) + 4}.webp`
                     }
                     layout="fill"
                     alt={`gallery${idx}`}

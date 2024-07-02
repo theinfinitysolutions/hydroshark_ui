@@ -48,7 +48,7 @@ const JoinUs = () => {
             <div className=" flex flex-col w-5/12 items-center z-20 justify-between">
               <div className="hidden lg:block w-full lg:w-9/12 h-[30vh] lg:h-[50vh] relative">
                 <Image
-                  src={process.env.NEXT_PUBLIC_API_URL + "/img3.jpeg"}
+                  src={process.env.NEXT_PUBLIC_API_URL + "/img3.webp"}
                   layout="fill"
                 />
               </div>
