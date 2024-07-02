@@ -21,7 +21,7 @@ const ParallaxScroll = (props, ref) => {
           return (
             <div key={index} className=" h-[50vh] w-full relative">
               <Image
-                src={process.env.NEXT_PUBLIC_API_URL + `/img${item}.jpeg`}
+                src={process.env.NEXT_PUBLIC_API_URL + `/img${item}.webp`}
                 layout="fill"
               />
             </div>
@@ -33,7 +33,7 @@ const ParallaxScroll = (props, ref) => {
           return (
             <div key={index} className=" h-[50vh] w-full relative">
               <Image
-                src={process.env.NEXT_PUBLIC_API_URL + `/img${item}.jpeg`}
+                src={process.env.NEXT_PUBLIC_API_URL + `/img${item}.webp`}
                 layout="fill"
               />
             </div>

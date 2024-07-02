@@ -75,7 +75,7 @@ const Transition = ({ children }) => {
             className=" h-[40vh] w-[40vh] lg:h-[75vh] lg:w-[75vh] bg-black rounded-full  z-50 absolute top-[30vh] lg:top-[12.5vh] -right-[20vh] lg:-right-[37.5vh]"
           >
             <Image
-              src={process.env.NEXT_PUBLIC_API_URL + "/loading.png"}
+              src={process.env.NEXT_PUBLIC_API_URL + "/loading.webp"}
               layout="fill"
             />
           </motion.div>
@@ -93,7 +93,7 @@ const Transition = ({ children }) => {
             className=" w-[30vh] h-[30vh]  lg:h-[60vh] lg:w-[60vh] bg-white rounded-full  z-50 absolute top-[35vh] -right-[15vh] lg:top-[20vh]  lg:-right-[30vh]"
           >
             <Image
-              src={process.env.NEXT_PUBLIC_API_URL + "/loading1.png"}
+              src={process.env.NEXT_PUBLIC_API_URL + "/loading1.webp"}
               layout="fill"
             />
           </motion.div>
@@ -111,7 +111,7 @@ const Transition = ({ children }) => {
             className=" w-[22.5vh] h-[22.5vh] lg:h-[45vh] lg:w-[45vh] rounded-full bg-black z-50 absolute top-[38.75vh] lg:top-[27.5vh] -right-[11.25vh]  lg:-right-[22.5vh]"
           >
             <Image
-              src={process.env.NEXT_PUBLIC_API_URL + "/loading.png"}
+              src={process.env.NEXT_PUBLIC_API_URL + "/loading.webp"}
               layout="fill"
             />
           </motion.div>
@@ -130,7 +130,7 @@ const Transition = ({ children }) => {
             className=" h-[17.5vh] w-[17.5vh]  lg:h-[30vh] lg:w-[30vh] z-50 absolute top-[41.25vh] lg:top-[35vh] -right-[8.75vh] lg:-right-[15vh]"
           >
             <Image
-              src={process.env.NEXT_PUBLIC_API_URL + "/hydroshark_logo.png"}
+              src={process.env.NEXT_PUBLIC_API_URL + "/hydroshark_logo.webp"}
               layout="fill"
             />
           </motion.div>
@@ -160,7 +160,7 @@ const Transition = ({ children }) => {
             className="h-[40vh] w-[40vh] lg:h-[75vh] lg:w-[75vh] bg-black rounded-full  z-50 absolute top-[30vh] lg:top-[12.5vh] -left-[20vh] lg:-left-[37.5vh]"
           >
             <Image
-              src={process.env.NEXT_PUBLIC_API_URL + "/loading.png"}
+              src={process.env.NEXT_PUBLIC_API_URL + "/loading.webp"}
               layout="fill"
             />
           </motion.div>
@@ -178,7 +178,7 @@ const Transition = ({ children }) => {
             className="w-[30vh] h-[30vh]  lg:h-[60vh] lg:w-[60vh] bg-white rounded-full  z-50 absolute top-[35vh] lg:top-[20vh] -left-[15vh]  lg:-left-[30vh]"
           >
             <Image
-              src={process.env.NEXT_PUBLIC_API_URL + "/loading1.png"}
+              src={process.env.NEXT_PUBLIC_API_URL + "/loading1.webp"}
               layout="fill"
             />
           </motion.div>
@@ -196,7 +196,7 @@ const Transition = ({ children }) => {
             className=" w-[22.5vh] h-[22.5vh] lg:h-[45vh] lg:w-[45vh] rounded-full bg-black z-50 absolute top-[38.75vh] lg:top-[27.5vh] -left-[11.25vh]  lg:-left-[22.5vh]"
           >
             <Image
-              src={process.env.NEXT_PUBLIC_API_URL + "/loading.png"}
+              src={process.env.NEXT_PUBLIC_API_URL + "/loading.webp"}
               layout="fill"
             />
           </motion.div>
@@ -214,7 +214,7 @@ const Transition = ({ children }) => {
             className="h-[17.5vh] w-[17.5vh]  lg:h-[30vh] lg:w-[30vh] z-50 absolute top-[41.25vh] lg:top-[35vh] -left-[8.75vh] lg:-left-[15vh]"
           >
             <Image
-              src={process.env.NEXT_PUBLIC_API_URL + "/hydroshark_logo.png"}
+              src={process.env.NEXT_PUBLIC_API_URL + "/hydroshark_logo.webp"}
               layout="fill"
             />
           </motion.div>
