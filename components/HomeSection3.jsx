@@ -31,7 +31,7 @@ const HomeSection3 = () => {
               {"No caffeine"}
             </span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
-            <span className="text-sm p-[0_2vw] text-white">{"No sugar"}</span>
+            <span className="text-sm p-[0_2vw] text-white">{"Low sugar"}</span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
             <span className="text-sm p-[0_2vw] text-white">
               {"Electrolytes"}
@@ -41,17 +41,17 @@ const HomeSection3 = () => {
             <span className="h-2 w-2 rounded-full bg-white"></span>
             <span className="text-sm p-[0_2vw] text-white">{"Minerals"}</span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
-            <span className="text-sm p-[0_2vw] text-white">{"No sugar"}</span>
+            <span className="text-sm p-[0_2vw] text-white">{"Low sugar"}</span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
             <span className="text-sm p-[0_2vw] text-white">
               {"No caffeine"}
             </span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
-            <span className="text-sm p-[0_2vw] text-white">{"No sugar"}</span>
+            <span className="text-sm p-[0_2vw] text-white">{"Low sugar"}</span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
             <span className="text-sm p-[0_2vw] text-white">{"Minerals"}</span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
-            <span className="text-sm p-[0_2vw] text-white">{"No sugar"}</span>
+            <span className="text-sm p-[0_2vw] text-white">{"Low sugar"}</span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
             <span className="text-sm p-[0_2vw] text-white">
