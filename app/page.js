@@ -46,7 +46,7 @@ export default function Home() {
           >
             <span className="h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
             <span className=" text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
-              {"No caffeine"}
+              {"Low calorie"}
             </span>
             <span className="h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
             <span className="text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
@@ -62,11 +62,11 @@ export default function Home() {
             </span>
             <span className="h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
             <span className="text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
-              {"Minerals"}
+              {"Salt"}
             </span>
             <span className="h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
             <span className=" text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
-              {"No caffeine"}
+              {"Low calorie"}
             </span>
             <span className="h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
             <span className=" hidden lg:block text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
@@ -82,12 +82,12 @@ export default function Home() {
             </span>
             <span className="h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
             <span className="text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
-              {"Minerals"}
+              {"Salt"}
             </span>
             <span className="h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
 
             <span className=" hidden lg:block text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
-              {"No caffeine"}
+              {"Low calorie"}
             </span>
             <span className=" hidden lg:block h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
             <span className=" hidden lg:block text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
@@ -103,7 +103,7 @@ export default function Home() {
             </span>
             <span className="hidden lg:block h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
             <span className="hidden lg:block text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
-              {"Minerals"}
+              {"Salt"}
             </span>
           </div>
         </div>
@@ -114,7 +114,7 @@ export default function Home() {
           >
             <span className="h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
             <span className=" text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
-              {"No caffeine"}
+              {"Low calorie"}
             </span>
             <span className="h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
             <span className="text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
@@ -130,11 +130,11 @@ export default function Home() {
             </span>
             <span className="h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
             <span className="text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
-              {"Minerals"}
+              {"Salt"}
             </span>
             <span className="h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
             <span className=" text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
-              {"No caffeine"}
+              {"Low calorie"}
             </span>
             <span className="h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
             <span className=" hidden lg:block text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
@@ -150,7 +150,7 @@ export default function Home() {
             </span>
             <span className="h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
             <span className="text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
-              {"Minerals"}
+              {"Salt"}
             </span>
             <span className="h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
             <span className=" hidden lg:block text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
@@ -166,7 +166,7 @@ export default function Home() {
             </span>
             <span className="hidden lg:block h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
             <span className="hidden lg:block text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
-              {"Minerals"}
+              {"Salt"}
             </span>
           </div>
         </div>

@@ -28,7 +28,7 @@ const HomeSection3 = () => {
           >
             <span className="h-2 w-2 rounded-full bg-white"></span>
             <span className="text-sm p-[0_2vw] text-white">
-              {"No caffeine"}
+              {"Low calorie"}
             </span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
             <span className="text-sm p-[0_2vw] text-white">{"Low sugar"}</span>
@@ -39,26 +39,28 @@ const HomeSection3 = () => {
             <span className="h-2 w-2 rounded-full bg-white"></span>
             <span className="text-sm p-[0_2vw] text-white">{"Vitamins"}</span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
-            <span className="text-sm p-[0_2vw] text-white">{"Minerals"}</span>
+            <span className="text-sm p-[0_2vw] text-white">{"Salt"}</span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
             <span className="text-sm p-[0_2vw] text-white">{"Low sugar"}</span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
             <span className="text-sm p-[0_2vw] text-white">
-              {"No caffeine"}
+              {"Low calorie"}
             </span>
-            <span className="h-2 w-2 rounded-full bg-white"></span>
-            <span className="text-sm p-[0_2vw] text-white">{"Low sugar"}</span>
-            <span className="h-2 w-2 rounded-full bg-white"></span>
-            <span className="text-sm p-[0_2vw] text-white">{"Minerals"}</span>
-            <span className="h-2 w-2 rounded-full bg-white"></span>
-            <span className="text-sm p-[0_2vw] text-white">{"Low sugar"}</span>
-            <span className="h-2 w-2 rounded-full bg-white"></span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
             <span className="text-sm p-[0_2vw] text-white">
-              {"No caffeine"}
+              {"Electrolytes"}
             </span>
             <span className="h-2 w-2 rounded-full bg-white"></span>
+            <span className="text-sm p-[0_2vw] text-white">{"Salt"}</span>
+            <span className="h-2 w-2 rounded-full bg-white"></span>
+            <span className="text-sm p-[0_2vw] text-white">{"Low sugar"}</span>
+            <span className="h-2 w-2 rounded-full bg-white"></span>
+
             <span className="text-sm p-[0_2vw] text-white">{"Vitamins"}</span>
+            <span className="h-2 w-2 rounded-full bg-white"></span>
+            <span className="text-sm p-[0_2vw] text-white">
+              {"Low calorie"}
+            </span>
           </div>
         </div>
         <p className=" text-xlgl w-full lg:text-3xl text-[#3997a1] italic mt-[5vh] lg:mt-[10vh]">
