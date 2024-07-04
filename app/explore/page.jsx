@@ -65,12 +65,14 @@ const Explore = () => {
                 <Image
                   src={process.env.NEXT_PUBLIC_API_URL + "/caffeine_curved.png"}
                   layout="fill"
+                  alt="caffeine_curved"
                 />
               </div>
               <div className=" w-[10vh] h-[10vh] relative">
                 <Image
                   src={process.env.NEXT_PUBLIC_API_URL + "/logo_caffeine.png"}
                   layout="fill"
+                  alt="logo_caffeine"
                 />
               </div>
             </div>
@@ -87,12 +89,14 @@ const Explore = () => {
                 <Image
                   src={process.env.NEXT_PUBLIC_API_URL + "/vitamins_curved.png"}
                   layout="fill"
+                  alt="vitamins_curved"
                 />
               </div>
               <div className=" w-[10vh] h-[10vh] relative">
                 <Image
                   src={process.env.NEXT_PUBLIC_API_URL + "/logo_vitamins.png"}
                   layout="fill"
+                  alt="logo_vitamins"
                 />
               </div>
             </div>
@@ -111,12 +115,14 @@ const Explore = () => {
                     process.env.NEXT_PUBLIC_API_URL + "/zerosugar_curved.png"
                   }
                   layout="fill"
+                  alt="zerosugar_curved"
                 />
               </div>
               <div className=" w-[10vh] h-[10vh] relative">
                 <Image
                   src={process.env.NEXT_PUBLIC_API_URL + "/logo_sugar.png"}
                   layout="fill"
+                  alt="logo_sugar"
                 />
               </div>
             </div>
@@ -191,6 +197,7 @@ const Explore = () => {
                   src={process.env.NEXT_PUBLIC_API_URL + "/lemoncan.png"}
                   layout="fill"
                   objectFit="contain"
+                  alt="hydrodshark lemon can"
                 />
               </div>
             </div>
@@ -212,6 +219,7 @@ const Explore = () => {
                   src={process.env.NEXT_PUBLIC_API_URL + "/mangocan.png"}
                   layout="fill"
                   objectFit="contain"
+                  alt="hydrodshark mango can"
                 />
               </div>
             </div>

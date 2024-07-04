@@ -11,6 +11,7 @@ const About = () => {
         <Image
           src={process.env.NEXT_PUBLIC_API_URL + "/assetring1.png"}
           layout="fill"
+          alt="assetring1"
         />
       </div>
       <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:72px_72px]"></div>
@@ -20,6 +21,7 @@ const About = () => {
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/img10.webp"}
               layout="fill"
+              alt="hydroshark img10"
             />
           </div>
           <div className="bg-black w-full lg:w-1/2 h-full flex flex-col items-start py-8 lg:py-0 justify-center px-8">
@@ -43,6 +45,7 @@ const About = () => {
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/img5.webp"}
               layout="fill"
+              alt="hydroshark img5"
             />
           </div>
           <div className="bg-black w-full lg:w-1/2 h-full flex flex-col items-start py-8 lg:py-0 justify-center px-8">
@@ -66,6 +69,7 @@ const About = () => {
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/img8.webp"}
               layout="fill"
+              alt="hydroshark img8"
             />
           </div>
           <div className="bg-black w-full lg:w-1/2 h-full flex flex-col items-start py-8 lg:py-0 justify-center px-8">
@@ -89,6 +93,7 @@ const About = () => {
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/img2.webp"}
               layout="fill"
+              alt="hydroshark img2"
             />
           </div>
           <div className="bg-black w-full lg:w-2/3 h-full flex flex-col items-start justify-center py-8 lg:py-0 px-8">
@@ -128,6 +133,7 @@ const About = () => {
                   <Image
                     src={process.env.NEXT_PUBLIC_API_URL + item.image}
                     layout="fill"
+                    alt="hydroshark img"
                   />
                 </div>
                 <h3 className=" text-[1rem] text-white ml-2 mt-1">

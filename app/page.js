@@ -31,6 +31,7 @@ export default function Home() {
         <div className=" h-[10vw] w-[10vw] lg:h-[8vh] lg:w-[8vh] absolute right-[80vw] lg:right-[10vw] top-[45vh] lg:top-[50vh] animate-rotate -mt-2 ">
           <Image
             src={process.env.NEXT_PUBLIC_API_URL + "/asset5.png"}
+            alt="asset5"
             layout="fill"
           />
         </div>
@@ -265,12 +266,14 @@ export default function Home() {
                     src={
                       process.env.NEXT_PUBLIC_API_URL + "/caffeine_curved.png"
                     }
+                    alt="caffeine_curved"
                     layout="fill"
                   />
                 </div>
                 <div className=" w-[15vw] h-[15vw] lg:w-[10vh] lg:h-[10vh] relative">
                   <Image
                     src={process.env.NEXT_PUBLIC_API_URL + "/logo_caffeine.png"}
+                    alt="logo_caffeine"
                     layout="fill"
                   />
                 </div>
@@ -281,11 +284,13 @@ export default function Home() {
                     src={
                       process.env.NEXT_PUBLIC_API_URL + "/vitamins_curved.png"
                     }
+                    alt="vitamins_curved"
                     layout="fill"
                   />
                 </div>
                 <div className="  w-[15vw] h-[15vw] lg:w-[10vh] lg:h-[10vh] relative">
                   <Image
+                    alt="logo_vitamins"
                     src={process.env.NEXT_PUBLIC_API_URL + "/logo_vitamins.png"}
                     layout="fill"
                   />
@@ -298,12 +303,14 @@ export default function Home() {
                       process.env.NEXT_PUBLIC_API_URL + "/zerosugar_curved.png"
                     }
                     layout="fill"
+                    alt="zerosugar_curved"
                   />
                 </div>
                 <div className=" w-[15vw] h-[15vw] lg:w-[10vh] lg:h-[10vh] relative">
                   <Image
                     src={process.env.NEXT_PUBLIC_API_URL + "/logo_sugar.png"}
                     layout="fill"
+                    alt="logo_sugar"
                   />
                 </div>
               </div>
@@ -330,18 +337,21 @@ export default function Home() {
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/asset5.png"}
               layout="fill"
+              alt="asset5"
             />
           </div>
           <div className=" h-[8vw] w-[8vw] lg:h-[8vh] lg:w-[8vh] absolute left-[10vw] top-[50vh] animate-rotate -mt-2 ">
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/asset5.png"}
               layout="fill"
+              alt="asset5"
             />
           </div>
           <div className=" h-[8vw] w-[8vw] lg:h-[8vh] lg:w-[8vh] absolute right-[30vw] top-[80vh] animate-rotate -mt-2 ">
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/asset5.png"}
               layout="fill"
+              alt="asset5"
             />
           </div>
           <div className=" absolute right-0 -z-10 bottom-0">

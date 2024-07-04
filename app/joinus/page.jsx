@@ -18,6 +18,7 @@ const JoinUs = () => {
         <Image
           src={process.env.NEXT_PUBLIC_API_URL + "/assetring1.png"}
           layout="fill"
+          alt="assetring1"
         />
       </div>
       <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:72px_72px]"></div>
@@ -50,6 +51,7 @@ const JoinUs = () => {
                 <Image
                   src={process.env.NEXT_PUBLIC_API_URL + "/img3.webp"}
                   layout="fill"
+                  alt="hydroshark img3"
                 />
               </div>
             </div>
@@ -96,6 +98,7 @@ const JoinUs = () => {
                 <Image
                   src={process.env.NEXT_PUBLIC_API_URL + "/influencer.jpeg"}
                   layout="fill"
+                  alt="influencer"
                 />
               </div>
             </div>
