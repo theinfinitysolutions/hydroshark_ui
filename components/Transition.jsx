@@ -65,11 +65,12 @@ const Transition = ({ children }) => {
             }}
             className=" h-[40vh] w-[40vh] lg:h-[75vh] lg:w-[75vh] bg-black rounded-full  z-50 absolute top-[30vh] lg:top-[12.5vh] -right-[20vh] lg:-right-[37.5vh]"
           >
-            <Image
+            <img
               src={process.env.NEXT_PUBLIC_API_URL + "/loading.webp"}
               layout="fill"
-              unoptimized={true}
               alt="hydroshark loader"
+              loading={"eager"}
+              fetchpriority="high"
             />
           </motion.div>
           <motion.div
@@ -158,11 +159,12 @@ const Transition = ({ children }) => {
             }}
             className="h-[40vh] w-[40vh] lg:h-[75vh] lg:w-[75vh] bg-black rounded-full  z-50 absolute top-[30vh] lg:top-[12.5vh] -left-[20vh] lg:-left-[37.5vh]"
           >
-            <Image
+            <img
               src={process.env.NEXT_PUBLIC_API_URL + "/loading.webp"}
               layout="fill"
-              unoptimized={true}
               alt="hydroshark loader"
+              loading={"eager"}
+              fetchpriority="high"
             />
           </motion.div>
           <motion.div
