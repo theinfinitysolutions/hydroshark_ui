@@ -68,6 +68,7 @@ const Transition = ({ children }) => {
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/loading.webp"}
               layout="fill"
+              alt="hydroshark loader"
             />
           </motion.div>
           <motion.div
@@ -86,6 +87,7 @@ const Transition = ({ children }) => {
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/loading1.webp"}
               layout="fill"
+              alt="hydroshark loader"
             />
           </motion.div>
           <motion.div
@@ -104,6 +106,7 @@ const Transition = ({ children }) => {
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/loading.webp"}
               layout="fill"
+              alt="hydroshark loader"
             />
           </motion.div>
 
@@ -123,6 +126,7 @@ const Transition = ({ children }) => {
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/hydroshark_logo.webp"}
               layout="fill"
+              alt="hydroshark loader"
             />
           </motion.div>
         </motion.div>
@@ -153,6 +157,7 @@ const Transition = ({ children }) => {
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/loading.webp"}
               layout="fill"
+              alt="hydroshark loader"
             />
           </motion.div>
           <motion.div
@@ -171,6 +176,7 @@ const Transition = ({ children }) => {
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/loading1.webp"}
               layout="fill"
+              alt="hydroshark loader"
             />
           </motion.div>
           <motion.div
@@ -189,6 +195,7 @@ const Transition = ({ children }) => {
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/loading.webp"}
               layout="fill"
+              alt="hydroshark loader"
             />
           </motion.div>
           <motion.div
@@ -207,6 +214,7 @@ const Transition = ({ children }) => {
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/hydroshark_logo.webp"}
               layout="fill"
+              alt="hydroshark loader"
             />
           </motion.div>
         </motion.div>

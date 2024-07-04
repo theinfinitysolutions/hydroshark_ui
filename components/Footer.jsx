@@ -50,6 +50,7 @@ const Footer = () => {
           <Image
             src={process.env.NEXT_PUBLIC_API_URL + "/hydroshark.png"}
             layout="fill"
+            alt="hydroshark"
           />
         </div>
         <div className="w-6/12 lg:w-3/12 mt-8 lg:mt-0 flex flex-row justify-between z-20">

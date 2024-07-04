@@ -69,6 +69,7 @@ const Navbar = () => {
         <Image
           src={process.env.NEXT_PUBLIC_API_URL + "/hydroshark.png"}
           layout="fill"
+          alt="hydroshark"
         />
       </a>
       <div className=" hidden lg:flex flex-row w-4/12 justify-end z-50 border-b-[1px] border-[#181818] px-4">

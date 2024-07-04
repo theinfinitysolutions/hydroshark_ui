@@ -23,6 +23,7 @@ const ParallaxScroll = (props, ref) => {
               <Image
                 src={process.env.NEXT_PUBLIC_API_URL + `/img${item}.webp`}
                 layout="fill"
+                alt="hydroshark img carousel"
               />
             </div>
           );
@@ -35,6 +36,7 @@ const ParallaxScroll = (props, ref) => {
               <Image
                 src={process.env.NEXT_PUBLIC_API_URL + `/img${item}.webp`}
                 layout="fill"
+                alt="hydroshark img carousel"
               />
             </div>
           );

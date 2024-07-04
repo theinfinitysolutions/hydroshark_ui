@@ -79,6 +79,7 @@ const HomeSection3 = () => {
               <Image
                 src={process.env.NEXT_PUBLIC_API_URL + "/asset2.svg"}
                 layout="fill"
+                alt="hydroshark img"
               />
             </div>
           </div>
@@ -90,6 +91,7 @@ const HomeSection3 = () => {
               <Image
                 src={process.env.NEXT_PUBLIC_API_URL + "/asset3.png"}
                 layout="fill"
+                alt="hydroshark img"
               />
             </div>
           </div>
@@ -99,6 +101,7 @@ const HomeSection3 = () => {
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/asset7.png"}
               layout="fill"
+              alt="hydroshark img"
             />
           </div>
           <p className=" text-[2rem] lg:text-[3.5rem] font-semibold col-span-3 text-black">
@@ -108,6 +111,7 @@ const HomeSection3 = () => {
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/asset5.png"}
               layout="fill"
+              alt="hydroshark img"
             />
           </div>
         </div>
@@ -115,6 +119,7 @@ const HomeSection3 = () => {
           <Image
             src={process.env.NEXT_PUBLIC_API_URL + "/hydroshark.png"}
             layout="fill"
+            alt="hydroshark img"
           />
         </div>
         <div className=" absolute bottom-0 right-0 w-[80vw] h-[80vw] lg:h-[60vh] lg:w-[60vh]">
@@ -122,6 +127,7 @@ const HomeSection3 = () => {
             src={process.env.NEXT_PUBLIC_API_URL + "/curvedCans.png"}
             objectFit="cover"
             layout="fill"
+            alt="hydroshark img"
           />
         </div>
       </div>
