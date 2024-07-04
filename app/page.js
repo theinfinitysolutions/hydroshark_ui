@@ -2,12 +2,8 @@
 import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Transition from "@/components/Transition";
-import { motion, useScroll } from "framer-motion";
-import {
-  CanSceneTransition,
-  LandingSceneLemon,
-  ReplaceScene,
-} from "@/components/CanModel";
+import { motion } from "framer-motion";
+import { LandingSceneLemon, ReplaceScene } from "@/components/CanModel";
 import { flavorData } from "@/utils/consts";
 import RevealOnScroll from "@/components/RevealOnScroll";
 import { FaArrowLeft } from "react-icons/fa6";

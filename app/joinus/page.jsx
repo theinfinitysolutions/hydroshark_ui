@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 import { motion, useTransform, useScroll } from "framer-motion";
 import { GoArrowRight } from "react-icons/go";
@@ -21,7 +21,7 @@ const JoinUs = () => {
         />
       </div>
       <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:72px_72px]"></div>
-      <motion.div className=" h-[300vh] flex flex-row relative ">
+      <div className=" h-[300vh] flex flex-row relative ">
         <motion.div
           style={{ x: x }}
           ref={ref}
@@ -116,7 +116,7 @@ const JoinUs = () => {
             </div>
           </div>
         </motion.div>
-      </motion.div>
+      </div>
     </div>
   );
 };
