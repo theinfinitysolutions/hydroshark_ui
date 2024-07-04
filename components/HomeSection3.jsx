@@ -1,7 +1,6 @@
 "use client";
 import React, { useRef } from "react";
 import { Caveat } from "next/font/google";
-import { motion } from "framer-motion";
 import ParallaxScroll from "./ParallaxScroll";
 import Image from "next/image";
 

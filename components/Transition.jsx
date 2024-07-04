@@ -2,15 +2,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import {
-  LandingSceneLemon,
-  LandingSceneMango,
-  CanSceneTransition,
-  CanTransitionMango,
-  CanSceneTransitionRight,
-  CanSceneTransitionLeft,
-} from "./CanModel";
-import MarqeeLanding from "./MarqeeLanding";
 import { useGLTF } from "@react-three/drei";
 
 useGLTF.preload("/model_mango/model.gltf");
