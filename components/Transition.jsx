@@ -68,6 +68,7 @@ const Transition = ({ children }) => {
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/loading.webp"}
               layout="fill"
+              unoptimized={true}
               alt="hydroshark loader"
             />
           </motion.div>
@@ -87,6 +88,7 @@ const Transition = ({ children }) => {
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/loading1.webp"}
               layout="fill"
+              unoptimized={true}
               alt="hydroshark loader"
             />
           </motion.div>
@@ -106,6 +108,7 @@ const Transition = ({ children }) => {
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/loading.webp"}
               layout="fill"
+              unoptimized={true}
               alt="hydroshark loader"
             />
           </motion.div>
@@ -126,6 +129,7 @@ const Transition = ({ children }) => {
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/hydroshark_logo.webp"}
               layout="fill"
+              unoptimized={true}
               alt="hydroshark loader"
             />
           </motion.div>
@@ -157,6 +161,7 @@ const Transition = ({ children }) => {
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/loading.webp"}
               layout="fill"
+              unoptimized={true}
               alt="hydroshark loader"
             />
           </motion.div>
@@ -176,6 +181,7 @@ const Transition = ({ children }) => {
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/loading1.webp"}
               layout="fill"
+              unoptimized={true}
               alt="hydroshark loader"
             />
           </motion.div>
@@ -195,6 +201,7 @@ const Transition = ({ children }) => {
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/loading.webp"}
               layout="fill"
+              unoptimized={true}
               alt="hydroshark loader"
             />
           </motion.div>
@@ -214,6 +221,7 @@ const Transition = ({ children }) => {
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/hydroshark_logo.webp"}
               layout="fill"
+              unoptimized={true}
               alt="hydroshark loader"
             />
           </motion.div>
