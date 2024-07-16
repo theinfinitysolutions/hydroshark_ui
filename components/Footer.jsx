@@ -3,7 +3,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FaInstagram } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
+import { FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import { FaFacebook } from "react-icons/fa";
 import { AiOutlineYoutube } from "react-icons/ai";
 
@@ -77,17 +77,28 @@ const Footer = () => {
             ))}
           </div>
         </div>
-        <div className="flex flex-row w-4/12 lg:w-1/12 mt-8 lg:mt-0 justify-between items-center">
-          <a onClick={() => {}}>
+        <div className="flex flex-row w-4/12 lg:w-1/12 mt-8 lg:mt-0 z-20 justify-between items-center">
+          <a
+            href={
+              "https://www.instagram.com/_hydroshark_beverages/?locale=bz-hans&hl=am-et"
+            }
+            target="_blank"
+          >
             <FaInstagram className="text-[#DEE2E6] text-base" />
           </a>
           <a onClick={() => {}}>
             <FaXTwitter className="text-[#DEE2E6] text-base" />
           </a>
-          <a onClick={() => {}}>
-            <FaFacebook className="text-[#DEE2E6] text-base" />
+          <a
+            href={"https://www.linkedin.com/in/kaushlendra-goyal-405674272/"}
+            target="_blank"
+          >
+            <FaLinkedin className="text-[#DEE2E6] text-base" />
           </a>
-          <a onClick={() => {}}>
+          <a
+            href="https://www.youtube.com/channel/UC3urYQuJgMUJlPYW3hzXbpg"
+            target="_blank"
+          >
             <AiOutlineYoutube className="text-[#DEE2E6] text-base" />
           </a>
         </div>

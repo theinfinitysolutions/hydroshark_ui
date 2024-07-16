@@ -70,7 +70,7 @@ const Transition = ({ children }) => {
               layout="fill"
               alt="hydroshark loader"
               loading={"eager"}
-              fetchpriority="high"
+              fetchPriority="high"
             />
           </motion.div>
           <motion.div
@@ -164,7 +164,7 @@ const Transition = ({ children }) => {
               layout="fill"
               alt="hydroshark loader"
               loading={"eager"}
-              fetchpriority="high"
+              fetchPriority="high"
             />
           </motion.div>
           <motion.div

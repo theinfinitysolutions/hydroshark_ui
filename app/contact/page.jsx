@@ -12,7 +12,6 @@ const ContactUs = () => {
   const { register, handleSubmit, reset, resetField } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
     emailjs
       .send(
         "service_vb4wq9q",
@@ -73,6 +72,7 @@ const ContactUs = () => {
                   Name
                 </label>
                 <input
+                  itemProp="name"
                   className={`${input}`}
                   type="text"
                   id="name"
@@ -86,6 +86,7 @@ const ContactUs = () => {
                   Query
                 </label>
                 <input
+                  itemProp="query"
                   className={`${input}`}
                   type="text"
                   id="query"
@@ -100,6 +101,7 @@ const ContactUs = () => {
                 Email
               </label>
               <input
+                itemProp="email"
                 className={`${input}`}
                 type="email"
                 id="email"
@@ -113,6 +115,7 @@ const ContactUs = () => {
                 Phone Number
               </label>
               <input
+                itemProp="phoneNumber"
                 className={`${input}`}
                 type="phoneNumber"
                 id="phoneNumber"
@@ -126,6 +129,7 @@ const ContactUs = () => {
                 Message
               </label>
               <textarea
+                itemProp="message"
                 className={`${input}`}
                 id="message"
                 placeholder="Message"
