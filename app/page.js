@@ -234,9 +234,9 @@ export default function Home() {
 
         <div className="flex flex-col lg:flex-row h-[90vh] w-full px-[5vw] overflow-hidden pt-[5vh] relative ">
           <div className="flex flex-col w-full lg:w-1/2 items-start">
-            <h2 className=" text-black text-[2.5rem]  lg:text-[4rem] 2xl:text-[5rem] font-bold leading-[2.5rem] lg:leading-[4rem] 2xl:leading-[5rem]">
+            <h1 className=" text-black text-[2.5rem]  lg:text-[4rem] 2xl:text-[5rem] font-bold leading-[2.5rem] lg:leading-[4rem] 2xl:leading-[5rem]">
               {"India's First Carbonated Hydration Drink"}
-            </h2>
+            </h1>
             <div className=" hidden  w-7/12 lg:flex flex-col mt-[5vh]">
               <div className="flex flex-row justify-between items-center">
                 <p className=" text-black text-base">Energy</p>
@@ -443,7 +443,7 @@ export default function Home() {
             </div>
             <div className="flex flex-col items-center lg:items-start w-full mt-8 lg:mt-0 lg:w-1/3">
               <p className=" text-xs text-[#5C6262]">
-                EXPERIANCE HYDRATION WITH OUR{" "}
+                EXPERIENCE HYDRATION WITH OUR{" "}
                 <span
                   className={` font-semibold ${
                     flavorData[currentFlavour].id == 1

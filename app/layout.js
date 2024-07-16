@@ -28,9 +28,10 @@ export default function RootLayout({ children }) {
         />
         <meta
           name="keywords"
-          content="hydroshark, hydration, drink, carbonated, india, healthy, lifestyle, choice , water, soda, sparkling, water, health, fitness, wellness, beverage, energy, athletics, workout, hydration drinks, prime, gatorade"
+          content="hydroshark, hydration, electrolytes, vitamins, healthy, energy drink, low sugar, energy, prime, gatorade, hell energy, cocacola, water, bisleri, drinks, carbonated, india, healthy, lifestyle, choice , water, soda, sparkling, water, health, fitness, wellness, beverage, energy, athletics, workout, hydration drinks, prime, gatorade"
         />
         <title>{"Hydroshark - India's First Carbonated Hydration Drink"}</title>
+        <link rel="canonical" href="//www.hydroshark.in/" />
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         <link
           rel="apple-touch-icon"
