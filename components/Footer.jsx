@@ -95,10 +95,7 @@ const Footer = () => {
           >
             <FaLinkedin className="text-[#DEE2E6] text-base" />
           </a>
-          <a
-            href="https://www.youtube.com/channel/UC3urYQuJgMUJlPYW3hzXbpg"
-            target="_blank"
-          >
+          <a href="https://www.youtube.com/@_hydroshark_" target="_blank">
             <AiOutlineYoutube className="text-[#DEE2E6] text-base" />
           </a>
         </div>
