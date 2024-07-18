@@ -20,10 +20,10 @@ const navItems = [
     title: "Events",
     path: "/events",
   },
-  {
-    title: "Media",
-    path: "/media",
-  },
+  // {
+  //   title: "Media",
+  //   path: "/media",
+  // },
 ];
 
 const altItems = [
@@ -35,10 +35,10 @@ const altItems = [
     title: "Contact",
     path: "/contact",
   },
-  {
-    title: "Shop",
-    path: "/shop",
-  },
+  // {
+  //   title: "Shop",
+  //   path: "/shop",
+  // },
 ];
 
 const Footer = () => {
