@@ -194,7 +194,7 @@ const Explore = () => {
               </div>
               <div className=" relative h-full w-1/2  ">
                 <Image
-                  src={process.env.NEXT_PUBLIC_API_URL + "/lemoncan.png"}
+                  src={process.env.NEXT_PUBLIC_API_URL + "/lemoncan.webp"}
                   layout="fill"
                   objectFit="contain"
                   alt="hydrodshark lemon can"
@@ -216,7 +216,7 @@ const Explore = () => {
               </div>
               <div className=" relative h-full w-1/2  ">
                 <Image
-                  src={process.env.NEXT_PUBLIC_API_URL + "/mangocan.png"}
+                  src={process.env.NEXT_PUBLIC_API_URL + "/mangocan.webp"}
                   layout="fill"
                   objectFit="contain"
                   alt="hydrodshark mango can"
