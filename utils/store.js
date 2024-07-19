@@ -18,4 +18,10 @@ export const useStore = create((set) => ({
   },
   setShowProductModal: (showProductModal) =>
     set((state) => (state.showProductModal = showProductModal)),
+
+  showAuthModal: {
+    show: false,
+  },
+  setShowAuthModal: (showAuthModal) =>
+    set((state) => (state.showAuthModal = showAuthModal)),
 }));
