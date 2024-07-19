@@ -8,6 +8,7 @@ import CartSidebar from "@/components/CartSidebar";
 import ViewProductModal from "@/components/ViewProductModal";
 import Head from "next/head";
 import "normalize.css/normalize.css";
+import AuthModal from "@/components/AuthModal";
 
 const local = localFont({ src: "../public/ITCAvantGardePro-Md.otf" });
 
@@ -61,6 +62,7 @@ export default function RootLayout({ children }) {
         <MobileSidebar />
         <CartSidebar />
         <ViewProductModal />
+        <AuthModal />
       </body>
     </html>
   );

@@ -60,7 +60,13 @@ const altItems = [
 const Navbar = () => {
   const router = useRouter();
   const pathname = usePathname();
-  const { setShow, cartSidebar, setCartSidebar } = useStore();
+  const {
+    setShow,
+    cartSidebar,
+    setCartSidebar,
+    showAuthModal,
+    setShowAuthModal,
+  } = useStore();
   const [currentHover, setCurrentHover] = useState("");
   const [currentHoverSub, setCurrentHoverSub] = useState(0);
 
@@ -118,7 +124,12 @@ const Navbar = () => {
         >
           <PiCoinsFill className=" text-[#181818] text-2xl" />
         </a>
-        <a className=" py-2 mx-4 cursor-pointer">
+        <a
+          onClick={() => {
+            setShowAuthModal({ show: true });
+          }}
+          className=" py-2 mx-4 cursor-pointer"
+        >
           <FaRegCircleUser className=" text-[#181818] text-xl" />
         </a>
         <a
