@@ -57,3 +57,61 @@ export const whyUs = [
     image: "/icons6.png",
   },
 ];
+
+export const products = [
+  {
+    title: "LEMON",
+    description:
+      "The Lemon flavor is a classic, with a zesty and refreshing taste that is perfect for a hot summer day.",
+    id: 1,
+    longdescription:
+      "With Hydroshark Lemon, experience the invigorating burst of citrus that not only quenches your thirst but also revitalizes your mind and body. Enjoy the crisp, clean taste that hydrates you with essential vitamins, minerals, and electrolytes, ensuring you stay at your best all day long.",
+    quanity: "250ML",
+    image: "/lemoncan.webp",
+    ingredients:
+      " Carbonated water, Sugar, Stevia (INS 960), Acidity Regulator (INS 330), Class II Preservative (INS 211), Ascorbic Acid (Vit C), Niacin (Vit B3), Lemon Juice (1.8%), Mineral Salts, Vitamin premix (B2, B6, B12)",
+    price: 99,
+    type: "bottle",
+  },
+  {
+    title: "MANGO",
+    description:
+      "The Mango flavor is a tropical delight, with a sweet and tangy taste that is sure to please your taste buds.",
+    id: 2,
+    longdescription:
+      "Hydroshark Mango offers more than just great taste; it provides a powerful blend of vitamins, minerals, and electrolytes designed for ultimate hydration and energy. Embrace the vibrant, fruity experience that not only quenches your thirst but also lifts your spirits and boosts your vitality.",
+    quanity: "250ML",
+    image: "/mangocan.webp",
+    ingredients:
+      "Carbonated water, Sugar, Stevia (INS 960), Acidity Regulators (INS 330, INS 331), Class II Preservative (INS 211), Ascorbic Acid (Vit C), Niacin (Vit B3), LCLT (6 mg/ 100 ml), Inositol (2 mg / 100 ml), Mix Fruit Juice from Pulp (2%) (Mango, Guava, Apple, Passion Fruit, Apricot, Peach, Lemon), Mineral Salts, Stabiliser (INS415), Vitamin Premix (B2, B6, B12)",
+    price: 99,
+    type: "bottle",
+  },
+  {
+    title: "GYM T-SHIRT",
+    description: "HYDROSHARK",
+    id: 3,
+    quanity: "1 PC",
+    image: "/tshirt.png",
+    price: 499,
+    type: "merch",
+  },
+  {
+    title: "LEMON CRATE",
+    description: "HYDROSHARK",
+    id: 4,
+    quanity: "250ML X 12",
+    image: "/cratelemon.png",
+    price: 499,
+    type: "crate",
+  },
+  {
+    title: "MANGO CRATE",
+    description: "HYDROSHARK",
+    id: 5,
+    quanity: "250ML X 12",
+    image: "/cratemango.png",
+    price: 1199,
+    type: "crate",
+  },
+];
