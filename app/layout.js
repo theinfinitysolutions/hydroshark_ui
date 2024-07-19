@@ -4,6 +4,8 @@ import localFont from "next/font/local";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import MobileSidebar from "@/components/MobileSidebar";
+import CartSidebar from "@/components/CartSidebar";
+import ViewProductModal from "@/components/ViewProductModal";
 import Head from "next/head";
 import "normalize.css/normalize.css";
 
@@ -57,6 +59,8 @@ export default function RootLayout({ children }) {
         {children}
         <Footer />
         <MobileSidebar />
+        <CartSidebar />
+        <ViewProductModal />
       </body>
     </html>
   );
