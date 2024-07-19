@@ -43,13 +43,21 @@ const ViewProductModal = () => {
           </button>
         </div>
         <div className="flex flex-row justify-between items-center h-full w-full">
-          <div className=" w-7/12 h-full flex flex-col bg-[#f0f2f4] relative ">
+          <div className=" w-7/12 h-full flex flex-col bg-[#f0f2f4] items-center justify-center relative ">
             <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:72px_72px]"></div>
             {selectedProduct.type === "bottle" ? (
               <ReplaceScene
                 scene={selectedProduct.title.toLowerCase()}
                 orbital={true}
               />
+            ) : selectedProduct.type == "crate" ? (
+              <div className=" flex h-[40vh] w-full relative">
+                <Image src={selectedProduct.image} layout="fill" className="" />
+              </div>
+            ) : selectedProduct.type == "merch" ? (
+              <div className=" flex h-[40vh] w-[40vh] relative">
+                <Image src={selectedProduct.image} layout="fill" className="" />
+              </div>
             ) : null}
           </div>
           <div className=" w-5/12 h-full bg-[#DEE2E6] flex flex-col items-start px-8 justify-center  ">
@@ -57,18 +65,18 @@ const ViewProductModal = () => {
               <div className=" flex flex-col items-start">
                 <p className=" text-black text-sm">HYDROSHARK</p>
                 <div
-                  className={`text-[2.5rem] font-[500] ${
+                  className={`text-[2rem] font-[500] ${
                     selectedProduct.title == "LEMON"
                       ? "text-[#308918]"
                       : selectedProduct.title == "MANGO"
                       ? "text-[#dfd434]"
-                      : null
+                      : "text-black"
                   }`}
                 >
                   {selectedProduct.title}
                 </div>
               </div>
-              <div className=" text-[1.5rem] font-[500] mb-2 text-black">
+              <div className=" text-[1.25rem] font-[500] mb-2 text-black">
                 {`₹ ${selectedProduct.price}`}
               </div>
             </div>
@@ -76,23 +84,24 @@ const ViewProductModal = () => {
               {selectedProduct.longdescription}
             </div>
 
-            <div className="flex flex-row w-full justify-between items-center mt-8">
-              <div className=" flex flex-col w-1/3  items-center justify-center p-2">
-                <p className=" text-xs text-cyan-600">Calories</p>
-                <p className=" text-lg lg:text-xl text-black">{"99 Kcal"}</p>
+            {selectedProduct.type != "merch" ? (
+              <div className="flex flex-row w-full justify-between items-center mt-8">
+                <div className=" flex flex-col w-1/3  items-center justify-center p-2">
+                  <p className=" text-xs text-cyan-600">Calories</p>
+                  <p className=" text-lg lg:text-xl text-black">{"99 Kcal"}</p>
+                </div>
+                <div className=" flex flex-col w-1/3  items-center justify-center p-2">
+                  <p className=" text-xs text-cyan-600">Caffeine</p>
+                  <p className="  text-lg lg:text-xl text-black">{"0 mg"}</p>
+                </div>
+                <div className=" flex flex-col w-1/3  items-center justify-center p-2">
+                  <p className=" text-xs text-cyan-600">Vitamins</p>
+                  <p className="  text-lg lg:text-xl text-black">
+                    {"B - 2,6,12"}
+                  </p>
+                </div>
               </div>
-              <div className=" flex flex-col w-1/3  items-center justify-center p-2">
-                <p className=" text-xs text-cyan-600">Caffeine</p>
-                <p className="  text-lg lg:text-xl text-black">{"0 mg"}</p>
-              </div>
-              <div className=" flex flex-col w-1/3  items-center justify-center p-2">
-                <p className=" text-xs text-cyan-600">Vitamins</p>
-                <p className="  text-lg lg:text-xl text-black">
-                  {"B - 2,6,12"}
-                </p>
-              </div>
-            </div>
-
+            ) : null}
             <div className="flex flex-row items-center justify-between gap-x-4 w-full  mt-8">
               <div className=" flex flex-row items-center justify-between border-[1px] p-2 border-black w-1/2">
                 <a className=" text-black text-sm">
