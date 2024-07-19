@@ -18,6 +18,7 @@ module.exports = {
         marquee: "marquee 20s linear infinite",
         marqueebanner: "marquee 5s linear infinite",
         slideUp: "slideUp 2s ease-in-out forwards",
+        slideUpfast: "slideUpFast 500ms ease-in-out forwards",
         rotate: "rotate 8s linear infinite",
         bounce: "bounce1 5s infinite",
         bounceX: "bounceX 3s infinite",
@@ -29,6 +30,11 @@ module.exports = {
         },
         slideUp: {
           "0%": { opacity: 0.5, transform: "translateY(5vh)" },
+
+          "100%": { opacity: 1, transform: "translateY(0)" },
+        },
+        slideUpFast: {
+          "0%": { opacity: 0.5, transform: "translateY(2.5vh)" },
 
           "100%": { opacity: 1, transform: "translateY(0)" },
         },
