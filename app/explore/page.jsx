@@ -188,7 +188,7 @@ const Explore = () => {
                 </h2>
                 <p className=" text-[#dee2e6]/80 text-sm lg:text-base mt-4">
                   {
-                    "Hydroshark Mango offers more than just great taste; it provides a powerful blend of vitamins, minerals, and electrolytes designed for ultimate hydration and energy. Embrace the vibrant, fruity experience that not only quenches your thirst but also lifts your spirits and boosts your vitality."
+                    "With Hydroshark Lemon, experience the invigorating burst of citrus that not only quenches your thirst but also revitalizes your mind and body. Enjoy the crisp, clean taste that hydrates you with essential vitamins, minerals, and electrolytes, ensuring you stay at your best all day long."
                   }
                 </p>
               </div>
