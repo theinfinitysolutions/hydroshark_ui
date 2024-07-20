@@ -17,9 +17,9 @@ const SignUp = () => {
 
   return (
     <div className="flex flex-col w-full items-center px-4">
-      <div className="text-[1.5rem] font-[500] text-black">Sign Up</div>
+      <div className="text-[1.5rem] font-[500] text-black">SignUp</div>
       <form
-        className="flex flex-col w-full items-center"
+        className="flex flex-col w-full items-center mt-4"
         onSubmit={handleSubmit((data) => {
           console.log(data);
           reset();
@@ -44,6 +44,15 @@ const SignUp = () => {
           <span className="text-red-500 text-sm">{errors.email.message}</span>
         )}
         <input
+          type="text"
+          placeholder="Phone"
+          {...register("phone", { required: "Phone is required" })}
+          className="border-[1px] border-black  px-2 py-2 rounded-sm my-2 w-full"
+        />
+        {errors.phone && (
+          <span className="text-red-500 text-sm">{errors.phone.message}</span>
+        )}
+        <input
           type="password"
           placeholder="Password"
           {...register("password", { required: "Password is required" })}
@@ -54,6 +63,7 @@ const SignUp = () => {
             {errors.password.message}
           </span>
         )}
+
         <button type="submit" className="bg-black text-white px-4 py-2 mt-2">
           SignUp
         </button>

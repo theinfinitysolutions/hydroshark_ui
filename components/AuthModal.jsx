@@ -54,6 +54,18 @@ const AuthModal = () => {
             }}
           />
         )}
+
+        <div className="text-black text-sm my-4">
+          {showSignup ? "Already have an account?" : "Don't have an account?"}
+          <span
+            className="text-blue-500 cursor-pointer ml-1"
+            onClick={() => {
+              setShowSignup(!showSignup);
+            }}
+          >
+            {showSignup ? "Login" : "Sign Up"}
+          </span>
+        </div>
       </div>
     </div>
   );

@@ -51,18 +51,6 @@ const Login = ({ onSignUp }) => {
         <button type="submit" className="bg-black text-white px-4 py-2 mt-2">
           Login
         </button>
-
-        <p className="text-black mt-4 text-sm">
-          Don't have an account?{" "}
-          <a
-            onClick={() => {
-              onSignUp();
-            }}
-            className="text-[#408289] cursor-pointer"
-          >
-            SignUp
-          </a>
-        </p>
       </form>
     </div>
   );
