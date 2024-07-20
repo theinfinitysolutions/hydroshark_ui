@@ -70,6 +70,10 @@ const Navbar = () => {
   const [currentHover, setCurrentHover] = useState("");
   const [currentHoverSub, setCurrentHoverSub] = useState(0);
 
+  if (pathname.includes("/admin")) {
+    return null;
+  }
+
   return (
     <div
       onMouseLeave={() => {

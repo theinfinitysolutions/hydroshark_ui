@@ -6,6 +6,7 @@ import { FaInstagram } from "react-icons/fa";
 import { FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import { FaFacebook } from "react-icons/fa";
 import { AiOutlineYoutube } from "react-icons/ai";
+import { usePathname } from "next/navigation";
 
 const navItems = [
   {
@@ -42,6 +43,12 @@ const altItems = [
 ];
 
 const Footer = () => {
+  const pathname = usePathname();
+
+  if (pathname.includes("/admin")) {
+    return null;
+  }
+
   return (
     <div className=" flex flex-col w-[100vw] max-w-screen h-full items-center overflow-hidden bg-[#181818] py-8 z-40 relative">
       <div className="absolute inset-0 h-full w-screen bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:72px_72px]"></div>
