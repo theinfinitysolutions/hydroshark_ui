@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { IoCloseOutline } from "react-icons/io5";
 import Login from "./AuthComponents/Login";
-import Signup from "./AuthComponents/Signup";
+import Signup from "./AuthComponents/SignUp";
 import { useStore } from "@/utils/store";
 import Image from "next/image";
 
