@@ -5,9 +5,6 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 
 const ProductCTA = (props) => {
-  useEffect(() => {
-    console.log("ProductCTA props", props);
-  }, [props]);
   return (
     <div
       className="w-full flex flex-col items-center justify-center p-8
