@@ -14,7 +14,7 @@ const ProductSectionHome = () => {
         />
       </div> */}
 
-      <div className=" w-[10vh] h-[10vh] right-[10vh] animate-rotate top-[10vh] absolute z-0">
+      {/* <div className=" w-[10vh] h-[10vh] right-[10vh] animate-rotate top-[10vh] absolute z-0">
         <Image
           src={"/bgasset15.png"}
           layout="fill"
@@ -30,14 +30,14 @@ const ProductSectionHome = () => {
           objectFit="cover"
           alt="hydroshark img carousel"
         />
-      </div>
+      </div> */}
       <p className=" absolute top-[30vh] text-[5rem] lg:text-[14rem] text-black/20 leading-[5rem] lg:leading-[13rem]">
         HYDROSHARK
       </p>
       <div className=" flex flex-col items-center w-full z-20">
-        <h2 className=" text-base text-[#408289]"> </h2>
-        <p className=" text-[2rem] text-center font-bold text-[#181818]">
-          {"India's First Carbonated Hydration Drink"}
+        <h2 className=" text-base text-[#408289]">Hydroshark Products</h2>
+        <p className=" text-[2.5rem] text-center font-bold text-[#181818]">
+          {"Hydrate and Gear Up: Your Ultimate Refresh Collection"}
         </p>
       </div>
       <div className="flex flex-row justify-around items-center w-full z-40 mt-[10vh]">

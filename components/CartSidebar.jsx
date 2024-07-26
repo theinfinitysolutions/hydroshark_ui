@@ -95,11 +95,10 @@ export default function CartSidebar() {
                 return (
                   <CartCard
                     key={index}
-                    name={item.name}
-                    price={item.price}
-                    validity={item.validity || null}
                     id={item.id}
-                    experience={item.experience}
+                    title={item.title}
+                    price={item.price}
+                    image={item.image}
                     onDelete={() => {
                       handleDelete(item);
                     }}
