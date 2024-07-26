@@ -115,3 +115,57 @@ export const products = [
     type: "crate",
   },
 ];
+
+export const testimonials = [
+  {
+    name: "Rahul",
+    description:
+      "I love the taste of Hydroshark. It’s refreshing and keeps me energized throughout the day. I feel more focused and active since I started drinking it.",
+    image: "/rahul.png",
+  },
+  {
+    name: "Anjali",
+    description:
+      "Hydroshark has become my go-to drink. The Mango flavor is my favorite. It's delicious and keeps me hydrated during my workouts.",
+    image: "/anjali.png",
+  },
+  {
+    name: "Sandeep",
+    description:
+      "I’m a big fan of Hydroshark. The Lemon flavor is so refreshing and tasty. It's the perfect drink to beat the heat and stay hydrated.",
+    image: "/sandeep.png",
+  },
+  {
+    name: "Neha",
+    description:
+      "Hydroshark is my daily drink. It's delicious and keeps me hydrated all day long. I love the Mango flavor. It's so refreshing and energizing.",
+    image: "/neha.png",
+  },
+];
+
+export const comments = [
+  {
+    name: "Rahul",
+    description:
+      "I love the taste of Hydroshark. It's refreshing and keeps me energized throughout the day. I feel more focused and active since I started drinking it.",
+    rating: 3,
+  },
+  {
+    name: "Anjali",
+    description:
+      "Hydroshark has become my go-to drink. The Mango flavor is my favorite. It's delicious and keeps me hydrated during my workouts.",
+    rating: 5,
+  },
+  {
+    name: "Sandeep",
+    description:
+      "I'm a big fan of Hydroshark. The Lemon flavor is so refreshing and tasty. It's the perfect drink to beat the heat and stay hydrated.",
+    rating: 4,
+  },
+  {
+    name: "Neha",
+    description:
+      "Hydroshark is my daily drink. It's delicious and keeps me hydrated all day long. I love the Mango flavor. It's so refreshing and energizing.",
+    rating: 5,
+  },
+];

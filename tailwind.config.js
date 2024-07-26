@@ -22,6 +22,7 @@ module.exports = {
         rotate: "rotate 8s linear infinite",
         bounce: "bounce1 5s infinite",
         bounceX: "bounceX 3s infinite",
+        "slide-left": "slide-left 8s linear infinite",
       },
       keyframes: {
         marquee: {
@@ -70,6 +71,10 @@ module.exports = {
           "100%": {
             transform: "translateX(0)",
           },
+        },
+        "slide-left": {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-100%)" },
         },
       },
     },
