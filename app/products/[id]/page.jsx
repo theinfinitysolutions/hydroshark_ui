@@ -15,6 +15,7 @@ import { MdOutlineHealthAndSafety } from "react-icons/md";
 import { IoMdStar } from "react-icons/io";
 import { LuThumbsUp } from "react-icons/lu";
 import { LuThumbsDown } from "react-icons/lu";
+import ProductCTA from "@/components/ProductCTA";
 
 const ratings = [
   {
@@ -103,7 +104,12 @@ const ViewProduct = () => {
               />
             ) : selectedProduct?.type == "crate" ? (
               <div className=" flex h-[40vh] w-full relative">
-                <Image src={selectedProduct.image} layout="fill" className="" />
+                <Image
+                  src={selectedProduct.image}
+                  layout="fill"
+                  objectFit="contain"
+                  className=""
+                />
               </div>
             ) : selectedProduct?.type == "merch" ? (
               <div className=" flex h-[40vh] w-[40vh] relative">
@@ -121,7 +127,7 @@ const ViewProduct = () => {
                       ? "text-[#308918]"
                       : selectedProduct?.title == "MANGO"
                       ? "text-[#dfd434]"
-                      : "text-black"
+                      : "text-white"
                   }`}
                 >
                   {selectedProduct?.title}
@@ -294,9 +300,9 @@ const ViewProduct = () => {
               <p className=" mt-1">{"View More"}</p>
             </button>
           </div>
-          <div className=" "></div>
         </div>
       </div>
+      <ProductCTA {...selectedProduct} />
     </div>
   );
 };
