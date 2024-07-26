@@ -43,7 +43,11 @@ const ProductSectionHome = () => {
       <div className="flex flex-row justify-around items-center w-full z-40 mt-[10vh]">
         <div className=" flex flex-col items-center  w-[20%]">
           <div className=" flex h-[20vh] w-[20vh] relative">
-            <Image src={"/tshirt.png"} layout="fill" objectFit="contain" />
+            <Image
+              src={process.env.NEXT_PUBLIC_API_URL + "/tshirt.png"}
+              layout="fill"
+              objectFit="contain"
+            />
           </div>
           <p className=" text-black text-sm mt-4">HYDROSHARK</p>
           <p className={` text-[1.5rem] font-semibold text-[#f26c4f] `}>
@@ -56,7 +60,11 @@ const ProductSectionHome = () => {
         </div>
         <div className=" flex flex-col items-center  w-[20%]">
           <div className=" flex h-[40vh] w-[20vh] relative">
-            <Image src={"/lemoncan.webp"} layout="fill" objectFit="contain" />
+            <Image
+              src={process.env.NEXT_PUBLIC_API_URL + "/lemoncan.webp"}
+              layout="fill"
+              objectFit="contain"
+            />
           </div>
           <p className=" text-black text-sm mt-4">HYDROSHARK</p>
           <p className={` text-[2rem]  font-semibold text-[#308918] `}>
@@ -69,7 +77,11 @@ const ProductSectionHome = () => {
         </div>
         <div className=" flex flex-col items-center  w-[20%]">
           <div className=" flex h-[40vh] w-[20vh] relative">
-            <Image src={"/mangocan.webp"} layout="fill" objectFit="contain" />
+            <Image
+              src={process.env.NEXT_PUBLIC_API_URL + "/mangocan.webp"}
+              layout="fill"
+              objectFit="contain"
+            />
           </div>
           <p className=" text-black text-sm mt-4">HYDROSHARK</p>
           <p className={` text-[2rem] font-semibold text-[#dfd434] `}>
@@ -82,7 +94,11 @@ const ProductSectionHome = () => {
         </div>
         <div className=" flex flex-col items-center  w-[20%]">
           <div className=" flex h-[20vh] w-full relative">
-            <Image src={"/cratelemon.png"} layout="fill" objectFit="contain" />
+            <Image
+              src={process.env.NEXT_PUBLIC_API_URL + "/cratelemon.png"}
+              layout="fill"
+              objectFit="contain"
+            />
           </div>
           <p className=" text-black text-sm mt-4">HYDROSHARK</p>
           <p className={` text-[1.5rem] font-semibold  text-[#308918] `}>

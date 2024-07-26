@@ -15,7 +15,11 @@ const ProductCTA = (props) => {
     >
       <div className=" flex flex-row w-full justify-center ">
         <div className=" flex w-[20vh] h-[20vh] relative">
-          <Image src={props.image} layout="fill" objectFit="contain" />
+          <Image
+            src={process.env.NEXT_PUBLIC_API_URL + props.image}
+            layout="fill"
+            objectFit="contain"
+          />
         </div>
         <div className=" flex flex-col items-start justify-center ml-[5vw] w-[40vw]">
           <div className=" w-full flex flex-row items-center justify-between">

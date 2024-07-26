@@ -52,11 +52,19 @@ const ViewProductModal = () => {
               />
             ) : selectedProduct.type == "crate" ? (
               <div className=" flex h-[40vh] w-full relative">
-                <Image src={selectedProduct.image} layout="fill" className="" />
+                <Image
+                  src={process.env.NEXT_PUBLIC_API_URL + selectedProduct.image}
+                  layout="fill"
+                  className=""
+                />
               </div>
             ) : selectedProduct.type == "merch" ? (
               <div className=" flex h-[40vh] w-[40vh] relative">
-                <Image src={selectedProduct.image} layout="fill" className="" />
+                <Image
+                  src={process.env.NEXT_PUBLIC_API_URL + selectedProduct.image}
+                  layout="fill"
+                  className=""
+                />
               </div>
             ) : null}
           </div>
