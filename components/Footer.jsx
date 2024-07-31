@@ -110,7 +110,7 @@ const Footer = () => {
           </a>
         </div>
       </div>
-      <div className="w-full max-w-screen overflow-hidden flex mt- mb-8 flex-col items-center lg:-mt-8">
+      <div className="w-full max-w-screen overflow-hidden flex mt-8 mb-8 flex-col items-center lg:mt-0">
         <p
           style={{
             transform: `perspective(1000px) rotateX(45deg)`,
