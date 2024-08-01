@@ -9,6 +9,7 @@ import ViewProductModal from "@/components/ViewProductModal";
 import Head from "next/head";
 import "normalize.css/normalize.css";
 import AuthModal from "@/components/AuthModal";
+import Salesiq from "@/components/salesiq";
 
 const local = localFont({ src: "../public/ITCAvantGardePro-Md.otf" });
 
@@ -63,6 +64,12 @@ export default function RootLayout({ children }) {
         <CartSidebar />
         <ViewProductModal />
         <AuthModal />
+        <Salesiq
+          widgetCode={
+            "siq58c951d9aecb52ac7791205cd21142707ca89ec5d8df06da9ea518ad779cd2697d6da2850ce51517e23afa317171057a"
+          }
+          domain={"https://salesiq.zohopublic.in/widget"}
+        />
       </body>
     </html>
   );

@@ -26,7 +26,7 @@ const AuthModal = () => {
         isOpen ? "fixed" : "hidden"
       } z-50 inset-0 flex items-center justify-center bg-black/10`}
     >
-      <div className="bg-white w-3/12 min-h-[40vh] relative overflow-y-scroll  flex flex-col items-center shadow-xl py-[5vh]">
+      <div className="bg-white w-5/12 min-h-[40vh] relative overflow-y-scroll  flex flex-col items-center shadow-xl py-[5vh]">
         <div className=" absolute right-4 top-4">
           <button
             onClick={() => {
@@ -45,15 +45,17 @@ const AuthModal = () => {
           />
         </div>
         <p className="text-3xl text-black my-4 font-bold">Hydroshark</p>
-        {showSignup ? (
-          <Signup />
-        ) : (
-          <Login
-            onSignUp={() => {
-              setShowSignup(true);
-            }}
-          />
-        )}
+        <div className=" w-8/12 flex flex-col items-center">
+          {showSignup ? (
+            <Signup />
+          ) : (
+            <Login
+              onSignUp={() => {
+                setShowSignup(true);
+              }}
+            />
+          )}
+        </div>
 
         <div className="text-black text-sm my-4">
           {showSignup ? "Already have an account?" : "Don't have an account?"}

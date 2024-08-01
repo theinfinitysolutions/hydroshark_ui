@@ -44,8 +44,8 @@ const ProductSectionHome1 = () => {
           <h2 className=" text-lg lg:text-2xl text-center lg:text-start text-[#45dced]">
             Hydroshark Products
           </h2>
-          <h2 className=" text-white text-4xl lg:text-[4.5rem] font-semibold text-center lg:text-start lg:leading-[4.25rem] text-pretty lg:mt-4">
-            {"GEAR FOR NEXT ADVENTURE WITH HYDROSHARK"}
+          <h2 className=" text-white text-4xl lg:text-[4rem] font-semibold text-center lg:text-start lg:leading-[3.85rem] text-pretty lg:mt-4">
+            {"GEAR UP FOR NEXT ADVENTURE WITH HYDROSHARK"}
           </h2>
           <div className=" flex flex-col  text-center lg:text-start mt-4">
             <ShopNowButton />
