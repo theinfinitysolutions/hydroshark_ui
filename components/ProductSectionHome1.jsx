@@ -37,10 +37,10 @@ const items = [
 
 const ProductSectionHome1 = () => {
   return (
-    <div className=" flex flex-col items-center justify-center bg-black  overflow-hidden relative w-full h-full py-[5vh] lg:py-0 lg:h-screen">
+    <div className=" flex flex-col items-center justify-center bg-black  overflow-hidden relative w-full h-full py-[5vh] lg:h-full lg:pt-[10vh] lg:pb-[5vh]">
       <div className="absolute z-0 inset-0 h-full w-full bg-[linear-gradient(to_right,#ababab55_1px,transparent_1px),linear-gradient(to_bottom,#ababab55_1px,transparent_1px)] bg-[size:72px_72px]"></div>
       <div className=" flex flex-col lg:flex-row justify-between w-10/12 h-full z-20">
-        <div className=" flex flex-col items-center lg:items-start justify-center w-full lg:w-1/2 h-full">
+        <div className=" flex flex-col items-center lg:items-start justify-center w-full lg:w-1/2 h-[60vh]">
           <h2 className=" text-lg lg:text-2xl text-center lg:text-start text-[#45dced]">
             Hydroshark Products
           </h2>
