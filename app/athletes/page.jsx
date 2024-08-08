@@ -1,12 +1,17 @@
+"use client";
 import React from "react";
+import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import { Autoplay } from "swiper/modules";
 
 const Athletes = () => {
   return (
-    <div className="w-screen h-screen overflow-hidden relative bg-[#f0f2f4] flex flex-col justify-center z-30 items-center">
+    <div className="w-screen min-h-screen overflow-hidden relative bg-[#f0f2f4] flex flex-col justify-center z-30 items-center">
       <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:72px_72px]"></div>
-      {/* <div className=" flex flex-col items-center w-11/12 ">
-        <div className=" w-full bg-[#495057] z-20 h-[60vh] mt-[2.5vh] flex flex-row justify-between items-center px-[5vw]">
-          <div className=" h-[30vh] w-[30vh] relative">
+      <div className=" flex flex-col items-center w-11/12 ">
+        <div className=" w-full bg-[#495057] z-20 h-[40vh] mt-[2.5vh] flex flex-row justify-between items-center px-[5vw]">
+          <div className=" h-[25vh] w-[25vh] relative">
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/hydroshark.png"}
               layout="fill"
@@ -18,40 +23,58 @@ const Athletes = () => {
           </div>
         </div>
 
-        <div className=" h-[50vh] w-full flex flex-row justify-between items-center mt-[5vh]">
-          <div className=" w-6/12 h-[50vh] relative group">
-            <Image
-              src={process.env.NEXT_PUBLIC_API_URL + "/athlete1.jpeg"}
-              layout="fill"
-            />
-            <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-              <h3 className=" text-white text-4xl">{"Athlete 1"}</h3>
-              <p className=" text-white/80 text-base">Sport</p>
-            </div>
+        <div className=" h-[50vh] w-full z-30 flex flex-row justify-between  items-center bg-gradient-to-r from-[#000000] to-[#243b55]  mt-[5vh]">
+          <div className=" h-full w-[20vw] relative">
+            <Swiper
+              slidesPerView={1}
+              spaceBetween={30}
+              centeredSlides={true}
+              loop={true}
+              autoplay={{
+                delay: 2500,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true,
+              }}
+              modules={[Autoplay]}
+              className="mySwiper w-full h-full bg-pi"
+            >
+              {[1, 2, 3, 4, 5].map((item, index) => (
+                <SwiperSlide key={index} className="">
+                  <div className=" flex flex-col items-start justify-center w-full h-full">
+                    <Image
+                      src={
+                        process.env.NEXT_PUBLIC_API_URL +
+                        `/ritesh_bisht_images/ritesh_${index + 1}.webp`
+                      }
+                      layout="fill"
+                      objectFit="cover"
+                    />
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
-          <div className=" w-[22.5%] h-[50vh] relative group">
-            <Image
-              src={process.env.NEXT_PUBLIC_API_URL + "/athlete2.jpeg"}
-              layout="fill"
-            />
-            <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-              <h3 className=" text-white text-4xl">{"Athlete 2"}</h3>
-              <p className=" text-white/80 text-base">Sport</p>
-            </div>
-          </div>
-          <div className="w-[22.5%] h-[50vh] relative group">
-            <Image
-              src={process.env.NEXT_PUBLIC_API_URL + "/athlete3.jpeg"}
-              layout="fill"
-            />
-            <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-              <h3 className=" text-white text-4xl">{"Athlete 3"}</h3>
-              <p className=" text-white/80 text-base">Sport</p>
-            </div>
+
+          <div className=" h-full w-[70vw] px-8 flex flex-col items-start justify-center">
+            <h3 className=" text-white text-4xl">
+              {"Ritesh Singh Bisht’s Collaboration with Hydroshark"}
+            </h3>
+            <p className=" text-white text-lg italic ">Boxing</p>
+
+            <p className=" text-white text-base mt-[2.5vh]">
+              {
+                "At Hydroshark, we're proud to fuel the journey of Ritesh Singh Bisht, a rising boxing sensation from Wan village, Uttarakhand. Born in 2002, this mountain-raised athlete discovered his passion for boxing at 13, mastering the amateur circuit with over 50 tournaments. In 2023, Ritesh turned pro with Grassroot Boxing, already boasting an impressive 2-0 record with 1 KO."
+              }
+            </p>
+            <p className=" text-white text-base mt-4">
+              {
+                "Ritesh's transformation from farm boy to formidable boxer embodies the spirit we celebrate at Hydroshark. Our vitamin-packed, carbonated hydration drink powers his intense training and electrifying fights. Through Ritesh's dynamic social media presence, we're reaching millions, showcasing how Hydroshark drives peak performance for athletes and fitness enthusiasts alike."
+              }
+            </p>
           </div>
         </div>
 
-        <div className=" h-[20vh] bg-black/90 w-full flex mt-[5vh] flex-row gap-x-8 items-center justify-center">
+        <div className=" h-[20vh] bg-black/90 w-full flex my-[5vh] flex-row gap-x-8 items-center justify-center">
           <div className=" h-[10vh] w-[10vh] relative">
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/hydroshark.png"}
@@ -62,30 +85,7 @@ const Athletes = () => {
             {"Experience the Hydroshark Difference"}
           </h3>
         </div>
-
-        <div className=" h-[50vh] w-full flex flex-row justify-between items-center my-[5vh]">
-          {[4, 2, 3, 4].map((item, index) => {
-            return (
-              <div key={index} className="w-[23%] h-[50vh] relative group">
-                <Image
-                  src={process.env.NEXT_PUBLIC_API_URL + `/athlete${item}.jpeg`}
-                  layout="fill"
-                />
-                <div className="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-                  <h3 className=" text-white text-4xl">{`Athlete ${item}`}</h3>
-                  <p className=" text-white/80 text-base">Sport</p>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div> */}
-      <h2 className=" text-3xl lg:text-[4rem] text-[#181818] mb-[32.5vh] lg:mb-[20vh] ">
-        Coming Soon !
-      </h2>
-      <p className=" absolute top-[30vh] text-[5rem] md:text-[9rem] lg:text-[14rem] text-black/5 leading-[5rem] lg:leading-[13rem] ">
-        HYDROSHARK
-      </p>
+      </div>
     </div>
   );
 };

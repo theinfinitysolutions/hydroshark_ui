@@ -10,6 +10,7 @@ import Head from "next/head";
 import "normalize.css/normalize.css";
 import AuthModal from "@/components/AuthModal";
 import Salesiq from "@/components/salesiq";
+import HydrosharkCoinsModal from "@/components/HydrosharkCoinsModal";
 
 const local = localFont({ src: "../public/ITCAvantGardePro-Md.otf" });
 
@@ -70,6 +71,7 @@ export default function RootLayout({ children }) {
           }
           domain={"https://salesiq.zohopublic.in/widget"}
         />
+        <HydrosharkCoinsModal />
       </body>
     </html>
   );
