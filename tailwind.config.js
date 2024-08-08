@@ -23,6 +23,7 @@ module.exports = {
         bounce: "bounce1 5s infinite",
         bounceX: "bounceX 3s infinite",
         "slide-left": "slide-left 8s linear infinite",
+        slideDown: "slideDown 1s ease-in-out forwards",
       },
       keyframes: {
         marquee: {
@@ -32,6 +33,10 @@ module.exports = {
         slideUp: {
           "0%": { opacity: 0.5, transform: "translateY(5vh)" },
 
+          "100%": { opacity: 1, transform: "translateY(0)" },
+        },
+        slideDown: {
+          "0%": { opacity: 0, transform: "translateY(-5vh)" },
           "100%": { opacity: 1, transform: "translateY(0)" },
         },
         slideUpFast: {
