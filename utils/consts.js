@@ -169,3 +169,31 @@ export const comments = [
     rating: 5,
   },
 ];
+
+export const FAQ = [
+  {
+    question: "What is Hydroshark?",
+    answer:
+      "Hydroshark is India’s first carbonated hydration drink that perfectly balances essential nutrients with delicious flavor. Our tasty formula makes healthy hydration enjoyable.",
+  },
+  {
+    question: "What makes Hydroshark different?",
+    answer:
+      "Hydroshark offers a unique blend of vitamins, minerals, and electrolytes that ensure ultimate and quicker hydration. Our drink supports physical replenishment as well as mental and emotional well-being.",
+  },
+  {
+    question: "What are the ingredients in Hydroshark?",
+    answer:
+      "Hydroshark is made with only the highest quality raw materials. Our ingredients are sourced globally, including Indian Sugarcane, Stevia from Malaysia, and world-famous Indian Mangoes.",
+  },
+  {
+    question: "Is Hydroshark a healthier choice?",
+    answer:
+      "Hydroshark is a healthier alternative to traditional carbonated drinks. By eliminating caffeine and reducing sugar content with stevia, we offer a lower-calorie option suitable for everyone.",
+  },
+  {
+    question: "Where is Hydroshark produced?",
+    answer:
+      "Our production plant meets the standards of major beverage brands, ensuring no compromise on quality. We are committed to providing only the best to our consumers.",
+  },
+];
