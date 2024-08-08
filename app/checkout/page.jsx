@@ -307,7 +307,6 @@ const Checkout = () => {
                   );
                 })}
               </div>
-
               <div className=" flex flex-col items-start w-full z-20">
                 <p className=" text-black text-base mt-4">Redeem</p>
                 <div className=" w-full flex flex-row justify-between ">
@@ -322,7 +321,6 @@ const Checkout = () => {
                   </button>
                 </div>
               </div>
-
               <div className=" w-full flex flex-col items-start mt-8">
                 <div className=" flex flex-row w-full justify-between items-center mt-4">
                   <p className=" text-black text-lg">Sub total</p>

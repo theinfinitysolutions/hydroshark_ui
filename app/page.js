@@ -13,6 +13,7 @@ import HomeSection3 from "@/components/HomeSection3";
 import ProductSectionHome from "@/components/ProductSectionHome";
 import ShopNowButton from "@/components/ShopNow";
 import ProductSectionHome1 from "@/components/ProductSectionHome1";
+import TestimonalsHome from "@/components/TestimonalsHome";
 
 export default function Home() {
   const ref = useRef();
@@ -38,7 +39,6 @@ export default function Home() {
           layout="fill"
         />
       </div>
-
       <div className="absolute overflow-hidden [--offset:40vw] bg-black rotate-[7deg] lg:rotate-[4deg] top-[75vh] z-40 [--move-initial:calc(-20%+_var(--offset))] [--move-final:calc(-40%_+_var(--offset))] ">
         <div
           className="min-w-screen w-[150vw] flex flex-row  lg:py-1 items-center relative  transform-[translate3d(var(--move-initial),0,0)] animate-marqueebanner [animation-play-state:running]"
@@ -170,7 +170,6 @@ export default function Home() {
           </span>
         </div>
       </div>
-
       {/* <div className=" hidden lg:block absolute left-[25vw] z-50 h-[60vh] w-[50vw] ">
         <motion.div
           initial={{ y: "70vh" }}
@@ -195,7 +194,6 @@ export default function Home() {
           <LandingSceneLemon orbital={false} />
         </motion.div>
       </div> */}
-
       <div className="fixed left-0 top-[5vh] -z-10">
         <p className=" text-[5rem] lg:text-[14rem] text-black/5 leading-[5rem] lg:leading-[13rem]">
           HYDROSHARK
@@ -234,7 +232,6 @@ export default function Home() {
           HYDROSHARK
         </p>
       </div>
-
       <div className="flex flex-col lg:flex-row h-[90vh] w-full px-[5vw] overflow-hidden pt-[5vh] relative ">
         <div className="flex flex-col w-full lg:w-1/2 items-start">
           <h1 className=" text-black text-[2.5rem]  lg:text-[4rem] 2xl:text-[5rem] font-bold leading-[2.5rem] lg:leading-[4rem] 2xl:leading-[5rem]">
@@ -337,7 +334,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
       <RevealOnScroll
         threshold={0.2}
         addedClasses="flex flex-row justify-between items-center lg:h-screen z-20 w-[100vw] px-[5vw] relative overflow-hidden "
@@ -501,7 +497,9 @@ export default function Home() {
         </div>
       </RevealOnScroll>
       <ProductSectionHome1 />
+      <ProductSectionHome />
       <HomeSection3 />
+      <TestimonalsHome />
     </div>
     // </Transition>
   );
