@@ -3,6 +3,8 @@ import React, { useRef } from "react";
 import { Caveat } from "next/font/google";
 import ParallaxScroll from "./ParallaxScroll";
 import Image from "next/image";
+import { FAQ } from "@/utils/consts";
+import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 
 const caveat = Caveat({
   weight: "400",
@@ -11,6 +13,8 @@ const caveat = Caveat({
 
 const HomeSection3 = () => {
   const targetRef = useRef(null);
+  const [currentQuestion, setCurrentQuestion] = React.useState(null);
+
   return (
     <div
       ref={targetRef}
@@ -62,67 +66,58 @@ const HomeSection3 = () => {
             </span>
           </div>
         </div>
-        <p className=" text-xlgl w-full lg:text-3xl text-[#3997a1] italic mt-[5vh] lg:mt-[10vh]">
+        <p className=" text-xl w-full lg:text-3xl text-[#3997a1] italic mt-[5vh] lg:mt-[10vh]">
           {"Experience the Hydroshark Difference "}
         </p>
-        <div className=" flex flex-row  gap-x-2 justify-start items-center ">
-          <p
-            className={`${caveat.className} text-[1rem] lg:text-[2.15rem] lg:mr-4 font-semibold text-black`}
-          >
-            Loved by{" "}
-          </p>
-          <div className=" flex flex-row items-center gap-x-1 justify-start">
-            <p className=" text-[1.8rem] lg:text-[3.5rem] font-semibold lg:leading-[3.5rem]  text-black">
-              ATHLETES
-            </p>
-            <div className=" h-[4vw] w-[4vw]  lg:h-[8vh] lg:w-[8vh] -mt-2 relative">
-              <Image
-                src={process.env.NEXT_PUBLIC_API_URL + "/asset2.svg"}
-                layout="fill"
-                alt="hydroshark img"
-              />
-            </div>
-          </div>
-          <div className=" flex flex-row items-center gap-x-1 justify-start">
-            <p className=" text-[2rem] lg:text-[3.5rem] font-semibold lg:leading-[3.5rem] col-span-3 text-black">
-              GAMERS
-            </p>
-            <div className="h-[4vw] w-[4vw]  lg:h-[8vh] lg:w-[8vh]  relative">
-              <Image
-                src={process.env.NEXT_PUBLIC_API_URL + "/asset3.png"}
-                layout="fill"
-                alt="hydroshark img"
-              />
-            </div>
-          </div>
-        </div>
-        <div className=" flex flex-row gap-x-2 justify-start items-center">
-          <div className="h-[4vw] w-[4vw]  lg:h-[8vh] lg:w-[8vh]  -mt-2 relative">
-            <Image
-              src={process.env.NEXT_PUBLIC_API_URL + "/asset7.png"}
-              layout="fill"
-              alt="hydroshark img"
-            />
-          </div>
-          <p className=" text-[2rem] lg:text-[3.5rem] font-semibold col-span-3 text-black">
-            DAREDEVILS
-          </p>
-          <div className="h-[5vw] w-[5vw]  lg:h-[8vh] lg:w-[8vh]   -mt-2 relative">
-            <Image
-              src={process.env.NEXT_PUBLIC_API_URL + "/asset5.png"}
-              layout="fill"
-              alt="hydroshark img"
-            />
+        <div className="w-full flex flex-col items-start">
+          <h3 className=" text-[5rem] text-black font-bold">
+            {"SEE WHAT'S INSIDE"}
+          </h3>
+          <div className="w-10/12 flex flex-col items-start mt-8">
+            {FAQ.map((question, index) => {
+              return (
+                <a
+                  onClick={() =>
+                    setCurrentQuestion(currentQuestion == index ? -1 : index)
+                  }
+                  key={index}
+                  className="flex cursor-pointer transition-all duration-200 bg-gradient-to-r from-[#1b1f20] to-[#414549]  px-4 py-4 rounded-md  flex-col mb-4 items-start w-full "
+                >
+                  <div className="flex flex-row w-full justify-between items-center">
+                    <h3 className="text-xl font-semibold text-white ">
+                      {question.question}
+                    </h3>
+                    {currentQuestion === index ? (
+                      <MdKeyboardArrowUp
+                        className="text-3xl text-white  cursor-pointer"
+                        onClick={() => setCurrentQuestion(null)}
+                      />
+                    ) : (
+                      <MdKeyboardArrowDown
+                        className="text-3xl text-white cursor-pointer"
+                        onClick={() => setCurrentQuestion(index)}
+                      />
+                    )}
+                  </div>
+                  {currentQuestion === index ? (
+                    <p className="text-md text-white mt-4 animate-slideDown">
+                      {question.answer}
+                    </p>
+                  ) : null}
+                </a>
+              );
+            })}
           </div>
         </div>
-        <div className=" h-[20vw] w-[20vw] lg:h-[15vh] lg:w-[15vh] mt-4 animate-rotate absolute right-8 bottom-8 lg:right-[10vh] lg:bottom-[10vh]">
+
+        <div className=" h-[15vw] w-[15vw] lg:h-[7.5vh] lg:w-[7.5vh] mt-4 animate-rotate absolute right-8 bottom-8 lg:right-[2.5vh] lg:bottom-[2.5vh]">
           <Image
             src={process.env.NEXT_PUBLIC_API_URL + "/hydroshark.png"}
             layout="fill"
             alt="hydroshark img"
           />
         </div>
-        <div className=" absolute bottom-0 right-0 w-[80vw] h-[80vw] lg:h-[60vh] lg:w-[60vh]">
+        <div className=" absolute bottom-0 right-0 w-[50vw] h-[50vw] lg:h-[25vh] lg:w-[25vh]">
           <Image
             src={process.env.NEXT_PUBLIC_API_URL + "/curvedCans.png"}
             objectFit="cover"
