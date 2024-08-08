@@ -3,7 +3,7 @@ import { testimonials } from "@/utils/consts";
 
 const TestimonalsHome = () => {
   return (
-    <div className=" flex flex-row items-center justify-center w-full mt-[7.5vh] bg-black py-[7.5vh]">
+    <div className=" flex flex-row items-center justify-center w-full bg-black py-[7.5vh]">
       <div className=" flex flex-col items-start w-[40%]">
         <p className=" text-[4rem] font-bold text-white/80 text-start">
           {"HEAR FROM OUR HYDROSHARK FAMILY"}
