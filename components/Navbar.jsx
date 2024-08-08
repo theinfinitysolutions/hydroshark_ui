@@ -66,6 +66,8 @@ const Navbar = () => {
     setCartSidebar,
     showAuthModal,
     setShowAuthModal,
+    showHydrosharkCoinsModal,
+    setShowHydrosharkCoinsModal,
   } = useStore();
   const [currentHover, setCurrentHover] = useState("");
   const [currentHoverSub, setCurrentHoverSub] = useState(0);
@@ -183,7 +185,12 @@ const Navbar = () => {
               "You can now earn HydroShark coins by participating in events and by buying HydroShark products and redeem them for exciting offers."
             }
           </p>
-          <button className=" bg-[#181818]/80 text-white px-2 py-1 text-sm rounded-md mt-2">
+          <button
+            onClick={() => {
+              setShowHydrosharkCoinsModal({ show: true });
+            }}
+            className=" bg-[#181818]/80 text-white px-2 py-1 text-sm rounded-md mt-2"
+          >
             Learn More
           </button>
         </div>

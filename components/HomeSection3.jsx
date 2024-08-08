@@ -73,7 +73,7 @@ const HomeSection3 = () => {
           <h3 className=" text-[5rem] text-black font-bold">
             {"SEE WHAT'S INSIDE"}
           </h3>
-          <div className="w-10/12 flex flex-col items-start mt-8">
+          <div className="w-9/12 flex flex-col items-start mt-8">
             {FAQ.map((question, index) => {
               return (
                 <a
@@ -81,6 +81,9 @@ const HomeSection3 = () => {
                     setCurrentQuestion(currentQuestion == index ? -1 : index)
                   }
                   key={index}
+                  style={{
+                    marginLeft: `${index * 2.5}vw`,
+                  }}
                   className="flex cursor-pointer transition-all duration-200 bg-gradient-to-r from-[#1b1f20] to-[#414549]  px-4 py-4 rounded-md  flex-col mb-4 items-start w-full "
                 >
                   <div className="flex flex-row w-full justify-between items-center">
