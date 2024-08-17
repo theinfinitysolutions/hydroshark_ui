@@ -14,7 +14,7 @@ const Athletes = () => {
           <div className=" h-[25vh] w-[25vh] relative">
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/hydroshark.png"}
-              layout="fill"
+              fill
             />
           </div>
 
@@ -46,8 +46,8 @@ const Athletes = () => {
                         process.env.NEXT_PUBLIC_API_URL +
                         `/ritesh_bisht_images/ritesh_${index + 1}.webp`
                       }
-                      layout="fill"
-                      objectFit="cover"
+                      fill
+                      style={{ objectFit: "cover" }}
                     />
                   </div>
                 </SwiperSlide>
@@ -78,7 +78,7 @@ const Athletes = () => {
           <div className=" h-[10vh] w-[10vh] relative">
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/hydroshark.png"}
-              layout="fill"
+              fill
             />
           </div>
           <h3 className=" text-[] italic text-4xl">

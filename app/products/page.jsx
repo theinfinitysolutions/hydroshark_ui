@@ -50,13 +50,21 @@ const Products = () => {
               key={index}
             >
               <div className=" absolute w-full h-full z-0 ">
-                <Image src={"/bgasset21.png"} layout="fill" objectFit="cover" />
+                <Image
+                  src={"/bgasset21.png"}
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
               </div>
               <div className=" absolute h-[5vh] w-[30vh] -right-4 top-0  z-0 ">
-                <Image src={"/icon5.png"} layout="fill" objectFit="contain" />
+                <Image
+                  src={"/icon5.png"}
+                  fill
+                  style={{ objectFit: "contain" }}
+                />
               </div>
               <div className=" absolute h-[20vh] w-[20vh] z-10 left-0 -top-[5vh] ">
-                <Image src={"/icon4.png"} layout="fill" objectFit=" contain" />
+                <Image src={"/icon4.png"} fill objectFit=" contain" />
               </div>
               <a
                 onClick={() => {
@@ -74,24 +82,24 @@ const Products = () => {
                     <div className=" flex h-[30vh] w-[30vh] relative">
                       <Image
                         src={product.image}
-                        layout="fill"
-                        objectFit="contain"
+                        fill
+                        style={{ objectFit: "contain" }}
                       />
                     </div>
                   ) : product.type === "crate" ? (
                     <div className=" flex h-[30vh] w-[50vh] relative">
                       <Image
                         src={product.image}
-                        layout="fill"
-                        objectFit="contain"
+                        fill
+                        style={{ objectFit: "contain" }}
                       />
                     </div>
                   ) : product.type === "merch" ? (
                     <div className=" flex h-[30vh] w-[30vh] relative">
                       <Image
                         src={product.image}
-                        layout="fill"
-                        objectFit="contain"
+                        fill
+                        style={{ objectFit: "contain" }}
                       />
                     </div>
                   ) : null}
@@ -129,8 +137,8 @@ const Products = () => {
           </p>
         </div>
         <div className=" flex flex-col items-start w-[50%]">
-          <div class="logos group relative overflow-hidden flex flex-row whitespace-nowrap py-10 [mask-image:_linear-gradient(to_right,_transparent_0,_white_128px,white_calc(100%-128px),_transparent_100%)]">
-            <div class="animate-slide-left group-hover:animation-pause flex flex-row  w-full">
+          <div className="logos group relative overflow-hidden flex flex-row whitespace-nowrap py-10 [mask-image:_linear-gradient(to_right,_transparent_0,_white_128px,white_calc(100%-128px),_transparent_100%)]">
+            <div className="animate-slide-left group-hover:animation-pause flex flex-row  w-full">
               {testimonials.map((testimonial, index) => (
                 <div
                   key={index}
@@ -149,7 +157,7 @@ const Products = () => {
             </div>
             <div
               style={{ animationDelay: "8s" }}
-              class="animate-slide-left group-hover:animation-pause flex flex-row  w-full"
+              className="animate-slide-left group-hover:animation-pause flex flex-row  w-full"
             >
               {testimonials.map((testimonial, index) => (
                 <div
@@ -168,24 +176,24 @@ const Products = () => {
               ))}
             </div>
 
-            {/* <div class="animate-slide-left group-hover:animation-pause inline-block w-full">
+            {/* <div className="animate-slide-left group-hover:animation-pause inline-block w-full">
               <img
-                class="mx-4 inline h-16"
+                className="mx-4 inline h-16"
                 src="https://tailwindui.com/img/logos/158x48/transistor-logo-white.svg"
                 alt="Transistor"
               />
               <img
-                class="mx-4 inline h-16"
+                className="mx-4 inline h-16"
                 src="https://tailwindui.com/img/logos/158x48/reform-logo-white.svg"
                 alt="Reform"
               />
               <img
-                class="mx-4 inline h-16"
+                className="mx-4 inline h-16"
                 src="https://tailwindui.com/img/logos/158x48/tuple-logo-white.svg"
                 alt="Tuple"
               />
               <img
-                class="mx-4 inline h-16"
+                className="mx-4 inline h-16"
                 src="https://tailwindui.com/img/logos/158x48/savvycal-logo-white.svg"
                 alt="SavvyCal"
               />
@@ -194,7 +202,7 @@ const Products = () => {
         </div>
       </div>
       <div className=" flex flex-col relative h-[80vh] w-full">
-        <Image src={"/img11alt.jpeg"} layout="fill" className=" absolute" />
+        <Image src={"/img11alt.jpeg"} fill className=" absolute" />
       </div>
     </div>
   );

@@ -17,7 +17,7 @@ const JoinUs = () => {
       <div className=" h-[70vh] w-[70vh] top-[20vh] lg:top-[15vh] lg:h-[85vh] lg:w-[85vh] z-0  fixed animate-rotate">
         <Image
           src={process.env.NEXT_PUBLIC_API_URL + "/assetring1.png"}
-          layout="fill"
+          fill
           alt="assetring1"
         />
       </div>
@@ -50,7 +50,7 @@ const JoinUs = () => {
               <div className="hidden lg:block w-full lg:w-9/12 h-[30vh] lg:h-[50vh] relative">
                 <Image
                   src={process.env.NEXT_PUBLIC_API_URL + "/img3.webp"}
-                  layout="fill"
+                  fill
                   alt="hydroshark img3"
                 />
               </div>
@@ -97,7 +97,7 @@ const JoinUs = () => {
               <div className="w-9/12 h-[50vh] relative">
                 <Image
                   src={process.env.NEXT_PUBLIC_API_URL + "/influencer.jpeg"}
-                  layout="fill"
+                  fill
                   alt="influencer"
                 />
               </div>

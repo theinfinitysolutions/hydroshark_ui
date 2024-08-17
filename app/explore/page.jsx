@@ -64,14 +64,14 @@ const Explore = () => {
               <div className="w-[25vw] h-[25vw] lg:w-[15vh] lg:h-[15vh] animate-rotate absolute">
                 <Image
                   src={process.env.NEXT_PUBLIC_API_URL + "/caffeine_curved.png"}
-                  layout="fill"
+                  fill
                   alt="caffeine_curved"
                 />
               </div>
               <div className=" w-[10vh] h-[10vh] relative">
                 <Image
                   src={process.env.NEXT_PUBLIC_API_URL + "/logo_caffeine.png"}
-                  layout="fill"
+                  fill
                   alt="logo_caffeine"
                 />
               </div>
@@ -88,14 +88,14 @@ const Explore = () => {
               <div className="w-[25vw] h-[25vw] lg:w-[15vh] lg:h-[15vh] animate-rotate absolute">
                 <Image
                   src={process.env.NEXT_PUBLIC_API_URL + "/vitamins_curved.png"}
-                  layout="fill"
+                  fill
                   alt="vitamins_curved"
                 />
               </div>
               <div className=" w-[10vh] h-[10vh] relative">
                 <Image
                   src={process.env.NEXT_PUBLIC_API_URL + "/logo_vitamins.png"}
-                  layout="fill"
+                  fill
                   alt="logo_vitamins"
                 />
               </div>
@@ -114,14 +114,14 @@ const Explore = () => {
                   src={
                     process.env.NEXT_PUBLIC_API_URL + "/zerosugar_curved.png"
                   }
-                  layout="fill"
+                  fill
                   alt="zerosugar_curved"
                 />
               </div>
               <div className=" w-[10vh] h-[10vh] relative">
                 <Image
                   src={process.env.NEXT_PUBLIC_API_URL + "/logo_sugar.png"}
-                  layout="fill"
+                  fill
                   alt="logo_sugar"
                 />
               </div>
@@ -162,9 +162,9 @@ const Explore = () => {
                       process.env.NEXT_PUBLIC_API_URL +
                       `/img${(idx % 6) + 4}.webp`
                     }
-                    layout="fill"
+                    fill
                     alt={`gallery${idx}`}
-                    objectFit="cover"
+                    style={{ objectFit: "cover" }}
                   />
                 </motion.div>
               ))}
@@ -195,8 +195,8 @@ const Explore = () => {
               <div className=" relative h-full w-1/2  ">
                 <Image
                   src={process.env.NEXT_PUBLIC_API_URL + "/lemoncan.webp"}
-                  layout="fill"
-                  objectFit="contain"
+                  fill
+                  style={{ objectFit: "contain" }}
                   alt="hydrodshark lemon can"
                 />
               </div>
@@ -217,8 +217,8 @@ const Explore = () => {
               <div className=" relative h-full w-1/2  ">
                 <Image
                   src={process.env.NEXT_PUBLIC_API_URL + "/mangocan.webp"}
-                  layout="fill"
-                  objectFit="contain"
+                  fill
+                  style={{ objectFit: "contain" }}
                   alt="hydrodshark mango can"
                 />
               </div>

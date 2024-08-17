@@ -203,15 +203,15 @@ const Checkout = () => {
                     <div className="h-[3vh] w-3/12 relative">
                       <Image
                         src={"/visalogo.jpg"}
-                        layout="fill"
-                        objectFit="contain"
+                        fill
+                        style={{ objectFit: "contain" }}
                       />
                     </div>
                     <div className="h-[3vh] w-3/12 relative">
                       <Image
                         src={"/mastercardlogo.jpg"}
-                        layout="fill"
-                        objectFit="contain"
+                        fill
+                        style={{ objectFit: "contain" }}
                       />
                     </div>
                   </div>

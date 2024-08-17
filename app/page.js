@@ -3,6 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Transition from "@/components/Transition";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 import { LandingSceneLemon, ReplaceScene } from "@/components/CanModel";
 import { flavorData } from "@/utils/consts";
 import RevealOnScroll from "@/components/RevealOnScroll";
@@ -17,6 +18,7 @@ import TestimonalsHome from "@/components/TestimonalsHome";
 
 export default function Home() {
   const ref = useRef();
+  const router = useRouter();
   const [currentFlavour, setCurrentFlavour] = useState(0);
   const [animateHeight, setAnimateHeight] = useState("50vh");
 
@@ -36,7 +38,7 @@ export default function Home() {
         <Image
           src={process.env.NEXT_PUBLIC_API_URL + "/asset5.png"}
           alt="asset5"
-          layout="fill"
+          fill
         />
       </div>
       <div className="absolute overflow-hidden [--offset:40vw] bg-black rotate-[7deg] lg:rotate-[4deg] top-[75vh] z-40 [--move-initial:calc(-20%+_var(--offset))] [--move-final:calc(-40%_+_var(--offset))] ">
@@ -265,14 +267,14 @@ export default function Home() {
                 <Image
                   src={process.env.NEXT_PUBLIC_API_URL + "/caffeine_curved.png"}
                   alt="caffeine_curved"
-                  layout="fill"
+                  fill
                 />
               </div>
               <div className=" w-[15vw] h-[15vw] lg:w-[10vh] lg:h-[10vh] relative">
                 <Image
                   src={process.env.NEXT_PUBLIC_API_URL + "/logo_caffeine.png"}
                   alt="logo_caffeine"
-                  layout="fill"
+                  fill
                 />
               </div>
             </div>
@@ -281,14 +283,14 @@ export default function Home() {
                 <Image
                   src={process.env.NEXT_PUBLIC_API_URL + "/vitamins_curved.png"}
                   alt="vitamins_curved"
-                  layout="fill"
+                  fill
                 />
               </div>
               <div className="  w-[15vw] h-[15vw] lg:w-[10vh] lg:h-[10vh] relative">
                 <Image
                   alt="logo_vitamins"
                   src={process.env.NEXT_PUBLIC_API_URL + "/logo_vitamins.png"}
-                  layout="fill"
+                  fill
                 />
               </div>
             </div>
@@ -298,14 +300,14 @@ export default function Home() {
                   src={
                     process.env.NEXT_PUBLIC_API_URL + "/zerosugar_curved.png"
                   }
-                  layout="fill"
+                  fill
                   alt="zerosugar_curved"
                 />
               </div>
               <div className=" w-[15vw] h-[15vw] lg:w-[10vh] lg:h-[10vh] relative">
                 <Image
                   src={process.env.NEXT_PUBLIC_API_URL + "/logo_sugar.png"}
-                  layout="fill"
+                  fill
                   alt="logo_sugar"
                 />
               </div>
@@ -321,15 +323,15 @@ export default function Home() {
               }
               <span> hydrated</span> {"and energized throughout the day"}
             </p>
-            {/* <button class="group relative mt-8">
-                <div class="relative z-10 inline-flex h-10 pt-[2px] items-center justify-center overflow-hidden rounded-md border border-neutral-200 bg-white px-6 font-medium text-neutral-600 transition-all duration-300 group-hover:-translate-x-3 group-hover:-translate-y-3 group-active:translate-x-0 group-active:translate-y-0">
+            {/* <button className="group relative mt-8">
+                <div className="relative z-10 inline-flex h-10 pt-[2px] items-center justify-center overflow-hidden rounded-md border border-neutral-200 bg-white px-6 font-medium text-neutral-600 transition-all duration-300 group-hover:-translate-x-3 group-hover:-translate-y-3 group-active:translate-x-0 group-active:translate-y-0">
                   SHOP NOW
                 </div>
-                <div class="absolute inset-0 z-0 h-full w-full rounded-md transition-all duration-300 group-hover:-translate-x-3 group-hover:-translate-y-3 group-hover:[box-shadow:5px_5px_#a3a3a3,10px_10px_#d4d4d4,15px_15px_#e5e5e5] group-active:translate-x-0 group-active:translate-y-0 group-active:shadow-none"></div>
+                <div className="absolute inset-0 z-0 h-full w-full rounded-md transition-all duration-300 group-hover:-translate-x-3 group-hover:-translate-y-3 group-hover:[box-shadow:5px_5px_#a3a3a3,10px_10px_#d4d4d4,15px_15px_#e5e5e5] group-active:translate-x-0 group-active:translate-y-0 group-active:shadow-none"></div>
               </button> */}
 
             <div className="mt-4">
-              <ShopNowButton />
+              <ShopNowButton onClick={() => router.push("/products")} />
             </div>
           </div>
         </div>
@@ -341,21 +343,21 @@ export default function Home() {
         <div className=" h-[8vw] w-[8vw]  lg:h-[8vh] lg:w-[8vh] absolute right-[20vw] top-[10vh] animate-rotate -mt-2 ">
           <Image
             src={process.env.NEXT_PUBLIC_API_URL + "/asset5.png"}
-            layout="fill"
+            fill
             alt="asset5"
           />
         </div>
         <div className=" h-[8vw] w-[8vw] lg:h-[8vh] lg:w-[8vh] absolute left-[10vw] top-[50vh] animate-rotate -mt-2 ">
           <Image
             src={process.env.NEXT_PUBLIC_API_URL + "/asset5.png"}
-            layout="fill"
+            fill
             alt="asset5"
           />
         </div>
         <div className=" h-[8vw] w-[8vw] lg:h-[8vh] lg:w-[8vh] absolute right-[30vw] top-[80vh] animate-rotate -mt-2 ">
           <Image
             src={process.env.NEXT_PUBLIC_API_URL + "/asset5.png"}
-            layout="fill"
+            fill
             alt="asset5"
           />
         </div>
@@ -466,7 +468,7 @@ export default function Home() {
               </button> */}
 
             <div className="mt-4">
-              <ShopNowButton />
+              <ShopNowButton onClick={() => router.push("/products")} />
             </div>
 
             <div className="flex flex-col w-9/12 items-start border-y-[1px] border-dashed border-[#5C6262] my-[5vh] lg:mt-[5vh] py-2">

@@ -10,7 +10,7 @@ const About = () => {
       <div className=" h-[80vw] w-[80vw]   lg:h-[90vh] lg:w-[90vh] z-0  fixed animate-rotate">
         <Image
           src={process.env.NEXT_PUBLIC_API_URL + "/assetring1.png"}
-          layout="fill"
+          fill
           alt="assetring1"
         />
       </div>
@@ -20,7 +20,7 @@ const About = () => {
           <div className=" h-[35vh] lg:h-full w-full lg:w-1/2 flex relative ">
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/img10.webp"}
-              layout="fill"
+              fill
               alt="hydroshark img10"
             />
           </div>
@@ -44,7 +44,7 @@ const About = () => {
           <div className="h-[35vh] lg:h-full w-full lg:w-1/2 flex relative ">
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/img5.webp"}
-              layout="fill"
+              fill
               alt="hydroshark img5"
             />
           </div>
@@ -68,7 +68,7 @@ const About = () => {
           <div className="h-[35vh] lg:h-full w-full lg:w-1/2 flex relative ">
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/img8.webp"}
-              layout="fill"
+              fill
               alt="hydroshark img8"
             />
           </div>
@@ -92,7 +92,7 @@ const About = () => {
           <div className=" h-[35vh] lg:h-full w-full lg:w-1/3 flex relative ">
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/img2.webp"}
-              layout="fill"
+              fill
               alt="hydroshark img2"
             />
           </div>
@@ -132,7 +132,7 @@ const About = () => {
                 <div className="h-10 w-10 relative">
                   <Image
                     src={process.env.NEXT_PUBLIC_API_URL + item.image}
-                    layout="fill"
+                    fill
                     alt="hydroshark img"
                   />
                 </div>

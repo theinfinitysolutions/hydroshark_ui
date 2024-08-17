@@ -106,14 +106,14 @@ const ViewProduct = () => {
               <div className=" flex h-[40vh] w-full relative">
                 <Image
                   src={selectedProduct.image}
-                  layout="fill"
-                  objectFit="contain"
+                  fill
+                  style={{ objectFit: "contain" }}
                   className=""
                 />
               </div>
             ) : selectedProduct?.type == "merch" ? (
               <div className=" flex h-[40vh] w-[40vh] relative">
-                <Image src={selectedProduct.image} layout="fill" className="" />
+                <Image src={selectedProduct.image} fill className="" />
               </div>
             ) : null}
           </div>

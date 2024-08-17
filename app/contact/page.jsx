@@ -52,7 +52,7 @@ const ContactUs = () => {
           <div className=" w-full h-full z-0 relative ">
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/img4.webp"}
-              layout="fill"
+              fill
               alt="hydroshark img4"
             />
           </div>
