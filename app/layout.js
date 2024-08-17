@@ -8,6 +8,7 @@ import CartSidebar from "@/components/CartSidebar";
 import ViewProductModal from "@/components/ViewProductModal";
 import Head from "next/head";
 import "normalize.css/normalize.css";
+import Script from "next/script";
 import AuthModal from "@/components/AuthModal";
 import Salesiq from "@/components/salesiq";
 import HydrosharkCoinsModal from "@/components/HydrosharkCoinsModal";
@@ -72,6 +73,7 @@ export default function RootLayout({ children }) {
           domain={"https://salesiq.zohopublic.in/widget"}
         />
         <HydrosharkCoinsModal />
+        <Script src="https://checkout.razorpay.com/v1/checkout.js"></Script>
       </body>
     </html>
   );
