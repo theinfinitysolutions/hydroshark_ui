@@ -1,7 +1,7 @@
 import React from "react";
 
 export const metadata = {
-  title: "Contact Us | Hydroshark",
+  title: "Checkout | Hydroshark",
   description: "India's First Carbonated Hydration Drink",
 };
 

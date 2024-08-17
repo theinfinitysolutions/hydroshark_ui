@@ -6,11 +6,63 @@ import { products } from "@/utils/consts";
 import Image from "next/image";
 import { BsWindowFullscreen } from "react-icons/bs";
 import { PiCoinsFill } from "react-icons/pi";
+import Razorpay from "razorpay";
 
 const Checkout = () => {
   const { cart, addToCart } = useStore();
   const [cartList, setCartList] = useState(cart);
   const [sameAsBilling, setSameAsBilling] = useState(false);
+  const [orderId, setOrderId] = useState("");
+
+  const processPayment = async (orderId) => {
+    try {
+      console.log("processPayment", orderId);
+      const options = {
+        key: process.env.RAZORPAY_KEY_ID,
+        key_id: process.env.RAZORPAY_KEY_ID,
+        amount: parseFloat(1200) * 100,
+        currency: "INR",
+        name: "Hydroshark",
+        description: "Test Transaction",
+        image: process.env.NEXT_PUBLIC_API_URL + "/hydroshark.png",
+        order_id: orderId,
+        handler: async function (response) {
+          // alert(
+          //   response.razorpay_payment_id +
+          //     " " +
+          //     response.razorpay_order_id +
+          //     " " +
+          //     response.razorpay_signature
+          // );
+          console.log("razorpay response", response);
+          // completePayment(
+          //   response.razorpay_payment_id,
+          //   orderId,
+          //   response.razorpay_signature
+          // );
+        },
+        prefill: {
+          name: "Hydroshark",
+          email: "test@hydroshark.in",
+          contact: "9876545678",
+        },
+        notes: {
+          address: "Razorpay Corporate Office",
+        },
+        theme: {
+          color: "#3399cc",
+        },
+      };
+
+      console.log("rzp", options);
+      setOrderId("");
+      const paymentObject = window.Razorpay(options);
+      console.log("rzp", paymentObject, options);
+      paymentObject.open();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="w-full min-h-screen relative bg-[#f0f2f4] flex flex-col items-center">
@@ -312,11 +364,18 @@ const Checkout = () => {
                 <div className=" w-full flex flex-row justify-between ">
                   <div className=" border-[1px] border-black h-12 w-[75%] rounded-md overflow-hidden">
                     <input
+                      value={orderId}
+                      onChange={(e) => setOrderId(e.target.value)}
                       placeholder="Redeem"
                       className=" w-full flex flex-col text-black h-full pl-2  ring-0 focus:ring-0 focus:outline-none"
                     />
                   </div>
-                  <button className=" w-[20%] py-2 rounded-md bg-black ">
+                  <button
+                    onClick={() => {
+                      processPayment(orderId);
+                    }}
+                    className=" w-[20%] py-2 rounded-md bg-black "
+                  >
                     <p className=" text-white text-sm mt-1">Apply</p>
                   </button>
                 </div>

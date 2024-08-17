@@ -67,7 +67,7 @@ const ViewProduct = () => {
   };
 
   const addToCartHandler = (item) => {
-    console.log("add to cart", [...cart, item]);
+    console.log("add to cart", cart, item, typeof cart);
 
     if (cart.length > 0) {
       const found = cart.find((cartItem) => cartItem.item_id === item.item_id);
