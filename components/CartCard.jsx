@@ -24,8 +24,8 @@ const CartCard = ({ image, price, title }) => {
             </a>
           </div>
         </div>
-        <div className=" w-[20%] h-full flex flex-col items-center justify-center">
-          <MdDeleteOutline className=" text-black text-xl" />
+        <div className=" w-[20%]  h-full flex flex-col items-center justify-center">
+          <MdDeleteOutline className=" text-black text-xl cursor-pointer " />
         </div>
       </div>
     </div>

@@ -76,7 +76,10 @@ export default function CartSidebar() {
 
   return (
     <>
-      <div style={{ zIndex: 200 }} className={`${className} ${appendClass}`}>
+      <div
+        style={{ zIndex: 200 }}
+        className={`${className} ${appendClass} z-30`}
+      >
         <div className="flex flex-col px-4 md:px-8 h-full items-center">
           <div className="flex flex-row justify-between items-start mt-8 w-full">
             <div className="text-[1.5rem] font-[500] text-black">Cart</div>
