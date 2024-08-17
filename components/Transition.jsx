@@ -67,7 +67,7 @@ const Transition = ({ children }) => {
           >
             <img
               src={process.env.NEXT_PUBLIC_API_URL + "/loading.webp"}
-              layout="fill"
+              fill
               alt="hydroshark loader"
               loading={"eager"}
               fetchPriority="high"
@@ -88,7 +88,7 @@ const Transition = ({ children }) => {
           >
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/loading1.webp"}
-              layout="fill"
+              fill
               unoptimized={true}
               alt="hydroshark loader"
             />
@@ -108,7 +108,7 @@ const Transition = ({ children }) => {
           >
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/loading.webp"}
-              layout="fill"
+              fill
               unoptimized={true}
               alt="hydroshark loader"
             />
@@ -129,7 +129,7 @@ const Transition = ({ children }) => {
           >
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/hydroshark_logo.webp"}
-              layout="fill"
+              fill
               unoptimized={true}
               alt="hydroshark loader"
             />
@@ -161,7 +161,7 @@ const Transition = ({ children }) => {
           >
             <img
               src={process.env.NEXT_PUBLIC_API_URL + "/loading.webp"}
-              layout="fill"
+              fill
               alt="hydroshark loader"
               loading={"eager"}
               fetchPriority="high"
@@ -182,7 +182,7 @@ const Transition = ({ children }) => {
           >
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/loading1.webp"}
-              layout="fill"
+              fill
               unoptimized={true}
               alt="hydroshark loader"
             />
@@ -202,7 +202,7 @@ const Transition = ({ children }) => {
           >
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/loading.webp"}
-              layout="fill"
+              fill
               unoptimized={true}
               alt="hydroshark loader"
             />
@@ -222,7 +222,7 @@ const Transition = ({ children }) => {
           >
             <Image
               src={process.env.NEXT_PUBLIC_API_URL + "/hydroshark_logo.webp"}
-              layout="fill"
+              fill
               unoptimized={true}
               alt="hydroshark loader"
             />

@@ -56,7 +56,7 @@ const Footer = () => {
         <div className=" h-[10vh] w-[10vh] relative">
           <Image
             src={process.env.NEXT_PUBLIC_API_URL + "/hydroshark.png"}
-            layout="fill"
+            fill
             alt="hydroshark"
           />
         </div>

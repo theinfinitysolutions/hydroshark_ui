@@ -81,9 +81,6 @@ const HomeSection3 = () => {
                     setCurrentQuestion(currentQuestion == index ? -1 : index)
                   }
                   key={index}
-                  style={{
-                    marginLeft: `${index * 2.5}vw`,
-                  }}
                   className="flex cursor-pointer transition-all duration-200 bg-gradient-to-r from-[#1b1f20] to-[#414549]  px-4 py-4 rounded-md  flex-col mb-4 items-start w-full "
                 >
                   <div className="flex flex-row w-full justify-between items-center">
@@ -116,15 +113,15 @@ const HomeSection3 = () => {
         <div className=" h-[15vw] w-[15vw] lg:h-[7.5vh] lg:w-[7.5vh] mt-4 animate-rotate absolute right-8 bottom-8 lg:right-[2.5vh] lg:bottom-[2.5vh]">
           <Image
             src={process.env.NEXT_PUBLIC_API_URL + "/hydroshark.png"}
-            layout="fill"
+            fill
             alt="hydroshark img"
           />
         </div>
         <div className=" absolute bottom-0 right-0 w-[50vw] h-[50vw] lg:h-[25vh] lg:w-[25vh]">
           <Image
             src={process.env.NEXT_PUBLIC_API_URL + "/curvedCans.png"}
-            objectFit="cover"
-            layout="fill"
+            style={{ objectFit: "cover" }}
+            fill
             alt="hydroshark img"
           />
         </div>

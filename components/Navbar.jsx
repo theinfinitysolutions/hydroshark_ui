@@ -110,7 +110,7 @@ const Navbar = () => {
       >
         <Image
           src={process.env.NEXT_PUBLIC_API_URL + "/hydroshark.png"}
-          layout="fill"
+          fill
           alt="hydroshark"
         />
       </a>

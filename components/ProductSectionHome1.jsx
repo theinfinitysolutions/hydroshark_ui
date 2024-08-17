@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 // import Swiper core and required modules
 import { Autoplay } from "swiper/modules";
+import { useRouter } from "next/navigation";
 
 const items = [
   {
@@ -18,24 +19,26 @@ const items = [
     image: "/mangocan.webp",
     price: 99,
   },
-  {
-    title: "Hydroshark Lemon Crate",
-    image: "/cratelemon.png",
-    price: 799,
-  },
-  {
-    title: "Hydroshark Mango Crate",
-    image: "/cratemango.png",
-    price: 799,
-  },
-  {
-    title: "Hydroshark T-Shirt",
-    image: "/tshirt.png",
-    price: 399,
-  },
+  // {
+  //   title: "Hydroshark Lemon Crate",
+  //   image: "/cratelemon.png",
+  //   price: 799,
+  // },
+  // {
+  //   title: "Hydroshark Mango Crate",
+  //   image: "/cratemango.png",
+  //   price: 799,
+  // },
+  // {
+  //   title: "Hydroshark T-Shirt",
+  //   image: "/tshirt.png",
+  //   price: 399,
+  // },
 ];
 
 const ProductSectionHome1 = () => {
+  const router = useRouter();
+
   return (
     <div className=" flex flex-col items-center justify-center bg-black  overflow-hidden relative w-full h-full py-[5vh] lg:h-full lg:pt-[10vh] lg:pb-[5vh]">
       <div className="absolute z-0 inset-0 h-full w-full bg-[linear-gradient(to_right,#ababab55_1px,transparent_1px),linear-gradient(to_bottom,#ababab55_1px,transparent_1px)] bg-[size:72px_72px]"></div>
@@ -48,7 +51,7 @@ const ProductSectionHome1 = () => {
             {"GEAR UP FOR NEXT ADVENTURE WITH HYDROSHARK"}
           </h2>
           <div className=" flex flex-col  text-center lg:text-start mt-4">
-            <ShopNowButton />
+            <ShopNowButton onClick={() => router.push("/products")} />
           </div>
         </div>
         <div className=" flex flex-col w-full  lg:w-1/2 items-center lg:items-end justify-center py-8 lg:pl-8">
@@ -72,8 +75,8 @@ const ProductSectionHome1 = () => {
                     <div className=" flex h-[30vh] w-[30vh] relative">
                       <Image
                         src={item.image}
-                        layout="fill"
-                        objectFit="contain"
+                        fill
+                        style={{ objectFit: "contain" }}
                       />
                     </div>
                     <p className=" text-black text-sm mt-4">{"HYDROSHARK"}</p>

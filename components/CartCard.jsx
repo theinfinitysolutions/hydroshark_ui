@@ -9,7 +9,7 @@ const CartCard = ({ image, price, title }) => {
     <div className=" w-full flex flex-col items-start p-4 border-[1px] border-black mb-3">
       <div className=" flex flex-row w-full justify-between">
         <div className=" flex flex-col items-start w-[20%] h-[10vh] relative">
-          <Image src={image} layout="fill" objectFit="contain" />
+          <Image src={image} fill style={{ objectFit: "contain" }} />
         </div>
         <div className=" w-[60%] h-full flex flex-col items-start  px-4">
           <p className=" text-base text-black">HYDROSHARK {title}</p>

@@ -61,7 +61,7 @@ const Login = ({ onSignUp }) => {
         </div>
       ) : (
         <div className=" w-full flex flex-col items-center">
-          <button class="px-4 w-full py-2 mt-4 relative border flex flex-row items-center justify-center gap-2 border-slate-200 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-200 hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-900 dark:hover:text-slate-300 hover:shadow transition duration-150">
+          <button className="px-4 w-full py-2 mt-4 relative border flex flex-row items-center justify-center gap-2 border-slate-200 dark:border-slate-700 rounded-lg text-slate-700 dark:text-slate-200 hover:border-slate-400 dark:hover:border-slate-500 hover:text-slate-900 dark:hover:text-slate-300 hover:shadow transition duration-150">
             <img
               className="w-6 h-6 absolute left-2"
               src="https://www.svgrepo.com/show/475656/google-color.svg"

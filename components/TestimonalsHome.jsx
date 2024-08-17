@@ -10,8 +10,8 @@ const TestimonalsHome = () => {
         </p>
       </div>
       <div className=" flex flex-col items-start w-[50%]">
-        <div class="logos group relative overflow-hidden flex flex-row whitespace-nowrap py-10 [mask-image:_linear-gradient(to_right,_transparent_0,_white_128px,white_calc(100%-128px),_transparent_100%)]">
-          <div class="animate-slide-left group-hover:animation-pause flex flex-row  w-full">
+        <div className="logos group relative overflow-hidden flex flex-row whitespace-nowrap py-10 [mask-image:_linear-gradient(to_right,_transparent_0,_white_128px,white_calc(100%-128px),_transparent_100%)]">
+          <div className="animate-slide-left group-hover:animation-pause flex flex-row  w-full">
             {testimonials.map((testimonial, index) => (
               <div
                 key={index}
@@ -30,7 +30,7 @@ const TestimonalsHome = () => {
           </div>
           <div
             style={{ animationDelay: "8s" }}
-            class="animate-slide-left group-hover:animation-pause flex flex-row  w-full"
+            className="animate-slide-left group-hover:animation-pause flex flex-row  w-full"
           >
             {testimonials.map((testimonial, index) => (
               <div

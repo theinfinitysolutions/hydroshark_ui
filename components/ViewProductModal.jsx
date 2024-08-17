@@ -54,7 +54,7 @@ const ViewProductModal = () => {
               <div className=" flex h-[40vh] w-full relative">
                 <Image
                   src={process.env.NEXT_PUBLIC_API_URL + selectedProduct.image}
-                  layout="fill"
+                  fill
                   className=""
                 />
               </div>
@@ -62,7 +62,7 @@ const ViewProductModal = () => {
               <div className=" flex h-[40vh] w-[40vh] relative">
                 <Image
                   src={process.env.NEXT_PUBLIC_API_URL + selectedProduct.image}
-                  layout="fill"
+                  fill
                   className=""
                 />
               </div>
