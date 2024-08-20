@@ -3,8 +3,9 @@ import React, { useEffect } from "react";
 import { useStore } from "@/utils/store";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import Spinner from "./Spinner";
 
-const ProductCTA = (props) => {
+const ProductCTA = ({ handleAddToCart, loading, selectedProduct }) => {
   return (
     <div
       className="w-full flex flex-col items-center justify-center p-8
@@ -13,7 +14,7 @@ const ProductCTA = (props) => {
       <div className=" flex flex-row w-full justify-center ">
         <div className=" flex w-[20vh] h-[20vh] relative">
           <Image
-            src={process.env.NEXT_PUBLIC_API_URL + props.image}
+            src={process.env.NEXT_PUBLIC_API_URL + selectedProduct.image}
             fill
             style={{ objectFit: "contain" }}
           />
@@ -25,14 +26,25 @@ const ProductCTA = (props) => {
                 {"HYDROSHARK"}
               </p>
               <p className=" text-2xl text-black font-semibold">
-                {props.title}
+                {selectedProduct.title}
               </p>
             </div>
-            <p className=" text-base mt-2 text-black font-normal">{`₹${props.price} / ${props.quanity}`}</p>
+            <p className=" text-base mt-2 text-black font-normal">{`₹${selectedProduct.price} / ${selectedProduct.quanity}`}</p>
           </div>
-          <p className=" text-sm text-black font-normal">{props.description}</p>
-          <button className=" flex flex-col items-center transition-all duration-200 mt-4 px-6 border-[1px] border-black py-2 bg-transparent text-black hover:bg-black hover:text-white">
-            <p className=" mt-1">ADD TO CART</p>
+          <p className=" text-sm text-black font-normal">
+            {selectedProduct.description}
+          </p>
+          <button
+            onClick={() => {
+              handleAddToCart();
+            }}
+            className=" flex flex-col items-center transition-all duration-200 mt-4 px-6 border-[1px] border-black py-2 bg-transparent text-black hover:bg-black hover:text-white"
+          >
+            {loading ? (
+              <Spinner color="#fff" size={24} loading={loading} />
+            ) : (
+              <p className=" mt-1">ADD TO CART</p>
+            )}
           </button>
         </div>
       </div>

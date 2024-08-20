@@ -88,6 +88,7 @@ export default function CartSidebar() {
                 setter((oldVal) => !oldVal);
                 setCartSidebar({ show: false });
               }}
+              className=" cursor-pointer"
             >
               <IoMdClose className=" text-black" />
             </a>

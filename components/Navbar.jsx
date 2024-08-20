@@ -71,6 +71,7 @@ const Navbar = () => {
   } = useStore();
   const [currentHover, setCurrentHover] = useState("");
   const [currentHoverSub, setCurrentHoverSub] = useState(0);
+  const { user } = useStore();
 
   if (pathname.includes("/admin")) {
     return null;
@@ -136,7 +137,13 @@ const Navbar = () => {
           }}
           className=" py-2 mx-4 cursor-pointer"
         >
-          <FaRegCircleUser className=" text-[#181818] text-xl" />
+          {!user ? (
+            <FaRegCircleUser className=" text-[#181818] text-xl" />
+          ) : (
+            <div className=" h-[3.5vh] w-[3.5vh] flex flex-col items-center justify-center rounded-full bg-green-600 text-white">
+              <p className=" text-xs mt-1">{user.name[0] || "U"}</p>
+            </div>
+          )}
         </a>
         <a
           onClick={() => {
@@ -173,7 +180,7 @@ const Navbar = () => {
       <div
         className={` absolute ${
           currentHover == "/coins" ? "block" : "hidden"
-        } top-[9vh] right-[10vw] w-[25vw] bg-white border z-50 animate-slideUpfast`}
+        } top-[15vh] right-[10vw] w-[25vw] bg-white border z-50 animate-slideUpfast`}
       >
         <div className="flex flex-col items-start px-4 py-4">
           <div className=" flex flex-row justify-start items-center">
