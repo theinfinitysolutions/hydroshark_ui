@@ -47,7 +47,11 @@ const AuthModal = () => {
         <p className="text-3xl text-black my-4 font-bold">Hydroshark</p>
         <div className=" w-8/12 flex flex-col items-center">
           {showSignup ? (
-            <Signup />
+            <Signup
+              BackToLogin={() => {
+                setShowSignup(false);
+              }}
+            />
           ) : (
             <Login
               onSignUp={() => {
