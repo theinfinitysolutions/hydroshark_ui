@@ -12,6 +12,7 @@ import Script from "next/script";
 import AuthModal from "@/components/AuthModal";
 import Salesiq from "@/components/salesiq";
 import HydrosharkCoinsModal from "@/components/HydrosharkCoinsModal";
+import Banner from "@/components/Banner";
 
 const local = localFont({ src: "../public/ITCAvantGardePro-Md.otf" });
 
@@ -59,6 +60,7 @@ export default function RootLayout({ children }) {
         <link rel="manifest" href="/site.webmanifest" />
       </Head>
       <body className={`${local.className} w-screen max-w-screen`}>
+        <Banner />
         <Navbar />
         {children}
         <Footer />

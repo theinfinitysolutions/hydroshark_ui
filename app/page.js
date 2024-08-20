@@ -15,6 +15,7 @@ import ProductSectionHome from "@/components/ProductSectionHome";
 import ShopNowButton from "@/components/ShopNow";
 import ProductSectionHome1 from "@/components/ProductSectionHome1";
 import TestimonalsHome from "@/components/TestimonalsHome";
+import { getUser } from "@/utils/helper";
 
 export default function Home() {
   const ref = useRef();
@@ -23,6 +24,7 @@ export default function Home() {
   const [animateHeight, setAnimateHeight] = useState("50vh");
 
   useEffect(() => {
+    getUser();
     if (window.innerWidth < 360) {
       setAnimateHeight("60vh");
     }
