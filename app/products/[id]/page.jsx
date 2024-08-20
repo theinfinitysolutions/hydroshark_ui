@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { useStore } from "@/utils/store";
 import { products, comments } from "@/utils/consts";
 import Image from "next/image";
@@ -16,6 +16,10 @@ import { IoMdStar } from "react-icons/io";
 import { LuThumbsUp } from "react-icons/lu";
 import { LuThumbsDown } from "react-icons/lu";
 import ProductCTA from "@/components/ProductCTA";
+import { PiCoinsFill } from "react-icons/pi";
+import instance from "@/utils/instance";
+import Spinner from "@/components/Spinner";
+import { set } from "react-hook-form";
 
 const ratings = [
   {
@@ -48,6 +52,7 @@ const ratings = [
 const ViewProduct = () => {
   const { id } = useParams();
   const router = useRouter();
+  const [loading, setLoading] = useState(true);
   const [isOpen, setIsOpen] = useState(false);
   const {
     showProductModal,
@@ -57,6 +62,36 @@ const ViewProduct = () => {
     setCartSidebar,
   } = useStore();
   const [selectedProduct, setSelectedProduct] = useState(products[0]);
+  const [selectedSection, setSelectedSection] = useState(
+    products[0].productSections[0]
+  );
+
+  const getProductById = (id) => {
+    instance
+      .get(`/drinks/product/${id}/`)
+      .then((res) => {
+        console.log("products", res.data);
+        getProductSections(id);
+      })
+      .catch((err) => {
+        console.log("err", err);
+      });
+  };
+
+  const getProductSections = (productId) => {
+    instance
+      .get(`/drinks/product-section/`)
+      .then((res) => {
+        console.log("products", res.data);
+      })
+      .catch((err) => {
+        console.log("err", err);
+      });
+  };
+
+  useEffect(() => {
+    getProductById(id);
+  }, []);
 
   useEffect(() => {
     setSelectedProduct(products.find((product) => product.id == id));
@@ -67,17 +102,32 @@ const ViewProduct = () => {
   };
 
   const addToCartHandler = (item) => {
-    console.log("add to cart", cart, item, typeof cart);
+    setLoading(true);
+    let obj = { product_section: item.id, quantity: 1 };
 
-    if (cart.length > 0) {
-      const found = cart.find((cartItem) => cartItem.item_id === item.item_id);
-      if (found) {
-        return;
-      }
-    }
+    instance
+      .post(`/billing/cart/item/`, obj)
+      .then((res) => {
+        console.log("res", res);
+        setLoading(false);
+        setCartSidebar({ show: true });
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.log("err", err);
+      });
 
-    addToCart([...cart, item]);
-    setCartSidebar({ show: true });
+    // console.log("add to cart", cart, item, typeof cart);
+
+    // if (cart.length > 0) {
+    //   const found = cart.find((cartItem) => cartItem.item_id == item.item_id);
+    //   if (found) {
+    //     return;
+    //   }
+    // }
+
+    // addToCart([...cart, item]);
+    // setCartSidebar({ show: true });
   };
 
   return (
@@ -133,8 +183,15 @@ const ViewProduct = () => {
                   {selectedProduct?.title}
                 </div>
               </div>
-              <div className=" text-[1.25rem] font-[500] mb-2 text-white">
-                {`₹ ${selectedProduct?.price}`}
+              <div className="flex flex-row justify-end items-center text-xl mb-2 gap-x-2">
+                <p className=" text-red-400  line-through 	">
+                  {" "}
+                  {`₹ ${selectedSection?.originalPrice}`}
+                </p>
+                <p className=" text-white	">
+                  {" "}
+                  {`₹ ${selectedSection?.discountedPrice}`}
+                </p>
               </div>
             </div>
             <div className=" text-[1rem] text-white mt-4">
@@ -144,20 +201,45 @@ const ViewProduct = () => {
             <div className=" flex flex-col items-start mt-[5vh]">
               <p>Quantity</p>
               <div className=" flex flex-row gap-x-4 mt-2">
-                <div
-                  className={` w-[7.5vw] py-2 flex flex-col items-center border-[1px] border-white bg-black text-white`}
-                >
-                  <p>12pc</p>
-                </div>
-                <div
-                  className={` w-[7.5vw] py-2 flex flex-col items-center border-[1px] border-black bg-white text-black`}
-                >
-                  <p>12pc</p>
-                </div>
+                {selectedProduct?.productSections.map((section, index) => {
+                  return (
+                    <button
+                      onClick={() => setSelectedSection(section)}
+                      key={index}
+                      className={` w-[5vw] py-2 text-sm flex flex-col items-center border-[1px] border-white ${
+                        selectedSection.description == section.description
+                          ? "bg-black text-white"
+                          : "bg-white text-black"
+                      } `}
+                    >
+                      <p>{section.description}</p>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+            <div className=" flex flex-row justify-between w-full items-center mt-8">
+              <div className="flex flex-row justify-start items-center text-sm gap-x-2">
+                <p className=" text-red-400  line-through 	">
+                  {" "}
+                  {`₹ ${selectedSection?.originalPrice}`}
+                </p>
+                <p className=" text-white	">
+                  {" "}
+                  {`₹ ${selectedSection?.discountedPrice}`}
+                </p>
+                <p className=" text-white	">/ {selectedSection.description} </p>
+              </div>
+              <div className=" flex flex-row justify-end items-center">
+                <p className=" text-white mr-2">
+                  {selectedSection.hydrosharkPoints}
+                </p>
+                <PiCoinsFill className=" text-xl text-white" />
+                <p className=" text-white text-base ml-1">HydroShark Coins</p>
               </div>
             </div>
 
-            <div className="flex flex-row items-center justify-between gap-x-4 w-full  mt-8">
+            <div className="flex flex-row items-center justify-between gap-x-4 w-full mt-[5vh]">
               {/* <div className=" flex flex-row items-center justify-between border-[1px] p-2 border-white w-1/2">
                 <a className=" text-white text-sm">
                   <LuPlus />
@@ -173,7 +255,11 @@ const ViewProduct = () => {
                 }}
                 className=" bg-black text-white border-[1px] border-white w-8/12 py-2"
               >
-                {"Add to cart"}
+                {loading ? (
+                  <Spinner color="#fff" size={24} loading={loading} />
+                ) : (
+                  <p>{"Add to cart"}</p>
+                )}
               </button>
             </div>
             <div className=" flex flex-col items-start mt-8">
@@ -199,7 +285,7 @@ const ViewProduct = () => {
                 </p>
               </div>
             </div>
-            <div className=" h-12 absolute  w-full left-0 bottom-8 flex flex-row justify-start gap-x-[10%] px-8">
+            <div className=" h-12 absolute  w-full left-0 bottom-2 flex flex-row justify-start gap-x-[10%] px-8">
               <div className=" flex flex-row items-center justify-start">
                 <IoTrendingDownOutline className=" text-white text-lg" />
                 <p className=" text-white mt-1 ml-1">{"Low Sugar"}</p>
@@ -302,7 +388,13 @@ const ViewProduct = () => {
           </div>
         </div>
       </div>
-      <ProductCTA {...selectedProduct} />
+      <ProductCTA
+        loading={loading}
+        handleAddToCart={() => {
+          addToCartHandler(selectedProduct);
+        }}
+        selectedProduct={selectedProduct}
+      />
     </div>
   );
 };

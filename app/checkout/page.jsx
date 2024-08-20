@@ -13,6 +13,7 @@ const Checkout = () => {
   const [cartList, setCartList] = useState(cart);
   const [sameAsBilling, setSameAsBilling] = useState(false);
   const [orderId, setOrderId] = useState("");
+  const [paymentMethod, setPaymentMethod] = useState("online");
 
   const processPayment = async (orderId) => {
     try {
@@ -90,6 +91,7 @@ const Checkout = () => {
                   type="checkbox"
                   className=" checked:text-black"
                   checked={false}
+                  onChange={() => {}}
                 />
                 <p className=" text-black text-sm mt-1">
                   Keep me up to date on news and exclusive offers
@@ -193,7 +195,12 @@ const Checkout = () => {
                 </p>
               </div>
               <div className=" flex flex-col items-center w-full justify-center bg-gray-100 mt-4 rounded-md">
-                <div className=" flex flex-row justify-between w-full py-4 px-2 border-[1px] border-black">
+                <button
+                  onClick={() => setPaymentMethod("online")}
+                  className={` flex flex-row justify-between w-full py-4 px-2 border-[1px] ${
+                    paymentMethod == "online" ? "border-black" : "border-white"
+                  } `}
+                >
                   <div className=" flex flex-row items-end justify-start">
                     <p className="text-sm text-black">
                       {" Razorpay Secure (UPI, Cards, Wallets, NetBanking)"}
@@ -215,15 +222,30 @@ const Checkout = () => {
                       />
                     </div>
                   </div>
-                </div>
-                <div className=" flex flex-col h-[25vh] w-full justify-center items-center">
-                  <BsWindowFullscreen className="text-black text-4xl" />
-                  <p className=" text-black text-sm mt-2 w-7/12 text-center">
-                    {
-                      "After clicking “Pay now”, you will be redirected to Razorpay Secure (UPI, Cards, Wallets, NetBanking) to complete your purchase securely."
-                    }
-                  </p>
-                </div>
+                </button>
+                {paymentMethod === "online" ? (
+                  <div className=" flex flex-col h-[25vh] w-full justify-center items-center">
+                    <BsWindowFullscreen className="text-black text-4xl" />
+                    <p className=" text-black text-sm mt-2 w-7/12 text-center">
+                      {
+                        "After clicking “Pay now”, you will be redirected to Razorpay Secure (UPI, Cards, Wallets, NetBanking) to complete your purchase securely."
+                      }
+                    </p>
+                  </div>
+                ) : null}
+
+                <button
+                  onClick={() => setPaymentMethod("cod")}
+                  className={` flex flex-row justify-between w-full py-4 px-2 border-[1px] ${
+                    paymentMethod == "cod" ? "border-black" : "border-white"
+                  } `}
+                >
+                  <div className=" flex flex-row items-end justify-start">
+                    <p className="text-sm text-black">
+                      {"COD (Cash on Delivery)"}
+                    </p>
+                  </div>
+                </button>
               </div>
             </div>
             <div className=" flex flex-col items-start w-full mt-[5vh]">

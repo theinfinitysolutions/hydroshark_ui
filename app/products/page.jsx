@@ -1,8 +1,9 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
 import { testimonials } from "@/utils/consts";
+import instance from "@/utils/instance";
 
 import "swiper/css";
 import "swiper/css/effect-coverflow";
@@ -16,7 +17,24 @@ import { useRouter } from "next/navigation";
 
 const Products = () => {
   const router = useRouter();
+  const [productList, setProductList] = React.useState([]);
   const { showProductModal, setShowProductModal, addToCart, cart } = useStore();
+
+  const getAllProducts = () => {
+    instance
+      .get("/drinks/product/")
+      .then((res) => {
+        console.log("res", res.data.results);
+        setProductList(res.data.results);
+      })
+      .catch((err) => {
+        console.log("err", err);
+      });
+  };
+
+  useEffect(() => {
+    getAllProducts();
+  }, []);
 
   return (
     <div className="w-full min-h-screen relative bg-[#f0f2f4] flex flex-col items-center overflow-hidden">
@@ -28,7 +46,7 @@ const Products = () => {
         </p>
       </div>
       <div className=" flex w-10/12 mt-[7.5vh]">
-        <Swiper
+        {/* <Swiper
           effect={"coverflow"}
           grabCursor={true}
           centeredSlides={true}
@@ -118,17 +136,101 @@ const Products = () => {
               </a>
             </SwiperSlide>
           ))}
+         
 
-          {/* <div className="slider-controler">
-            <div className="swiper-button-prev slider-arrow">
-              <iIoMdArrowBack />
+        </Swiper> */}
+        <div className=" w-full flex flex-row justify-center gap-x-[5vw] items-center ">
+          {[...products].map((product, index) => (
+            <div
+              className="w-[35vw] h-[60vh] flex flex-col items-center relative  border-[1px] border-white  z-0 justify-center"
+              key={index}
+            >
+              <div className=" z-30 absolute  bottom-4 right-4 flex flex-col gap-y-2  ">
+                {product.productSections.map((section, index) => (
+                  <button
+                    key={index}
+                    className=" h-[6vh] w-[6vh] cursor-pointer  flex flex-col items-center justify-center rounded-full border-[1px] border-white "
+                  >
+                    <p className=" text-white font-semibold text-[10px]">
+                      {section.description}
+                    </p>
+                  </button>
+                ))}
+              </div>
+              <div className=" absolute w-full h-full z-0 ">
+                <Image
+                  src={"/bgasset21.png"}
+                  fill
+                  style={{ objectFit: "cover" }}
+                />
+              </div>
+              <div className=" absolute h-[5vh] w-[30vh] -right-4 top-0  z-0 ">
+                <Image
+                  src={"/icon5.png"}
+                  fill
+                  style={{ objectFit: "contain" }}
+                />
+              </div>
+              <div className=" absolute h-[20vh] w-[20vh] z-10 left-0 -top-[5vh] ">
+                <Image
+                  src={"/icon4.png"}
+                  fill
+                  style={{ objectFit: "contain" }}
+                />
+              </div>
+              <a
+                onClick={() => {
+                  router.push(`/products/${product.id}`);
+                }}
+                className=" flex z-30 flex-col items-center cursor-pointer justify-center w-full h-[60vh] bg-white  bg-opacity-10"
+              >
+                <p className=" z-20 text-[#e3fafc]">{"HYDROSHARK"}</p>
+                <p className="  z-20 text-2xl text-white font-medium">
+                  {product.title}
+                </p>
+
+                <div className="  z-20 flex flex-col items-center justify-center w-full">
+                  {product.type === "bottle" ? (
+                    <div className=" flex h-[30vh] w-[30vh] relative">
+                      <Image
+                        src={product.image}
+                        fill
+                        style={{ objectFit: "contain" }}
+                      />
+                    </div>
+                  ) : product.type === "crate" ? (
+                    <div className=" flex h-[30vh] w-[50vh] relative">
+                      <Image
+                        src={product.image}
+                        fill
+                        style={{ objectFit: "contain" }}
+                      />
+                    </div>
+                  ) : product.type === "merch" ? (
+                    <div className=" flex h-[30vh] w-[30vh] relative">
+                      <Image
+                        src={product.image}
+                        fill
+                        style={{ objectFit: "contain" }}
+                      />
+                    </div>
+                  ) : null}
+
+                  <p className=" text-white mt-4">{`₹${product.price} / ${product.quanity}`}</p>
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      addToCart(product);
+                    }}
+                    className=" flex flex-col items-center transition-all duration-200 mt-4 px-6 border-[1px] border-white py-2 bg-transparent text-white hover:bg-white hover:text-black"
+                  >
+                    <p className=" mt-1">ADD TO CART</p>
+                  </button>
+                </div>
+              </a>
             </div>
-            <div className="swiper-button-next slider-arrow">
-              <IoMdArrowForward />
-            </div>
-            <div className="swiper-pagination"></div>
-          </div> */}
-        </Swiper>
+          ))}
+        </div>
       </div>
       <div className=" flex flex-row items-center justify-center w-full mt-[7.5vh] bg-black py-[7.5vh]">
         <div className=" flex flex-col items-start w-[40%]">
