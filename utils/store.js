@@ -21,6 +21,7 @@ export const useStore = create((set) => ({
 
   showAuthModal: {
     show: false,
+    message: "",
   },
   setShowAuthModal: (showAuthModal) =>
     set((state) => (state.showAuthModal = showAuthModal)),
@@ -29,4 +30,15 @@ export const useStore = create((set) => ({
   },
   setShowHydrosharkCoinsModal: (showHydrosharkCoinsModal) =>
     set((state) => (state.showHydrosharkCoinsModal = showHydrosharkCoinsModal)),
+
+  showAddressModal: {
+    show: false,
+    id: "",
+    mode: "",
+  },
+  setShowAddressModal: (showAddressModal) =>
+    set((state) => (state.showAddressModal = showAddressModal)),
+
+  user: null,
+  setUser: (user) => set((state) => (state.user = user)),
 }));
