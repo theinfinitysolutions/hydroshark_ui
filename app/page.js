@@ -16,15 +16,20 @@ import ShopNowButton from "@/components/ShopNow";
 import ProductSectionHome1 from "@/components/ProductSectionHome1";
 import TestimonalsHome from "@/components/TestimonalsHome";
 import { getUser } from "@/utils/helper";
+import { useStore } from "@/utils/store";
 
 export default function Home() {
   const ref = useRef();
   const router = useRouter();
   const [currentFlavour, setCurrentFlavour] = useState(0);
   const [animateHeight, setAnimateHeight] = useState("50vh");
+  const { user } = useStore();
 
   useEffect(() => {
-    getUser();
+    if (!user) getUser();
+  }, [user]);
+
+  useEffect(() => {
     if (window.innerWidth < 360) {
       setAnimateHeight("60vh");
     }

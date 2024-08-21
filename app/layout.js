@@ -13,6 +13,10 @@ import AuthModal from "@/components/AuthModal";
 import Salesiq from "@/components/salesiq";
 import HydrosharkCoinsModal from "@/components/HydrosharkCoinsModal";
 import Banner from "@/components/Banner";
+import dynamic from "next/dynamic";
+import TawkToComponent from "@/components/TawkToComponent";
+import { getUser } from "@/utils/helper";
+import AddUserAddressModal from "@/components/AddUserAddressModal";
 
 const local = localFont({ src: "../public/ITCAvantGardePro-Md.otf" });
 
@@ -68,14 +72,16 @@ export default function RootLayout({ children }) {
         <CartSidebar />
         <ViewProductModal />
         <AuthModal />
-        <Salesiq
+        {/* <Salesiq
           widgetCode={
             "siq58c951d9aecb52ac7791205cd21142707ca89ec5d8df06da9ea518ad779cd2697d6da2850ce51517e23afa317171057a"
           }
           domain={"https://salesiq.zohopublic.in/widget"}
-        />
+        /> */}
         <HydrosharkCoinsModal />
         <Script src="https://checkout.razorpay.com/v1/checkout.js"></Script>
+        <TawkToComponent />
+        <AddUserAddressModal />
       </body>
     </html>
   );
