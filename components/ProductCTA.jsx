@@ -14,7 +14,11 @@ const ProductCTA = ({ handleAddToCart, loading, selectedProduct }) => {
       <div className=" flex flex-row w-full justify-center ">
         <div className=" flex w-[20vh] h-[20vh] relative">
           <Image
-            src={process.env.NEXT_PUBLIC_API_URL + selectedProduct.image}
+            src={
+              selectedProduct?.product_title == "LEMON"
+                ? "/lemoncan.webp"
+                : "/mangocan.webp"
+            }
             fill
             style={{ objectFit: "contain" }}
           />
@@ -26,13 +30,12 @@ const ProductCTA = ({ handleAddToCart, loading, selectedProduct }) => {
                 {"HYDROSHARK"}
               </p>
               <p className=" text-2xl text-black font-semibold">
-                {selectedProduct.title}
+                {selectedProduct?.product_title}
               </p>
             </div>
-            <p className=" text-base mt-2 text-black font-normal">{`₹${selectedProduct.price} / ${selectedProduct.quanity}`}</p>
           </div>
           <p className=" text-sm text-black font-normal">
-            {selectedProduct.description}
+            {selectedProduct?.product_description}
           </p>
           <button
             onClick={() => {
