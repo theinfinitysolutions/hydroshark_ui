@@ -61,6 +61,7 @@ const Navbar = () => {
   const router = useRouter();
   const pathname = usePathname();
   const {
+    cart,
     setShow,
     cartSidebar,
     setCartSidebar,
@@ -133,7 +134,7 @@ const Navbar = () => {
         </a>
         <a
           onClick={() => {
-            setShowAuthModal({ show: true });
+            setShowAuthModal({ show: true, message: "" });
           }}
           className=" py-2 mx-4 cursor-pointer"
         >
@@ -150,8 +151,13 @@ const Navbar = () => {
             setCartSidebar({ show: true });
             console.log("clicked");
           }}
-          className=" py-2 mx-4 cursor-pointer z-10"
+          className=" py-2 mx-4 cursor-pointer relative z-10"
         >
+          {cart?.length > 0 ? (
+            <div className=" h-4 w-4 flex items-center justify-center bg-black rounded-full absolute -top-1 -right-2">
+              <p className=" text-[10px] text-white">{cart.length}</p>
+            </div>
+          ) : null}
           <FiShoppingCart className=" text-[#181818] text-xl" />
         </a>
         <button
@@ -206,7 +212,7 @@ const Navbar = () => {
       <div
         className={` absolute ${
           currentHover == "/explore" ? "block" : "hidden"
-        } top-[9vh] min-w-[15vw] bg-white border z-50 animate-slideUpfast`}
+        } top-[15vh] min-w-[15vw] bg-white border z-50 animate-slideUpfast`}
       >
         <div className=" w-full grid grid-cols-1 p-2 gap-x-2">
           {subItemsExplore.map((service, index) => {

@@ -8,7 +8,7 @@ import { useStore } from "@/utils/store";
 const Login = ({ onSignUp }) => {
   const [showOTP, setShowOTP] = useState(false);
   const [otp, setOtp] = useState("");
-  const { setUser, setShowAuthModal } = useStore();
+  const { setUser, showAuthModal, setShowAuthModal } = useStore();
 
   const {
     register,
@@ -51,7 +51,7 @@ const Login = ({ onSignUp }) => {
         console.log("res", res);
         localStorage.setItem("token", res.data.access_token);
         setUser(res.data.user);
-        setShowAuthModal({ show: false });
+        setShowAuthModal({ show: false, message: "" });
         reset();
         setOtp("");
         setShowOTP(false);
@@ -64,10 +64,13 @@ const Login = ({ onSignUp }) => {
 
   return (
     <div className="flex flex-col w-full items-center px-4">
-      <div className=" w-full flex flex-row justify-center items-center ">
+      <div className=" w-full flex flex-col justify-center items-center ">
         <p className=" text-[1.5rem] font-[500] text-black">
           {showOTP ? "OTP" : "Login"}
         </p>
+        {showAuthModal?.message != "" ? (
+          <p className=" text-sm text-black">{showAuthModal.message}</p>
+        ) : null}
       </div>
 
       {showOTP ? (
