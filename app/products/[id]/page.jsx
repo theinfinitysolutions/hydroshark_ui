@@ -19,7 +19,7 @@ import ProductCTA from "@/components/ProductCTA";
 import { PiCoinsFill } from "react-icons/pi";
 import instance from "@/utils/instance";
 import Spinner from "@/components/Spinner";
-import { set } from "react-hook-form";
+import { getUser } from "@/utils/helper";
 
 const ratings = [
   {
@@ -53,255 +53,235 @@ const ViewProduct = () => {
   const { id } = useParams();
   const router = useRouter();
   const [loading, setLoading] = useState(true);
-  const [isOpen, setIsOpen] = useState(false);
   const {
     showProductModal,
     setShowProductModal,
     addToCart,
     cart,
     setCartSidebar,
+    user,
   } = useStore();
-  const [selectedProduct, setSelectedProduct] = useState(products[0]);
-  const [selectedSection, setSelectedSection] = useState(
-    products[0].productSections[0]
-  );
+  const [selectedProduct, setSelectedProduct] = useState({});
+  const [selectedSection, setSelectedSection] = useState({});
+
+  useEffect(() => {
+    if (!user) getUser();
+  }, [user]);
 
   const getProductById = (id) => {
+    setLoading(true);
     instance
       .get(`/drinks/product/${id}/`)
       .then((res) => {
         console.log("products", res.data);
-        getProductSections(id);
+        setSelectedProduct(res.data);
+        setSelectedSection({ ...res.data.product_sections[0] });
+        setLoading(false);
       })
       .catch((err) => {
-        console.log("err", err);
-      });
-  };
-
-  const getProductSections = (productId) => {
-    instance
-      .get(`/drinks/product-section/`)
-      .then((res) => {
-        console.log("products", res.data);
-      })
-      .catch((err) => {
+        setLoading(false);
         console.log("err", err);
       });
   };
 
   useEffect(() => {
     getProductById(id);
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     setSelectedProduct(products.find((product) => product.id == id));
   }, [id]);
 
-  const handleClose = () => {
-    setShowProductModal({ show: false, id: "" });
-  };
-
   const addToCartHandler = (item) => {
-    setLoading(true);
-    let obj = { product_section: item.id, quantity: 1 };
+    if (cart.length > 0) {
+      const found = cart.find((cartItem) => cartItem.id == item.id);
+      if (found) {
+        let cartList = cart;
+        cartList.forEach((cartItem) => {
+          if (cartItem.id == item.id) {
+            cartItem.product_quantity += 1;
+          }
+        });
+        addToCart(cartList);
+        return;
+      }
+    }
 
-    instance
-      .post(`/billing/cart/item/`, obj)
-      .then((res) => {
-        console.log("res", res);
-        setLoading(false);
-        setCartSidebar({ show: true });
-      })
-      .catch((err) => {
-        setLoading(false);
-        console.log("err", err);
-      });
-
-    // console.log("add to cart", cart, item, typeof cart);
-
-    // if (cart.length > 0) {
-    //   const found = cart.find((cartItem) => cartItem.item_id == item.item_id);
-    //   if (found) {
-    //     return;
-    //   }
-    // }
-
-    // addToCart([...cart, item]);
-    // setCartSidebar({ show: true });
+    addToCart([...cart, item]);
+    setCartSidebar({ show: true });
   };
 
   return (
     <div className="bg-[#f0f2f4] w-full min-h-screen h-full relative overflow-y-scroll  flex flex-col items-start">
-      <div className=" bg-[#f0f2f4] w-full h-[90vh] relative overflow-y-scroll  flex flex-col items-start">
-        <div className=" absolute right-4 top-4 z-20">
-          <button
-            onClick={() => {
-              router.back();
-            }}
-            className=" flex flex-row justify-start items-center gap-x-2"
-          >
-            <IoIosArrowRoundBack className=" text-white text-3xl" />
-            <p className=" text-white mt-1">Back</p>
-          </button>
+      {loading ? (
+        <div className=" w-full h-[50vh] relative flex justify-center items-center">
+          <Spinner loading={loading} size={48} color="#000000" />
         </div>
-        <div className="flex flex-row justify-between items-center h-full w-full">
-          <div className=" w-7/12 h-full flex flex-col bg-[#f0f2f4] items-center justify-center relative ">
-            <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:72px_72px]"></div>
-            {selectedProduct?.type === "bottle" ? (
-              <ReplaceScene
-                scene={selectedProduct.title.toLowerCase()}
-                orbital={true}
-              />
-            ) : selectedProduct?.type == "crate" ? (
-              <div className=" flex h-[40vh] w-full relative">
-                <Image
-                  src={selectedProduct.image}
-                  fill
-                  style={{ objectFit: "contain" }}
-                  className=""
-                />
-              </div>
-            ) : selectedProduct?.type == "merch" ? (
-              <div className=" flex h-[40vh] w-[40vh] relative">
-                <Image src={selectedProduct.image} fill className="" />
-              </div>
-            ) : null}
+      ) : (
+        <div className=" bg-[#f0f2f4] w-full h-[90vh] relative overflow-y-scroll  flex flex-col items-start">
+          <div className=" absolute right-4 top-4 z-20">
+            <button
+              onClick={() => {
+                router.back();
+              }}
+              className=" flex flex-row justify-start items-center gap-x-2"
+            >
+              <IoIosArrowRoundBack className=" text-white text-3xl" />
+              <p className=" text-white mt-1">Back</p>
+            </button>
           </div>
-          <div className=" w-5/12 h-full bg-[#181818] relative flex flex-col items-start pl-8 pr-[7.5vw] justify-center  ">
-            <div className=" flex flex-row w-full justify-between items-end">
-              <div className=" flex flex-col items-start">
-                <p className=" text-white text-sm ">HYDROSHARK</p>
-                <div
-                  className={`text-[3rem] font-[500] ${
-                    selectedProduct?.title == "LEMON"
-                      ? "text-[#308918]"
-                      : selectedProduct?.title == "MANGO"
-                      ? "text-[#dfd434]"
-                      : "text-white"
-                  }`}
-                >
-                  {selectedProduct?.title}
+          <div className="flex flex-row justify-between items-center h-full w-full">
+            <div className=" w-7/12 h-full flex flex-col bg-[#f0f2f4] items-center justify-center relative ">
+              <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:72px_72px]"></div>
+              {selectedProduct.product_title ? (
+                <ReplaceScene
+                  scene={selectedProduct.product_title.toLowerCase()}
+                  orbital={true}
+                />
+              ) : null}
+            </div>
+            <div className=" w-5/12 h-full bg-[#181818] relative flex flex-col items-start pl-8 pr-[7.5vw] justify-center  ">
+              <div className=" flex flex-row w-full justify-between items-end">
+                <div className=" flex flex-col items-start">
+                  <p className=" text-white text-sm ">HYDROSHARK</p>
+                  <div
+                    className={`text-[3rem] font-[500] ${
+                      selectedProduct?.product_title == "LEMON"
+                        ? "text-[#308918]"
+                        : selectedProduct?.product_title == "MANGO"
+                        ? "text-[#dfd434]"
+                        : "text-white"
+                    }`}
+                  >
+                    {selectedProduct?.product_title}
+                  </div>
+                </div>
+                <div className="flex flex-row justify-end items-center text-xl mb-2 gap-x-2">
+                  <p className=" text-red-400  line-through 	">
+                    {" "}
+                    {`₹ ${selectedSection?.discounted_amount}`}
+                  </p>
+                  <p className=" text-white	">
+                    {" "}
+                    {`₹ ${selectedSection?.price}`}
+                  </p>
                 </div>
               </div>
-              <div className="flex flex-row justify-end items-center text-xl mb-2 gap-x-2">
-                <p className=" text-red-400  line-through 	">
-                  {" "}
-                  {`₹ ${selectedSection?.originalPrice}`}
-                </p>
-                <p className=" text-white	">
-                  {" "}
-                  {`₹ ${selectedSection?.discountedPrice}`}
-                </p>
+              <div className=" text-[1rem] text-white mt-4">
+                {selectedProduct?.product_description}
               </div>
-            </div>
-            <div className=" text-[1rem] text-white mt-4">
-              {selectedProduct?.longdescription}
-            </div>
 
-            <div className=" flex flex-col items-start mt-[5vh]">
-              <p>Quantity</p>
-              <div className=" flex flex-row gap-x-4 mt-2">
-                {selectedProduct?.productSections.map((section, index) => {
-                  return (
-                    <button
-                      onClick={() => setSelectedSection(section)}
-                      key={index}
-                      className={` w-[5vw] py-2 text-sm flex flex-col items-center border-[1px] border-white ${
-                        selectedSection.description == section.description
-                          ? "bg-black text-white"
-                          : "bg-white text-black"
-                      } `}
-                    >
-                      <p>{section.description}</p>
-                    </button>
-                  );
-                })}
+              <div className=" flex flex-col items-start mt-[5vh]">
+                <p>Quantity</p>
+                <div className=" flex flex-row gap-x-4 mt-2">
+                  {selectedProduct?.product_sections?.map((section, index) => {
+                    return (
+                      <button
+                        onClick={() => setSelectedSection(section)}
+                        key={index}
+                        className={` w-[5vw] py-2 text-sm flex flex-col items-center border-[1px] border-white ${
+                          !(selectedSection?.id == section?.id)
+                            ? "bg-black text-white"
+                            : "bg-white text-black"
+                        } `}
+                      >
+                        <p>{section?.section_title}</p>
+                      </button>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
-            <div className=" flex flex-row justify-between w-full items-center mt-8">
-              <div className="flex flex-row justify-start items-center text-sm gap-x-2">
-                <p className=" text-red-400  line-through 	">
-                  {" "}
-                  {`₹ ${selectedSection?.originalPrice}`}
-                </p>
-                <p className=" text-white	">
-                  {" "}
-                  {`₹ ${selectedSection?.discountedPrice}`}
-                </p>
-                <p className=" text-white	">/ {selectedSection.description} </p>
+              <div className=" flex flex-row justify-between w-full items-center mt-8">
+                <div className="flex flex-row justify-start items-center text-sm gap-x-2">
+                  <p className=" text-red-400  line-through 	">
+                    {" "}
+                    {`₹ ${selectedSection?.price}`}
+                  </p>
+                  <p className=" text-white	">
+                    {" "}
+                    {`₹ ${selectedSection?.discounted_amount}`}
+                  </p>
+                  <p className=" text-white	">
+                    / {selectedSection?.section_title}{" "}
+                  </p>
+                </div>
+                <div className=" flex flex-row justify-end items-center">
+                  <p className=" text-white mr-2">
+                    {selectedSection?.hydroshark_points_on_purchase}
+                  </p>
+                  <PiCoinsFill className=" text-xl text-white" />
+                  <p className=" text-white text-base ml-1">HydroShark Coins</p>
+                </div>
               </div>
-              <div className=" flex flex-row justify-end items-center">
-                <p className=" text-white mr-2">
-                  {selectedSection.hydrosharkPoints}
-                </p>
-                <PiCoinsFill className=" text-xl text-white" />
-                <p className=" text-white text-base ml-1">HydroShark Coins</p>
-              </div>
-            </div>
 
-            <div className="flex flex-row items-center justify-between gap-x-4 w-full mt-[5vh]">
-              {/* <div className=" flex flex-row items-center justify-between border-[1px] p-2 border-white w-1/2">
-                <a className=" text-white text-sm">
-                  <LuPlus />
-                </a>
-                <p className=" text-white mt-1">1</p>
-                <a className=" text-white text-sm">
-                  <LuMinus />
-                </a>
-              </div> */}
-              <button
-                onClick={() => {
-                  addToCartHandler(selectedProduct);
-                }}
-                className=" bg-black text-white border-[1px] border-white w-8/12 py-2"
-              >
-                {loading ? (
-                  <Spinner color="#fff" size={24} loading={loading} />
-                ) : (
-                  <p>{"Add to cart"}</p>
-                )}
-              </button>
-            </div>
-            <div className=" flex flex-col items-start mt-8">
-              <p className=" text-xl font-bold">
-                {
-                  "Try all of our full exciting flavors and get the best hydration experience"
-                }
-              </p>
-            </div>
-            <div className=" flex flex-col w-8/12 items-start mt-4">
-              <div className=" flex flex-row justify-start items-center ">
-                <MdOutlineLocalShipping className=" text-lg text-white" />
-                <p className=" text-[14px] text-white ml-2 mt-[4px]">
-                  Shipped in 4-5 working days
+              <div className="flex flex-row items-center justify-between gap-x-4 w-full mt-[5vh]">
+                <button
+                  onClick={() => {
+                    let obj = {
+                      ...selectedSection,
+                      product_title: selectedProduct.product_title,
+                      image:
+                        selectedProduct.product_title == "LEMON"
+                          ? "/lemoncan.webp"
+                          : "/mangocan.webp",
+                      product_quantity: 1,
+                    };
+
+                    addToCartHandler(obj);
+                  }}
+                  className=" bg-black text-white border-[1px] border-white w-8/12 py-2"
+                >
+                  {loading ? (
+                    <Spinner color="#fff" size={24} loading={loading} />
+                  ) : (
+                    <p>{"Add to cart"}</p>
+                  )}
+                </button>
+              </div>
+              <div className=" flex flex-col items-start mt-8">
+                <p className=" text-xl font-bold">
+                  {
+                    "Try all of our full exciting flavors and get the best hydration experience"
+                  }
                 </p>
               </div>
-              <div className=" flex flex-row justify-start items-start ">
-                <p className=" text-[14px] text-white mt-[2px]">
-                  Check our return policy{" "}
-                  <span className=" text-cyan-600 underline">
-                    <a>here</a>
-                  </span>
-                </p>
+              <div className=" flex flex-col w-8/12 items-start mt-4">
+                <div className=" flex flex-row justify-start items-center ">
+                  <MdOutlineLocalShipping className=" text-lg text-white" />
+                  <p className=" text-[14px] text-white ml-2 mt-[4px]">
+                    Shipped in 4-5 working days
+                  </p>
+                </div>
+                <div className=" flex flex-row justify-start items-start ">
+                  <p className=" text-[14px] text-white mt-[2px]">
+                    Check our return policy{" "}
+                    <span className=" text-cyan-600 underline">
+                      <a>here</a>
+                    </span>
+                  </p>
+                </div>
               </div>
-            </div>
-            <div className=" h-12 absolute  w-full left-0 bottom-2 flex flex-row justify-start gap-x-[10%] px-8">
-              <div className=" flex flex-row items-center justify-start">
-                <IoTrendingDownOutline className=" text-white text-lg" />
-                <p className=" text-white mt-1 ml-1">{"Low Sugar"}</p>
-              </div>
-              <div className=" flex flex-row items-center justify-start">
-                <IoBanOutline className=" text-white text-lg" />
-                <p className=" text-white mt-1 ml-1">{"No Caffeine"}</p>
-              </div>
-              <div className=" flex flex-row items-center justify-start">
-                <MdOutlineHealthAndSafety className=" text-white text-lg" />
-                <p className=" text-white mt-1 ml-1">{"Vitamins & Minerals"}</p>
+              <div className=" h-12 absolute  w-full left-0 bottom-2 flex flex-row justify-start gap-x-[10%] px-8">
+                <div className=" flex flex-row items-center justify-start">
+                  <IoTrendingDownOutline className=" text-white text-lg" />
+                  <p className=" text-white mt-1 ml-1">{"Low Sugar"}</p>
+                </div>
+                <div className=" flex flex-row items-center justify-start">
+                  <IoBanOutline className=" text-white text-lg" />
+                  <p className=" text-white mt-1 ml-1">{"No Caffeine"}</p>
+                </div>
+                <div className=" flex flex-row items-center justify-start">
+                  <MdOutlineHealthAndSafety className=" text-white text-lg" />
+                  <p className=" text-white mt-1 ml-1">
+                    {"Vitamins & Minerals"}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
+
       <div className=" w-full flex flex-col bg-[#181818] items-center px-[7.5vw] pt-[7.5vh]">
         <div className=" flex flex-col items-start w-full">
           <div className=" flex flex-col items-start w-full">

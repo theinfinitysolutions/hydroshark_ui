@@ -7,13 +7,64 @@ import Image from "next/image";
 import { BsWindowFullscreen } from "react-icons/bs";
 import { PiCoinsFill } from "react-icons/pi";
 import Razorpay from "razorpay";
+import { getUser } from "@/utils/helper";
+import { useRouter } from "next/navigation";
+import instance from "@/utils/instance";
+import Spinner from "@/components/Spinner";
+import { IoIosAdd } from "react-icons/io";
 
 const Checkout = () => {
-  const { cart, addToCart } = useStore();
-  const [cartList, setCartList] = useState(cart);
-  const [sameAsBilling, setSameAsBilling] = useState(false);
+  const router = useRouter();
+  const [loading, setLoading] = useState(false);
+  const { cart, addToCart, user } = useStore();
+  const [cartObj, setCartObject] = useState({});
+  const [sameAsBilling, setSameAsBilling] = useState(true);
   const [orderId, setOrderId] = useState("");
   const [paymentMethod, setPaymentMethod] = useState("online");
+  const [userDetails, setUserDetails] = useState(user);
+  const [walletData, setWalletData] = useState({});
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      getUser();
+    } else {
+      router.push("/");
+    }
+  }, []);
+
+  const getCart = () => {
+    setLoading(true);
+    instance
+      .get(`/billing/cart/`)
+      .then((res) => {
+        setLoading(false);
+        console.log("res", res);
+        setCartObject(res.data);
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.log("err", err);
+      });
+  };
+
+  const getWalletData = () => {
+    setLoading(true);
+    instance
+      .get(`/rewards/wallet/`)
+      .then((res) => {
+        setWalletData(res.data);
+        console.log("wallet data");
+      })
+      .catch((err) => {
+        console.log("err", err);
+      });
+  };
+
+  useEffect(() => {
+    getWalletData();
+    getCart();
+  }, []);
 
   const processPayment = async (orderId) => {
     try {
@@ -77,10 +128,13 @@ const Checkout = () => {
             <div className=" flex flex-col items-start w-full">
               <div className=" flex flex-row w-full justify-between items-baseline">
                 <p className=" text-xl text-black font-semibold">Contact</p>
-                <a className=" text-black underline text-sm">login</a>
+                {user ? null : (
+                  <a className=" text-black underline text-sm">login</a>
+                )}
               </div>
               <div className=" border-[1px] border-black h-12 w-full mt-4 rounded-md overflow-hidden">
                 <input
+                  value={userDetails?.email}
                   placeholder="Email"
                   className=" w-full flex flex-col text-black h-full pl-2  ring-0 focus:ring-0 focus:outline-none"
                 />
@@ -115,7 +169,9 @@ const Checkout = () => {
               <div className=" flex flex-col items-end w-1/2">
                 <div className=" flex flex-row w-3/12 justify-end items-center">
                   <PiCoinsFill className=" text-2xl text-black" />
-                  <p className=" text-black text-lg mt-1">{"1200"}</p>
+                  <p className=" text-black text-lg mt-1">
+                    {walletData?.wallet_balance}
+                  </p>
                 </div>
 
                 <p className=" text-sm text-black">Available Coins</p>
@@ -125,7 +181,7 @@ const Checkout = () => {
               <div className=" flex flex-row w-full justify-between items-baseline">
                 <p className=" text-xl text-black font-semibold">Delivery</p>
               </div>
-              <div className=" flex flex-col w-full items-start mt-4">
+              <form className=" flex flex-col w-full items-start mt-4">
                 <div className=" flex flex-row justify-between w-full">
                   <div className=" border-[1px] border-black h-12 w-[47.5%] rounded-md overflow-hidden">
                     <input
@@ -174,9 +230,9 @@ const Checkout = () => {
                     />
                   </div>
                 </div>
-              </div>
+              </form>
             </div>
-            <div className=" flex flex-col items-start w-full mt-[5vh]">
+            {/* <div className=" flex flex-col items-start w-full mt-[5vh]">
               <div className=" flex flex-row w-full justify-between items-baseline">
                 <p className=" text-xl text-black font-semibold">
                   Shipping Method
@@ -187,7 +243,7 @@ const Checkout = () => {
                   Please select your desired shipping method
                 </p>
               </div>
-            </div>
+            </div> */}
             <div className=" flex flex-col items-start w-full mt-[5vh]">
               <div className=" flex flex-row w-full justify-between items-baseline">
                 <p className=" text-xl text-black font-semibold">
@@ -363,17 +419,30 @@ const Checkout = () => {
           <div className=" flex flex-col items-start w-1/2 px-[5vw] py-8">
             <div className=" flex flex-col items-start w-full">
               <div className=" flex flex-row w-full justify-between items-baseline">
-                <p className=" text-xl text-black font-semibold">Cart</p>
+                <p className=" text-xl text-black font-semibold">
+                  Cart {`(${cartObj?.cart_items.length || 0})`}
+                </p>
               </div>
               <div className=" w-full flex flex-col items-start mt-4">
-                {products.slice(0, 2).map((item, index) => {
+                {cartObj?.cart_items?.map((item, index) => {
                   return (
                     <CartCard
                       key={index}
-                      id={item.id}
-                      title={item.title}
-                      price={item.price}
-                      image={item.image}
+                      id={item.cart}
+                      product_title={
+                        item.product_section.linked_product == 4
+                          ? "LEMON"
+                          : "MANGO"
+                      }
+                      price={item.total_price}
+                      section_title={item.product_section.section_title}
+                      discounted_amount={item.final_amount}
+                      product_quantity={item.quantity}
+                      image={
+                        item.product_section.linked_product == 4
+                          ? "/lemoncan.webp"
+                          : "/mangocan.webp"
+                      }
                       onDelete={() => {
                         handleDelete(item);
                       }}
@@ -406,18 +475,16 @@ const Checkout = () => {
                 <div className=" flex flex-row w-full justify-between items-center mt-4">
                   <p className=" text-black text-lg">Sub total</p>
                   <p className=" text-black text-lg">
-                    ₹{"1200"}
+                    ₹{cartObj?.cart_total_price}
                     {/* {cartList.reduce((acc, item) => {
                       return acc + item.price;
                     }, 0)} */}
                   </p>
                 </div>
                 <div className=" flex flex-row w-full justify-between items-center mt-4">
+                  <p className=" text-black text-lg">DISCOUNT</p>
                   <p className=" text-black text-lg">
-                    TAX <span className=" text-xs">{"(18%)"}</span>
-                  </p>
-                  <p className=" text-black text-lg">
-                    ₹{"200"}
+                    ₹{cartObj?.cart_total_discount_amount}
                     {/* {cartList.reduce((acc, item) => {
                       return acc + item.price;
                     }, 0)} */}
@@ -426,11 +493,23 @@ const Checkout = () => {
                 <div className=" flex flex-row w-full justify-between items-center mt-4">
                   <p className=" text-black text-lg">Total</p>
                   <p className=" text-black text-lg">
-                    ₹{"1400"}
+                    ₹{cartObj?.cart_final_amount}
                     {/* {cartList.reduce((acc, item) => {
                       return acc + item.price;
                     }, 0)} */}
                   </p>
+                </div>
+
+                <div className=" flex flex-row justify-between items-center w-full mt-4">
+                  <p className=" text-black text-lg">HydroShark Coins</p>
+
+                  <div className=" flex flex-row justify-start items-center">
+                    <IoIosAdd className=" text-xl text-green-600" />
+                    <h2 className=" text-green-600 text-lg mt-1">
+                      {walletData?.wallet_balance || 70}
+                    </h2>
+                    <PiCoinsFill className=" text-xl text-black ml-2" />
+                  </div>
                 </div>
               </div>
               <div className=" w-full flex flex-col items-start mt-8 z-20">
