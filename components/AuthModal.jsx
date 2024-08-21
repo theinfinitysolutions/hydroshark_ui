@@ -16,7 +16,7 @@ const AuthModal = () => {
   }, [showAuthModal]);
 
   const handleClose = () => {
-    setShowAuthModal({ show: false });
+    setShowAuthModal({ show: false, message: "" });
     setShowSignup(false);
   };
 

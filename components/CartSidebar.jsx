@@ -6,12 +6,16 @@ import { useRouter } from "next/navigation";
 import { useStore } from "@/utils/store";
 import { IoMdClose } from "react-icons/io";
 import CartCard from "@/components/CartCard";
+import instance from "@/utils/instance";
+import Spinner from "./Spinner";
 
 export default function CartSidebar() {
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
   const [show, setter] = useState(false);
   const user = useStore((state) => state.user);
   const cart = useStore((state) => state.cart);
+  const { showAuthModal, setShowAuthModal } = useStore();
   const addToCart = useStore((state) => state.addToCart);
   const cartSidebar = useStore((state) => state.cartSidebar);
   const setCartSidebar = useStore((state) => state.setCartSidebar);
@@ -36,34 +40,53 @@ export default function CartSidebar() {
     />
   );
 
-  // const handleQuantityChange = (str, skuId) => {
-  //   let cartList = [...cart];
-  //   if (str == "increment") {
-  //     cartList.forEach((item) => {
-  //       if (item.skuId == skuId) {
-  //         item.quantity += 1;
-  //       }
-  //     });
-  //   } else if (str == "decrement") {
-  //     cartList.forEach((item) => {
-  //       if (item.skuId == skuId) {
-  //         if (item.quantity == 1) {
-  //           handleDelete(skuId);
-  //         } else {
-  //           item.quantity = Math.max(1, item.quantity - 1);
-  //         }
-  //       }
-  //     });
-  //   } else {
-  //     cartList.forEach((item) => {
-  //       if (item.skuId == skuId) {
-  //         item.quantity = str;
-  //       }
-  //     });
-  //   }
+  const handleCheckout = async () => {
+    if (!user) {
+      setShowAuthModal({
+        show: true,
+        message: "Please login to continue to checkout",
+      });
+      setCartSidebar({
+        show: false,
+      });
 
-  //   addToCart(cartList);
-  // };
+      return;
+    }
+
+    let cartList = [];
+    let apiCalls = [];
+    cart.map((item) => {
+      cartList.push({
+        product_section: item.id,
+        quantity: item.product_quantity,
+      });
+      apiCalls.push(
+        createCartItem({
+          product_section: item.id,
+          quantity: item.product_quantity,
+        })
+      );
+    });
+
+    // Wait for all API calls to complete
+    const responses = await Promise.all(apiCalls);
+
+    // Process the responses
+    responses.forEach((response) => {
+      console.log(response.data);
+    });
+
+    router.push("/checkout");
+    setter((oldVal) => !oldVal);
+    setCartSidebar({
+      show: false,
+    });
+    console.log("All API calls completed.");
+  };
+
+  const createCartItem = (cartItem) => {
+    return instance.post(`/billing/cart/item/`, cartItem);
+  };
 
   const handleDelete = (item) => {
     let cartList = [...cart].filter((cartItem) => cartItem.tag !== item.tag);
@@ -99,10 +122,7 @@ export default function CartSidebar() {
                 return (
                   <CartCard
                     key={index}
-                    id={item.id}
-                    title={item.title}
-                    price={item.price}
-                    image={item.image}
+                    {...item}
                     onDelete={() => {
                       handleDelete(item);
                     }}
@@ -111,32 +131,34 @@ export default function CartSidebar() {
               })}
             </div>
           ) : (
-            <div className="flex flex-row w-full mt-8 text-white">
+            <div className="flex flex-row w-full mt-8 text-black">
               Your cart is empty!!
             </div>
           )}
           <div className="flex flex-col absolute bottom-8 w-10/12">
-            {cart.length > 0 ? (
+            {/* {cart.length > 0 ? (
               <div className="flex flex-row justify-between items-center">
-                <p className="text-white">Total</p>
-                <p className="text-white">
+                <p className="text-black">Total</p>
+                <p className="text-black">
                   ₹{" "}
                   {cart.reduce((acc, item) => {
-                    return acc + item.price;
+                    return acc + parseInt(item.price);
                   }, 0)}
                 </p>
               </div>
-            ) : null}
+            ) : null} */}
             {cart.length > 0 ? (
               <button
                 onClick={() => {
-                  router.push("/checkout");
-                  setter((oldVal) => !oldVal);
-                  setCartSidebar({ show: false });
+                  handleCheckout();
                 }}
                 className="w-full py-2 rounded-md bg-white border-[1px] border-black transition-all hover:bg-black hover:text-white text-black mt-4"
               >
-                Checkout
+                {loading ? (
+                  <Spinner size={24} loading={loading} color="#ffffff" />
+                ) : (
+                  "Checkout"
+                )}
               </button>
             ) : null}
           </div>
