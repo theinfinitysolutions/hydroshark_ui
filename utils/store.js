@@ -41,4 +41,21 @@ export const useStore = create((set) => ({
 
   user: null,
   setUser: (user) => set((state) => (state.user = user)),
+
+  showLoading: {
+    show: false,
+  },
+  setShowLoading: (showLoading) =>
+    set((state) => (state.showLoading = showLoading)),
+
+  showConfirmModal: {
+    show: false,
+    mode: "",
+    title: "",
+    description: "",
+    action: "",
+    buttonText: "",
+  },
+  setShowConfirmModal: (showConfirmModal) =>
+    set((state) => (state.showConfirmModal = showConfirmModal)),
 }));
