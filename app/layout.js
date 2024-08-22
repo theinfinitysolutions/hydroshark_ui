@@ -17,6 +17,8 @@ import dynamic from "next/dynamic";
 import TawkToComponent from "@/components/TawkToComponent";
 import { getUser } from "@/utils/helper";
 import AddUserAddressModal from "@/components/AddUserAddressModal";
+import GlobalLoader from "@/components/GlobalLoader";
+import ConfirmModals from "@/components/ConfirmModals";
 
 const local = localFont({ src: "../public/ITCAvantGardePro-Md.otf" });
 
@@ -82,6 +84,8 @@ export default function RootLayout({ children }) {
         <Script src="https://checkout.razorpay.com/v1/checkout.js"></Script>
         <TawkToComponent />
         <AddUserAddressModal />
+        <GlobalLoader />
+        <ConfirmModals />
       </body>
     </html>
   );

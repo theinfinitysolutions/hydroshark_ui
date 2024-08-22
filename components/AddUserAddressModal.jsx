@@ -38,7 +38,7 @@ const AddUserAddressModal = () => {
   const createAddress = (data) => {
     setLoading(true);
     instance
-      .post("/accounts/address/", {})
+      .post("/accounts/address/", data)
       .then((res) => {
         getAddressDetails();
         reset();
@@ -70,6 +70,7 @@ const AddUserAddressModal = () => {
   };
 
   const onSubmit = (data) => {
+    console.log("data", data, mode);
     if (mode == "edit") {
       patchAddress(data);
     } else {
@@ -121,7 +122,7 @@ const AddUserAddressModal = () => {
           </button>
         </div>
         {loading ? (
-          <div>
+          <div className=" w-full h-full flex flex-col items-center justify-center">
             <Spinner loading={loading} size={48} color="#000000" />
           </div>
         ) : (
@@ -194,10 +195,7 @@ const AddUserAddressModal = () => {
                 </div>
               </div>
               <div className=" w-full flex flex-row justify-end items-center gap-x-4 mt-4">
-                <button
-                  className=" text-black border-[1px] px-4 py-2 rounded-md border-black"
-                  type="submit"
-                >
+                <button className=" text-black border-[1px] px-4 py-2 rounded-md border-black">
                   <p className=" mt-1">Cancel</p>
                 </button>
                 <button
@@ -224,8 +222,11 @@ const AddUserAddressModal = () => {
               ) : (
                 <div className="flex flex-col h-[20vh] overflow-y-scroll items-start w-full mt-4">
                   {addressList &&
-                    addressList.map((address) => (
-                      <div className="flex flex-row justify-between bg-gray-100 p-4 rounded-lg mb-4">
+                    addressList.map((address, index) => (
+                      <div
+                        key={index}
+                        className="flex flex-row justify-between bg-gray-100 p-4 rounded-lg mb-4"
+                      >
                         <div className=" w-9/12 flex flex-row text-sm flex-wrap items-start">
                           <p className="  text-black">
                             {address.address_line_1},

@@ -15,7 +15,7 @@ export default function CartSidebar() {
   const [show, setter] = useState(false);
   const user = useStore((state) => state.user);
   const cart = useStore((state) => state.cart);
-  const { showAuthModal, setShowAuthModal } = useStore();
+  const { showAuthModal, setShowAuthModal, setShowLoading } = useStore();
   const addToCart = useStore((state) => state.addToCart);
   const cartSidebar = useStore((state) => state.cartSidebar);
   const setCartSidebar = useStore((state) => state.setCartSidebar);
@@ -41,6 +41,7 @@ export default function CartSidebar() {
   );
 
   const handleCheckout = async () => {
+    setShowLoading({ show: true });
     if (!user) {
       setShowAuthModal({
         show: true,
@@ -49,7 +50,7 @@ export default function CartSidebar() {
       setCartSidebar({
         show: false,
       });
-
+      setShowLoading({ show: false });
       return;
     }
 
@@ -82,6 +83,7 @@ export default function CartSidebar() {
       show: false,
     });
     console.log("All API calls completed.");
+    setShowLoading({ show: false });
   };
 
   const createCartItem = (cartItem) => {

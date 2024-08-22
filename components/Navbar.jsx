@@ -9,6 +9,7 @@ import { usePathname } from "next/navigation";
 import { FiShoppingCart } from "react-icons/fi";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { PiCoinsFill } from "react-icons/pi";
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 
 const navItems = [
   {
@@ -57,6 +58,21 @@ const altItems = [
   },
 ];
 
+const userProfile = [
+  {
+    title: "Profile",
+    value: "profile",
+  },
+  {
+    title: "Orders",
+    value: "orders",
+  },
+  {
+    title: "Logout",
+    value: "logout",
+  },
+];
+
 const Navbar = () => {
   const router = useRouter();
   const pathname = usePathname();
@@ -72,6 +88,7 @@ const Navbar = () => {
   } = useStore();
   const [currentHover, setCurrentHover] = useState("");
   const [currentHoverSub, setCurrentHoverSub] = useState(0);
+  const [showProfile, setShowProfile] = useState(false);
   const { user } = useStore();
 
   if (pathname.includes("/admin")) {
@@ -132,12 +149,7 @@ const Navbar = () => {
         >
           <PiCoinsFill className=" text-[#181818] text-2xl" />
         </a>
-        <a
-          onClick={() => {
-            setShowAuthModal({ show: true, message: "" });
-          }}
-          className=" py-2 mx-4 cursor-pointer"
-        >
+        {/* <a onClick={() => {}} className=" py-2 mx-4 cursor-pointer">
           {!user ? (
             <FaRegCircleUser className=" text-[#181818] text-xl" />
           ) : (
@@ -145,7 +157,50 @@ const Navbar = () => {
               <p className=" text-xs mt-1">{user.name[0] || "U"}</p>
             </div>
           )}
-        </a>
+        </a> */}
+        <div className=" z-50 mt-1">
+          <DropdownMenu.Root
+            onOpenChange={() => {
+              if (!user) setShowAuthModal({ show: true, message: "" });
+              else setShowProfile(true);
+            }}
+          >
+            <DropdownMenu.Trigger asChild={showProfile}>
+              {!user ? (
+                <FaRegCircleUser className=" text-[#181818] text-xl mt-1" />
+              ) : (
+                <div className=" h-[3.5vh] w-[3.5vh] flex flex-col items-center justify-center rounded-full bg-green-600 text-white">
+                  <p className=" text-xs mt-1">{user.name[0] || "U"}</p>
+                </div>
+              )}
+            </DropdownMenu.Trigger>
+
+            <DropdownMenu.Portal style={{ zIndex: 100 }}>
+              <DropdownMenu.Content
+                className="absolute z-50 top-[2.5vh] -right-[5vw] w-[10vw] bg-white border p-1"
+                align="center"
+              >
+                <div className="flex flex-col items-start">
+                  {userProfile.map((item, index) => (
+                    <button
+                      key={index}
+                      onClick={() => {
+                        if (item.value == "logout") {
+                          localStorage.removeItem("user");
+                          localStorage.removeItem("token");
+                          window.location.reload();
+                        } else router.push(`/user?id=${item.value}`);
+                      }}
+                      className="w-full text-left py-2 px-4 text-black text-sm hover:bg-black hover:text-white rounded-md cursor-pointer"
+                    >
+                      {item.title}
+                    </button>
+                  ))}
+                </div>
+              </DropdownMenu.Content>
+            </DropdownMenu.Portal>
+          </DropdownMenu.Root>
+        </div>
         <a
           onClick={() => {
             setCartSidebar({ show: true });
