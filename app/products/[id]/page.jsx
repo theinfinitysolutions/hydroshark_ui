@@ -103,6 +103,7 @@ const ViewProduct = () => {
           }
         });
         addToCart(cartList);
+        setCartSidebar({ show: true });
         return;
       }
     }

@@ -12,17 +12,25 @@ import { useRouter } from "next/navigation";
 import instance from "@/utils/instance";
 import Spinner from "@/components/Spinner";
 import { IoIosAdd } from "react-icons/io";
+import { MdEdit } from "react-icons/md";
+import { IoMdAdd } from "react-icons/io";
 
 const Checkout = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-  const { cart, addToCart, user } = useStore();
+  const { cart, addToCart, user, showAddressModal, setShowAddressModal } =
+    useStore();
   const [cartObj, setCartObject] = useState({});
   const [sameAsBilling, setSameAsBilling] = useState(true);
   const [orderId, setOrderId] = useState("");
   const [paymentMethod, setPaymentMethod] = useState("online");
   const [userDetails, setUserDetails] = useState(user);
   const [walletData, setWalletData] = useState({});
+  const [addressList, setAddressList] = useState([]);
+  const [addressSelect, setAddressSelect] = useState({
+    billingAddress: 0,
+    shippingAddress: 0,
+  });
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -33,6 +41,18 @@ const Checkout = () => {
     }
   }, []);
 
+  const getAddressDetails = () => {
+    instance
+      .get("/accounts/address/")
+      .then((res) => {
+        setAddressList(res.data);
+        console.log("res ADDRESS", res.data);
+      })
+      .catch((err) => {
+        console.log("err", err);
+      });
+  };
+
   const getCart = () => {
     setLoading(true);
     instance
@@ -41,6 +61,9 @@ const Checkout = () => {
         setLoading(false);
         console.log("res", res);
         setCartObject(res.data);
+        if (res.data.cart_items.length == 0) {
+          router.push("/products");
+        }
       })
       .catch((err) => {
         setLoading(false);
@@ -60,6 +83,10 @@ const Checkout = () => {
         console.log("err", err);
       });
   };
+
+  useEffect(() => {
+    getAddressDetails();
+  }, [showAddressModal.show]);
 
   useEffect(() => {
     getWalletData();
@@ -179,71 +206,144 @@ const Checkout = () => {
             </div>
             <div className=" flex flex-col items-start w-full mt-[5vh]">
               <div className=" flex flex-row w-full justify-between items-baseline">
-                <p className=" text-xl text-black font-semibold">Delivery</p>
+                <p className=" text-xl text-black font-semibold">
+                  Shipping Address
+                </p>
               </div>
-              <form className=" flex flex-col w-full items-start mt-4">
-                <div className=" flex flex-row justify-between w-full">
-                  <div className=" border-[1px] border-black h-12 w-[47.5%] rounded-md overflow-hidden">
-                    <input
-                      placeholder="First Name"
-                      className=" w-full flex flex-col text-black h-full pl-2  ring-0 focus:ring-0 focus:outline-none"
-                    />
-                  </div>
-                  <div className=" border-[1px] border-black h-12 w-[47.5%] rounded-md overflow-hidden">
-                    <input
-                      placeholder="Last Name"
-                      className=" w-full flex flex-col text-black h-full pl-2  ring-0 focus:ring-0 focus:outline-none"
-                    />
-                  </div>
+              {loading ? (
+                <div className=" flex flex-col items-center justify-center h-[10vh]  w-full">
+                  <Spinner loading={loading} size={24} color="#000000" />
                 </div>
-                <div className=" border-[1px] border-black h-12 w-full mt-4 rounded-md overflow-hidden">
-                  <input
-                    placeholder="Address"
-                    className=" w-full flex flex-col text-black h-full pl-2  ring-0 focus:ring-0 focus:outline-none"
-                  />
+              ) : (
+                <div className=" flex flex-col items-start w-full mt-4">
+                  {addressList.map((address, index) => {
+                    return (
+                      <div className="flex flex-row justify-between bg-gray-100 p-4 rounded-lg mb-4">
+                        <div
+                          className={` w-1/12 flex flex-col justify-center items-start`}
+                        >
+                          <input
+                            type="radio"
+                            onChange={() => {
+                              setAddressSelect({
+                                ...addressSelect,
+                                shippingAddress: address.id,
+                              });
+                            }}
+                            checked={
+                              addressSelect.shippingAddress == address.id
+                            }
+                            className=" checked:text-black"
+                          />
+                        </div>
+                        <div className=" w-9/12 flex flex-row text-sm flex-wrap items-start">
+                          <p className="  text-black">
+                            {address.address_line_1},
+                          </p>
+                          <p className=" text-black">
+                            {address.address_line_2},
+                          </p>
+                          <p className="  text-black">{` ${address.city}, ${address.state},`}</p>
+                          <p className="  text-black">{` ${address.country}, ${address.zipcode}`}</p>
+                        </div>
+                        <div className=" flex flex-row w-2/12 justify-end items-center gap-x-2">
+                          <button
+                            onClick={() => {
+                              setShowAddressModal({
+                                show: true,
+                              });
+                            }}
+                            className=" text-black"
+                          >
+                            <MdEdit className=" text-black" />
+                          </button>
+                        </div>
+                      </div>
+                    );
+                  })}
+                  <button
+                    onClick={() => {
+                      setShowAddressModal({
+                        show: true,
+                      });
+                    }}
+                    className=" w-full mt-2 bg-gray-100 py-4 rounded-xl flex flex-col items-center justify-center"
+                  >
+                    <IoMdAdd className=" text-2xl text-black" />
+                    <p className=" text-black text-sm">Add Address</p>
+                  </button>
                 </div>
-                <div className=" flex flex-row justify-between w-full mt-4">
-                  <div className=" border-[1px] border-black h-12 w-[47.5%] rounded-md overflow-hidden">
-                    <input
-                      placeholder="City"
-                      className=" w-full flex flex-col text-black h-full pl-2  ring-0 focus:ring-0 focus:outline-none"
-                    />
-                  </div>
-                  <div className=" border-[1px] border-black h-12 w-[47.5%] rounded-md overflow-hidden">
-                    <input
-                      placeholder="State"
-                      className=" w-full flex flex-col text-black h-full pl-2  ring-0 focus:ring-0 focus:outline-none"
-                    />
-                  </div>
-                </div>
-                <div className=" flex flex-row justify-between w-full mt-4">
-                  <div className=" border-[1px] border-black h-12 w-[47.5%] rounded-md overflow-hidden">
-                    <input
-                      placeholder="Country"
-                      className=" w-full flex flex-col text-black h-full pl-2  ring-0 focus:ring-0 focus:outline-none"
-                    />
-                  </div>
-                  <div className=" border-[1px] border-black h-12 w-[47.5%] rounded-md overflow-hidden">
-                    <input
-                      placeholder="Zipcode"
-                      className=" w-full flex flex-col text-black h-full pl-2  ring-0 focus:ring-0 focus:outline-none"
-                    />
-                  </div>
-                </div>
-              </form>
+              )}
             </div>
-            {/* <div className=" flex flex-col items-start w-full mt-[5vh]">
+            <div className=" flex flex-col items-start w-full mt-[5vh]">
               <div className=" flex flex-row w-full justify-between items-baseline">
                 <p className=" text-xl text-black font-semibold">
-                  Shipping Method
+                  Billing Address
                 </p>
               </div>
-              <div className=" flex flex-col items-center w-full justify-center bg-gray-100 py-8 mt-4 rounded-md">
-                <p className=" text-[#6b6a6a]">
-                  Please select your desired shipping method
-                </p>
-              </div>
-            </div> */}
+              {loading ? (
+                <div className=" flex flex-col items-center justify-center h-[10vh]  w-full">
+                  <Spinner loading={loading} size={24} color="#000000" />
+                </div>
+              ) : (
+                <div className=" flex flex-col items-start w-full mt-4">
+                  {addressList.map((address, index) => {
+                    return (
+                      <div className="flex flex-row justify-between bg-gray-100 p-4 rounded-lg mb-4">
+                        <div
+                          className={` w-1/12 flex flex-col justify-center items-start`}
+                        >
+                          <input
+                            type="radio"
+                            onChange={() => {
+                              setAddressSelect({
+                                ...addressSelect,
+                                billingAddress: address.id,
+                              });
+                            }}
+                            checked={addressSelect.billingAddress == address.id}
+                            className=" checked:text-black"
+                          />
+                        </div>
+                        <div className=" w-9/12 flex flex-row text-sm flex-wrap items-start">
+                          <p className="  text-black">
+                            {address.address_line_1},
+                          </p>
+                          <p className=" text-black">
+                            {address.address_line_2},
+                          </p>
+                          <p className="  text-black">{` ${address.city}, ${address.state},`}</p>
+                          <p className="  text-black">{` ${address.country}, ${address.zipcode}`}</p>
+                        </div>
+                        <div className=" flex flex-row w-2/12 justify-end items-center gap-x-2">
+                          <button
+                            onClick={() => {
+                              setShowAddressModal({
+                                show: true,
+                              });
+                            }}
+                            className=" text-black"
+                          >
+                            <MdEdit className=" text-black" />
+                          </button>
+                        </div>
+                      </div>
+                    );
+                  })}
+                  <button
+                    onClick={() => {
+                      setShowAddressModal({
+                        show: true,
+                      });
+                    }}
+                    className=" w-full mt-2 bg-gray-100 py-4 rounded-xl flex flex-col items-center justify-center"
+                  >
+                    <IoMdAdd className=" text-2xl text-black" />
+                    <p className=" text-black text-sm">Add Address</p>
+                  </button>
+                </div>
+              )}
+            </div>
             <div className=" flex flex-col items-start w-full mt-[5vh]">
               <div className=" flex flex-row w-full justify-between items-baseline">
                 <p className=" text-xl text-black font-semibold">
@@ -304,105 +404,7 @@ const Checkout = () => {
                 </button>
               </div>
             </div>
-            <div className=" flex flex-col items-start w-full mt-[5vh]">
-              <div className=" flex flex-row w-full justify-between items-baseline">
-                <p className=" text-xl text-black font-semibold">
-                  Shipping Address
-                </p>
-              </div>
 
-              <div className="flex flex-col items-start w-full mt-4">
-                <div
-                  className={` w-full p-4 flex flex-row justify-start items-center gap-x-4 ${
-                    sameAsBilling
-                      ? "bg-white border-[1px] border-black"
-                      : "bg-gray-100"
-                  }`}
-                >
-                  <input
-                    type="radio"
-                    checked={sameAsBilling}
-                    onChange={() => setSameAsBilling(!sameAsBilling)}
-                    className=" checked:text-black"
-                  />
-                  <p className=" text-black text-sm mt-1">
-                    Same as billing address
-                  </p>
-                </div>
-                <div
-                  className={` w-full p-4 flex flex-row justify-start items-center gap-x-4 ${
-                    !sameAsBilling
-                      ? "bg-white border-[1px] border-black"
-                      : "bg-gray-100"
-                  }`}
-                >
-                  <input
-                    type="radio"
-                    checked={!sameAsBilling}
-                    onChange={() => setSameAsBilling(!sameAsBilling)}
-                    className=" checked:text-black"
-                  />
-                  <p className=" text-black text-sm mt-1">
-                    Use a different shipping address
-                  </p>
-                </div>
-              </div>
-              {!sameAsBilling ? (
-                <div className=" flex flex-col items-start w-full justify-center bg-gray-100 p-4 rounded-md">
-                  <p className="text-base text-black mt-2">Shipping address</p>
-                  <div className=" flex flex-col w-full items-start mt-2">
-                    <div className=" flex flex-row justify-between w-full">
-                      <div className=" border-[1px] border-black h-12 w-[47.5%] rounded-md overflow-hidden">
-                        <input
-                          placeholder="First Name"
-                          className=" w-full flex flex-col text-black h-full pl-2  ring-0 focus:ring-0 focus:outline-none"
-                        />
-                      </div>
-                      <div className=" border-[1px] border-black h-12 w-[47.5%] rounded-md overflow-hidden">
-                        <input
-                          placeholder="Last Name"
-                          className=" w-full flex flex-col text-black h-full pl-2  ring-0 focus:ring-0 focus:outline-none"
-                        />
-                      </div>
-                    </div>
-                    <div className=" border-[1px] border-black h-12 w-full mt-4 rounded-md overflow-hidden">
-                      <input
-                        placeholder="Address"
-                        className=" w-full flex flex-col text-black h-full pl-2  ring-0 focus:ring-0 focus:outline-none"
-                      />
-                    </div>
-                    <div className=" flex flex-row justify-between w-full mt-4">
-                      <div className=" border-[1px] border-black h-12 w-[47.5%] rounded-md overflow-hidden">
-                        <input
-                          placeholder="City"
-                          className=" w-full flex flex-col text-black h-full pl-2  ring-0 focus:ring-0 focus:outline-none"
-                        />
-                      </div>
-                      <div className=" border-[1px] border-black h-12 w-[47.5%] rounded-md overflow-hidden">
-                        <input
-                          placeholder="State"
-                          className=" w-full flex flex-col text-black h-full pl-2  ring-0 focus:ring-0 focus:outline-none"
-                        />
-                      </div>
-                    </div>
-                    <div className=" flex flex-row justify-between w-full mt-4">
-                      <div className=" border-[1px] border-black h-12 w-[47.5%] rounded-md overflow-hidden">
-                        <input
-                          placeholder="Country"
-                          className=" w-full flex flex-col text-black h-full pl-2  ring-0 focus:ring-0 focus:outline-none"
-                        />
-                      </div>
-                      <div className=" border-[1px] border-black h-12 w-[47.5%] rounded-md overflow-hidden">
-                        <input
-                          placeholder="Zipcode"
-                          className=" w-full flex flex-col text-black h-full pl-2  ring-0 focus:ring-0 focus:outline-none"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ) : null}
-            </div>
             <div className=" w-full flex flex-col items-start mt-8 z-20">
               <button className=" w-full bg-black text-white py-2 cursor-pointer rounded-md border-[1px] border-black group hover:bg-white ">
                 <p className=" text-base mt-1 text-white transition-all duration-200 group-hover:scale-110 group-hover:text-black">
@@ -412,44 +414,53 @@ const Checkout = () => {
             </div>
 
             <div className=" flex flex-row items-start mt-8 border-t-[1px] border-black gap-x-4 w-full py-4">
-              <a className=" text-black text-sm underline">Refund Policy</a>
-              <a className=" text-black text-sm underline">Privacy Policy</a>
+              <a className=" text-black text-sm underline cursor-pointer ">
+                Refund Policy
+              </a>
+              <a className=" text-black text-sm underline cursor-pointer ">
+                Privacy Policy
+              </a>
             </div>
           </div>
           <div className=" flex flex-col items-start w-1/2 px-[5vw] py-8">
             <div className=" flex flex-col items-start w-full">
               <div className=" flex flex-row w-full justify-between items-baseline">
-                <p className=" text-xl text-black font-semibold">
-                  Cart {`(${cartObj?.cart_items.length || 0})`}
-                </p>
+                <p className=" text-xl text-black font-semibold">Cart</p>
               </div>
-              <div className=" w-full flex flex-col items-start mt-4">
-                {cartObj?.cart_items?.map((item, index) => {
-                  return (
-                    <CartCard
-                      key={index}
-                      id={item.cart}
-                      product_title={
-                        item.product_section.linked_product == 4
-                          ? "LEMON"
-                          : "MANGO"
-                      }
-                      price={item.total_price}
-                      section_title={item.product_section.section_title}
-                      discounted_amount={item.final_amount}
-                      product_quantity={item.quantity}
-                      image={
-                        item.product_section.linked_product == 4
-                          ? "/lemoncan.webp"
-                          : "/mangocan.webp"
-                      }
-                      onDelete={() => {
-                        handleDelete(item);
-                      }}
-                    />
-                  );
-                })}
-              </div>
+              {loading ? (
+                <div className=" flex flex-col items-center justify-center h-[10vh]  w-full">
+                  <Spinner loading={loading} size={24} color="#000000" />
+                </div>
+              ) : (
+                <div className=" w-full flex flex-col items-start mt-4">
+                  {cartObj?.cart_items?.map((item, index) => {
+                    return (
+                      <CartCard
+                        key={index}
+                        id={item.cart}
+                        product_title={
+                          item.product_section.linked_product == 4
+                            ? "LEMON"
+                            : "MANGO"
+                        }
+                        price={item.total_price}
+                        section_title={item.product_section.section_title}
+                        discounted_amount={item.final_amount}
+                        product_quantity={item.quantity}
+                        image={
+                          item.product_section.linked_product == 4
+                            ? "/lemoncan.webp"
+                            : "/mangocan.webp"
+                        }
+                        onDelete={() => {
+                          handleDelete(item);
+                        }}
+                      />
+                    );
+                  })}
+                </div>
+              )}
+
               <div className=" flex flex-col items-start w-full z-20">
                 <p className=" text-black text-base mt-4">Redeem</p>
                 <div className=" w-full flex flex-row justify-between ">

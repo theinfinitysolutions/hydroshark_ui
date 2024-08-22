@@ -12,7 +12,6 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 import { EffectCoverflow, Pagination } from "swiper/modules";
-import { products } from "@/utils/consts";
 import { useStore } from "@/utils/store";
 import { useRouter } from "next/navigation";
 import Spinner from "@/components/Spinner";
@@ -35,7 +34,7 @@ const Products = () => {
   }, [user]);
 
   const getAllProducts = () => {
-    if (products.length > 0) return;
+    if (productList.length > 0) return;
 
     setLoading(true);
     instance
@@ -56,24 +55,27 @@ const Products = () => {
   };
 
   const getProductDataDetailed = (productIds) => {
-    productIds.map(async (item) => {
-      try {
-        let response = await instance.get(`/drinks/product/${item}/`);
+    Promise.all(
+      productIds.map(async (item) => {
+        try {
+          let response = await instance.get(`/drinks/product/${item}/`);
 
-        let data = {
-          ...response.data,
-          ...{ activeSection: response.data.product_sections[0].id },
-        };
+          let data = {
+            ...response.data,
+            ...{ activeSection: response.data.product_sections[0].id },
+          };
 
-        if (response) {
-          setProductList((productList) => [...productList, data]);
+          if (response) {
+            setProductList((productList) => [...productList, data]);
+          }
+        } catch (err) {
+          setLoading(false);
+          console.log("err", err);
         }
-      } catch (err) {
-        setLoading(false);
-        console.log("err", err);
-      }
+      })
+    ).then(() => {
+      setLoading(false);
     });
-    setLoading(false);
   };
 
   useEffect(() => {
