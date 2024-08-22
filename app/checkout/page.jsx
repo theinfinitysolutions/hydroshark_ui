@@ -14,23 +14,40 @@ import Spinner from "@/components/Spinner";
 import { IoIosAdd } from "react-icons/io";
 import { MdEdit } from "react-icons/md";
 import { IoMdAdd } from "react-icons/io";
+import Confetti from "react-confetti";
+
+const { width, height } = { width: 2400, height: 1200 };
 
 const Checkout = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-  const { cart, addToCart, user, showAddressModal, setShowAddressModal } =
-    useStore();
+  const {
+    cart,
+    addToCart,
+    user,
+    showAddressModal,
+    setShowAddressModal,
+    setShowLoading,
+  } = useStore();
   const [cartObj, setCartObject] = useState({});
   const [sameAsBilling, setSameAsBilling] = useState(true);
   const [orderId, setOrderId] = useState("");
-  const [paymentMethod, setPaymentMethod] = useState("online");
+  const [paymentMethod, setPaymentMethod] = useState("razorpay");
   const [userDetails, setUserDetails] = useState(user);
   const [walletData, setWalletData] = useState({});
   const [addressList, setAddressList] = useState([]);
+  const [showConfetti, setShowConfetti] = React.useState(false);
   const [addressSelect, setAddressSelect] = useState({
     billingAddress: 0,
     shippingAddress: 0,
   });
+
+  const handleShowConfetti = () => {
+    setShowConfetti(true);
+    setTimeout(() => {
+      setShowConfetti(false);
+    }, 5000);
+  };
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -54,6 +71,7 @@ const Checkout = () => {
   };
 
   const getCart = () => {
+    setCartObject({});
     setLoading(true);
     instance
       .get(`/billing/cart/`)
@@ -85,7 +103,9 @@ const Checkout = () => {
   };
 
   useEffect(() => {
-    getAddressDetails();
+    if (!showAddressModal.show) {
+      getAddressDetails();
+    }
   }, [showAddressModal.show]);
 
   useEffect(() => {
@@ -93,32 +113,61 @@ const Checkout = () => {
     getCart();
   }, []);
 
+  const CreateOrder = () => {
+    if (!addressSelect.shippingAddress || !addressSelect.billingAddress) {
+      alert("Please select shipping and billing address");
+      return;
+    }
+
+    setShowLoading({ show: true });
+    instance
+      .post("/billing/order/", {
+        shipping_address: addressSelect.shippingAddress,
+        billing_address: addressSelect.billingAddress,
+      })
+      .then((res) => {
+        console.log("res", res);
+        setOrderId(res.data.id);
+        CreatePayment(res.data.id);
+        setShowLoading({ show: false });
+      })
+      .catch((err) => {
+        setShowLoading({ show: false });
+        console.log("err", err);
+      });
+  };
+
+  const CreatePayment = (orderId) => {
+    setShowLoading({ show: true });
+    instance
+      .post("/billing/payment/", {
+        payment_method: paymentMethod,
+        order: orderId,
+      })
+      .then((res) => {
+        console.log("res create payment", res);
+        setShowLoading({ show: false });
+      })
+      .catch((err) => {
+        setShowLoading({ show: false });
+        console.log("err", err);
+      });
+  };
+
   const processPayment = async (orderId) => {
     try {
       console.log("processPayment", orderId);
       const options = {
         key: process.env.RAZORPAY_KEY_ID,
         key_id: process.env.RAZORPAY_KEY_ID,
-        amount: parseFloat(1200) * 100,
+        amount: parseInt(cartObj?.cart_final_amount),
         currency: "INR",
         name: "Hydroshark",
         description: "Test Transaction",
         image: process.env.NEXT_PUBLIC_API_URL + "/hydroshark.png",
         order_id: orderId,
         handler: async function (response) {
-          // alert(
-          //   response.razorpay_payment_id +
-          //     " " +
-          //     response.razorpay_order_id +
-          //     " " +
-          //     response.razorpay_signature
-          // );
           console.log("razorpay response", response);
-          // completePayment(
-          //   response.razorpay_payment_id,
-          //   orderId,
-          //   response.razorpay_signature
-          // );
         },
         prefill: {
           name: "Hydroshark",
@@ -146,6 +195,9 @@ const Checkout = () => {
   return (
     <div className="w-full min-h-screen relative bg-[#f0f2f4] flex flex-col items-center">
       <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:72px_72px]"></div>
+      {showConfetti ? (
+        <Confetti width={width} height={height} numberOfPieces={300} />
+      ) : null}
       <div className="w-11/12 h-full mt-[2.5vh] flex flex-col items-start">
         <div className=" flex flex-col w-full items-start">
           <p className=" text-[2.5rem] text-[#181818]">Checkout</p>
@@ -218,7 +270,10 @@ const Checkout = () => {
                 <div className=" flex flex-col items-start w-full mt-4">
                   {addressList.map((address, index) => {
                     return (
-                      <div className="flex flex-row justify-between bg-gray-100 p-4 rounded-lg mb-4">
+                      <div
+                        key={index}
+                        className="flex flex-row justify-between bg-gray-100 p-4 rounded-lg mb-4"
+                      >
                         <div
                           className={` w-1/12 flex flex-col justify-center items-start`}
                         >
@@ -289,7 +344,10 @@ const Checkout = () => {
                 <div className=" flex flex-col items-start w-full mt-4">
                   {addressList.map((address, index) => {
                     return (
-                      <div className="flex flex-row justify-between bg-gray-100 p-4 rounded-lg mb-4">
+                      <div
+                        key={index}
+                        className="flex flex-row justify-between bg-gray-100 p-4 rounded-lg mb-4"
+                      >
                         <div
                           className={` w-1/12 flex flex-col justify-center items-start`}
                         >
@@ -352,9 +410,11 @@ const Checkout = () => {
               </div>
               <div className=" flex flex-col items-center w-full justify-center bg-gray-100 mt-4 rounded-md">
                 <button
-                  onClick={() => setPaymentMethod("online")}
+                  onClick={() => setPaymentMethod("razorpay")}
                   className={` flex flex-row justify-between w-full py-4 px-2 border-[1px] ${
-                    paymentMethod == "online" ? "border-black" : "border-white"
+                    paymentMethod == "razorpay"
+                      ? "border-black"
+                      : "border-white"
                   } `}
                 >
                   <div className=" flex flex-row items-end justify-start">
@@ -379,7 +439,7 @@ const Checkout = () => {
                     </div>
                   </div>
                 </button>
-                {paymentMethod === "online" ? (
+                {paymentMethod === "razorpay" ? (
                   <div className=" flex flex-col h-[25vh] w-full justify-center items-center">
                     <BsWindowFullscreen className="text-black text-4xl" />
                     <p className=" text-black text-sm mt-2 w-7/12 text-center">
@@ -406,7 +466,12 @@ const Checkout = () => {
             </div>
 
             <div className=" w-full flex flex-col items-start mt-8 z-20">
-              <button className=" w-full bg-black text-white py-2 cursor-pointer rounded-md border-[1px] border-black group hover:bg-white ">
+              <button
+                onClick={() => {
+                  CreateOrder();
+                }}
+                className=" w-full bg-black text-white py-2 cursor-pointer rounded-md border-[1px] border-black group hover:bg-white "
+              >
                 <p className=" text-base mt-1 text-white transition-all duration-200 group-hover:scale-110 group-hover:text-black">
                   Proceed to pay
                 </p>
@@ -423,15 +488,16 @@ const Checkout = () => {
             </div>
           </div>
           <div className=" flex flex-col items-start w-1/2 px-[5vw] py-8">
-            <div className=" flex flex-col items-start w-full">
-              <div className=" flex flex-row w-full justify-between items-baseline">
-                <p className=" text-xl text-black font-semibold">Cart</p>
+            {loading ? (
+              <div className=" flex flex-col items-center justify-center h-[10vh]  w-full">
+                <Spinner loading={loading} size={24} color="#000000" />
               </div>
-              {loading ? (
-                <div className=" flex flex-col items-center justify-center h-[10vh]  w-full">
-                  <Spinner loading={loading} size={24} color="#000000" />
+            ) : (
+              <div className=" flex flex-col items-start w-full">
+                <div className=" flex flex-row w-full justify-between items-baseline">
+                  <p className=" text-xl text-black font-semibold">Cart</p>
                 </div>
-              ) : (
+
                 <div className=" w-full flex flex-col items-start mt-4">
                   {cartObj?.cart_items?.map((item, index) => {
                     return (
@@ -459,9 +525,8 @@ const Checkout = () => {
                     );
                   })}
                 </div>
-              )}
 
-              <div className=" flex flex-col items-start w-full z-20">
+                {/* <div className=" flex flex-col items-start w-full z-20">
                 <p className=" text-black text-base mt-4">Redeem</p>
                 <div className=" w-full flex flex-row justify-between ">
                   <div className=" border-[1px] border-black h-12 w-[75%] rounded-md overflow-hidden">
@@ -481,56 +546,62 @@ const Checkout = () => {
                     <p className=" text-white text-sm mt-1">Apply</p>
                   </button>
                 </div>
-              </div>
-              <div className=" w-full flex flex-col items-start mt-8">
-                <div className=" flex flex-row w-full justify-between items-center mt-4">
-                  <p className=" text-black text-lg">Sub total</p>
-                  <p className=" text-black text-lg">
-                    ₹{cartObj?.cart_total_price}
-                    {/* {cartList.reduce((acc, item) => {
+              </div> */}
+                <div className=" w-full flex flex-col items-start mt-8">
+                  <div className=" flex flex-row w-full justify-between items-center mt-4">
+                    <p className=" text-black text-lg">Sub total</p>
+                    <p className=" text-black text-lg">
+                      ₹{cartObj?.cart_total_price}
+                      {/* {cartList.reduce((acc, item) => {
                       return acc + item.price;
                     }, 0)} */}
-                  </p>
-                </div>
-                <div className=" flex flex-row w-full justify-between items-center mt-4">
-                  <p className=" text-black text-lg">DISCOUNT</p>
-                  <p className=" text-black text-lg">
-                    ₹{cartObj?.cart_total_discount_amount}
-                    {/* {cartList.reduce((acc, item) => {
+                    </p>
+                  </div>
+                  <div className=" flex flex-row w-full justify-between items-center mt-4">
+                    <p className=" text-black text-lg">DISCOUNT</p>
+                    <p className=" text-black text-lg">
+                      ₹{cartObj?.cart_total_discount_amount}
+                      {/* {cartList.reduce((acc, item) => {
                       return acc + item.price;
                     }, 0)} */}
-                  </p>
-                </div>
-                <div className=" flex flex-row w-full justify-between items-center mt-4">
-                  <p className=" text-black text-lg">Total</p>
-                  <p className=" text-black text-lg">
-                    ₹{cartObj?.cart_final_amount}
-                    {/* {cartList.reduce((acc, item) => {
+                    </p>
+                  </div>
+                  <div className=" flex flex-row w-full justify-between items-center mt-4">
+                    <p className=" text-black text-lg">Total</p>
+                    <p className=" text-black text-lg">
+                      ₹{cartObj?.cart_final_amount}
+                      {/* {cartList.reduce((acc, item) => {
                       return acc + item.price;
                     }, 0)} */}
-                  </p>
-                </div>
+                    </p>
+                  </div>
 
-                <div className=" flex flex-row justify-between items-center w-full mt-4">
-                  <p className=" text-black text-lg">HydroShark Coins</p>
+                  <div className=" flex flex-row justify-between items-center w-full mt-4">
+                    <p className=" text-black text-lg">HydroShark Coins</p>
 
-                  <div className=" flex flex-row justify-start items-center">
-                    <IoIosAdd className=" text-xl text-green-600" />
-                    <h2 className=" text-green-600 text-lg mt-1">
-                      {walletData?.wallet_balance || 70}
-                    </h2>
-                    <PiCoinsFill className=" text-xl text-black ml-2" />
+                    <div className=" flex flex-row justify-start items-center">
+                      <IoIosAdd className=" text-xl text-green-600" />
+                      <h2 className=" text-green-600 text-lg mt-1">
+                        {walletData?.wallet_balance || 70}
+                      </h2>
+                      <PiCoinsFill className=" text-xl text-black ml-2" />
+                    </div>
                   </div>
                 </div>
+                <div className=" w-full flex flex-col items-start mt-8 z-20">
+                  <button
+                    onClick={() => {
+                      CreateOrder();
+                    }}
+                    className=" w-full bg-black text-white py-2 cursor-pointer rounded-md border-[1px] border-black group hover:bg-white "
+                  >
+                    <p className=" text-base mt-1 text-white transition-all duration-200 group-hover:scale-110 group-hover:text-black">
+                      Proceed to pay
+                    </p>
+                  </button>
+                </div>
               </div>
-              <div className=" w-full flex flex-col items-start mt-8 z-20">
-                <button className=" w-full bg-black text-white py-2 cursor-pointer rounded-md border-[1px] border-black group hover:bg-white ">
-                  <p className=" text-base mt-1 text-white transition-all duration-200 group-hover:scale-110 group-hover:text-black">
-                    Proceed to pay
-                  </p>
-                </button>
-              </div>
-            </div>
+            )}
           </div>
         </div>
       </div>
