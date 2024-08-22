@@ -4,8 +4,10 @@ import { set, useForm } from "react-hook-form";
 import OTPInput from "react-otp-input";
 import instance from "@/utils/instance";
 import { useStore } from "@/utils/store";
+import Spinner from "../Spinner";
 
 const Login = ({ onSignUp }) => {
+  const [loading, setLoading] = useState(false);
   const [showOTP, setShowOTP] = useState(false);
   const [otp, setOtp] = useState("");
   const { setUser, showAuthModal, setShowAuthModal } = useStore();
@@ -23,6 +25,7 @@ const Login = ({ onSignUp }) => {
   });
 
   const onSubmit = (data) => {
+    setLoading(true);
     let obj = {
       phone_number: data.phone,
     };
@@ -31,14 +34,17 @@ const Login = ({ onSignUp }) => {
       .then((res) => {
         console.log("res", res);
         setShowOTP(true);
+        setLoading(false);
       })
       .catch((err) => {
+        setLoading(false);
         console.log("err", err);
         setError(err.response.data.message);
       });
   };
 
   const handleLogin = () => {
+    setLoading(true);
     let obj = {
       phone_number: getValues("phone"),
       otp: otp,
@@ -49,6 +55,7 @@ const Login = ({ onSignUp }) => {
       .post("/accounts/login/", obj)
       .then((res) => {
         console.log("res", res);
+        setLoading(false);
         localStorage.setItem("token", res.data.access_token);
         setUser(res.data.user);
         setShowAuthModal({ show: false, message: "" });
@@ -58,6 +65,7 @@ const Login = ({ onSignUp }) => {
       })
       .catch((err) => {
         console.log("err", err);
+        setLoading(false);
         setError(err.response.data.message);
       });
   };
@@ -106,7 +114,11 @@ const Login = ({ onSignUp }) => {
               handleLogin();
             }}
           >
-            Verify
+            {loading ? (
+              <Spinner loading={loading} size={24} color="#ffffff" />
+            ) : (
+              "Verify"
+            )}
           </button>
         </div>
       ) : (
@@ -126,25 +138,15 @@ const Login = ({ onSignUp }) => {
                 {errors.phone.message}
               </span>
             )}
-            {/* <input
-          type="password"
-          placeholder="Password"
-          {...register("password", { required: "Password is required" })}
-          className="border-[1px] border-black  px-2 py-2 rounded-sm my-2 w-full"
-        />
-        {errors.password && (
-          <span className="text-red-500 text-sm">
-            {errors.password.message}
-          </span>
-        )} */}
-            {/* <a href="#" className="text-black text-sm mt-2">
-          Forgot Password?
-        </a> */}
             <button
               type="submit"
               className="bg-black text-white px-8 py-2 mt-4"
             >
-              Login
+              {loading ? (
+                <Spinner loading={loading} size={24} color="#ffffff" />
+              ) : (
+                "Login"
+              )}
             </button>
           </form>
         </div>

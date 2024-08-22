@@ -7,6 +7,7 @@ import "swiper/css";
 // import Swiper core and required modules
 import { Autoplay } from "swiper/modules";
 import { useRouter } from "next/navigation";
+import { RxExternalLink } from "react-icons/rx";
 
 const items = [
   {
@@ -85,11 +86,10 @@ const ProductSectionHome1 = () => {
                     >
                       {item.title}
                     </p>
-                    <p className=" text-black mt-1 text-sm">
-                      ₹{item.price} / 250ml
-                    </p>
-                    <button className=" flex flex-col items-center transition-all duration-200 mt-4 px-6 border-[1px] border-black py-2 bg-transparent text-black hover:bg-black hover:text-white">
-                      <p className=" mt-1">ADD TO CART</p>
+
+                    <button className=" flex flex-row gap-x-2 items-center transition-all duration-200 rounded-2xl mt-4 px-6 border-[1px] border-black py-2 bg-transparent text-black hover:bg-black hover:text-white">
+                      <p className=" mt-1">View </p>
+                      <RxExternalLink className=" text-black" />
                     </button>
                   </div>
                 </SwiperSlide>

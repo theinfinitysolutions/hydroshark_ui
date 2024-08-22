@@ -10,7 +10,7 @@ import { MdDelete } from "react-icons/md";
 
 const AddUserAddressModal = () => {
   const [loading, setLoading] = useState(false);
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [addressList, setAddressList] = useState(false);
   const { showAddressModal, setShowAddressModal } = useStore();
   const [mode, setMode] = useState("create");
@@ -95,9 +95,9 @@ const AddUserAddressModal = () => {
     getAddressDetails();
   }, []);
 
-  // useEffect(() => {
-  //   setIsOpen(showAddressModal.show);
-  // }, [showAddressModal]);
+  useEffect(() => {
+    setIsOpen(showAddressModal.show);
+  }, [showAddressModal]);
 
   const handleClose = () => {
     setShowAddressModal({ show: false, mode: "" });
@@ -219,47 +219,58 @@ const AddUserAddressModal = () => {
               {addressList.length > 0 ? (
                 <p className=" text-xl text-black font-bold">Address List</p>
               ) : null}
-
-              <div className="flex flex-col h-[20vh] overflow-y-scroll items-start w-full mt-4">
-                {addressList &&
-                  addressList.map((address) => (
-                    <div className="flex flex-row justify-between bg-gray-100 p-4 rounded-lg mb-4">
-                      <div className=" w-9/12 flex flex-row text-sm flex-wrap items-start">
-                        <p className="  text-black">
-                          {address.address_line_1},
-                        </p>
-                        <p className=" text-black">{address.address_line_2},</p>
-                        <p className="  text-black">{` ${address.city}, ${address.state},`}</p>
-                        <p className="  text-black">{` ${address.country}, ${address.zipcode}`}</p>
+              {loading ? (
+                <Spinner loading={loading} size={48} color="#000000" />
+              ) : (
+                <div className="flex flex-col h-[20vh] overflow-y-scroll items-start w-full mt-4">
+                  {addressList &&
+                    addressList.map((address) => (
+                      <div className="flex flex-row justify-between bg-gray-100 p-4 rounded-lg mb-4">
+                        <div className=" w-9/12 flex flex-row text-sm flex-wrap items-start">
+                          <p className="  text-black">
+                            {address.address_line_1},
+                          </p>
+                          <p className=" text-black">
+                            {address.address_line_2},
+                          </p>
+                          <p className="  text-black">{` ${address.city}, ${address.state},`}</p>
+                          <p className="  text-black">{` ${address.country}, ${address.zipcode}`}</p>
+                        </div>
+                        <div className=" flex flex-row w-2/12 justify-end items-center gap-x-2">
+                          <button
+                            onClick={() => {
+                              setCurrentAddress(address);
+                              setMode("edit");
+                              setValue(
+                                "address_line_1",
+                                address.address_line_1
+                              );
+                              setValue(
+                                "address_line_2",
+                                address.address_line_2
+                              );
+                              setValue("city", address.city);
+                              setValue("state", address.state);
+                              setValue("country", address.country);
+                              setValue("zipcode", address.zipcode);
+                            }}
+                            className=" text-black"
+                          >
+                            <MdEdit className=" text-black" />
+                          </button>
+                          <button
+                            onClick={() => {
+                              handleDelete(address.id);
+                            }}
+                            className=" text-black"
+                          >
+                            <MdDelete className=" text-black" />
+                          </button>
+                        </div>
                       </div>
-                      <div className=" flex flex-row w-2/12 justify-end items-center gap-x-2">
-                        <button
-                          onClick={() => {
-                            setCurrentAddress(address);
-                            setMode("edit");
-                            setValue("address_line_1", address.address_line_1);
-                            setValue("address_line_2", address.address_line_2);
-                            setValue("city", address.city);
-                            setValue("state", address.state);
-                            setValue("country", address.country);
-                            setValue("zipcode", address.zipcode);
-                          }}
-                          className=" text-black"
-                        >
-                          <MdEdit className=" text-black" />
-                        </button>
-                        <button
-                          onClick={() => {
-                            handleDelete(address.id);
-                          }}
-                          className=" text-black"
-                        >
-                          <MdDelete className=" text-black" />
-                        </button>
-                      </div>
-                    </div>
-                  ))}
-              </div>
+                    ))}
+                </div>
+              )}
             </div>
           </div>
         )}
