@@ -7,8 +7,10 @@ import Spinner from "../Spinner";
 import { PiCoinsFill } from "react-icons/pi";
 import { IoMdAdd } from "react-icons/io";
 import { MdEdit } from "react-icons/md";
+import { useRouter } from "next/navigation";
 
 const Profile = () => {
+  const router = useRouter();
   const [loading, setLoading] = useState(true);
   const [addressList, setAddressList] = useState([]);
   const [walletData, setWalletData] = useState({});
@@ -51,6 +53,9 @@ const Profile = () => {
         setLoading(false);
       })
       .catch((err) => {
+        if (err.response.status == 401) {
+          router.push("/");
+        }
         console.log("err", err);
         setLoading(false);
       });
@@ -65,6 +70,9 @@ const Profile = () => {
         setLoading(false);
       })
       .catch((err) => {
+        if (err.response.status == 401) {
+          router.push("/");
+        }
         console.log(err);
         setLoading(false);
       });

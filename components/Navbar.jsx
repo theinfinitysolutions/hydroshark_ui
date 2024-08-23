@@ -133,7 +133,7 @@ const Navbar = () => {
           alt="hydroshark"
         />
       </a>
-      <div className=" hidden lg:flex flex-row w-4/12 justify-end z-50 border-b-[1px] border-[#181818] px-4">
+      <div className=" hidden lg:flex flex-row w-4/12 justify-end z-50 border-b-[1px] gap-x-2 border-[#181818] px-4">
         {/* <div className=" flex flex-row justify-center items-center gap-x-2 mr-8">
           <p className=" text-sm text-black mt-1">SHIP TO</p>
           <div className=" px-2 border border-black">
@@ -174,31 +174,33 @@ const Navbar = () => {
                 </div>
               )}
             </DropdownMenu.Trigger>
-
-            <DropdownMenu.Portal style={{ zIndex: 100 }}>
-              <DropdownMenu.Content
-                className="absolute z-50 top-[2.5vh] -right-[5vw] w-[10vw] bg-white border p-1"
-                align="center"
-              >
-                <div className="flex flex-col items-start">
-                  {userProfile.map((item, index) => (
-                    <button
-                      key={index}
-                      onClick={() => {
-                        if (item.value == "logout") {
-                          localStorage.removeItem("user");
-                          localStorage.removeItem("token");
-                          window.location.reload();
-                        } else router.push(`/user?id=${item.value}`);
-                      }}
-                      className="w-full text-left py-2 px-4 text-black text-sm hover:bg-black hover:text-white rounded-md cursor-pointer"
-                    >
-                      {item.title}
-                    </button>
-                  ))}
-                </div>
-              </DropdownMenu.Content>
-            </DropdownMenu.Portal>
+            {user ? (
+              <DropdownMenu.Portal style={{ zIndex: 100 }}>
+                <DropdownMenu.Content
+                  asChild={showProfile}
+                  className="absolute z-50 top-[2.5vh] -right-[5vw] w-[10vw] bg-white border p-1"
+                  align="center"
+                >
+                  <div className="flex flex-col items-start">
+                    {userProfile.map((item, index) => (
+                      <button
+                        key={index}
+                        onClick={() => {
+                          if (item.value == "logout") {
+                            localStorage.removeItem("user");
+                            localStorage.removeItem("token");
+                            window.location.reload();
+                          } else router.push(`/user?id=${item.value}`);
+                        }}
+                        className="w-full text-left py-2 px-4 text-black text-sm hover:bg-black hover:text-white rounded-md cursor-pointer"
+                      >
+                        {item.title}
+                      </button>
+                    ))}
+                  </div>
+                </DropdownMenu.Content>
+              </DropdownMenu.Portal>
+            ) : null}
           </DropdownMenu.Root>
         </div>
         <a
@@ -267,7 +269,7 @@ const Navbar = () => {
       <div
         className={` absolute ${
           currentHover == "/explore" ? "block" : "hidden"
-        } top-[15vh] min-w-[15vw] bg-white border z-50 animate-slideUpfast`}
+        } top-[12.5vh] min-w-[15vw] bg-white border z-50 animate-slideUpfast`}
       >
         <div className=" w-full grid grid-cols-1 p-2 gap-x-2">
           {subItemsExplore.map((service, index) => {
