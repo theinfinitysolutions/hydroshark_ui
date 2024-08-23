@@ -6,6 +6,7 @@ import { FaCheckCircle } from "react-icons/fa";
 import instance from "@/utils/instance";
 import Profile from "@/components/UserComponents/Profile";
 import { getUser } from "@/utils/helper";
+import Orders from "@/components/UserComponents/Orders";
 
 const userProfile = [
   {
@@ -29,7 +30,7 @@ const User = () => {
     if (!token) {
       router.push("/");
     } else getUser();
-  }, []);
+  }, [currentTab]);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -62,7 +63,7 @@ const User = () => {
           {currentTab == "profile" ? (
             <Profile />
           ) : currentTab == "orders" ? (
-            <div></div>
+            <Orders />
           ) : (
             <div></div>
           )}

@@ -1,17 +1,17 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+// import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
 import { testimonials } from "@/utils/consts";
 import instance from "@/utils/instance";
 import { getUser } from "@/utils/helper";
 
-import "swiper/css";
-import "swiper/css/effect-coverflow";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
+// import "swiper/css";
+// import "swiper/css/effect-coverflow";
+// import "swiper/css/pagination";
+// import "swiper/css/navigation";
 
-import { EffectCoverflow, Pagination } from "swiper/modules";
+// import { EffectCoverflow, Pagination } from "swiper/modules";
 import { useStore } from "@/utils/store";
 import { useRouter } from "next/navigation";
 import Spinner from "@/components/Spinner";
