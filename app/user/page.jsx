@@ -42,7 +42,7 @@ const User = () => {
   return (
     <div className="w-screen min-h-screen overflow-hidden relative bg-[#f0f2f4] flex flex-col justify-start items-center">
       <div className="absolute inset-0 h-full w-screen bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:72px_72px]"></div>
-      <div className=" flex flex-col items-start h-full w-9/12 mt-8 z-50">
+      <div className=" flex flex-col items-start h-full w-11/12 lg:w-9/12 mt-8 z-50">
         <div className=" flex flex-row items-start gap-x-4 ">
           {userProfile.map((item) => (
             <button
