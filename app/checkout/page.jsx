@@ -202,8 +202,8 @@ const Checkout = () => {
         <div className=" flex flex-col w-full items-start">
           <p className=" text-[2.5rem] text-[#181818]">Checkout</p>
         </div>
-        <div className=" w-full flex h-full flex-row justify-between mt-4 ">
-          <div className=" flex flex-col h-full z-40 bg-white border-[0.5px] p-8 border-[#c7c7c7]/60 items-start w-1/2">
+        <div className=" w-full flex h-full flex-col lg:flex-row justify-between mt-4 ">
+          <div className=" flex flex-col h-full z-40 bg-white border-[0.5px] p-4 lg:p-8 border-[#c7c7c7]/60 items-start w-full lg:w-1/2">
             <div className=" flex flex-col items-start w-full">
               <div className=" flex flex-row w-full justify-between items-baseline">
                 <p className=" text-xl text-black font-semibold">Contact</p>
@@ -232,11 +232,13 @@ const Checkout = () => {
               </div>
             </div>
 
-            <div className=" flex flex-row justify-between items-center w-full mt-[5vh]">
-              <div className=" flex flex-col items-start w-6/12">
+            <div className=" flex flex-col lg:flex-row justify-between items-center w-full mt-[5vh]">
+              <div className=" flex flex-col items-start w-full lg:w-6/12">
                 <div className=" flex flex-row justify-start items-center">
-                  <PiCoinsFill className=" text-2xl text-black" />
-                  <h2 className=" text-black text-xl ml-2">HydroShark Coins</h2>
+                  <PiCoinsFill className=" hidden lg:block text-2xl text-black" />
+                  <h2 className=" text-black text-lg lg:text-xl lg:ml-2">
+                    HydroShark Coins
+                  </h2>
                 </div>
                 <p className=" text-black text-xs">
                   {
@@ -245,8 +247,8 @@ const Checkout = () => {
                 </p>
               </div>
 
-              <div className=" flex flex-col items-end w-1/2">
-                <div className=" flex flex-row w-3/12 justify-end items-center">
+              <div className=" w-full lg:w-1/2 flex flex-row justify-between items-center mt-4 lg:mt-0 lg:flex-col lg:items-end ">
+                <div className=" flex flex-row lg:w-3/12 justify-end items-center">
                   <PiCoinsFill className=" text-2xl text-black" />
                   <p className=" text-black text-lg mt-1">
                     {walletData?.wallet_balance}
@@ -418,7 +420,7 @@ const Checkout = () => {
                   } `}
                 >
                   <div className=" flex flex-row items-end justify-start">
-                    <p className="text-sm text-black">
+                    <p className="text-sm text-start text-black">
                       {" Razorpay Secure (UPI, Cards, Wallets, NetBanking)"}
                     </p>
                   </div>
@@ -442,7 +444,7 @@ const Checkout = () => {
                 {paymentMethod === "razorpay" ? (
                   <div className=" flex flex-col h-[25vh] w-full justify-center items-center">
                     <BsWindowFullscreen className="text-black text-4xl" />
-                    <p className=" text-black text-sm mt-2 w-7/12 text-center">
+                    <p className=" text-black text-sm mt-2 w-10/12 lg:w-7/12 text-center">
                       {
                         "After clicking “Pay now”, you will be redirected to Razorpay Secure (UPI, Cards, Wallets, NetBanking) to complete your purchase securely."
                       }
@@ -487,7 +489,7 @@ const Checkout = () => {
               </a>
             </div>
           </div>
-          <div className=" flex flex-col items-start w-1/2 px-[5vw] py-8">
+          <div className=" flex flex-col items-start w-full lg:w-1/2 px-[5vw] py-8">
             {loading ? (
               <div className=" flex flex-col items-center justify-center h-[10vh]  w-full">
                 <Spinner loading={loading} size={24} color="#000000" />
@@ -558,7 +560,7 @@ const Checkout = () => {
                     </p>
                   </div>
                   <div className=" flex flex-row w-full justify-between items-center mt-4">
-                    <p className=" text-black text-lg">DISCOUNT</p>
+                    <p className=" text-black text-lg">Discount</p>
                     <p className=" text-black text-lg">
                       ₹{cartObj?.cart_total_discount_amount}
                       {/* {cartList.reduce((acc, item) => {

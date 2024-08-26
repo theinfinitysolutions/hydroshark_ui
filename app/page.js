@@ -179,30 +179,6 @@ export default function Home() {
             </span>
           </div>
         </div>
-        <div className=" hidden lg:block absolute left-[25vw] z-50 h-[60vh] w-[50vw] ">
-          <motion.div
-            initial={{ y: "70vh" }}
-            animate={{ y: "30vh", opacity: [0, 1, 1] }}
-            className="z-20 w-full h-full"
-            transition={{ duration: 2.5, delay: 3.5, times: [0, 0.3, 1] }}
-          >
-            <LandingSceneLemon orbital={true} />
-          </motion.div>
-        </div>
-
-        <div
-          disabled
-          className=" block lg:hidden absolute left-0 z-50  h-[35vh] w-[60vw]  pointer-events-none"
-        >
-          <motion.div
-            initial={{ y: "90vh" }}
-            animate={{ y: animateHeight, opacity: [0, 1, 1] }}
-            className="z-20 w-full h-full"
-            transition={{ duration: 2.5, delay: 3.5, times: [0, 0.3, 1] }}
-          >
-            <LandingSceneLemon orbital={false} />
-          </motion.div>
-        </div>
         <div className="fixed left-0 top-[5vh] -z-10">
           <p className=" text-[5rem] lg:text-[14rem] text-black/5 leading-[5rem] lg:leading-[13rem]">
             HYDROSHARK
@@ -414,7 +390,7 @@ export default function Home() {
             </div>
             <div className="flex flex-col items-center mt-8 lg:mt-0 w-full lg:w-1/3 px-[5vw]">
               <div className=" border-[1px] border-[#5C6262] border-dashed z-0 w-full h-[60vh] p-2 flex flex-col rounded-[2rem] items-center justify-center">
-                <div className=" flex lg:hidden w-full h-full relative border-[1px] border-[#5C6262]/40 rounded-[3rem] pointer-events-none  ">
+                {/* <div className=" flex lg:hidden w-full h-full relative border-[1px] border-[#5C6262]/40 rounded-[3rem] pointer-events-none  ">
                   <ReplaceScene
                     scene={
                       flavorData[currentFlavour].id == 1 ? "lemon" : "mango"
@@ -429,7 +405,7 @@ export default function Home() {
                     }
                     orbital={true}
                   />
-                </div>
+                </div> */}
               </div>
               <div className="flex flex-row justify-center mt-4 z-20 items-center gap-x-4">
                 <button

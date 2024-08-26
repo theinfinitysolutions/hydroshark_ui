@@ -119,7 +119,7 @@ const ViewProduct = () => {
           <Spinner loading={loading} size={48} color="#000000" />
         </div>
       ) : (
-        <div className=" bg-[#f0f2f4] w-full h-[90vh] relative overflow-y-scroll  flex flex-col items-start">
+        <div className=" bg-[#f0f2f4] w-full h-full lg:h-[90vh] relative overflow-y-scroll  flex flex-col items-start">
           <div className=" absolute right-4 top-4 z-20">
             <button
               onClick={() => {
@@ -127,12 +127,12 @@ const ViewProduct = () => {
               }}
               className=" flex flex-row justify-start items-center gap-x-2"
             >
-              <IoIosArrowRoundBack className=" text-white text-3xl" />
-              <p className=" text-white mt-1">Back</p>
+              <IoIosArrowRoundBack className=" text-black lg:text-white text-3xl" />
+              <p className=" text-black lg:text-white mt-1">Back</p>
             </button>
           </div>
-          <div className="flex flex-row justify-between items-center h-full w-full">
-            <div className=" w-7/12 h-full flex flex-col bg-[#f0f2f4] items-center justify-center relative ">
+          <div className="flex flex-col lg:flex-row justify-between items-center h-full w-full">
+            <div className=" w-full lg:w-7/12 h-[60vh] lg:h-full flex flex-col bg-[#f0f2f4] items-center justify-center relative ">
               <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:72px_72px]"></div>
               {selectedProduct.product_title ? (
                 <ReplaceScene
@@ -141,7 +141,7 @@ const ViewProduct = () => {
                 />
               ) : null}
             </div>
-            <div className=" w-5/12 h-full bg-[#181818] relative flex flex-col items-start pl-8 pr-[7.5vw] justify-center  ">
+            <div className=" w-full lg:w-5/12 h-full py-8 lg:py-0 bg-[#181818] relative flex flex-col items-start pl-8 pr-[7.5vw] justify-center  ">
               <div className=" flex flex-row w-full justify-between items-end">
                 <div className=" flex flex-col items-start">
                   <p className=" text-white text-sm ">HYDROSHARK</p>
@@ -172,7 +172,7 @@ const ViewProduct = () => {
                 {selectedProduct?.product_description}
               </div>
 
-              <div className=" flex flex-col items-start mt-[5vh]">
+              <div className=" flex flex-col w-full items-start mt-[5vh]">
                 <p>Quantity</p>
                 <div className=" flex flex-row gap-x-4 mt-2">
                   {selectedProduct?.product_sections?.map((section, index) => {
@@ -180,7 +180,7 @@ const ViewProduct = () => {
                       <button
                         onClick={() => setSelectedSection(section)}
                         key={index}
-                        className={` w-[5vw] py-2 text-sm flex flex-col items-center border-[1px] border-white ${
+                        className={` px-4 lg:px-0 lg:w-[5vw] py-2 text-sm flex flex-col items-center border-[1px] border-white ${
                           !(selectedSection?.id == section?.id)
                             ? "bg-black text-white"
                             : "bg-white text-black"
@@ -192,7 +192,7 @@ const ViewProduct = () => {
                   })}
                 </div>
               </div>
-              <div className=" flex flex-row justify-between w-full items-center mt-8">
+              <div className=" flex flex-col lg:flex-row items-start lg:items-center lg:justify-between w-full  mt-4 lg:mt-8">
                 <div className="flex flex-row justify-start items-center text-sm gap-x-2">
                   <p className=" text-red-400  line-through 	">
                     {" "}
@@ -240,13 +240,13 @@ const ViewProduct = () => {
                 </button>
               </div>
               <div className=" flex flex-col items-start mt-8">
-                <p className=" text-xl font-bold">
+                <p className=" text-base lg:text-xl font-bold">
                   {
                     "Try all of our full exciting flavors and get the best hydration experience"
                   }
                 </p>
               </div>
-              <div className=" flex flex-col w-8/12 items-start mt-4">
+              <div className=" flex flex-col w-8/12 items-start mt-4 mb-[5vh] lg:mb-0">
                 <div className=" flex flex-row justify-start items-center ">
                   <MdOutlineLocalShipping className=" text-lg text-white" />
                   <p className=" text-[14px] text-white ml-2 mt-[4px]">
@@ -262,18 +262,22 @@ const ViewProduct = () => {
                   </p>
                 </div>
               </div>
-              <div className=" h-12 absolute  w-full left-0 bottom-2 flex flex-row justify-start gap-x-[10%] px-8">
+              <div className=" lg:h-12 absolute  w-full left-0 bottom-2 flex flex-row justify-center lg:justify-start gap-x-4 lg:gap-x-[10%] px-2 lg:px-8">
                 <div className=" flex flex-row items-center justify-start">
                   <IoTrendingDownOutline className=" text-white text-lg" />
-                  <p className=" text-white mt-1 ml-1">{"Low Sugar"}</p>
+                  <p className=" text-sm lg:text-base text-white mt-1 ml-1">
+                    {"Low Sugar"}
+                  </p>
                 </div>
                 <div className=" flex flex-row items-center justify-start">
                   <IoBanOutline className=" text-white text-lg" />
-                  <p className=" text-white mt-1 ml-1">{"No Caffeine"}</p>
+                  <p className=" text-sm lg:text-base text-white mt-1 ml-1">
+                    {"No Caffeine"}
+                  </p>
                 </div>
                 <div className=" flex flex-row items-center justify-start">
                   <MdOutlineHealthAndSafety className=" text-white text-lg" />
-                  <p className=" text-white mt-1 ml-1">
+                  <p className=" text-sm lg:text-base text-white mt-1 ml-1">
                     {"Vitamins & Minerals"}
                   </p>
                 </div>
@@ -289,13 +293,13 @@ const ViewProduct = () => {
             <p className=" text-2xl text-white font-semibold">
               Ratings and Reviews
             </p>
-            <div className=" flex flex-col items-start mt-8">
+            <div className=" flex flex-col items-start w-full mt-8">
               {ratings.map((rating, index) => (
                 <div
                   key={index}
-                  className=" flex flex-row items-center justify-start mb-2"
+                  className=" flex flex-row items-center justify-start w-full mb-2"
                 >
-                  <div className=" w-[30vw] h-3 flex flex-col items-start rounded-full border-[0.5px]  border-white bg-black">
+                  <div className=" w-9/12 lg:w-[30vw] h-3 flex flex-col items-start rounded-full border-[0.5px]  border-white bg-black">
                     <div
                       style={{ width: `${rating.rating / 2}%` }}
                       className={`  h-3 rounded-full bg-white`}
@@ -313,9 +317,9 @@ const ViewProduct = () => {
               return (
                 <div
                   key={index}
-                  className=" flex flex-row w-full items-start justify-start mb-8"
+                  className=" flex flex-col lg:flex-row w-full items-start justify-start mb-8"
                 >
-                  <div className=" w-[15%] flex flex-col items-start">
+                  <div className=" w-full lg:w-[15%] flex flex-col items-start">
                     <div className=" flex flex-row items-center justify-center">
                       <div className=" h-8 w-8 flex flex-col rounded-full items-center bg-white justify-center">
                         <p className=" text-lg text-black mt-1">
@@ -327,7 +331,7 @@ const ViewProduct = () => {
                       </p>
                     </div>
 
-                    <div className=" flex flex-row items-center mt-4 justify-start">
+                    <div className=" flex flex-row items-center mt-2 lg:mt-4 justify-start">
                       {Array(5)
                         .fill(comment.rating || 0)
                         .map((_, index) => {
@@ -340,9 +344,11 @@ const ViewProduct = () => {
                         })}
                     </div>
                   </div>
-                  <div className=" w-3/4 flex flex-col items-start">
-                    <p className=" text-white text-xl">{comment.description}</p>
-                    <div className=" flex flex-row justify-start items-center mt-4">
+                  <div className=" w-full lg:w-3/4 flex flex-col mt-2 lg:mt-0 items-start">
+                    <p className=" text-white text-sm lg:text-xl">
+                      {comment.description}
+                    </p>
+                    {/* <div className=" flex flex-row justify-start items-center mt-4">
                       <p className=" text-base text-white mt-1">
                         Was this review helpful?{" "}
                       </p>
@@ -356,14 +362,14 @@ const ViewProduct = () => {
                           <p className=" text-black mt-1 ml-1">0</p>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               );
             })}
           </div>
-          <div className=" w-full flex flex-col items-center my-8">
-            <button className=" bg-white text-black border-[1px] rounded-md border-black w-1/12 py-2 ">
+          <div className=" w-full flex flex-col items-center my-4 lg:my-8">
+            <button className=" bg-white text-black border-[1px] rounded-md border-black px-4 lg:w-1/12 py-2 ">
               <p className=" mt-1">{"View More"}</p>
             </button>
           </div>
