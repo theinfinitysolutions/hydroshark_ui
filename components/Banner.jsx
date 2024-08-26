@@ -27,7 +27,7 @@ const Banner = () => {
         <FaAngleLeft />
       </button>
       <div className=" flex flex-row items-center justify-center w-full">
-        <p className=" text-white text-sm">
+        <p className=" text-white text-xs lg:text-sm">
           {existingOptions[currentOption].title}
         </p>
       </div>

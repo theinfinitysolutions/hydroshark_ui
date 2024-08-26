@@ -18,7 +18,7 @@ const HomeSection3 = () => {
   return (
     <div
       ref={targetRef}
-      className=" flex flex-row justify-between  overflow-hidden w-full h-[60vh] lg:h-screen max-h-screen"
+      className=" flex flex-row justify-between  overflow-hidden w-full h-full lg:pb-0 lg:h-screen max-h-screen"
     >
       <div className="hidden lg:flex w-[35%] h-full max-h-screen overflow-hidden">
         <ParallaxScroll targetRef={targetRef} />
@@ -66,14 +66,14 @@ const HomeSection3 = () => {
             </span>
           </div>
         </div>
-        <p className=" text-xl w-full lg:text-3xl text-[#3997a1] italic mt-[5vh] lg:mt-[10vh]">
+        <p className=" text-base w-full lg:text-3xl text-[#3997a1] italic mt-[5vh] lg:mt-[10vh]">
           {"Experience the Hydroshark Difference "}
         </p>
         <div className="w-full flex flex-col items-start">
-          <h3 className=" text-[5rem] text-black font-bold">
+          <h3 className=" text-4xl lg:text-[5rem] lg:leading-[4.85rem] text-black font-bold">
             {"SEE WHAT'S INSIDE"}
           </h3>
-          <div className="w-9/12 flex flex-col items-start mt-8">
+          <div className=" w-full lg:w-9/12 flex flex-col items-start mt-8 mb-[25vh] lg:mb-0">
             {FAQ.map((question, index) => {
               return (
                 <a
@@ -84,23 +84,23 @@ const HomeSection3 = () => {
                   className="flex cursor-pointer transition-all duration-200 bg-gradient-to-r from-[#1b1f20] to-[#414549]  px-4 py-4 rounded-md  flex-col mb-4 items-start w-full "
                 >
                   <div className="flex flex-row w-full justify-between items-center">
-                    <h3 className="text-xl font-semibold text-white ">
+                    <h3 className=" text-base lg:text-xl font-semibold text-white ">
                       {question.question}
                     </h3>
                     {currentQuestion === index ? (
                       <MdKeyboardArrowUp
-                        className="text-3xl text-white  cursor-pointer"
+                        className=" text-2xl lg:text-3xl text-white  cursor-pointer"
                         onClick={() => setCurrentQuestion(null)}
                       />
                     ) : (
                       <MdKeyboardArrowDown
-                        className="text-3xl text-white cursor-pointer"
+                        className=" text-2xl lg:text-3xl text-white cursor-pointer"
                         onClick={() => setCurrentQuestion(index)}
                       />
                     )}
                   </div>
                   {currentQuestion === index ? (
-                    <p className="text-md text-white mt-4 animate-slideDown">
+                    <p className=" text-sm lg:text-base text-white mt-4 animate-slideDown">
                       {question.answer}
                     </p>
                   ) : null}
@@ -110,7 +110,7 @@ const HomeSection3 = () => {
           </div>
         </div>
 
-        <div className=" h-[15vw] w-[15vw] lg:h-[7.5vh] lg:w-[7.5vh] mt-4 animate-rotate absolute right-8 bottom-8 lg:right-[2.5vh] lg:bottom-[2.5vh]">
+        <div className=" h-[15vw] w-[15vw] lg:h-[7.5vh] lg:w-[7.5vh] mt-4 animate-rotate absolute right-6 bottom-6 lg:right-[2.5vh] lg:bottom-[2.5vh]">
           <Image
             src={process.env.NEXT_PUBLIC_API_URL + "/hydroshark.png"}
             fill

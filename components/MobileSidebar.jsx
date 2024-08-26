@@ -6,7 +6,11 @@ import Link from "next/link";
 
 const navbarItems = [
   {
-    title: "Explore",
+    title: "Products",
+    link: "/products",
+  },
+  {
+    title: "Explore Hydroshark",
     link: "/explore",
   },
   {
@@ -22,15 +26,37 @@ const navbarItems = [
     link: "/about",
   },
   {
-    title: "Contact",
+    title: "Join Us!",
+    link: "/joinus",
+  },
+  {
+    title: "Contact Us",
     link: "/contact",
+  },
+];
+
+const additionalItems = [
+  {
+    title: "Profile",
+    link: "/user",
+  },
+  {
+    title: "Orders",
+    link: "/user",
   },
 ];
 export default function MobileSidebar() {
   const router = useRouter();
   const [show, setter] = useState(false);
   const [navbarList, setNavbarList] = useState(navbarItems);
-  const { sidebar, setShow } = useStore();
+  const { sidebar, setShow, showAuthModal, setShowAuthModal, user } =
+    useStore();
+
+  useEffect(() => {
+    if (user) {
+      setNavbarList([...navbarItems, ...additionalItems]);
+    }
+  }, [user]);
 
   useEffect(() => {
     console.log(sidebar.show);
@@ -70,7 +96,7 @@ export default function MobileSidebar() {
   // Overlay to prevent clicks in background, also serves as our close button
   const ModalOverlay = () => (
     <div
-      className={`flex lg:hidden fixed top-0 right-0 bottom-0 left-0 bg-black/50 z-30`}
+      className={`flex lg:hidden fixed top-0 right-0 bottom-0 left-0 bg-black/50 z-50`}
       onClick={() => {
         setShow({
           show: false,
@@ -81,7 +107,7 @@ export default function MobileSidebar() {
 
   return (
     <>
-      <div className={`${className}${appendClass}`}>
+      <div style={{ zIndex: 100 }} className={`${className}${appendClass}`}>
         <div className="text-md px-2 mt-[20px] -mb-2 border-b-2 border-[#c7c7c7]">
           <p className=" text-[#181818] text-lg pl-2">Menu</p>
         </div>
@@ -90,17 +116,48 @@ export default function MobileSidebar() {
             return <MenuItem key={index} name={item.title} route={item.link} />;
           })}
 
-          <button
-            onClick={() => {
-              router.push("/joinus");
-              setShow({
-                show: false,
-              });
-            }}
-            className=" w-11/12 py-2 bg-[#181818] text-white mx-4 mt-8"
-          >
-            Join Us !
-          </button>
+          {user ? (
+            <div className=" flex flex-row items-center justify-start gap-x-4 px-4 bg-gray-200 rounded-lg py-4 mt-4 mx-4">
+              <div className=" h-[5vh] w-[5vh] rounded-full bg-green-400 flex justify-center items-center">
+                <p className=" text-base text-white">{user.name[0]}</p>
+              </div>
+              <div className=" flex flex-col items-start">
+                <p className=" text-base text-black">{user.name}</p>
+                <p className=" text-sm text-black">{user.email}</p>
+              </div>
+            </div>
+          ) : null}
+
+          {user ? (
+            <button
+              onClick={() => {
+                localStorage.removeItem("user");
+                localStorage.removeItem("token");
+
+                setShow({
+                  show: false,
+                });
+              }}
+              className=" w-11/12 py-2 bg-[#181818] text-white mx-4 mt-4"
+            >
+              Logout
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                setShowAuthModal({
+                  show: true,
+                  message: "",
+                });
+                setShow({
+                  show: false,
+                });
+              }}
+              className=" w-11/12 py-2 bg-[#181818] text-white mx-4 mt-4"
+            >
+              Login
+            </button>
+          )}
         </div>
       </div>
       {show ? <ModalOverlay /> : <></>}

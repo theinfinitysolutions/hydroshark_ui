@@ -24,9 +24,9 @@ const AuthModal = () => {
     <div
       className={`${
         isOpen ? "fixed" : "hidden"
-      } z-50 inset-0 flex items-center justify-center bg-black/10`}
+      } z-50 inset-0 flex items-center justify-center bg-black/30`}
     >
-      <div className="bg-white w-5/12 min-h-[40vh] relative overflow-y-scroll  flex flex-col items-center shadow-xl py-[5vh]">
+      <div className="bg-white w-11/12 lg:w-5/12 min-h-[40vh] relative overflow-y-scroll  flex flex-col items-center shadow-xl py-[5vh]">
         <div className=" absolute right-4 top-4">
           <button
             onClick={() => {
@@ -37,7 +37,7 @@ const AuthModal = () => {
           </button>
         </div>
 
-        <div className=" h-[10vh] w-[10vh] relative">
+        <div className=" h-[7.5vh] w-[7.5vh] lg:h-[10vh] lg:w-[10vh] relative">
           <Image
             src={process.env.NEXT_PUBLIC_API_URL + "/hydroshark.png"}
             fill
@@ -45,7 +45,7 @@ const AuthModal = () => {
           />
         </div>
         <p className="text-3xl text-black my-4 font-bold">Hydroshark</p>
-        <div className=" w-8/12 flex flex-col items-center">
+        <div className=" w-11/12 lg:w-8/12 flex flex-col items-center">
           {showSignup ? (
             <Signup
               BackToLogin={() => {
