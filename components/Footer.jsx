@@ -18,13 +18,13 @@ const navItems = [
     path: "/athletes",
   },
   {
-    title: "Events",
+    title: "Events & Media",
     path: "/events",
   },
-  // {
-  //   title: "Media",
-  //   path: "/media",
-  // },
+  {
+    title: "Join Us!",
+    path: "/joinus",
+  },
 ];
 
 const altItems = [
@@ -36,10 +36,10 @@ const altItems = [
     title: "Contact",
     path: "/contact",
   },
-  // {
-  //   title: "Shop",
-  //   path: "/shop",
-  // },
+  {
+    title: "Products",
+    path: "/products",
+  },
 ];
 
 const Footer = () => {

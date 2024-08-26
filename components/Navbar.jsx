@@ -101,10 +101,10 @@ const Navbar = () => {
         setCurrentHover("");
         setCurrentHoverSub(0);
       }}
-      style={{ zIndex: 100 }}
+      style={{ zIndex: 40 }}
       className={` ${
         pathname == "/joinus" ? "fixed" : ""
-      }  max-w-screen h-[12.5vh] w-[100vw] flex flex-row justify-between items-center bg-[#f0f2f4]  px-[5vw]`}
+      }  max-w-screen h-[10vh] lg:h-[12.5vh] w-[100vw] flex flex-row justify-between items-center bg-[#f0f2f4]  px-[5vw]`}
     >
       <div className="hidden lg:flex flex-row justify-between z-50 w-4/12 border-b-[1px] border-[#181818] px-2">
         {navItems.map((item, index) => (
@@ -125,7 +125,7 @@ const Navbar = () => {
         onClick={() => {
           router.push("/");
         }}
-        className="h-[10vh] cursor-pointer w-[10vh] lg:mt-4 relative"
+        className=" h-[7.5vh] w-[7.5vh] lg:h-[10vh] lg:w-[10vh] cursor-pointer  lg:mt-4 relative"
       >
         <Image
           src={process.env.NEXT_PUBLIC_API_URL + "/hydroshark.png"}
