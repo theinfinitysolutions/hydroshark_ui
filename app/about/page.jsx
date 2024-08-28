@@ -34,7 +34,7 @@ const About = () => {
               </p>
               <p className=" text-base text-[#DEE2E6]/80 animate-slideUp">
                 {
-                  " Hydroshark is a company that specializes in creating the best energy drinks for athletes, gamers, and daredevils. Our drinks are packed with no caffeine, low sugar, electrolytes, vitamins, and minerals. Our drinks are loved by athletes, gamers, and everyone who loves adventure."
+                  " Hydroshark is a company that specializes in creating the best Sports drinks for athletes, gamers, and daredevils. Our drinks are packed with no caffeine, low sugar, electrolytes, vitamins, and minerals. Our drinks are loved by athletes, gamers, and everyone who loves adventure."
                 }
               </p>
             </RevealOnScroll>
