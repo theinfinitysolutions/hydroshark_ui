@@ -4,7 +4,6 @@ import ShopNowButton from "./ShopNow";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-// import Swiper core and required modules
 import { Autoplay } from "swiper/modules";
 import { useRouter } from "next/navigation";
 import { RxExternalLink } from "react-icons/rx";
