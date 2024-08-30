@@ -218,6 +218,32 @@ export default function Home() {
             HYDROSHARK
           </p>
         </div>
+
+        <div className=" hidden lg:block absolute left-[25vw] z-50 h-[60vh] w-[50vw] ">
+          <motion.div
+            initial={{ y: "70vh" }}
+            animate={{ y: "30vh", opacity: [0, 1, 1] }}
+            className="z-20 w-full h-full"
+            transition={{ duration: 2.5, delay: 3.5, times: [0, 0.3, 1] }}
+          >
+            <LandingSceneLemon orbital={true} />
+          </motion.div>
+        </div>
+
+        <div
+          disabled
+          className=" block lg:hidden absolute left-0 z-50  h-[35vh] w-[60vw]  pointer-events-none"
+        >
+          <motion.div
+            initial={{ y: "90vh" }}
+            animate={{ y: animateHeight, opacity: [0, 1, 1] }}
+            className="z-20 w-full h-full"
+            transition={{ duration: 2.5, delay: 3.5, times: [0, 0.3, 1] }}
+          >
+            <LandingSceneLemon orbital={false} />
+          </motion.div>
+        </div>
+
         <div className="flex flex-col lg:flex-row h-[90vh] w-full px-[5vw] overflow-hidden pt-[5vh] relative ">
           <div className="flex flex-col w-full lg:w-1/2 items-start">
             <h1 className=" text-black text-[2.5rem]  lg:text-[4rem] 2xl:text-[5rem] font-bold leading-[2.5rem] lg:leading-[4rem] 2xl:leading-[5rem]">
