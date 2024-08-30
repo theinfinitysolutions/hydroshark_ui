@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -10,6 +10,7 @@ import { FiShoppingCart } from "react-icons/fi";
 import { FaRegCircleUser } from "react-icons/fa6";
 import { PiCoinsFill } from "react-icons/pi";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import { getUser, getCart } from "@/utils/helper";
 
 const navItems = [
   {
@@ -78,6 +79,7 @@ const Navbar = () => {
   const pathname = usePathname();
   const {
     cart,
+    cartData,
     setShow,
     cartSidebar,
     setCartSidebar,
@@ -94,6 +96,11 @@ const Navbar = () => {
   if (pathname.includes("/admin")) {
     return null;
   }
+
+  useEffect(() => {
+    getCart();
+    getUser();
+  }, []);
 
   return (
     <div
@@ -210,7 +217,7 @@ const Navbar = () => {
           }}
           className=" py-2 mx-4 cursor-pointer relative z-10"
         >
-          {cart?.length > 0 ? (
+          {cart?.length || cartData.listCount > 0 ? (
             <div className=" h-4 w-4 flex items-center justify-center bg-black rounded-full absolute -top-1 -right-2">
               <p className=" text-[10px] text-white">{cart.length}</p>
             </div>
