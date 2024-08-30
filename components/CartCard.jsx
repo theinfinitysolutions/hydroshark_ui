@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { LuMinus, LuPlus } from "react-icons/lu";
 import { MdDeleteOutline } from "react-icons/md";
 import { useStore } from "@/utils/store";
+import { textColors } from "@/utils/consts";
 
 const CartCard = (props) => {
   const { cart, addToCart } = useStore();
@@ -45,13 +46,7 @@ const CartCard = (props) => {
         <div className=" w-[80%] h-full flex flex-col items-start  px-4">
           <p className=" text-base text-black">
             HYDROSHARK{" "}
-            <span
-              className={`${
-                props.product_title == "LEMON"
-                  ? "text-[#308918]"
-                  : "text-[#dfd434]"
-              }`}
-            >
+            <span className={`${textColors[props.product_title]}`}>
               {props.product_title}
             </span>{" "}
           </p>
@@ -68,26 +63,26 @@ const CartCard = (props) => {
           <div className="flex flex-row justify-between items-center gap-x-2 mt-2 py-1 px-4 border-[1px] border-black">
             <a
               onClick={() => {
-                handleCartQuantityChange(props.id, "increment");
+                props.onQuantityChange("minus");
               }}
-              className=" text-black text-sm"
+              className=" cursor-pointer text-black text-sm"
             >
-              <LuPlus />
+              <LuMinus />
             </a>
             <p className=" text-black text-sm mt-1">{props.product_quantity}</p>
             <a
               onClick={() => {
-                handleCartQuantityChange(props.id, "decrement");
+                props.onQuantityChange("add");
               }}
-              className=" text-black text-sm"
+              className=" cursor-pointer text-black text-sm"
             >
-              <LuMinus />
+              <LuPlus />
             </a>
           </div>
         </div>
         <a
           onClick={() => {
-            handleCartQuantityChange(props.id, "delete");
+            props.onDelete();
           }}
           className=" w-[20%]  h-full flex flex-col items-center justify-center"
         >

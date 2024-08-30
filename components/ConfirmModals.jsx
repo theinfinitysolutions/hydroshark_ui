@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { useStore } from "@/utils/store";
-import { FaCheckCircle } from "react-icons/fa";
+import { FaCheckCircle, FaLaptopHouse } from "react-icons/fa";
 import { MdOutlineErrorOutline } from "react-icons/md";
 import { useRouter } from "next/navigation";
 const ConfirmModals = () => {
@@ -13,10 +13,18 @@ const ConfirmModals = () => {
   useEffect(() => {
     setIsOpen(showConfirmModal.show);
     setMode(showConfirmModal.mode);
-  }, [showConfirmModal]);
+  }, [showConfirmModal.show]);
 
   const handleClose = () => {
-    setShowConfirmModal({ show: false, mode: "" });
+    setShowConfirmModal({
+      show: false,
+      mode: "",
+      successText: "",
+      title: "",
+      description: "",
+      action: "",
+      buttonText: "",
+    });
   };
 
   return (
@@ -37,7 +45,7 @@ const ConfirmModals = () => {
             mode == "success" ? "text-green-500" : "text-red-500"
           }  mt-4 font-bold`}
         >
-          {mode === "success" ? "Success" : "Error"}
+          {showConfirmModal.successText}
         </p>
 
         <p className="text-black text-base mt-2">
