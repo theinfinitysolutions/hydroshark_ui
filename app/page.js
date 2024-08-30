@@ -15,6 +15,7 @@ import ProductSectionHome from "@/components/ProductSectionHome";
 import ShopNowButton from "@/components/ShopNow";
 import ProductSectionHome1 from "@/components/ProductSectionHome1";
 import TestimonalsHome from "@/components/TestimonalsHome";
+
 import { getUser } from "@/utils/helper";
 import { useStore } from "@/utils/store";
 
@@ -489,7 +490,7 @@ export default function Home() {
             </div>
           </div>
         </RevealOnScroll>
-        <ProductSectionHome1 />
+        {/* <ProductSectionHome1 /> */}
         <ProductSectionHome />
         <HomeSection3 />
         <TestimonalsHome />

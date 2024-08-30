@@ -28,6 +28,8 @@ const Checkout = () => {
     showAddressModal,
     setShowAddressModal,
     setShowLoading,
+    showConfirmModal,
+    setShowConfirmModal,
   } = useStore();
   const [cartObj, setCartObject] = useState({});
   const [sameAsBilling, setSameAsBilling] = useState(true);
@@ -77,11 +79,46 @@ const Checkout = () => {
       .get(`/billing/cart/`)
       .then((res) => {
         setLoading(false);
-        console.log("res", res);
+        console.log("res", res.data);
+
         setCartObject(res.data);
         if (res.data.cart_items.length == 0) {
           router.push("/products");
         }
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.log("err", err);
+      });
+  };
+
+  const patchSectionQuantity = (id, type, quantity) => {
+    setLoading(true);
+    instance
+      .patch(`/billing/cart/item/${id}/`, {
+        quantity: type == "add" ? quantity + 1 : quantity - 1,
+      })
+      .then((res) => {
+        console.log("res", res);
+        setLoading(false);
+        getCart();
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.log("err", err);
+      });
+  };
+
+  const handleDeleteCartItem = (id) => {
+    setLoading(true);
+    instance
+      .patch(`/billing/cart/item/${id}/`, {
+        is_deleted: true,
+      })
+      .then((res) => {
+        setLoading(false);
+        console.log("res", res);
+        getCartList();
       })
       .catch((err) => {
         setLoading(false);
@@ -132,6 +169,16 @@ const Checkout = () => {
         setShowLoading({ show: false });
       })
       .catch((err) => {
+        setShowConfirmModal({
+          show: true,
+          mode: "error",
+          successText: "Error",
+          title: "Some error has occured",
+          description:
+            "Some error has occured, please try again later or contact support",
+          action: "/",
+          buttonText: "Back Home",
+        });
         setShowLoading({ show: false });
         console.log("err", err);
       });
@@ -147,10 +194,35 @@ const Checkout = () => {
       .then((res) => {
         console.log("res create payment", res);
         setShowLoading({ show: false });
+        if (paymentMethod === "razorpay" && res.data?.razorpay_order_id) {
+          processPayment(res.data.razorpay_order_id);
+        } else {
+          handleShowConfetti();
+          setShowConfirmModal({
+            show: true,
+            mode: "success",
+            successText: "COD Order Placed",
+            title: "Your Order has been successfully placed",
+            description:
+              "You will recieve an email confirmation shortly , please visit the profile section for more details",
+            action: "/products",
+            buttonText: "Back Home",
+          });
+        }
       })
       .catch((err) => {
         setShowLoading({ show: false });
         console.log("err", err);
+        setShowConfirmModal({
+          show: true,
+          mode: "error",
+          successText: "Error",
+          title: "Some error has occured",
+          description:
+            "Some error has occured, please try again later or contact support",
+          action: "/products",
+          buttonText: "Back Home",
+        });
       });
   };
 
@@ -168,6 +240,17 @@ const Checkout = () => {
         order_id: orderId,
         handler: async function (response) {
           console.log("razorpay response", response);
+          setShowConfirmModal({
+            show: true,
+            mode: "success",
+            successText: "Payment Successful",
+            title: "Your Order has been successfully placed",
+            description:
+              "You order has been successfully placed, you will recieve an email confirmation shortly , please visit the profile section for more details",
+            action: "/products",
+            buttonText: "Back Home",
+          });
+          handleShowConfetti();
         },
         prefill: {
           name: "Hydroshark",
@@ -189,6 +272,16 @@ const Checkout = () => {
       paymentObject.open();
     } catch (error) {
       console.log(error);
+      setShowConfirmModal({
+        show: true,
+        mode: "error",
+        successText: "Error",
+        title: "Some error has occured",
+        description:
+          "Some error has occured, please try again later or contact support",
+        action: "/products",
+        buttonText: "Back Home",
+      });
     }
   };
 
@@ -500,32 +593,50 @@ const Checkout = () => {
                   <p className=" text-xl text-black font-semibold">Cart</p>
                 </div>
 
-                <div className=" w-full flex flex-col items-start mt-4">
-                  {cartObj?.cart_items?.map((item, index) => {
-                    return (
-                      <CartCard
-                        key={index}
-                        id={item.cart}
-                        product_title={
-                          item.product_section.linked_product == 4
-                            ? "LEMON"
-                            : "MANGO"
-                        }
-                        price={item.total_price}
-                        section_title={item.product_section.section_title}
-                        discounted_amount={item.final_amount}
-                        product_quantity={item.quantity}
-                        image={
-                          item.product_section.linked_product == 4
-                            ? "/lemoncan.webp"
-                            : "/mangocan.webp"
-                        }
-                        onDelete={() => {
-                          handleDelete(item);
-                        }}
-                      />
-                    );
-                  })}
+                <div className=" w-full flex flex-col items-start max-h-[50vh] overflow-y-scroll mt-4">
+                  {cartObj?.cart_items?.length > 0 ? (
+                    <div className="flex flex-col mt-4 w-full overflow-scroll">
+                      {cartObj?.cart_items?.map((item, index) => {
+                        return (
+                          <CartCard
+                            key={index}
+                            cartItemId={item.id}
+                            image={
+                              item.product_section?.linked_product
+                                ?.product_primary_image?.image?.cloudfront
+                            }
+                            product_title={
+                              item.product_section?.linked_product
+                                ?.product_title
+                            }
+                            price={item.product_section?.price}
+                            discounted_amount={
+                              item.product_section?.discounted_amount
+                            }
+                            section_title={item.product_section?.section_title}
+                            product_quantity={item.quantity}
+                            onDelete={() => {
+                              console.log("delete called");
+                              handleDeleteCartItem(item.id);
+                            }}
+                            onQuantityChange={(type) => {
+                              patchSectionQuantity(
+                                item.id,
+                                type,
+                                item.quantity
+                              );
+                            }}
+                          />
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    <div className="flex flex-col items-center justify-center h-full w-full">
+                      <p className="text-black text-xl font-semibold">
+                        No items in cart
+                      </p>
+                    </div>
+                  )}
                 </div>
 
                 {/* <div className=" flex flex-col items-start w-full z-20">

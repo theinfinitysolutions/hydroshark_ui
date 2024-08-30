@@ -15,10 +15,11 @@ import HydrosharkCoinsModal from "@/components/HydrosharkCoinsModal";
 import Banner from "@/components/Banner";
 import dynamic from "next/dynamic";
 import TawkToComponent from "@/components/TawkToComponent";
-import { getUser } from "@/utils/helper";
 import AddUserAddressModal from "@/components/AddUserAddressModal";
 import GlobalLoader from "@/components/GlobalLoader";
 import ConfirmModals from "@/components/ConfirmModals";
+import ViewOrderDetailsModal from "@/components/ViewOrderDetailsModal";
+import ReviewModal from "@/components/ReviewModal";
 
 const local = localFont({ src: "../public/ITCAvantGardePro-Md.otf" });
 
@@ -86,6 +87,8 @@ export default function RootLayout({ children }) {
         <AddUserAddressModal />
         <GlobalLoader />
         <ConfirmModals />
+        <ViewOrderDetailsModal />
+        <ReviewModal />
       </body>
     </html>
   );
