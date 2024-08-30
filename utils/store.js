@@ -51,6 +51,7 @@ export const useStore = create((set) => ({
   showConfirmModal: {
     show: false,
     mode: "",
+    successText: "",
     title: "",
     description: "",
     action: "",
@@ -58,4 +59,30 @@ export const useStore = create((set) => ({
   },
   setShowConfirmModal: (showConfirmModal) =>
     set((state) => (state.showConfirmModal = showConfirmModal)),
+
+  showOrderDetailsModal: {
+    show: false,
+    id: "",
+  },
+
+  setShowOrderDetailsModal: (showOrderDetailsModal) =>
+    set({ showOrderDetailsModal }),
+
+  activeCartId: {
+    id: "",
+  },
+  setActiveCartId: (activeCartId) =>
+    set((state) => (state.activeCartId = activeCartId)),
+
+  showSubmitReviewModal: {
+    show: false,
+    id: "",
+  },
+  setShowSubmitReviewModal: (showSubmitReviewModal) =>
+    set((state) => (state.showSubmitReviewModal = showSubmitReviewModal)),
+
+  cartData: {
+    listCount: 0,
+  },
+  setCartData: (cartData) => set((state) => (state.cartData = cartData)),
 }));

@@ -1,3 +1,8 @@
+export const textColors = {
+  MANGO: "#dfd434",
+  LEMON: "#308918",
+};
+
 export const flavorData = [
   {
     title: "LEMON",
