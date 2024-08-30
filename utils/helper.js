@@ -18,3 +18,28 @@ export const getUser = () => {
       console.log("err", err);
     });
 };
+
+export const getCart = () => {
+  const token = localStorage.getItem("token");
+  let cartId = null;
+
+  if (!token) {
+    return;
+  }
+
+  instance
+    .get("/billing/cart/")
+    .then((res) => {
+      console.log("res", res);
+      cartId = res.data.id;
+      useStore.setState({
+        cartData: { listCount: res.data.cart_items.length },
+      });
+    })
+    .catch((err) => {
+      useStore.setState({ activeCartId: { id: "" } });
+      console.log("err", err);
+    });
+
+  return cartId;
+};
