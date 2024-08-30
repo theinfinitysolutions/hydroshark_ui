@@ -62,7 +62,10 @@ const Orders = () => {
             <div className=" flex flex-col items-start max-h-[70vh] overflow-y-scroll mt-4 w-full">
               {orders.map((order, index) => {
                 return (
-                  <div className=" flex flex-col items-start w-full border-[1px] border-[#c7c7c7]  rounded-md mb-2">
+                  <div
+                    key={index}
+                    className=" flex flex-col items-start w-full border-[1px] border-[#c7c7c7]  rounded-md mb-2"
+                  >
                     <div className=" flex flex-row justify-between items-center w-full  px-4 py-2  ">
                       <div className=" flex flex-row gap-x-8 justify-between items-center">
                         <div className=" flex flex-col items-start">

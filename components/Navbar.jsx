@@ -79,6 +79,7 @@ const Navbar = () => {
   const pathname = usePathname();
   const {
     cart,
+    user,
     cartData,
     setShow,
     cartSidebar,
@@ -91,11 +92,6 @@ const Navbar = () => {
   const [currentHover, setCurrentHover] = useState("");
   const [currentHoverSub, setCurrentHoverSub] = useState(0);
   const [showProfile, setShowProfile] = useState(false);
-  const { user } = useStore();
-
-  if (pathname.includes("/admin")) {
-    return null;
-  }
 
   useEffect(() => {
     getCart();
