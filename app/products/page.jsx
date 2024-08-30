@@ -16,6 +16,7 @@ import { useStore } from "@/utils/store";
 import { useRouter } from "next/navigation";
 import Spinner from "@/components/Spinner";
 import TestimonalsHome from "@/components/TestimonalsHome";
+import { textColors } from "@/utils/consts";
 
 const Products = () => {
   const router = useRouter();
@@ -125,100 +126,7 @@ const Products = () => {
           {"Hydrate and Gear Up: Your Ultimate Refresh Collection"}
         </p>
       </div>
-      <div className=" flex w-11/12 lg:w-10/12 mt-[5vh] lg:mt-[7.5vh]">
-        {/* <Swiper
-          effect={"coverflow"}
-          grabCursor={true}
-          centeredSlides={true}
-          loop={true}
-          initialSlide={2}
-          slidesPerView={2}
-          coverflowEffect={{
-            rotate: 5,
-            stretch: 0,
-            depth: 250,
-            modifier: 2.5,
-          }}
-          modules={[EffectCoverflow]}
-          className="swiper_container"
-        >
-          {[...products].map((product, index) => (
-            <SwiperSlide
-              className="w-full h-full flex flex-col items-center  border-[1px] border-white  z-0 justify-center"
-              key={index}
-            >
-              <div className=" absolute w-full h-full z-0 ">
-                <Image
-                  src={"/bgasset21.png"}
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
-              </div>
-              <div className=" absolute h-[5vh] w-[30vh] -right-4 top-0  z-0 ">
-                <Image
-                  src={"/icon5.png"}
-                  fill
-                  style={{ objectFit: "contain" }}
-                />
-              </div>
-              <div className=" absolute h-[20vh] w-[20vh] z-10 left-0 -top-[5vh] ">
-                <Image src={"/icon4.png"} fill objectFit=" contain" />
-              </div>
-              <a
-                onClick={() => {
-                  router.push(`/products/${product.id}`);
-                }}
-                className=" flex z-30 flex-col items-center cursor-pointer justify-center w-full h-[60vh] bg-white  bg-opacity-10"
-              >
-                <p className=" z-20 text-[#e3fafc]">{"HYDROSHARK"}</p>
-                <p className="  z-20 text-2xl text-white font-medium">
-                  {product.title}
-                </p>
-
-                <div className="  z-20 flex flex-col items-center justify-center w-full">
-                  {product.type === "bottle" ? (
-                    <div className=" flex h-[30vh] w-[30vh] relative">
-                      <Image
-                        src={product.image}
-                        fill
-                        style={{ objectFit: "contain" }}
-                      />
-                    </div>
-                  ) : product.type === "crate" ? (
-                    <div className=" flex h-[30vh] w-[50vh] relative">
-                      <Image
-                        src={product.image}
-                        fill
-                        style={{ objectFit: "contain" }}
-                      />
-                    </div>
-                  ) : product.type === "merch" ? (
-                    <div className=" flex h-[30vh] w-[30vh] relative">
-                      <Image
-                        src={product.image}
-                        fill
-                        style={{ objectFit: "contain" }}
-                      />
-                    </div>
-                  ) : null}
-
-                  <p className=" text-white mt-4">{`₹${product.price} / ${product.quanity}`}</p>
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault();
-                      addToCart(product);
-                    }}
-                    className=" flex flex-col items-center transition-all duration-200 mt-4 px-6 border-[1px] border-white py-2 bg-transparent text-white hover:bg-white hover:text-black"
-                  >
-                    <p className=" mt-1">ADD TO CART</p>
-                  </button>
-                </div>
-              </a>
-            </SwiperSlide>
-          ))}
-         
-
-        </Swiper> */}
+      <div className=" flex w-11/12 lg:w-10/12 my-[5vh] lg:my-[7.5vh]">
         {loading ? (
           <div className=" w-full h-[40vh] flex flex-col items-center justify-center">
             <Spinner loading={loading} size={48} color="#000000" />
@@ -284,11 +192,7 @@ const Products = () => {
                       className=" flex h-[30vh] w-[30vh] relative"
                     >
                       <Image
-                        src={
-                          product.product_title == "LEMON"
-                            ? "/lemoncan.webp"
-                            : "/mangocan.webp"
-                        }
+                        src={product?.product_primary_image?.image?.cloudfront}
                         fill
                         style={{ objectFit: "contain" }}
                       />
@@ -311,9 +215,7 @@ const Products = () => {
                           ),
                           product_title: product.product_title,
                           image:
-                            product.product_sections.product_title == "LEMON"
-                              ? "/lemoncan.webp"
-                              : "/mangocan.webp",
+                            product?.product_primary_image?.image?.cloudfront,
                           product_quantity: 1,
                         };
 

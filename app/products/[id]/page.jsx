@@ -20,6 +20,7 @@ import { PiCoinsFill } from "react-icons/pi";
 import instance from "@/utils/instance";
 import Spinner from "@/components/Spinner";
 import { getUser } from "@/utils/helper";
+import { textColors } from "@/utils/consts";
 
 const ratings = [
   {
@@ -146,13 +147,9 @@ const ViewProduct = () => {
                 <div className=" flex flex-col items-start">
                   <p className=" text-white text-sm ">HYDROSHARK</p>
                   <div
-                    className={`text-[3rem] font-[500] ${
-                      selectedProduct?.product_title == "LEMON"
-                        ? "text-[#308918]"
-                        : selectedProduct?.product_title == "MANGO"
-                        ? "text-[#dfd434]"
-                        : "text-white"
-                    }`}
+                    className={`text-[3rem] font-[500] text-[${
+                      textColors[selectedProduct?.product_title] || "#ffff"
+                    }]`}
                   >
                     {selectedProduct?.product_title}
                   </div>
@@ -222,9 +219,8 @@ const ViewProduct = () => {
                       ...selectedSection,
                       product_title: selectedProduct.product_title,
                       image:
-                        selectedProduct.product_title == "LEMON"
-                          ? "/lemoncan.webp"
-                          : "/mangocan.webp",
+                        selectedProduct?.product_primary_image?.image
+                          ?.cloudfront,
                       product_quantity: 1,
                     };
 
@@ -369,7 +365,7 @@ const ViewProduct = () => {
             })}
           </div>
           <div className=" w-full flex flex-col items-center my-4 lg:my-8">
-            <button className=" bg-white text-black border-[1px] rounded-md border-black px-4 lg:w-1/12 py-2 ">
+            <button className=" bg-white text-black border-[1px] rounded-md border-black px-4 lg:w-2/12 py-2 ">
               <p className=" mt-1">{"View More"}</p>
             </button>
           </div>
