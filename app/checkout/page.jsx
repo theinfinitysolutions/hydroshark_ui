@@ -335,7 +335,7 @@ const Checkout = () => {
                 </div>
                 <p className=" text-black text-xs">
                   {
-                    "(You can redeem HydrodShark coins by pucharsing HydroShark Merchandise)"
+                    "(You can redeem HydrodShark coins by pucharsing HydroShark Gymwear)"
                   }
                 </p>
               </div>
@@ -520,14 +520,17 @@ const Checkout = () => {
                   <div className="w-3/12 flex flex-row  justify-end gap-x-4 ">
                     <div className="h-[3vh] w-3/12 relative">
                       <Image
-                        src={"/visalogo.jpg"}
+                        src={process.env.NEXT_PUBLIC_API_URL + "/visalogo.jpg"}
                         fill
                         style={{ objectFit: "contain" }}
                       />
                     </div>
                     <div className="h-[3vh] w-3/12 relative">
                       <Image
-                        src={"/mastercardlogo.jpg"}
+                        src={
+                          process.env.NEXT_PUBLIC_API_URL +
+                          "/mastercardlogo.jpg"
+                        }
                         fill
                         style={{ objectFit: "contain" }}
                       />

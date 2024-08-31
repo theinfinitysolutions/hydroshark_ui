@@ -16,7 +16,7 @@ module.exports = {
       },
       animation: {
         marquee: "marquee 20s linear infinite",
-        marqueebanner: "marquee 4s linear infinite",
+        marqueebanner: "marquee 5s linear infinite",
         slideUp: "slideUp 2s ease-in-out forwards",
         slideUpfast: "slideUpFast 500ms ease-in-out forwards",
         rotate: "rotate 8s linear infinite",

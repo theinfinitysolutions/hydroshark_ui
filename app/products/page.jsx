@@ -159,21 +159,21 @@ const Products = () => {
                 </div>
                 <div className=" absolute w-full h-full z-0 ">
                   <Image
-                    src={"/bgasset21.png"}
+                    src={process.env.NEXT_PUBLIC_API_URL + "/bgasset21.png"}
                     fill
                     style={{ objectFit: "cover" }}
                   />
                 </div>
                 <div className=" absolute h-[5vh] w-[20vh] lg:w-[30vh] -right-4 top-0  z-0 ">
                   <Image
-                    src={"/icon5.png"}
+                    src={process.env.NEXT_PUBLIC_API_URL + "/icon5.png"}
                     fill
                     style={{ objectFit: "contain" }}
                   />
                 </div>
                 <div className=" absolute h-[20vh] w-[15vh] lg:w-[20vh] z-10 left-0 -top-[5vh] ">
                   <Image
-                    src={"/icon4.png"}
+                    src={process.env.NEXT_PUBLIC_API_URL + "/icon4.png"}
                     fill
                     style={{ objectFit: "contain" }}
                   />
@@ -234,7 +234,11 @@ const Products = () => {
       </div>
       <TestimonalsHome />
       <div className=" flex flex-col relative h-[30vh] lg:h-[80vh] w-full">
-        <Image src={"/img11alt.jpeg"} fill className=" absolute" />
+        <Image
+          src={process.env.NEXT_PUBLIC_API_URL + "/img11alt.jpeg"}
+          fill
+          className=" absolute"
+        />
       </div>
     </div>
   );
