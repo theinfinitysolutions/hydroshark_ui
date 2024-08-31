@@ -49,7 +49,7 @@ const HydrosharkCoinsModal = () => {
 
             <p className=" text-black text-base mt-2">
               Earn Hydroshark Coins with every purchase of Hydroshark cans and
-              unlock exclusive merchandise and accessories. Here’s how it works:
+              unlock exclusive Gymwear and accessories. Here’s how it works:
             </p>
 
             <p className=" text-black font-bold text-base mt-2">
@@ -64,7 +64,7 @@ const HydrosharkCoinsModal = () => {
 
             <p className=" text-black text-base mt-4">
               {
-                "Every Hydroshark Coin is worth 1 ₹ and can be redeemed for our wide range of merchandise (excluding core products). Start collecting today and enjoy the perks of being a part of the Hydroshark community! (TnC Apply)"
+                "Every Hydroshark Coin is worth 1 ₹ and can be redeemed for our wide range of Gymwear (excluding core products). Start collecting today and enjoy the perks of being a part of the Hydroshark community! (TnC Apply)"
               }
             </p>
           </div>

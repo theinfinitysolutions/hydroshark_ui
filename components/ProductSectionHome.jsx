@@ -105,7 +105,7 @@ const ProductSectionHome = () => {
 
       <div className=" flex flex-col lg:flex-row justify-between w-full h-full z-20">
         <div className=" flex flex-col w-full lg:w-4/12 items-center relative lg:items-start justify-center transition-all group">
-          <div className="flex flex-col h-[80vh] lg:h-full w-full relative">
+          {/* <div className="flex flex-col h-[80vh] lg:h-full w-full relative">
             <video
               src={
                 process.env.NEXT_PUBLIC_API_URL +
@@ -118,7 +118,7 @@ const ProductSectionHome = () => {
               muted
               className="w-full h-full object-cover z-10"
             />
-          </div>
+          </div> */}
           <div className=" h-[50vh] w-full flex flex-col items-center transition-all duration-400  justify-end group-hover:animate-slideUpfast absolute z-40 bottom-0 bg-gradient-to-t from-black/80 to-transparent py-8">
             <h2 className=" text-base lg:text-xl text-center lg:text-start text-[#45dced]">
               Love from the community
