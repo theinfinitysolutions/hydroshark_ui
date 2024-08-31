@@ -349,11 +349,6 @@ const ViewProduct = () => {
               );
             })}
           </div>
-          <div className=" w-full flex flex-col items-center my-4 lg:my-8">
-            <button className=" bg-white text-black border-[1px] rounded-md border-black px-4 lg:w-2/12 py-2 ">
-              <p className=" mt-1">{"View More"}</p>
-            </button>
-          </div>
         </div>
       </div>
       <ProductCTA

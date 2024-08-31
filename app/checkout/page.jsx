@@ -698,7 +698,7 @@ const Checkout = () => {
                     <div className=" flex flex-row justify-start items-center">
                       <IoIosAdd className=" text-xl text-green-600" />
                       <h2 className=" text-green-600 text-lg mt-1">
-                        {walletData?.wallet_balance || 70}
+                        {cartObj?.cart_total_hydroshark_coins}
                       </h2>
                       <PiCoinsFill className=" text-xl text-black ml-2" />
                     </div>
