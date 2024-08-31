@@ -8,6 +8,7 @@ import { IoMdClose } from "react-icons/io";
 import CartCard from "@/components/CartCard";
 import instance from "@/utils/instance";
 import Spinner from "./Spinner";
+import { set } from "react-hook-form";
 
 const className =
   "bg-white w-[80%] md:w-[50%] xl:w-[30%] transition-[margin-right] ease-in-out duration-500 h-full fixed top-0 bottom-0 right-0 z-40 shadow-2xl";
@@ -33,20 +34,20 @@ export default function CartSidebar() {
 
   useEffect(() => {
     if (cartSidebar.show) {
+      setLoading(true);
       instance
         .get("/billing/cart/")
         .then((res) => {
           console.log("res", res);
           setCartId(res.data.id);
-
+          setCartList(res.data.cart_items);
           if (res.data.id) {
             if (cart.length > 0) {
               createCartItems();
+            } else {
+              setLoading(false);
             }
           }
-
-          setCartList(res.data.cart_items);
-          setLoading(false);
         })
         .catch((err) => {
           console.log("err", err);
@@ -66,17 +67,14 @@ export default function CartSidebar() {
   );
 
   const getCartList = () => {
+    setLoading(true);
     instance
       .get("/billing/cart/")
       .then((res) => {
         console.log("res", res);
         setCartId(res.data.id);
-
-        if (res.data.id) {
-          resolve(res.data.id);
-        }
-
-        setCartList(res.data.cart_items);
+        setCartList([...res.data.cart_items]);
+        console.log("cartList", cartList, user);
         setLoading(false);
       })
       .catch((err) => {
@@ -259,7 +257,7 @@ export default function CartSidebar() {
                         price={item?.price}
                         discounted_amount={item?.discounted_amount}
                         section_title={item.section_title}
-                        product_quantity={item.quantity}
+                        product_quantity={item.product_quantity}
                         onDelete={() => {
                           handleCartQuantityChange(item.id, "delete");
                         }}
@@ -291,7 +289,7 @@ export default function CartSidebar() {
                       product_title={
                         item.product_section?.linked_product?.product_title
                       }
-                      price={item.product_section?.price}
+                      price={item.product_section?.price + "A"}
                       discounted_amount={
                         item.product_section?.discounted_amount
                       }

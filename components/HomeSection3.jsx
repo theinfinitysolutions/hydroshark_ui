@@ -84,7 +84,7 @@ const HomeSection3 = () => {
                   className="flex cursor-pointer transition-all duration-200 bg-gradient-to-r from-[#1b1f20] to-[#414549]  px-4 py-4 rounded-md  flex-col mb-4 items-start w-full "
                 >
                   <div className="flex flex-row w-full justify-between items-center">
-                    <h3 className=" text-base lg:text-xl font-semibold text-white ">
+                    <h3 className=" text-base lg:text-lg font-semibold text-white ">
                       {question.question}
                     </h3>
                     {currentQuestion === index ? (
@@ -100,7 +100,7 @@ const HomeSection3 = () => {
                     )}
                   </div>
                   {currentQuestion === index ? (
-                    <p className=" text-sm lg:text-base text-white mt-4 animate-slideDown">
+                    <p className=" text-xs lg:text-sm text-white mt-2 animate-slideDown">
                       {question.answer}
                     </p>
                   ) : null}

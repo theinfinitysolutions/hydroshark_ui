@@ -2,20 +2,35 @@
 import React, { useState } from "react";
 import { FaAngleLeft } from "react-icons/fa6";
 import { FaAngleRight } from "react-icons/fa6";
-
-const existingOptions = [
-  {
-    title: "10% off on all orders above 1000",
-    end_date: "2022-12-31",
-  },
-  {
-    title: "Free shipping on all orders above 500",
-    end_date: "2022-12-31",
-  },
-];
+import instance from "@/utils/instance";
 
 const Banner = () => {
-  const [currentOption, setCurrentOption] = useState(0);
+  const [loading, setLoading] = React.useState(false);
+  const [activeBanners, setActiveBanners] = React.useState([]);
+
+  const getBanners = () => {
+    setLoading(true);
+    instance
+      .get("/admin/banners/")
+      .then((res) => {
+        const active = res.data.results.filter((item) => {
+          return new Date(item.end_date) > new Date();
+        });
+
+        setActiveBanners(active);
+
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log("err", err);
+        setLoading(false);
+      });
+  };
+
+  if (activeBanners == 0) {
+    return null;
+  }
+
   return (
     <div className=" py-2 w-full flex flex-row bg-black items-center px-8 justify-between">
       <button
@@ -28,7 +43,7 @@ const Banner = () => {
       </button>
       <div className=" flex flex-row items-center justify-center w-full">
         <p className=" text-white text-xs lg:text-sm">
-          {existingOptions[currentOption].title}
+          {activeBanners[currentOption].title}
         </p>
       </div>
       <button

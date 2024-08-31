@@ -73,9 +73,14 @@ const ConfirmModals = () => {
           {showConfirmModal.buttonText || "Go back to home"}
         </button>
 
-        <p className="text-black text-xs mt-4 underline">
+        <a
+          onClick={() => {
+            router.push("/contact");
+          }}
+          className="text-black text-xs mt-4 underline"
+        >
           {"For further assistance, please contact our support team"}
-        </p>
+        </a>
       </div>
     </div>
   );

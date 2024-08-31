@@ -54,7 +54,7 @@ const ViewOrderDetailsModal = () => {
       <div className="bg-white w-8/12 max-h-[80vh] overflow-y-scroll py-6 px-8 rounded-md flex flex-col ">
         {loading ? (
           <div className=" h-[50vh] relative flex flex-col items-center justify-center w-full">
-            <Spinner loading={loading} />
+            <Spinner loading={loading} color="#000000" size={36} />
           </div>
         ) : (
           <div className="flex flex-col w-full">
