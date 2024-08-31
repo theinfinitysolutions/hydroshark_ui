@@ -231,26 +231,31 @@ export const FAQ = [
   {
     question: "What is Hydroshark?",
     answer:
-      "Hydroshark is India’s first carbonated hydration drink that perfectly balances essential nutrients with delicious flavor. Our tasty formula makes healthy hydration enjoyable.",
+      "Hydroshark is India’s first carbonated hydration drink, offering a healthy and delicious alternative to traditional energy drinks. It combines essential vitamins, salts, and electrolytes with a refreshing, bubbly twist.",
   },
   {
-    question: "What makes Hydroshark different?",
+    question: "Why choose Hydroshark over other drinks?",
     answer:
-      "Hydroshark offers a unique blend of vitamins, minerals, and electrolytes that ensure ultimate and quicker hydration. Our drink supports physical replenishment as well as mental and emotional well-being.",
+      "Hydroshark prioritizes both taste and your well-being. It's low in sugar, using stevia as a natural sweetener, and caffeine-free, making it a healthier option than sugary energy drinks or sodas.",
   },
   {
-    question: "What are the ingredients in Hydroshark?",
+    question: "How does Hydroshark benefit my health?",
     answer:
-      "Hydroshark is made with only the highest quality raw materials. Our ingredients are sourced globally, including Indian Sugarcane, Stevia from Malaysia, and world-famous Indian Mangoes.",
+      "Hydroshark is designed to support your physical and mental well-being. Its unique formula provides ultimate hydration with a blend of vitamins, minerals, and electrolytes, boosting energy levels and promoting overall health.",
   },
   {
-    question: "Is Hydroshark a healthier choice?",
+    question: "Is Hydroshark suitable for everyone?",
     answer:
-      "Hydroshark is a healthier alternative to traditional carbonated drinks. By eliminating caffeine and reducing sugar content with stevia, we offer a lower-calorie option suitable for everyone.",
+      "Yes! Hydroshark is a refreshing, low-calorie drink suitable for everyone. Whether you're an athlete, a student, or just looking for a healthy and flavourful beverage, Hydroshark fits your lifestyle.",
   },
   {
-    question: "Where is Hydroshark produced?",
+    question: "Why is Hydroshark better for me than energy drinks?",
     answer:
-      "Our production plant meets the standards of major beverage brands, ensuring no compromise on quality. We are committed to providing only the best to our consumers.",
+      "Hydroshark is caffeine-free, low in sugar, and contains vitamins and minerals. Energy drinks are often packed with sugar and caffeine, which can have negative impacts on your health.",
+  },
+  {
+    question: "Why should I choose Hydroshark?",
+    answer:
+      "Hydroshark is the first Indian brand to combine a sports drink with carbonation. We are dedicated to creating a healthy and delicious drink, using high-quality ingredients and advanced hydration formulas. We support a healthy lifestyle and want to see you achieve your personal best.",
   },
 ];
