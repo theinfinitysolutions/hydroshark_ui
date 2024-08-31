@@ -157,11 +157,11 @@ const ViewProduct = () => {
                 <div className="flex flex-row justify-end items-center text-xl mb-2 gap-x-2">
                   <p className=" text-red-400  line-through 	">
                     {" "}
-                    {`₹ ${selectedSection?.discounted_amount}`}
+                    {`₹ ${selectedSection?.price}`}
                   </p>
                   <p className=" text-white	">
                     {" "}
-                    {`₹ ${selectedSection?.price}`}
+                    {`₹ ${selectedSection?.discounted_amount}`}
                   </p>
                 </div>
               </div>
@@ -242,22 +242,7 @@ const ViewProduct = () => {
                   }
                 </p>
               </div>
-              <div className=" flex flex-col w-8/12 items-start mt-4 mb-[5vh] lg:mb-0">
-                <div className=" flex flex-row justify-start items-center ">
-                  <MdOutlineLocalShipping className=" text-lg text-white" />
-                  <p className=" text-[14px] text-white ml-2 mt-[4px]">
-                    Shipped in 4-5 working days
-                  </p>
-                </div>
-                <div className=" flex flex-row justify-start items-start ">
-                  <p className=" text-[14px] text-white mt-[2px]">
-                    Check our return policy{" "}
-                    <span className=" text-cyan-600 underline">
-                      <a>here</a>
-                    </span>
-                  </p>
-                </div>
-              </div>
+              <div className=" flex flex-col w-8/12 items-start mt-4 mb-[5vh] lg:mb-0"></div>
               <div className=" lg:h-12 absolute  w-full left-0 bottom-2 flex flex-row justify-center lg:justify-start gap-x-4 lg:gap-x-[10%] px-2 lg:px-8">
                 <div className=" flex flex-row items-center justify-start">
                   <IoTrendingDownOutline className=" text-white text-lg" />
