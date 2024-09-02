@@ -268,7 +268,7 @@ const ViewProduct = () => {
         </div>
       )}
 
-      <div className=" w-full flex flex-col bg-[#181818] items-center px-[7.5vw] pt-[7.5vh]">
+      <div className=" w-full flex flex-col bg-[#181818] items-center px-[7.5vw] py-[5vh]">
         <div className=" flex flex-col items-start w-full">
           <div className=" flex flex-col items-start w-full">
             <p className=" text-2xl text-white font-semibold">
@@ -293,14 +293,14 @@ const ViewProduct = () => {
               ))}
             </div>
           </div>
-          <div className=" flex flex-col items-start mt-[10vh]">
+          <div className=" flex flex-col items-start mt-[5vh]">
             {comments.map((comment, index) => {
               return (
                 <div
                   key={index}
                   className=" flex flex-col lg:flex-row w-full items-start justify-start mb-8"
                 >
-                  <div className=" w-full lg:w-[15%] flex flex-col items-start">
+                  <div className=" w-full lg:w-[10%] flex flex-col items-start">
                     <div className=" flex flex-row items-center justify-center">
                       <div className=" h-8 w-8 flex flex-col rounded-full items-center bg-white justify-center">
                         <p className=" text-lg text-black mt-1">
@@ -312,7 +312,7 @@ const ViewProduct = () => {
                       </p>
                     </div>
 
-                    <div className=" flex flex-row items-center mt-2 lg:mt-4 justify-start">
+                    <div className=" flex flex-row items-center mt-2 justify-start">
                       {Array(5)
                         .fill(comment.rating || 0)
                         .map((_, index) => {
@@ -326,7 +326,7 @@ const ViewProduct = () => {
                     </div>
                   </div>
                   <div className=" w-full lg:w-3/4 flex flex-col mt-2 lg:mt-0 items-start">
-                    <p className=" text-white text-sm lg:text-xl">
+                    <p className=" text-white text-sm lg:text-base">
                       {comment.description}
                     </p>
                     {/* <div className=" flex flex-row justify-start items-center mt-4">
@@ -351,13 +351,7 @@ const ViewProduct = () => {
           </div>
         </div>
       </div>
-      <ProductCTA
-        loading={loading}
-        handleAddToCart={() => {
-          addToCartHandler(selectedProduct);
-        }}
-        selectedProduct={selectedProduct}
-      />
+      <ProductCTA />
     </div>
   );
 };

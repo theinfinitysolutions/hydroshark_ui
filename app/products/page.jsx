@@ -122,7 +122,7 @@ const Products = () => {
       <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:72px_72px]"></div>
       <div className=" flex flex-col items-center w-11/12 z-20 mt-[5vh] lg:mt-[7.5vh] ">
         <h2 className=" text-xl text-[#408289]">Hydroshark Products</h2>
-        <p className=" text-[2.5rem] text-center font-bold text-[#181818]">
+        <p className=" text-[2rem] lg:text-[2.5rem] text-center font-bold text-[#181818]">
           {"Hydrate and Gear Up: Your Ultimate Refresh Collection"}
         </p>
       </div>

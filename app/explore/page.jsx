@@ -5,6 +5,7 @@ import RevealOnScroll from "@/components/RevealOnScroll";
 import { motion } from "framer-motion";
 import useMeasure from "react-use-measure";
 import { useMotionValue, animate } from "framer-motion";
+import ProductCTA from "@/components/ProductCTA";
 
 const FAST_DURATION = 50;
 const SLOW_DURATION = 120;
