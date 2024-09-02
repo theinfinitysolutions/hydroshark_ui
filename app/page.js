@@ -219,7 +219,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div className=" hidden lg:block absolute left-[25vw] z-50 h-[60vh] w-[50vw] ">
+        {/* <div className=" hidden lg:block absolute left-[25vw] z-50 h-[60vh] w-[50vw] ">
           <motion.div
             initial={{ y: "70vh" }}
             animate={{ y: "30vh", opacity: [0, 1, 1] }}
@@ -242,7 +242,7 @@ export default function Home() {
           >
             <LandingSceneLemon orbital={false} />
           </motion.div>
-        </div>
+        </div> */}
 
         <div className="flex flex-col lg:flex-row h-[90vh] w-full px-[5vw] overflow-hidden pt-[5vh] relative ">
           <div className="flex flex-col w-full lg:w-1/2 items-start">
@@ -350,6 +350,7 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <ProductSectionHome />
         <RevealOnScroll
           threshold={0.2}
           addedClasses="flex flex-row justify-between items-center lg:h-screen z-20 w-[100vw] px-[5vw] relative overflow-hidden "
@@ -516,10 +517,10 @@ export default function Home() {
             </div>
           </div>
         </RevealOnScroll>
-        {/* <ProductSectionHome1 /> */}
-        <ProductSectionHome />
-        <HomeSection3 />
         <TestimonalsHome />
+        {/* <ProductSectionHome1 /> */}
+
+        <HomeSection3 />
       </div>
     </Transition>
   );

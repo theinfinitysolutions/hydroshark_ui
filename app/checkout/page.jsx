@@ -363,64 +363,66 @@ const Checkout = () => {
                 </div>
               ) : (
                 <div className=" flex flex-col items-start w-full mt-4">
-                  {addressList.map((address, index) => {
-                    return (
-                      <div
-                        key={index}
-                        className="flex flex-row justify-between bg-gray-100 p-4 rounded-lg mb-4"
-                      >
+                  <div className=" w-full max-h-[20vh] flex flex-col items-start overflow-y-scroll">
+                    {addressList.map((address, index) => {
+                      return (
                         <div
-                          className={` w-1/12 flex flex-col justify-center items-start`}
+                          key={index}
+                          className="flex flex-row justify-between bg-gray-100 p-4 rounded-lg mb-2"
                         >
-                          <input
-                            type="radio"
-                            onChange={() => {
-                              setAddressSelect({
-                                ...addressSelect,
-                                shippingAddress: address.id,
-                              });
-                            }}
-                            checked={
-                              addressSelect.shippingAddress == address.id
-                            }
-                            className=" checked:text-black"
-                          />
-                        </div>
-                        <div className=" w-9/12 flex flex-row text-sm flex-wrap items-start">
-                          <p className="  text-black">
-                            {address.address_line_1},
-                          </p>
-                          <p className=" text-black">
-                            {address.address_line_2},
-                          </p>
-                          <p className="  text-black">{` ${address.city}, ${address.state},`}</p>
-                          <p className="  text-black">{` ${address.country}, ${address.zipcode}`}</p>
-                        </div>
-                        <div className=" flex flex-row w-2/12 justify-end items-center gap-x-2">
-                          <button
-                            onClick={() => {
-                              setShowAddressModal({
-                                show: true,
-                              });
-                            }}
-                            className=" text-black"
+                          <div
+                            className={` w-1/12 flex flex-col justify-center items-start`}
                           >
-                            <MdEdit className=" text-black" />
-                          </button>
+                            <input
+                              type="radio"
+                              onChange={() => {
+                                setAddressSelect({
+                                  ...addressSelect,
+                                  shippingAddress: address.id,
+                                });
+                              }}
+                              checked={
+                                addressSelect.shippingAddress == address.id
+                              }
+                              className=" checked:text-black"
+                            />
+                          </div>
+                          <div className=" w-9/12 flex flex-row text-sm flex-wrap items-start">
+                            <p className="  text-black">
+                              {address.address_line_1},
+                            </p>
+                            <p className=" text-black">
+                              {address.address_line_2},
+                            </p>
+                            <p className="  text-black">{` ${address.city}, ${address.state},`}</p>
+                            <p className="  text-black">{` ${address.country}, ${address.zipcode}`}</p>
+                          </div>
+                          <div className=" flex flex-row w-2/12 justify-end items-center gap-x-2">
+                            <button
+                              onClick={() => {
+                                setShowAddressModal({
+                                  show: true,
+                                });
+                              }}
+                              className=" text-black"
+                            >
+                              <MdEdit className=" text-black" />
+                            </button>
+                          </div>
                         </div>
-                      </div>
-                    );
-                  })}
+                      );
+                    })}
+                  </div>
                   <button
                     onClick={() => {
                       setShowAddressModal({
                         show: true,
                       });
                     }}
-                    className=" w-full mt-2 bg-gray-100 py-4 rounded-xl flex flex-col items-center justify-center"
+                    className=" w-full mt-2 bg-gray-100 py-2 gap-x-4 rounded-xl flex flex-row items-center justify-center"
                   >
-                    <IoMdAdd className=" text-2xl text-black" />
-                    <p className=" text-black text-sm">Add Address</p>
+                    <IoMdAdd className=" text-xl text-black" />
+                    <p className=" text-black text-sm mt-1">Add Address</p>
                   </button>
                 </div>
               )}
@@ -437,62 +439,66 @@ const Checkout = () => {
                 </div>
               ) : (
                 <div className=" flex flex-col items-start w-full mt-4">
-                  {addressList.map((address, index) => {
-                    return (
-                      <div
-                        key={index}
-                        className="flex flex-row justify-between bg-gray-100 p-4 rounded-lg mb-4"
-                      >
+                  <div className=" w-full max-h-[20vh] flex flex-col items-start overflow-y-scroll">
+                    {addressList.map((address, index) => {
+                      return (
                         <div
-                          className={` w-1/12 flex flex-col justify-center items-start`}
+                          key={index}
+                          className="flex flex-row justify-between bg-gray-100 p-4 rounded-lg mb-4"
                         >
-                          <input
-                            type="radio"
-                            onChange={() => {
-                              setAddressSelect({
-                                ...addressSelect,
-                                billingAddress: address.id,
-                              });
-                            }}
-                            checked={addressSelect.billingAddress == address.id}
-                            className=" checked:text-black"
-                          />
-                        </div>
-                        <div className=" w-9/12 flex flex-row text-sm flex-wrap items-start">
-                          <p className="  text-black">
-                            {address.address_line_1},
-                          </p>
-                          <p className=" text-black">
-                            {address.address_line_2},
-                          </p>
-                          <p className="  text-black">{` ${address.city}, ${address.state},`}</p>
-                          <p className="  text-black">{` ${address.country}, ${address.zipcode}`}</p>
-                        </div>
-                        <div className=" flex flex-row w-2/12 justify-end items-center gap-x-2">
-                          <button
-                            onClick={() => {
-                              setShowAddressModal({
-                                show: true,
-                              });
-                            }}
-                            className=" text-black"
+                          <div
+                            className={` w-1/12 flex flex-col justify-center items-start`}
                           >
-                            <MdEdit className=" text-black" />
-                          </button>
+                            <input
+                              type="radio"
+                              onChange={() => {
+                                setAddressSelect({
+                                  ...addressSelect,
+                                  billingAddress: address.id,
+                                });
+                              }}
+                              checked={
+                                addressSelect.billingAddress == address.id
+                              }
+                              className=" checked:text-black"
+                            />
+                          </div>
+                          <div className=" w-9/12 flex flex-row text-sm flex-wrap items-start">
+                            <p className="  text-black">
+                              {address.address_line_1},
+                            </p>
+                            <p className=" text-black">
+                              {address.address_line_2},
+                            </p>
+                            <p className="  text-black">{` ${address.city}, ${address.state},`}</p>
+                            <p className="  text-black">{` ${address.country}, ${address.zipcode}`}</p>
+                          </div>
+                          <div className=" flex flex-row w-2/12 justify-end items-center gap-x-2">
+                            <button
+                              onClick={() => {
+                                setShowAddressModal({
+                                  show: true,
+                                });
+                              }}
+                              className=" text-black"
+                            >
+                              <MdEdit className=" text-black" />
+                            </button>
+                          </div>
                         </div>
-                      </div>
-                    );
-                  })}
+                      );
+                    })}
+                  </div>
                   <button
                     onClick={() => {
                       setShowAddressModal({
                         show: true,
                       });
                     }}
-                    className=" w-full mt-2 bg-gray-100 py-4 rounded-xl flex flex-col items-center justify-center"
+                    className=" w-full mt-2 bg-gray-100 py-2 gap-x-4 rounded-xl flex flex-row items-center justify-center"
                   >
-                    <IoMdAdd className=" text-2xl text-black" />
-                    <p className=" text-black text-sm">Add Address</p>
+                    <IoMdAdd className=" text-xl text-black" />
+                    <p className=" text-black text-sm mt-1">Add Address</p>
                   </button>
                 </div>
               )}

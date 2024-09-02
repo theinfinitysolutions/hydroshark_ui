@@ -224,9 +224,9 @@ const Navbar = () => {
           onClick={() => {
             router.push("/joinus");
           }}
-          className=" px-4 py-2 text-white bg-black mb-1 ml-4 cursor-pointer "
+          className=" px-4 py-1 text-white bg-black rounded-sm mb-1 ml-4 cursor-pointer "
         >
-          Join Us
+          <p className=" text-base mt-1">Join Us</p>
         </button>
       </div>
       <div className=" flex lg:hidden z-50  ">
@@ -244,9 +244,13 @@ const Navbar = () => {
       </div>
 
       <div
+        onMouseEnter={() => {
+          setCurrentHover("/coins");
+        }}
+        style={{ zIndex: 100 }}
         className={` absolute ${
           currentHover == "/coins" ? "block" : "hidden"
-        } top-[15vh] right-[10vw] w-[25vw] bg-white border z-50 animate-slideUpfast`}
+        } top-[13vh] right-[10vw] w-[25vw] bg-white border animate-slideUpfast`}
       >
         <div className="flex flex-col items-start px-4 py-4">
           <div className=" flex flex-row justify-start items-center">

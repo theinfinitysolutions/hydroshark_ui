@@ -53,7 +53,7 @@ const Banner = () => {
       <div className="w-[15vw] h-full">
         <Image
           src={process.env.NEXT_PUBLIC_API_URL + "/icon6.png"}
-          layout="fill"
+          fill
           objectFit="cover"
         />
       </div>
@@ -65,7 +65,7 @@ const Banner = () => {
       <div className="w-[15vw] h-full">
         <Image
           src={process.env.NEXT_PUBLIC_API_URL + "/icon7.png"}
-          layout="fill"
+          fill
           objectFit="cover"
         />
       </div>
