@@ -49,9 +49,9 @@ export default function Home() {
             fill
           />
         </div>
-        <div className="absolute overflow-hidden [--offset:40vw] bg-black rotate-[7deg] lg:rotate-[4deg] top-[75vh] z-40 [--move-initial:calc(-20%+_var(--offset))] [--move-final:calc(-40%_+_var(--offset))] ">
+        <div className="absolute overflow-hidden flex flex-row  bg-black rotate-[7deg] lg:rotate-[4deg] top-[75vh] z-40  ">
           <div
-            className="min-w-screen w-[150vw] flex flex-row  lg:py-1 items-center relative  transform-[translate3d(var(--move-initial),0,0)] animate-marqueebanner [animation-play-state:running]"
+            className="min-w-screen w-[100vw] flex flex-row  lg:py-1 items-center relative  transform-[translate3d(var(--move-initial),0,0)] animate-marqueebanner [animation-play-state:running]"
             aria-hidden="true"
           >
             <span className="h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
@@ -75,15 +75,54 @@ export default function Home() {
               {"Salt"}
             </span>
             <span className="h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
-            <span className=" text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
-              {"Low calorie"}
-            </span>
-            <span className="h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
+
             <span className=" hidden lg:block text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
               {"Low sugar"}
             </span>
             <span className="hidden lg:block h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
             <span className="hidden lg:block text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
+              {"Electrolytes"}
+            </span>
+            <span className=" hidden lg:block h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
+            <span className=" hidden lg:block text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
+              {"Low calorie"}
+            </span>
+            <span className=" hidden lg:block h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
+            <span className=" hidden lg:block text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
+              {"Low sugar"}
+            </span>
+            <span className="hidden lg:block h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
+            <span className="hidden lg:block text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
+              {"Electrolytes"}
+            </span>
+            <span className="hidden lg:block h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
+            <span className="hidden lg:block text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
+              {"Vitamins"}
+            </span>
+            <span className="hidden lg:block h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
+            <span className="hidden lg:block text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
+              {"Salt"}
+            </span>
+          </div>
+          <div
+            style={
+              {
+                // animationDelay: "10s",
+              }
+            }
+            className="min-w-screen w-[100vw] flex flex-row   lg:py-1 items-center relative  transform-[translate3d(var(--move-initial),0,0)] animate-marqueebanner [animation-play-state:running]"
+            aria-hidden="true"
+          >
+            <span className="h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
+            <span className=" text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
+              {"Low calorie"}
+            </span>
+            <span className="h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
+            <span className="text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
+              {"Low sugar"}
+            </span>
+            <span className="h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white "></span>
+            <span className="text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
               {"Electrolytes"}
             </span>
             <span className="h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
@@ -96,6 +135,10 @@ export default function Home() {
             </span>
             <span className="h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
 
+            <span className="hidden lg:block text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
+              {"Electrolytes"}
+            </span>
+            <span className=" hidden lg:block h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
             <span className=" hidden lg:block text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
               {"Low calorie"}
             </span>
@@ -117,9 +160,9 @@ export default function Home() {
             </span>
           </div>
         </div>
-        <div className="absolute overflow-hidden [--offset:40vw] bg-black rotate-[-7deg] lg:rotate-[-4deg] top-[75vh] z-40 [--move-initial:calc(-10%+_var(--offset))] [--move-final:calc(-25%_+_var(--offset))] ">
+        <div className="absolute overflow-hidden flex flex-row  bg-black rotate-[-7deg] lg:rotate-[-4deg] top-[75vh] z-40  ">
           <div
-            className="min-w-screen w-[150vw] flex flex-row  lg:py-1 items-center relative  transform-[translate3d(var(--move-initial),0,0)] animate-marqueebanner [animation-play-state:running]"
+            className="min-w-screen w-[100vw] flex flex-row  lg:py-1 items-center relative  transform-[translate3d(var(--move-initial),0,0)] animate-marqueebanner [animation-play-state:running]"
             aria-hidden="true"
           >
             <span className="h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
@@ -143,15 +186,54 @@ export default function Home() {
               {"Salt"}
             </span>
             <span className="h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
-            <span className=" text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
-              {"Low calorie"}
-            </span>
-            <span className="h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
+
             <span className=" hidden lg:block text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
               {"Low sugar"}
             </span>
             <span className="hidden lg:block h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
             <span className="hidden lg:block text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
+              {"Electrolytes"}
+            </span>
+            <span className=" hidden lg:block h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
+            <span className=" hidden lg:block text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
+              {"Low calorie"}
+            </span>
+            <span className=" hidden lg:block h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
+            <span className=" hidden lg:block text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
+              {"Low sugar"}
+            </span>
+            <span className="hidden lg:block h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
+            <span className="hidden lg:block text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
+              {"Electrolytes"}
+            </span>
+            <span className="hidden lg:block h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
+            <span className="hidden lg:block text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
+              {"Vitamins"}
+            </span>
+            <span className="hidden lg:block h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
+            <span className="hidden lg:block text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
+              {"Salt"}
+            </span>
+          </div>
+          <div
+            style={
+              {
+                // animationDelay: "10s",
+              }
+            }
+            className="min-w-screen w-[100vw] flex flex-row   lg:py-1 items-center relative  transform-[translate3d(var(--move-initial),0,0)] animate-marqueebanner [animation-play-state:running]"
+            aria-hidden="true"
+          >
+            <span className="h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
+            <span className=" text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
+              {"Low calorie"}
+            </span>
+            <span className="h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
+            <span className="text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
+              {"Low sugar"}
+            </span>
+            <span className="h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white "></span>
+            <span className="text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
               {"Electrolytes"}
             </span>
             <span className="h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
@@ -163,6 +245,15 @@ export default function Home() {
               {"Salt"}
             </span>
             <span className="h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
+
+            <span className="hidden lg:block text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
+              {"Electrolytes"}
+            </span>
+            <span className=" hidden lg:block h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
+            <span className=" hidden lg:block text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
+              {"Low calorie"}
+            </span>
+            <span className=" hidden lg:block h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
             <span className=" hidden lg:block text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
               {"Low sugar"}
             </span>
@@ -180,6 +271,7 @@ export default function Home() {
             </span>
           </div>
         </div>
+
         <div className="fixed left-0 top-[5vh] -z-10">
           <p className=" text-[5rem] lg:text-[14rem] text-black/5 leading-[5rem] lg:leading-[13rem]">
             HYDROSHARK
@@ -518,8 +610,6 @@ export default function Home() {
           </div>
         </RevealOnScroll>
         <TestimonalsHome />
-        {/* <ProductSectionHome1 /> */}
-
         <HomeSection3 />
       </div>
     </Transition>

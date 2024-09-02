@@ -16,7 +16,8 @@ module.exports = {
       },
       animation: {
         marquee: "marquee 20s linear infinite",
-        marqueebanner: "marquee 5s linear infinite",
+        marqueebanner: "marqueealt 10s linear infinite",
+        marqueebanneralt: "marqueealt 10s linear infinite",
         slideUp: "slideUp 2s ease-in-out forwards",
         slideUpfast: "slideUpFast 500ms ease-in-out forwards",
         rotate: "rotate 8s linear infinite",
@@ -29,6 +30,10 @@ module.exports = {
         marquee: {
           "0%": { transform: "translate3d(var(--move-initial), 0, 0)" },
           "100%": { transform: "translate3d(var(--move-final), 0, 0)" },
+        },
+        marqueealt: {
+          "0%": { transform: "translateX(-50vw)" },
+          "100%": { transform: "translateX(50vw)" },
         },
         slideUp: {
           "0%": { opacity: 0.5, transform: "translateY(5vh)" },
