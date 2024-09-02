@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect, use } from "react";
 import { useStore } from "@/utils/store";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { FaCheckCircle } from "react-icons/fa";
 import instance from "@/utils/instance";
 import Profile from "@/components/UserComponents/Profile";
@@ -20,12 +20,14 @@ const userProfile = [
 ];
 
 const User = () => {
+  const pathname = usePathname();
   const router = useRouter();
   const { user } = useStore();
   const [currentTab, setCurrentTab] = useState("profile");
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    console.log("pathname", pathname);
     let token = localStorage.getItem("token");
     if (!token) {
       router.push("/");
