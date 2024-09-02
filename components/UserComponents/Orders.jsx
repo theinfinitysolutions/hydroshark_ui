@@ -7,6 +7,7 @@ import { useStore } from "@/utils/store";
 import { LuEye } from "react-icons/lu";
 import * as dayjs from "dayjs";
 import { MdOutlineReviews } from "react-icons/md";
+import { FaCheckCircle } from "react-icons/fa";
 
 dayjs().format();
 
@@ -23,7 +24,7 @@ const Orders = () => {
   const getOrders = () => {
     setLoading(true);
     instance
-      .get("/billing/order/")
+      .get("/billing/order/?page=2")
       .then((res) => {
         console.log("res", res);
         setOrders(res.data.results);
@@ -84,20 +85,30 @@ const Orders = () => {
                       </div>
 
                       <div className=" flex flex-row items-center gap-x-8">
-                        <button
-                          onClick={() => {
-                            setShowSubmitReviewModal({
-                              show: true,
-                              id: order.id,
-                            });
-                          }}
-                          className=" flex flex-row justify-start items-center gap-x-4"
-                        >
-                          <MdOutlineReviews className=" text-xl text-black " />
-                          <p className=" text-base text-black">
-                            Submit a Review
-                          </p>
-                        </button>
+                        {order.review?.id ? (
+                          <div className=" flex flex-row justify-start gap-x-2">
+                            <FaCheckCircle className=" text-green-400" />
+                            <p className=" text-base text-green-400">
+                              Review Submitted
+                            </p>
+                          </div>
+                        ) : (
+                          <button
+                            onClick={() => {
+                              setShowSubmitReviewModal({
+                                show: true,
+                                id: order.id,
+                              });
+                            }}
+                            className=" flex flex-row justify-start items-center gap-x-4"
+                          >
+                            <MdOutlineReviews className=" text-xl text-black " />
+                            <p className=" text-base text-black">
+                              Submit a Review
+                            </p>
+                          </button>
+                        )}
+
                         <button
                           onClick={() => {
                             setShowOrderDetailsModal({
