@@ -66,7 +66,11 @@ const Login = ({ onSignUp }) => {
       .catch((err) => {
         console.log("err", err);
         setLoading(false);
-        setError(err.response.data.message);
+        if (err.response?.data?.message) {
+          setError(err.response.data.message);
+        } else {
+          setError("Some error has occurred!");
+        }
       });
   };
 
