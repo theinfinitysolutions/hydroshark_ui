@@ -14,6 +14,7 @@ import Spinner from "@/components/Spinner";
 import { IoIosAdd } from "react-icons/io";
 import { MdEdit } from "react-icons/md";
 import { IoMdAdd } from "react-icons/io";
+import { useForm } from "react-hook-form";
 import Confetti from "react-confetti";
 
 const { width, height } = { width: 2400, height: 1200 };
@@ -50,6 +51,20 @@ const Checkout = () => {
       setShowConfetti(false);
     }, 5000);
   };
+
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    reset,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      email: "",
+      name: "",
+      phone_number: "",
+    },
+  });
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -118,7 +133,7 @@ const Checkout = () => {
       .then((res) => {
         setLoading(false);
         console.log("res", res);
-        getCartList();
+        getCart();
       })
       .catch((err) => {
         setLoading(false);
@@ -146,6 +161,7 @@ const Checkout = () => {
   }, [showAddressModal.show]);
 
   useEffect(() => {
+    setShowLoading({ show: false });
     getWalletData();
     getCart();
   }, []);
@@ -226,6 +242,14 @@ const Checkout = () => {
       });
   };
 
+  useEffect(() => {
+    if (user) {
+      setValue("email", user.email);
+      setValue("name", user.name);
+      setValue("phone_number", user.phone_number);
+    }
+  }, [user]);
+
   const processPayment = async (orderId) => {
     try {
       console.log("processPayment", orderId);
@@ -304,14 +328,14 @@ const Checkout = () => {
                   <a className=" text-black underline text-sm">login</a>
                 )}
               </div>
-              <div className=" border-[1px] border-black h-12 w-full mt-4 rounded-md overflow-hidden">
+              <div className=" border-[1px] border-black  w-full mt-2 rounded-md overflow-hidden">
                 <input
-                  value={userDetails?.email}
+                  {...register("email")}
                   placeholder="Email"
-                  className=" w-full flex flex-col text-black h-full pl-2  ring-0 focus:ring-0 focus:outline-none"
+                  className=" w-full flex flex-col text-black h-full pl-2 py-2 ring-0 focus:ring-0 focus:outline-none"
                 />
               </div>
-
+              {/* 
               <div className=" w-full flex flex-row justify-start items-center gap-x-2 mt-2">
                 <input
                   type="checkbox"
@@ -322,10 +346,10 @@ const Checkout = () => {
                 <p className=" text-black text-sm mt-1">
                   Keep me up to date on news and exclusive offers
                 </p>
-              </div>
+              </div> */}
             </div>
 
-            <div className=" flex flex-col lg:flex-row justify-between items-center w-full mt-[5vh]">
+            <div className=" flex flex-col lg:flex-row justify-between items-center w-full mt-[2.5vh]">
               <div className=" flex flex-col items-start w-full lg:w-6/12">
                 <div className=" flex flex-row justify-start items-center">
                   <PiCoinsFill className=" hidden lg:block text-2xl text-black" />
@@ -343,7 +367,7 @@ const Checkout = () => {
               <div className=" w-full lg:w-1/2 flex flex-row justify-between items-center mt-4 lg:mt-0 lg:flex-col lg:items-end ">
                 <div className=" flex flex-row lg:w-3/12 justify-end items-center">
                   <PiCoinsFill className=" text-2xl text-black" />
-                  <p className=" text-black text-lg mt-1">
+                  <p className=" text-black text-sm lg:text-lg mt-1">
                     {walletData?.wallet_balance}
                   </p>
                 </div>
@@ -602,9 +626,9 @@ const Checkout = () => {
                   <p className=" text-xl text-black font-semibold">Cart</p>
                 </div>
 
-                <div className=" w-full flex flex-col items-start max-h-[50vh] overflow-y-scroll mt-4">
+                <div className=" w-full flex flex-col items-start h-full overflow-y-scroll mt-4 z-20">
                   {cartObj?.cart_items?.length > 0 ? (
-                    <div className="flex flex-col mt-4 w-full overflow-scroll">
+                    <div className="flex flex-col mt-4 w-full h-full ">
                       {cartObj?.cart_items?.map((item, index) => {
                         return (
                           <CartCard
@@ -669,28 +693,28 @@ const Checkout = () => {
                   </button>
                 </div>
               </div> */}
-                <div className=" w-full flex flex-col items-start mt-8">
-                  <div className=" flex flex-row w-full justify-between items-center mt-4">
-                    <p className=" text-black text-lg">Sub total</p>
-                    <p className=" text-black text-lg">
+                <div className=" w-full flex flex-col items-start mt-4">
+                  <div className=" flex flex-row w-full justify-between items-center mt-2">
+                    <p className=" text-black text-sm lg:text-lg">Sub total</p>
+                    <p className=" text-black text-sm lg:text-lg">
                       ₹{cartObj?.cart_total_price}
                       {/* {cartList.reduce((acc, item) => {
                       return acc + item.price;
                     }, 0)} */}
                     </p>
                   </div>
-                  <div className=" flex flex-row w-full justify-between items-center mt-4">
-                    <p className=" text-black text-lg">Discount</p>
-                    <p className=" text-black text-lg">
+                  <div className=" flex flex-row w-full justify-between items-center mt-2">
+                    <p className=" text-black text-sm lg:text-lg">Discount</p>
+                    <p className=" text-black text-sm lg:text-lg">
                       ₹{cartObj?.cart_total_discount_amount}
                       {/* {cartList.reduce((acc, item) => {
                       return acc + item.price;
                     }, 0)} */}
                     </p>
                   </div>
-                  <div className=" flex flex-row w-full justify-between items-center mt-4">
-                    <p className=" text-black text-lg">Total</p>
-                    <p className=" text-black text-lg">
+                  <div className=" flex flex-row w-full justify-between items-center mt-2">
+                    <p className=" text-black text-sm lg:text-lg">Total</p>
+                    <p className=" text-black text-sm lg:text-lg">
                       ₹{cartObj?.cart_final_amount}
                       {/* {cartList.reduce((acc, item) => {
                       return acc + item.price;
@@ -698,19 +722,21 @@ const Checkout = () => {
                     </p>
                   </div>
 
-                  <div className=" flex flex-row justify-between items-center w-full mt-4">
-                    <p className=" text-black text-lg">HydroShark Coins</p>
+                  <div className=" flex flex-row justify-between items-center w-full mt-2">
+                    <p className=" text-black text-sm lg:text-lg">
+                      HydroShark Coins
+                    </p>
 
                     <div className=" flex flex-row justify-start items-center">
                       <IoIosAdd className=" text-xl text-green-600" />
-                      <h2 className=" text-green-600 text-lg mt-1">
+                      <h2 className=" text-green-600 text-sm lg:text-lg mt-1">
                         {cartObj?.cart_total_hydroshark_coins}
                       </h2>
                       <PiCoinsFill className=" text-xl text-black ml-2" />
                     </div>
                   </div>
                 </div>
-                <div className=" w-full flex flex-col items-start mt-8 z-20">
+                <div className=" w-full flex flex-col items-start mt-4 z-20">
                   <button
                     onClick={() => {
                       CreateOrder();

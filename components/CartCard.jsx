@@ -39,7 +39,7 @@ const CartCard = (props) => {
 
   return (
     <div className=" w-full flex flex-col items-start p-2 lg:p-4 border-[1px] border-black mb-3">
-      <div className=" flex flex-row w-full justify-between">
+      <div className=" flex flex-row w-full justify-between items-center">
         <div className=" flex flex-col items-start w-[15%] lg:w-[15%] h-[10vh] relative">
           <Image src={props.image} fill style={{ objectFit: "contain" }} />
         </div>

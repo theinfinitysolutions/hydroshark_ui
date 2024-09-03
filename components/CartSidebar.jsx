@@ -96,6 +96,7 @@ export default function CartSidebar() {
     }
 
     if (!cartId) {
+      setShowLoading({ show: true });
       createCartItem("checkout");
       return;
     }
@@ -105,6 +106,7 @@ export default function CartSidebar() {
     setCartSidebar({
       show: false,
     });
+    setShowLoading({ show: true });
   };
 
   const createCartItems = async (type) => {
