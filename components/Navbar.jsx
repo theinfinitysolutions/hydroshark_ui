@@ -94,6 +94,7 @@ const Navbar = () => {
   const [showProfile, setShowProfile] = useState(false);
 
   useEffect(() => {
+    console.log("cartDtaa test", cartData);
     getCart();
     getUser();
   }, []);
@@ -213,9 +214,15 @@ const Navbar = () => {
           }}
           className=" py-2 mx-4 cursor-pointer relative z-10"
         >
-          {cart?.length || cartData.listCount > 0 ? (
+          {cart?.length > 0 ? (
             <div className=" h-4 w-4 flex items-center justify-center bg-black rounded-full absolute -top-1 -right-2">
-              <p className=" text-[10px] text-white">{cart.length}</p>
+              <p className=" text-[9px] text-white mt-1">{cart.length}</p>
+            </div>
+          ) : cartData.listCount > 0 ? (
+            <div className=" h-4 w-4 flex items-center justify-center bg-black rounded-full absolute -top-1 -right-2">
+              <p className=" text-[9px] text-white mt-1">
+                {cartData.listCount}
+              </p>
             </div>
           ) : null}
           <FiShoppingCart className=" text-[#181818] text-xl" />
@@ -237,9 +244,15 @@ const Navbar = () => {
           }}
           className=" py-2 mx-4 cursor-pointer relative z-10"
         >
-          {cart?.length || cartData.listCount > 0 ? (
+          {cart?.length > 0 ? (
             <div className=" h-4 w-4 flex items-center justify-center bg-black rounded-full absolute -top-1 -right-2">
-              <p className=" text-[10px] text-white">{cart.length}</p>
+              <p className=" text-[8px] text-white mt-1">{cart.length}</p>
+            </div>
+          ) : cartData.listCount > 0 ? (
+            <div className=" h-4 w-4 flex items-center justify-center bg-black rounded-full absolute -top-1 -right-2">
+              <p className=" text-[8px] text-white mt-1">
+                {cartData.listCount}
+              </p>
             </div>
           ) : null}
           <FiShoppingCart className=" text-[#181818] text-xl" />
