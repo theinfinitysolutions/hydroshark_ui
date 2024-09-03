@@ -31,6 +31,8 @@ const Checkout = () => {
     setShowLoading,
     showConfirmModal,
     setShowConfirmModal,
+    showPrivacyPolicyModal,
+    setShowPrivacyPolicyModal,
   } = useStore();
   const [cartObj, setCartObject] = useState({});
   const [sameAsBilling, setSameAsBilling] = useState(true);
@@ -607,15 +609,17 @@ const Checkout = () => {
             </div>
 
             <div className=" flex flex-row items-start mt-8 border-t-[1px] border-black gap-x-4 w-full py-4">
-              <a className=" text-black text-sm underline cursor-pointer ">
-                Refund Policy
-              </a>
-              <a className=" text-black text-sm underline cursor-pointer ">
+              <a
+                onClick={() => {
+                  setShowPrivacyPolicyModal({ show: true });
+                }}
+                className=" text-black text-sm underline cursor-pointer "
+              >
                 Privacy Policy
               </a>
             </div>
           </div>
-          <div className=" flex flex-col items-start w-full lg:w-1/2 px-[5vw] py-8">
+          <div className=" flex flex-col items-start w-full lg:w-1/2 px-[5vw] py-4">
             {loading ? (
               <div className=" flex flex-col items-center justify-center h-[10vh]  w-full">
                 <Spinner loading={loading} size={24} color="#000000" />
@@ -623,12 +627,14 @@ const Checkout = () => {
             ) : (
               <div className=" flex flex-col items-start w-full">
                 <div className=" flex flex-row w-full justify-between items-baseline">
-                  <p className=" text-xl text-black font-semibold">Cart</p>
+                  <p className=" text-xl lg:text-2xl text-black font-semibold">
+                    Cart
+                  </p>
                 </div>
 
                 <div className=" w-full flex flex-col items-start h-full overflow-y-scroll mt-4 z-20">
                   {cartObj?.cart_items?.length > 0 ? (
-                    <div className="flex flex-col mt-4 w-full h-full ">
+                    <div className="flex flex-col  w-full h-full ">
                       {cartObj?.cart_items?.map((item, index) => {
                         return (
                           <CartCard

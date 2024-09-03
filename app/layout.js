@@ -20,6 +20,7 @@ import GlobalLoader from "@/components/GlobalLoader";
 import ConfirmModals from "@/components/ConfirmModals";
 import ViewOrderDetailsModal from "@/components/ViewOrderDetailsModal";
 import ReviewModal from "@/components/ReviewModal";
+import PrivacyPolicyModal from "@/components/PrivacyPolicyModal";
 
 const local = localFont({ src: "../public/ITCAvantGardePro-Md.otf" });
 
@@ -89,6 +90,7 @@ export default function RootLayout({ children }) {
         <ConfirmModals />
         <ViewOrderDetailsModal />
         <ReviewModal />
+        <PrivacyPolicyModal />
       </body>
     </html>
   );

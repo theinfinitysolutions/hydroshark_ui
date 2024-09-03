@@ -31,6 +31,12 @@ export const useStore = create((set) => ({
   setShowHydrosharkCoinsModal: (showHydrosharkCoinsModal) =>
     set((state) => (state.showHydrosharkCoinsModal = showHydrosharkCoinsModal)),
 
+  showPrivacyPolicyModal: {
+    show: false,
+  },
+  setShowPrivacyPolicyModal: (showPrivacyPolicyModal) =>
+    set((state) => (state.showPrivacyPolicyModal = showPrivacyPolicyModal)),
+
   showAddressModal: {
     show: false,
     id: "",
