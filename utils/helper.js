@@ -30,7 +30,7 @@ export const getCart = () => {
   instance
     .get("/billing/cart/")
     .then((res) => {
-      console.log("res", res);
+      console.log("res test121212121212", res);
       cartId = res.data.id;
       useStore.setState({
         cartData: { listCount: res.data.cart_items.length },
