@@ -311,7 +311,7 @@ export default function Home() {
           </p>
         </div>
 
-        {/* <div className=" hidden lg:block absolute left-[25vw] z-50 h-[60vh] w-[50vw] ">
+        <div className=" hidden lg:block absolute left-[25vw] z-50 h-[60vh] w-[50vw] ">
           <motion.div
             initial={{ y: "70vh" }}
             animate={{ y: "30vh", opacity: [0, 1, 1] }}
@@ -334,7 +334,7 @@ export default function Home() {
           >
             <LandingSceneLemon orbital={false} />
           </motion.div>
-        </div> */}
+        </div>
 
         <div className="flex flex-col lg:flex-row h-[90vh] w-full px-[5vw] overflow-hidden pt-[5vh] relative ">
           <div className="flex flex-col w-full lg:w-1/2 items-start">
@@ -615,3 +615,29 @@ export default function Home() {
     </Transition>
   );
 }
+
+// Tacking data :
+
+// {
+//   "status": true,
+//   "data": {
+//       "id": "12779465",
+//       "order_id": "26746760",
+//       "order_number": "54",
+//       "created": "2024-09-03",
+//       "awb_number": "14355940077692",
+//       "courier_id": "3",
+//       "warehouse_id": "252115",
+//       "rto_warehouse_id": "252115",
+//       "status": "booked",
+//       "shipment_info": "",
+//       "history": [
+//           {
+//               "status_code": "N/A",
+//               "location": "PCK/VKI, Jaipur, RAJASTHAN",
+//               "event_time": "2024-09-03 10:35",
+//               "message": "Out For Pickup"
+//           }
+//       ]
+//   }
+// }
