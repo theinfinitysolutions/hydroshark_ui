@@ -230,6 +230,20 @@ const Navbar = () => {
         </button>
       </div>
       <div className=" flex lg:hidden z-50  ">
+        <a
+          onClick={() => {
+            setCartSidebar({ show: true });
+            console.log("clicked");
+          }}
+          className=" py-2 mx-4 cursor-pointer relative z-10"
+        >
+          {cart?.length || cartData.listCount > 0 ? (
+            <div className=" h-4 w-4 flex items-center justify-center bg-black rounded-full absolute -top-1 -right-2">
+              <p className=" text-[10px] text-white">{cart.length}</p>
+            </div>
+          ) : null}
+          <FiShoppingCart className=" text-[#181818] text-xl" />
+        </a>
         <button
           onClick={() => {
             setShow({

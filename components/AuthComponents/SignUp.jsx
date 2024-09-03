@@ -4,12 +4,15 @@ import { useForm } from "react-hook-form";
 import { FaCheckCircle } from "react-icons/fa";
 import instance from "@/utils/instance";
 import Spinner from "../Spinner";
+import OTPInput from "react-otp-input";
 
 const inputClass =
   "border-[1px] border-black  px-2 py-2 rounded-lg my-2 w-full text-black cursor-text";
 
 const SignUp = ({ BackToLogin }) => {
   const [loading, setLoading] = useState(false);
+  const [otp, setOtp] = useState("");
+  const [showOTP, setShowOTP] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
   const [error, setError] = useState(null);
 
@@ -33,7 +36,7 @@ const SignUp = ({ BackToLogin }) => {
       .then((res) => {
         console.log("res", res);
         setLoading(false);
-        setShowConfirm(true);
+        handleLoginRequest(data);
       })
       .catch((err) => {
         console.log("err", err.response);
@@ -48,26 +51,98 @@ const SignUp = ({ BackToLogin }) => {
       });
   };
 
+  const handleLoginRequest = (data) => {
+    setLoading(true);
+    let obj = {
+      phone_number: data.phone,
+    };
+    instance
+      .post("/accounts/send-otp/", obj)
+      .then((res) => {
+        console.log("res", res);
+        setShowOTP(true);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.log("err", err);
+        setError(err.response.data.message);
+      });
+  };
+
+  const handleLogin = () => {
+    setLoading(true);
+    let obj = {
+      phone_number: getValues("phone"),
+      otp: otp,
+    };
+
+    console.log("obj", obj);
+    instance
+      .post("/accounts/login/", obj)
+      .then((res) => {
+        console.log("res", res);
+        setLoading(false);
+        localStorage.setItem("token", res.data.access_token);
+        setUser(res.data.user);
+        setShowAuthModal({ show: false, message: "" });
+        reset();
+        setOtp("");
+        setShowOTP(false);
+      })
+      .catch((err) => {
+        console.log("err", err);
+        setLoading(false);
+        if (err.response?.data?.message) {
+          setError(err.response.data.message);
+        } else {
+          setError("Some error has occurred!");
+        }
+      });
+  };
+
   return (
     <div className="flex flex-col w-full items-center px-4">
       <div className="text-[1.5rem] font-[500] text-black">SignUp</div>
-      {showConfirm ? (
-        <div className=" flex flex-row items-center justify-start gap-x-4 px-4 py-2 my-4 rounded-xl w-full border-[1px] border-green-500 ">
-          <FaCheckCircle className=" text-green-500 text-[3rem]" />
-          <div className=" w-9/12 flex flex-col items-start justify-center">
-            <div className="text-green-500 text-lg">Sign Up Successful</div>
-            <div className="text-green-500 text-sm">
-              Please check your email for confirmation and continue to login
-            </div>
-            <a
-              onClick={() => {
-                BackToLogin();
-              }}
-              className=" underline text-green-400 text-sm mt-1 cursor-pointer"
-            >
-              {"Back to Login"}
-            </a>
-          </div>
+      {showOTP ? (
+        <div className=" w-full flex flex-col items-center justify-center mt-4">
+          <OTPInput
+            value={otp}
+            onChange={setOtp}
+            numInputs={6}
+            inputType={"number"}
+            placeholder="123456"
+            inputStyle={{
+              width: "40px",
+              height: "40px",
+              borderWidth: "1px",
+              marginRight: 8,
+              textAlign: "center",
+              color: "#000000",
+            }}
+            containerStyle={{}}
+            renderInput={(props) => (
+              <input
+                autoComplete="off"
+                aria-label="Please enter OTP character 1"
+                className="inputStyle rounded-lg"
+                {...props}
+              />
+            )}
+          />
+
+          <button
+            className="bg-black text-white px-8 py-2 mt-4"
+            onClick={() => {
+              handleLogin();
+            }}
+          >
+            {loading ? (
+              <Spinner loading={loading} size={24} color="#ffffff" />
+            ) : (
+              "Verify"
+            )}
+          </button>
         </div>
       ) : (
         <div className=" flex flex-col items-center justify-center w-full">

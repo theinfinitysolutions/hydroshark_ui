@@ -1,11 +1,11 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import useStore from "@/utils/store";
+import { useStore } from "@/utils/store";
 import { IoMdClose } from "react-icons/io";
 import { MdOutlineFileUpload } from "react-icons/md";
 import instance from "@/utils/instance";
 import { FaFileAlt } from "react-icons/fa";
-import Spinner from "../Spinner";
+import Spinner from "./Spinner";
 import * as dayjs from "dayjs";
 dayjs().format();
 
@@ -34,11 +34,10 @@ const ViewOrderDetailsModal = () => {
         setLoading(false);
       });
   };
-
   const getOrderDetials = (id) => {
     setLoading(true);
     instance
-      .get(`/admin/orders/${id}/`)
+      .get(`/billing/order/${id}/`)
       .then((res) => {
         setOrderDetails(res.data);
         if (res.data.shipping?.id) {
@@ -77,7 +76,7 @@ const ViewOrderDetailsModal = () => {
       <div className="bg-white w-8/12 max-h-[80vh] overflow-y-scroll py-6 px-8 rounded-md flex flex-col ">
         {loading ? (
           <div className=" h-[50vh] relative flex flex-col items-center justify-center w-full">
-            <Spinner loading={loading} />
+            <Spinner loading={loading} color="#000000" size={24} />
           </div>
         ) : (
           <div className="flex flex-col w-full">
