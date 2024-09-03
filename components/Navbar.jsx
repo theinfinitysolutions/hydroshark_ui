@@ -207,6 +207,7 @@ const Navbar = () => {
             ) : null}
           </DropdownMenu.Root>
         </div>
+
         <a
           onClick={() => {
             setCartSidebar({ show: true });
@@ -237,6 +238,14 @@ const Navbar = () => {
         </button>
       </div>
       <div className=" flex lg:hidden z-50  ">
+        <a
+          onMouseEnter={() => {
+            setCurrentHover("/coins");
+          }}
+          className=" py-2 cursor-pointer"
+        >
+          <PiCoinsFill className=" text-[#181818] text-2xl" />
+        </a>
         <a
           onClick={() => {
             setCartSidebar({ show: true });
@@ -277,7 +286,7 @@ const Navbar = () => {
         style={{ zIndex: 100 }}
         className={` absolute ${
           currentHover == "/coins" ? "block" : "hidden"
-        } top-[13vh] right-[10vw] w-[25vw] bg-white border animate-slideUpfast`}
+        } top-[13vh] right-[10vw] w-[70vw] lg:w-[25vw] bg-white border animate-slideUpfast`}
       >
         <div className="flex flex-col items-start px-4 py-4">
           <div className=" flex flex-row justify-start items-center">
@@ -292,6 +301,7 @@ const Navbar = () => {
           <button
             onClick={() => {
               setShowHydrosharkCoinsModal({ show: true });
+              setCurrentHover("");
             }}
             className=" bg-[#181818]/80 text-white px-2 py-1 text-sm rounded-md mt-2"
           >
