@@ -24,6 +24,7 @@ const Orders = () => {
     setShowOrderDetailsModal,
     showOrderDetailsModal,
     setShowSubmitReviewModal,
+    showSubmitReviewModal,
   } = useStore();
 
   const getOrders = () => {
@@ -47,9 +48,8 @@ const Orders = () => {
   };
 
   useEffect(() => {
-    console.log("page", page);
     getOrders();
-  }, [page]);
+  }, [page, showSubmitReviewModal.show]);
 
   return (
     <div className=" w-full flex flex-col items-start">
@@ -65,7 +65,7 @@ const Orders = () => {
 
             {next || prev ? (
               <div className=" flex flex-row items-center justify-center z-30">
-                <button
+                <a
                   onClick={() => setPage(page - 1)}
                   className={`py-2 px-2 rounded-md cursor-pointer ${
                     prev ? "text-black " : "text-gray-400"
@@ -73,9 +73,9 @@ const Orders = () => {
                   disabled={prev}
                 >
                   <FaChevronLeft />
-                </button>
+                </a>
                 <page className="text-black px-4 mt-1">{page}</page>
-                <button
+                <a
                   onClick={() => {
                     console.log("test");
                     setPage((prev) => prev + 1);
@@ -86,7 +86,7 @@ const Orders = () => {
                   disabled={next}
                 >
                   <FaChevronRight />
-                </button>
+                </a>
               </div>
             ) : null}
           </div>

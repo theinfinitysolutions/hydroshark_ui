@@ -73,14 +73,14 @@ const ViewOrderDetailsModal = () => {
         isOpen ? "fixed" : "hidden"
       } z-50 inset-0 flex items-center justify-center bg-black/30`}
     >
-      <div className="bg-white w-11/12 lg:w-8/12 max-h-[80vh] overflow-y-scroll py-6 px-2 lg:px-8 rounded-md flex flex-col ">
+      <div className="bg-white w-[95%] lg:w-8/12 max-h-[80vh] overflow-y-scroll py-6 px-2 lg:px-8 rounded-md flex flex-col ">
         {loading ? (
           <div className=" h-[50vh] relative flex flex-col items-center justify-center w-full">
             <Spinner loading={loading} color="#000000" size={24} />
           </div>
         ) : (
           <div className="flex flex-col w-full">
-            <div className="flex flex-row justify-between items-center w-full">
+            <div className="flex flex-row justify-between items-start w-full">
               <h3 className="text-black text-xl lg:text-2xl font-bold">
                 Order Details
               </h3>
@@ -154,25 +154,25 @@ const ViewOrderDetailsModal = () => {
                     </div>
                     <div className=" w-full  flex flex-col items-start">
                       <p className="text-xs text-black/70">AWB Number</p>
-                      <p className="text-sm text-black">
+                      <p className=" text-sm text-black">
                         {shippingDetails?.awb_number || "N/A"}
                       </p>
                     </div>
                     <div className=" w-full  flex flex-col items-start">
                       <p className="text-xs text-black/70">Shipment Info</p>
                       <p className="text-sm text-black">
-                        {shippingDetails?.awb_number || "N/A"}
+                        {shippingDetails?.shipment_info || "N/A"}
                       </p>
                     </div>
                   </div>
                   <div className="flex mt-2 lg:mt-4 flex-col w-full items-start">
                     {shippingDetails?.history?.length > 0 ? (
-                      <div className=" w-full flex flex-col items-start">
+                      <div className=" w-full lg:w-9/12 flex flex-col items-start">
                         <p className="text-xs text-black/70">
                           Shipment History
                         </p>
                         <div className=" w-full mt-2 flex flex-col items-start">
-                          <div className=" w-9/12 flex flex-row justify-between bg-black p-2 -ml-1  items-start">
+                          <div className=" w-full  flex flex-row justify-between bg-black p-2 -ml-1  items-start">
                             <p className="text-xs text-white w-1/2">Location</p>
                             <p className="text-xs text-white w-1/4">
                               Date and Time
@@ -184,7 +184,7 @@ const ViewOrderDetailsModal = () => {
                             return (
                               <div
                                 key={index}
-                                className={`  w-9/12 flex flex-row justify-between ${
+                                className={` w-full flex flex-row justify-between ${
                                   index % 2 == 0 ? "bg-white" : "bg-[#e4e3e3]"
                                 }  p-2 -ml-1  items-start`}
                               >

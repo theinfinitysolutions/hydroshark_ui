@@ -9,8 +9,11 @@ import instance from "@/utils/instance";
 import { MdOutlineStarOutline } from "react-icons/md";
 import { MdOutlineStar } from "react-icons/md";
 import Rating from "react-rating";
+import Spinner from "./Spinner";
+
 const ReviewModal = () => {
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [orderId, setOrderId] = useState("");
   const [rating, setRating] = useState(0);
@@ -19,17 +22,20 @@ const ReviewModal = () => {
   const { showSubmitReviewModal, setShowSubmitReviewModal } = useStore();
 
   const submitReview = () => {
+    setLoading(true);
     instance
       .post(`/billing/review/`, {
         order: orderId,
-        rating: rating,
+        rating: rating - 1,
         review: review,
       })
       .then((res) => {
         console.log("res", res);
+        setLoading(false);
         setReviewSubmitted(true);
       })
       .catch((err) => {
+        setLoading(false);
         console.log("err", err);
       });
   };
@@ -61,10 +67,13 @@ const ReviewModal = () => {
         </button>
         {!reviewSubmitted ? (
           <div className=" w-full flex flex-col items-center">
-            <h3 className=" text-black text-2xl">
+            <h3 className=" text-black text-2xl text-center">
               Thank you for choosing Hydroshark!
             </h3>
-            <p className="text-black text-base"> Please rate your experience</p>
+            <p className="text-black text-base text-center mt-4">
+              {" "}
+              Please rate your experience
+            </p>
             <div className=" flex w-full mt-4 items-center justify-center">
               <Rating
                 emptySymbol={
@@ -92,6 +101,10 @@ const ReviewModal = () => {
                 Submit Review
               </button>
             </div>
+          </div>
+        ) : loading ? (
+          <div className=" w-full h-[40vh] flex flex-col items-center justify-center">
+            <Spinner loading={loading} size={48} color="#000000" />
           </div>
         ) : (
           <div className=" w-full flex flex-col items-center">

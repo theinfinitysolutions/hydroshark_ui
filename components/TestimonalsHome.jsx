@@ -35,7 +35,7 @@ const TestimonalsHome = () => {
             {testimonials.map((testimonial, index) => (
               <div
                 key={index}
-                className="flex flex-col items-center justify-center w-[45vw] lg:w-[20vw] lg:h-[20vh] aborder-[0.5px] border-white mr-8 py-4"
+                className="flex flex-col items-center justify-center max-w-[45vw] w-[45vw] lg:max-w-[20vw] lg:w-[20vw] lg:h-[20vh] mr-8 py-4"
               >
                 <div className="flex flex-col items-start text-wrap justify-center w-11/12">
                   <p className="text-white text-sm -mt-2">
