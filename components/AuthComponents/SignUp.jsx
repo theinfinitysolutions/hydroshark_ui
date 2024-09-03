@@ -54,7 +54,7 @@ const SignUp = ({ BackToLogin }) => {
   const handleLoginRequest = (data) => {
     setLoading(true);
     let obj = {
-      phone_number: data.phone,
+      phone_number: data.phone_number,
     };
     instance
       .post("/accounts/send-otp/", obj)
@@ -73,7 +73,7 @@ const SignUp = ({ BackToLogin }) => {
   const handleLogin = () => {
     setLoading(true);
     let obj = {
-      phone_number: getValues("phone"),
+      phone_number: getValues("phone_number"),
       otp: otp,
     };
 

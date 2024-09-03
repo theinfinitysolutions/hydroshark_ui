@@ -47,6 +47,7 @@ const Orders = () => {
   };
 
   useEffect(() => {
+    console.log("page", page);
     getOrders();
   }, [page]);
 
@@ -63,18 +64,25 @@ const Orders = () => {
             <h2 className="text-2xl text-black font-semibold">Orders</h2>
 
             {next || prev ? (
-              <div className=" flex flex-row items-center justify-center">
+              <div className=" flex flex-row items-center justify-center z-30">
                 <button
                   onClick={() => setPage(page - 1)}
-                  className="text-black py-2 px-2 rounded-md"
+                  className={`py-2 px-2 rounded-md cursor-pointer ${
+                    prev ? "text-black " : "text-gray-400"
+                  }  `}
                   disabled={prev}
                 >
                   <FaChevronLeft />
                 </button>
                 <page className="text-black px-4 mt-1">{page}</page>
                 <button
-                  onClick={() => setPage(page + 1)}
-                  className="text-black py-2 px-2 rounded-md"
+                  onClick={() => {
+                    console.log("test");
+                    setPage((prev) => prev + 1);
+                  }}
+                  className={`${
+                    next ? "text-black " : "text-gray-400"
+                  } py-2 px-2 rounded-md cursor-pointer z-20 `}
                   disabled={next}
                 >
                   <FaChevronRight />
