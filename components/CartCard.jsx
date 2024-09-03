@@ -38,15 +38,15 @@ const CartCard = (props) => {
   };
 
   return (
-    <div className=" w-full flex flex-col items-start p-4 border-[1px] border-black mb-3">
+    <div className=" w-full flex flex-col items-start p-2 lg:p-4 border-[1px] border-black mb-3">
       <div className=" flex flex-row w-full justify-between">
-        <div className=" flex flex-col items-start w-[20%] h-[10vh] relative">
+        <div className=" flex flex-col items-start w-[15%] lg:w-[15%] h-[10vh] relative">
           <Image src={props.image} fill style={{ objectFit: "contain" }} />
         </div>
-        <div className=" w-[80%] h-full flex flex-col items-start  px-4">
-          <p className=" text-base text-black">
+        <div className=" w-[80%] lg:w-[75%] h-full flex flex-col justify-center items-start  px-4">
+          <p className=" text-xs lg:text-base w-full text-black">
             HYDROSHARK{" "}
-            <span className={`${textColors[props.product_title]}`}>
+            <span className={`text-[${textColors[props.product_title]}]`}>
               {props.product_title}
             </span>{" "}
           </p>
@@ -60,7 +60,7 @@ const CartCard = (props) => {
               <p className=" text-black	">/ {props?.section_title} </p>
             </div>
           </div>
-          <div className="flex flex-row justify-between items-center gap-x-2 mt-2 py-1 px-4 border-[1px] border-black">
+          <div className="flex flex-row justify-between items-center gap-x-2 mt-2 py-1 px-2 lg:px-4 border-[1px] border-black">
             <a
               onClick={() => {
                 props.onQuantityChange("minus");
@@ -84,7 +84,7 @@ const CartCard = (props) => {
           onClick={() => {
             props.onDelete();
           }}
-          className=" w-[20%]  h-full flex flex-col items-center justify-center"
+          className=" w-[5%] lg:w-[10%]  h-full flex flex-col items-center justify-center"
         >
           <MdDeleteOutline className=" text-black text-xl cursor-pointer " />
         </a>

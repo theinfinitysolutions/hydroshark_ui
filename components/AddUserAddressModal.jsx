@@ -111,7 +111,7 @@ const AddUserAddressModal = () => {
         isOpen ? "fixed" : "hidden"
       } z-50 inset-0 flex items-center justify-center bg-black/10`}
     >
-      <div className="bg-white w-6/12 rounded-md min-h-[40vh] relative overflow-y-scroll  flex flex-col items-center shadow-xl py-[5vh]">
+      <div className="bg-white w-11/12 lg:w-6/12 rounded-md min-h-[40vh] relative overflow-y-scroll  flex flex-col items-center shadow-xl py-[2.5vh] lg:py-[5vh]">
         <div className=" absolute right-4 top-4">
           <button
             onClick={() => {
@@ -126,72 +126,86 @@ const AddUserAddressModal = () => {
             <Spinner loading={loading} size={48} color="#000000" />
           </div>
         ) : (
-          <div className=" flex flex-col items-start w-full px-8">
+          <div className=" flex flex-col items-start w-full px-4 lg:px-8">
             <h1 className="text-2xl font-bold text-black">Manage Address</h1>
             <form
               className="flex flex-col w-full items-start bg-gray-100 p-4 rounded-lg"
               onSubmit={handleSubmit(onSubmit)}
             >
-              {/* <div className="flex flex-row justify-between w-full">
-                <div className="border-[1px] border-black h-12 w-[47.5%] rounded-md overflow-hidden">
-                  <input
-                    placeholder="First Name"
-                    className="w-full flex flex-col text-sm text-black h-full pl-2 ring-0 focus:ring-0 focus:outline-none"
-                    {...register("firstName")}
-                  />
-                </div>
-                <div className="border-[1px] border-black h-12 w-[47.5%] rounded-md overflow-hidden">
-                  <input
-                    placeholder="Last Name"
-                    className="w-full flex flex-col text-sm text-black h-full pl-2 ring-0 focus:ring-0 focus:outline-none"
-                    {...register("lastName")}
-                  />
-                </div>
-              </div> */}
-              <div className="border-[1px] border-black h-12 w-full mt-4 rounded-md overflow-hidden">
+              <div className="flex flex-col items-start  w-full mt-4  overflow-hidden">
                 <input
-                  placeholder="Address Line 2"
-                  className="w-full flex flex-col text-sm text-black h-full pl-2 ring-0 focus:ring-0 focus:outline-none"
-                  {...register("address_line_1")}
+                  placeholder="Address Line 1"
+                  className="w-full flex flex-col border-[1px] border-black text-sm text-black  pl-2 py-2 ring-0 focus:ring-0 focus:outline-none"
+                  {...register("address_line_1", { required: true })}
                 />
+                {errors.address_line_1 && (
+                  <p className="text-red-500 text-xs mt-[4px]">
+                    This field is required
+                  </p>
+                )}
               </div>
-              <div className="border-[1px] border-black h-12 w-full mt-4 rounded-md overflow-hidden">
+              <div className="flex flex-col items-start  w-full mt-4  overflow-hidden">
                 <input
                   placeholder="Address Line 2"
-                  className="w-full flex flex-col text-sm text-black h-full pl-2 ring-0 focus:ring-0 focus:outline-none"
-                  {...register("address_line_2")}
+                  className="w-full flex flex-col border-[1px] border-black  text-sm text-black  pl-2 py-2 ring-0 focus:ring-0 focus:outline-none"
+                  {...register("address_line_2", { required: true })}
                 />
+                {errors.address_line_2 && (
+                  <p className="text-red-500 text-xs mt-[4px]">
+                    This field is required
+                  </p>
+                )}
               </div>
               <div className="flex flex-row justify-between w-full mt-4">
-                <div className="border-[1px] border-black h-12 w-[47.5%] rounded-md overflow-hidden">
+                <div className="flex flex-col items-start  w-[47.5%]  overflow-hidden">
                   <input
                     placeholder="City"
-                    className="w-full flex flex-col text-sm text-black h-full pl-2 ring-0 focus:ring-0 focus:outline-none"
-                    {...register("city")}
+                    className="w-full flex flex-col border-[1px] border-black  text-sm text-black pl-2 py-2 ring-0 focus:ring-0 focus:outline-none"
+                    {...register("city", { required: true })}
                   />
+                  {errors.city && (
+                    <p className="text-red-500 text-xs mt-[4px]">
+                      This field is required
+                    </p>
+                  )}
                 </div>
-                <div className="border-[1px] border-black h-12 w-[47.5%] rounded-md overflow-hidden">
+                <div className="flex flex-col items-start  w-[47.5%]  overflow-hidden">
                   <input
                     placeholder="State"
-                    className="w-full flex flex-col text-sm text-black h-full pl-2 ring-0 focus:ring-0 focus:outline-none"
-                    {...register("state")}
+                    className="w-full flex flex-col border-[1px] border-black  text-sm text-black pl-2 py-2 ring-0 focus:ring-0 focus:outline-none"
+                    {...register("state", { required: true })}
                   />
+                  {errors.state && (
+                    <p className="text-red-500 text-xs mt-[4px]">
+                      This field is required
+                    </p>
+                  )}
                 </div>
               </div>
               <div className="flex flex-row justify-between w-full mt-4">
-                <div className="border-[1px] border-black h-12 w-[47.5%] rounded-md overflow-hidden">
+                <div className="flex flex-col items-start  w-[47.5%]  overflow-hidden">
                   <input
                     placeholder="Country"
-                    className="w-full flex flex-col text-sm text-black h-full pl-2 ring-0 focus:ring-0 focus:outline-none"
-                    {...register("country")}
+                    className="w-full flex flex-col border-[1px] border-black text-sm text-black pl-2 py-2 ring-0 focus:ring-0 focus:outline-none"
+                    {...register("country", { required: true })}
                   />
+                  {errors.country && (
+                    <p className="text-red-500 text-xs mt-[4px]">
+                      This field is required
+                    </p>
+                  )}
                 </div>
-                <div className="border-[1px] border-black h-12 w-[47.5%] rounded-md overflow-hidden">
+                <div className="flex flex-col items-start  w-[47.5%] overflow-hidden">
                   <input
                     placeholder="Zipcode"
-                    className="w-full flex flex-col text-sm text-black h-full pl-2 ring-0 focus:ring-0 focus:outline-none"
-                    {...register("zipcode")}
+                    className="w-full flex flex-col border-[1px] border-black  text-sm text-black py-2 pl-2 ring-0 focus:ring-0 focus:outline-none"
+                    {...register("zipcode", { required: true })}
                   />
+                  {errors.zipcode && (
+                    <p className="text-red-500 text-xs mt-[4px]">
+                      This field is required
+                    </p>
+                  )}
                 </div>
               </div>
               <div className=" w-full flex flex-row justify-end items-center gap-x-4 mt-4">
