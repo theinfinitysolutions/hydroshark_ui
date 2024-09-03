@@ -126,16 +126,16 @@ const Products = () => {
           {"Hydrate and Gear Up: Your Ultimate Refresh Collection"}
         </p>
       </div>
-      <div className=" flex w-11/12 lg:w-10/12 my-[5vh] lg:my-[7.5vh]">
+      <div className=" flex w-11/12 lg:w-11/12 my-[5vh] lg:my-[7.5vh]">
         {loading ? (
           <div className=" w-full h-[40vh] flex flex-col items-center justify-center">
             <Spinner loading={loading} size={48} color="#000000" />
           </div>
         ) : (
-          <div className=" w-full flex flex-col lg:flex-row justify-center gap-x-[5vw] items-center ">
+          <div className=" w-full flex flex-col lg:grid lg:grid-cols-3 lg:place-items-center justify-center gap-8 items-center ">
             {[...productList].map((product, index) => (
               <div
-                className=" w-full lg:w-[35vw] h-[60vh] flex flex-col items-center mb-8 lg:mb-0 relative  border-[1px] border-white  z-0 justify-center"
+                className=" w-full h-[60vh] flex flex-col items-center mb-0 relative  border-[1px] border-white  z-0 justify-center"
                 key={index}
               >
                 <div className=" z-40 absolute  bottom-4 right-4 flex flex-col gap-y-2  ">
@@ -171,7 +171,7 @@ const Products = () => {
                     style={{ objectFit: "contain" }}
                   />
                 </div>
-                <div className=" absolute h-[20vh] w-[15vh] lg:w-[20vh] z-10 left-0 -top-[5vh] ">
+                <div className=" absolute h-[15vh] w-[15vh] lg:w-[15vh] z-10 left-0 -top-[2.5vh] ">
                   <Image
                     src={process.env.NEXT_PUBLIC_API_URL + "/icon4.png"}
                     fill
@@ -229,6 +229,45 @@ const Products = () => {
                 </div>
               </div>
             ))}
+            {productList.length % 3 != 1 && productList.length > 0 ? (
+              <div className=" w-full h-[60vh] flex flex-col items-center mb-0 relative  border-[1px] border-white  z-0 justify-center">
+                <div className=" absolute w-full h-full z-0 ">
+                  <Image
+                    src={process.env.NEXT_PUBLIC_API_URL + "/bgasset21.png"}
+                    fill
+                    style={{ objectFit: "cover" }}
+                  />
+                </div>
+                <div className=" absolute h-[5vh] w-[20vh] lg:w-[30vh] -right-4 top-0  z-0 ">
+                  <Image
+                    src={process.env.NEXT_PUBLIC_API_URL + "/icon5.png"}
+                    fill
+                    style={{ objectFit: "contain" }}
+                  />
+                </div>
+                <div className=" absolute h-[15vh] w-[15vh] lg:w-[15vh] z-10 left-0 -top-[2.5vh] ">
+                  <Image
+                    src={process.env.NEXT_PUBLIC_API_URL + "/icon4.png"}
+                    fill
+                    style={{ objectFit: "contain" }}
+                  />
+                </div>
+                <div className=" flex z-30 flex-col items-center cursor-pointer justify-center w-full h-[60vh] bg-white  bg-opacity-10">
+                  <div className=" h-[20vh] w-[20vh] relative">
+                    <Image
+                      src={
+                        process.env.NEXT_PUBLIC_API_URL + "/hydroshark_logo.png"
+                      }
+                      fill
+                      style={{ objectFit: "contain" }}
+                    />
+                  </div>
+                  <p className=" text-white text-3xl text-center w-8/12 mt-8 font-semibold">
+                    New Products Coming Soon
+                  </p>
+                </div>
+              </div>
+            ) : null}
           </div>
         )}
       </div>
