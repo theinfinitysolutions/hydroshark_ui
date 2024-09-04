@@ -361,7 +361,7 @@ const Checkout = () => {
                 </div>
                 <p className=" text-black text-xs">
                   {
-                    "(You can redeem HydrodShark coins by pucharsing HydroShark Gymwear)"
+                    "(You can redeem Hydroshark coins by purchasing Hydroshark Gymwear)"
                   }
                 </p>
               </div>
@@ -389,7 +389,10 @@ const Checkout = () => {
                 </div>
               ) : (
                 <div className=" flex flex-col items-start w-full mt-4">
-                  <div className=" w-full max-h-[20vh] flex flex-col items-start overflow-y-scroll">
+                  <div
+                    id="address"
+                    className=" w-full max-h-[20vh] flex flex-col items-start overflow-y-scroll"
+                  >
                     {addressList.map((address, index) => {
                       return (
                         <div
@@ -465,7 +468,10 @@ const Checkout = () => {
                 </div>
               ) : (
                 <div className=" flex flex-col items-start w-full mt-4">
-                  <div className=" w-full max-h-[20vh] flex flex-col items-start overflow-y-scroll">
+                  <div
+                    id="address"
+                    className=" w-full max-h-[20vh] flex flex-col items-start overflow-y-scroll"
+                  >
                     {addressList.map((address, index) => {
                       return (
                         <div
@@ -489,7 +495,7 @@ const Checkout = () => {
                               className=" checked:text-black"
                             />
                           </div>
-                          <div className=" w-9/12 flex flex-row text-sm flex-wrap items-start">
+                          <div className=" w-10/12 lg:w-9/12 flex flex-row text-sm flex-wrap items-start">
                             <p className="  text-black">
                               {address.address_line_1},
                             </p>
@@ -678,27 +684,6 @@ const Checkout = () => {
                   )}
                 </div>
 
-                {/* <div className=" flex flex-col items-start w-full z-20">
-                <p className=" text-black text-base mt-4">Redeem</p>
-                <div className=" w-full flex flex-row justify-between ">
-                  <div className=" border-[1px] border-black h-12 w-[75%] rounded-md overflow-hidden">
-                    <input
-                      value={orderId}
-                      onChange={(e) => setOrderId(e.target.value)}
-                      placeholder="Redeem"
-                      className=" w-full flex flex-col text-black h-full pl-2  ring-0 focus:ring-0 focus:outline-none"
-                    />
-                  </div>
-                  <button
-                    onClick={() => {
-                      processPayment(orderId);
-                    }}
-                    className=" w-[20%] py-2 rounded-md bg-black "
-                  >
-                    <p className=" text-white text-sm mt-1">Apply</p>
-                  </button>
-                </div>
-              </div> */}
                 <div className=" w-full flex flex-col items-start mt-4">
                   <div className=" flex flex-row w-full justify-between items-center mt-2">
                     <p className=" text-black text-sm lg:text-lg">Sub total</p>

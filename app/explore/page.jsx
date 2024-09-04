@@ -198,7 +198,7 @@ const Explore = () => {
                   src={process.env.NEXT_PUBLIC_API_URL + "/lemoncan.webp"}
                   fill
                   style={{ objectFit: "contain" }}
-                  alt="hydrodshark lemon can"
+                  alt="hydroshark lemon can"
                 />
               </div>
             </div>
