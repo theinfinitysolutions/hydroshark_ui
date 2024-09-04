@@ -1,5 +1,6 @@
 import axios from "axios";
-export const BASE_URL = "http://144.24.111.231:7020";
+// export const BASE_URL = "http://144.24.111.231:7020";
+export const BASE_URL = "https://api.hydroshark.in";
 
 const instance = axios.create({
   baseURL: BASE_URL,
