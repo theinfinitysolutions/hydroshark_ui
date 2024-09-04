@@ -3,7 +3,7 @@ name: Deploy to S3
 on:
   push:
     branches:
-      - phase2 # Replace with the branch you want to trigger this action
+      - phase2 # Replace with your branch if different
 
 jobs:
   deploy:
@@ -13,6 +13,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Build Next.js
+        run: |
+          npm install
+          npm run build  # Ensure you have this script in your package.json
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
@@ -20,6 +25,6 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
 
-      - name: Sync to S3
+      - name: Sync out folder to S3
         run: |
-          aws s3 sync . s3://${{ secrets.S3_BUCKET_NAME }} --exact-timestamps --delete
+          aws s3 sync out/ s3://${{ secrets.S3_BUCKET_NAME }} --exact-timestamps --delete
