@@ -75,6 +75,9 @@ export default function CartSidebar() {
         setCartId(res.data.id);
         setCartList([...res.data.cart_items]);
         console.log("cartList", cartList, user);
+        useStore.setState({
+          cartData: { listCount: res.data.cart_items.length },
+        });
         setLoading(false);
       })
       .catch((err) => {
