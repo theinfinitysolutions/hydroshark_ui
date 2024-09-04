@@ -589,7 +589,7 @@ export default function Home() {
                   <div className=" flex flex-col w-1/2  items-center justify-center p-6">
                     <p className=" text-xs text-cyan-600">Calories</p>
                     <p className=" text-lg lg:text-xl text-black">
-                      {"99 Kcal"}
+                      {"80 Kcal"}
                     </p>
                   </div>
                 </div>
@@ -601,7 +601,7 @@ export default function Home() {
                   <div className=" flex flex-col w-1/2  items-center justify-center p-6">
                     <p className=" text-xs text-cyan-600">Vitamins</p>
                     <p className="  text-lg lg:text-xl text-black">
-                      {"B - 2,6,12"}
+                      {"B2,B6,B12 "}
                     </p>
                   </div>
                 </div>
