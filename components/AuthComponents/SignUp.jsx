@@ -40,7 +40,10 @@ const SignUp = ({ BackToLogin }) => {
       })
       .catch((err) => {
         console.log("err", err.response);
-        if (Object.keys(err.response.data.response).length > 0) {
+        if (
+          err.response &&
+          Object.keys(err.response.data.response).length > 0
+        ) {
           setError(
             err.response.data.response[
               Object.keys(err.response.data.response)[0]
@@ -157,7 +160,7 @@ const SignUp = ({ BackToLogin }) => {
               className={`${inputClass}`}
             />
             {errors.name && (
-              <span className="text-red-500 text-sm">
+              <span className="text-red-500 text-xs">
                 {errors.name.message}
               </span>
             )}
@@ -168,18 +171,28 @@ const SignUp = ({ BackToLogin }) => {
               className={`${inputClass}`}
             />
             {errors.email && (
-              <span className="text-red-500 text-sm">
+              <span className="text-red-500 text-xs">
                 {errors.email.message}
               </span>
             )}
             <input
-              type="text"
+              type="number"
               placeholder="Phone"
-              {...register("phone_number", { required: "Phone is required" })}
+              {...register("phone_number", {
+                required: "Phone is required",
+                minLength: {
+                  value: 10,
+                  message: "Phone number should be of 10 digits",
+                },
+                maxLength: {
+                  value: 10,
+                  message: "Phone number should be of 10 digits",
+                },
+              })}
               className={`${inputClass}`}
             />
             {errors.phone_number && (
-              <span className="text-red-500 text-sm">
+              <span className="text-red-500 text-xs">
                 {errors.phone_number.message}
               </span>
             )}

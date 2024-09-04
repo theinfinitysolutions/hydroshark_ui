@@ -134,11 +134,21 @@ const Login = ({ onSignUp }) => {
             <input
               type="phone"
               placeholder=" Phone Number"
-              {...register("phone", { required: "Phone Number is required" })}
+              {...register("phone", {
+                required: "Phone Number is required",
+                minLength: {
+                  value: 10,
+                  message: "Phone number should be of 10 digits",
+                },
+                maxLength: {
+                  value: 10,
+                  message: "Phone number should be of 10 digits",
+                },
+              })}
               className="border-[1px] cursor-text border-black text-black  px-2 py-2 w-full rounded-lg"
             />
             {errors.phone && (
-              <span className="text-red-500 text-sm mt-1 ">
+              <span className="text-red-500 text-xs mt-1 ">
                 {errors.phone.message}
               </span>
             )}
