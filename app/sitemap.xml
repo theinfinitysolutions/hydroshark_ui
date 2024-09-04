@@ -4,37 +4,46 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
 
 <url>
-  <loc>https://hydroshark.in/</loc>
-  <lastmod>2024-07-12T03:38:06+00:00</lastmod>
+  <loc>http://144.24.111.231:7018/</loc>
+  <lastmod>2024-09-04T07:30:18+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://hydroshark.in/explore</loc>
-  <lastmod>2024-07-12T03:38:06+00:00</lastmod>
+  <loc>http://144.24.111.231:7018/explore</loc>
+  <lastmod>2024-09-04T07:30:18+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://hydroshark.in/athletes</loc>
-  <lastmod>2024-07-12T03:38:06+00:00</lastmod>
+  <loc>http://144.24.111.231:7018/about</loc>
+  <lastmod>2024-09-04T07:30:18+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://hydroshark.in/events</loc>
-  <lastmod>2024-07-12T03:38:06+00:00</lastmod>
+  <loc>http://144.24.111.231:7018/contact</loc>
+  <lastmod>2024-09-04T07:30:18+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://hydroshark.in/about</loc>
-  <lastmod>2024-07-12T03:38:06+00:00</lastmod>
+  <loc>http://144.24.111.231:7018/products</loc>
+  <lastmod>2024-09-04T07:30:18+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://hydroshark.in/contact</loc>
-  <lastmod>2024-07-12T03:38:06+00:00</lastmod>
+  <loc>http://144.24.111.231:7018/athletes</loc>
+  <lastmod>2024-09-04T07:30:18+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://144.24.111.231:7018/events</loc>
+  <lastmod>2024-09-04T07:30:18+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://144.24.111.231:7018/joinus</loc>
+  <lastmod>2024-09-04T07:30:18+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 
