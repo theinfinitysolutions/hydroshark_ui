@@ -13,10 +13,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Install Dependencies
+        run: npm install
+
       - name: Build Next.js
         run: |
-          npm install
           npm run build  # Ensure you have this script in your package.json
+        env:
+          NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
+          RAZORPAY_KEY_ID: ${{ secrets.RAZORPAY_KEY_ID }}
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
