@@ -137,7 +137,7 @@ const Navbar = () => {
           alt="hydroshark"
         />
       </a>
-      <div className=" hidden lg:flex flex-row w-4/12 justify-end z-50 border-b-[1px] gap-x-2 border-[#181818] px-4">
+      <div className=" hidden lg:flex flex-row w-4/12 justify-end items-center z-50 border-b-[1px] gap-x-2 border-[#181818] px-4">
         {/* <div className=" flex flex-row justify-center items-center gap-x-2 mr-8">
           <p className=" text-sm text-black mt-1">SHIP TO</p>
           <div className=" px-2 border border-black">
@@ -162,7 +162,7 @@ const Navbar = () => {
             </div>
           )}
         </a> */}
-        <div className=" z-50 mt-1">
+        <div className=" z-50  ">
           <DropdownMenu.Root
             onOpenChange={() => {
               if (!user) setShowAuthModal({ show: true, message: "" });
@@ -173,16 +173,18 @@ const Navbar = () => {
               {!user ? (
                 <FaRegCircleUser className=" text-[#181818] text-xl mt-1" />
               ) : (
-                <div className=" h-[3.5vh] w-[3.5vh] flex flex-col items-center justify-center rounded-full bg-green-600 text-white">
+                <div className=" h-[3vh] w-[3vh] flex flex-col items-center justify-center rounded-full bg-black text-white">
                   <p className=" text-xs mt-1">{user.name[0] || "U"}</p>
                 </div>
               )}
             </DropdownMenu.Trigger>
             {user ? (
-              <DropdownMenu.Portal style={{ zIndex: 100 }}>
+              <DropdownMenu.Portal
+                style={{ zIndex: 100, position: "absolute" }}
+              >
                 <DropdownMenu.Content
                   asChild={showProfile}
-                  className="absolute z-50 top-[2.5vh] -right-[5vw] w-[10vw] bg-white border p-1"
+                  className=" z-50 top-[4vh] -right-[5vw] w-[10vw] bg-white border p-1"
                   align="center"
                 >
                   <div className="flex flex-col items-start">
