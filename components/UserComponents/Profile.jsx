@@ -162,7 +162,7 @@ const Profile = () => {
           </div>
           <p className=" text-black text-xs">
             {
-              "(You can redeem HydrodShark coins by pucharsing HydroShark Gymwear)"
+              "(You can redeem Hydroshark coins by purchasing HydroShark Gymwear)"
             }
           </p>
         </div>
