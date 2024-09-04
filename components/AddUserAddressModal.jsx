@@ -25,13 +25,16 @@ const AddUserAddressModal = () => {
   } = useForm();
 
   const getAddressDetails = () => {
+    setLoading(true);
     instance
       .get("/accounts/address/")
       .then((res) => {
         setAddressList(res.data);
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err);
+        setLoading(false);
       });
   };
 
@@ -111,7 +114,7 @@ const AddUserAddressModal = () => {
         isOpen ? "fixed" : "hidden"
       } z-50 inset-0 flex items-center justify-center bg-black/10`}
     >
-      <div className="bg-white w-11/12 lg:w-6/12 rounded-md min-h-[40vh] relative overflow-y-scroll  flex flex-col items-center shadow-xl py-[2.5vh] lg:py-[5vh]">
+      <div className="bg-white w-11/12 lg:w-6/12 rounded-md min-h-[40vh] relative overflow-y-scroll  flex flex-col items-center shadow-xl py-[2.5vh]">
         <div className=" absolute right-4 top-4">
           <button
             onClick={() => {
@@ -122,7 +125,7 @@ const AddUserAddressModal = () => {
           </button>
         </div>
         {loading ? (
-          <div className=" w-full h-full flex flex-col items-center justify-center">
+          <div className=" w-full h-[50vh] flex flex-col items-center justify-center">
             <Spinner loading={loading} size={48} color="#000000" />
           </div>
         ) : (
@@ -234,7 +237,10 @@ const AddUserAddressModal = () => {
               {loading ? (
                 <Spinner loading={loading} size={48} color="#000000" />
               ) : (
-                <div className="flex flex-col h-[20vh] overflow-y-scroll items-start w-full mt-4">
+                <div
+                  id="address"
+                  className="flex flex-col h-[20vh] overflow-y-scroll  items-start w-full mt-4"
+                >
                   {addressList &&
                     addressList.map((address, index) => (
                       <div

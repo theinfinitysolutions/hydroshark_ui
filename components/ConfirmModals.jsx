@@ -33,7 +33,7 @@ const ConfirmModals = () => {
         isOpen ? "fixed" : "hidden"
       } z-50 inset-0 flex items-center justify-center bg-black/20`}
     >
-      <div className="bg-white w-5/12 relative overflow-y-scroll  flex flex-col items-center justify-center shadow-xl px-[5%] py-[5vh]">
+      <div className="bg-white w-11/12 lg:w-5/12 relative overflow-y-scroll  flex flex-col items-center justify-center shadow-xl px-[5%] py-[5vh]">
         {mode === "success" ? (
           <FaCheckCircle className=" text-green-500 text-5xl" />
         ) : (

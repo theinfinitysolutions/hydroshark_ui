@@ -41,12 +41,12 @@ const Banner = () => {
   };
 
   return (
-    <div className=" w-full h-[5vh] flex flex-row bg-black items-center px-8 justify-between">
+    <div className=" w-full py-1 flex flex-row bg-black items-center px-8 justify-between">
       <button
         onClick={() =>
           setCurrentOption((currentOption + 1) % activeBanners.length)
         }
-        className=" text-white/40 rounded-lg py-2"
+        className=" text-white/40 rounded-lg py-2 cursor-pointer z-50"
       >
         <FaAngleLeft />
       </button>
@@ -58,7 +58,13 @@ const Banner = () => {
         />
       </div>
       <div className=" flex flex-row items-center justify-center w-full">
-        <p className=" text-white text-xs lg:text-sm">
+        <p
+          className={` text-white mt-1 text-xs lg:text-sm  ${
+            currentOption % 2 == 0
+              ? "animate-slideUpfast2"
+              : " animate-slideUpfast"
+          }`}
+        >
           {activeBanners[currentOption].title}
         </p>
       </div>
@@ -75,7 +81,7 @@ const Banner = () => {
             (currentOption - 1 + activeBanners.length) % activeBanners.length
           )
         }
-        className=" text-white/40 rounded-lg"
+        className=" text-white/40 rounded-lg cursor-pointer z-50"
       >
         <FaAngleRight />
       </button>

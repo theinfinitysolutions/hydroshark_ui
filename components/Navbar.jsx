@@ -173,7 +173,7 @@ const Navbar = () => {
               {!user ? (
                 <FaRegCircleUser className=" text-[#181818] text-xl mt-1" />
               ) : (
-                <div className=" h-[3vh] w-[3vh] flex flex-col items-center justify-center rounded-full bg-black text-white">
+                <div className=" h-[3vh] w-[3vh] flex flex-col items-center justify-center cursor-pointer rounded-full bg-black text-white">
                   <p className=" text-xs mt-1">{user.name[0] || "U"}</p>
                 </div>
               )}

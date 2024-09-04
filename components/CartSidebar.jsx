@@ -249,7 +249,7 @@ export default function CartSidebar() {
             </div>
             {!user ? (
               cart.length > 0 ? (
-                <div className="flex flex-col mt-4 w-full max-h-[80%] overflow-scroll">
+                <div className="flex flex-col mt-4 w-full max-h-[80%] overflow-y-scroll">
                   {cart.map((item, index) => {
                     return (
                       <CartCard
@@ -278,7 +278,7 @@ export default function CartSidebar() {
                 </div>
               )
             ) : cartList.length > 0 ? (
-              <div className="flex flex-col mt-4 w-full max-h-[80%] overflow-scroll">
+              <div className="flex flex-col mt-4 w-full max-h-[80%] overflow-y-scroll">
                 {cartList.map((item, index) => {
                   return (
                     <CartCard
