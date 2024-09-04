@@ -3,6 +3,8 @@ export const textColors = {
   LEMON: "#308918",
 };
 
+export const with3DModel = ["MANGO", "LEMON"];
+
 export const flavorData = [
   {
     title: "LEMON",
