@@ -23,7 +23,7 @@ export default function Home() {
   const ref = useRef();
   const router = useRouter();
   const [currentFlavour, setCurrentFlavour] = useState(0);
-  const [animateHeight, setAnimateHeight] = useState("50vh");
+  const [animateHeight, setAnimateHeight] = useState("52.5vh");
   const { user } = useStore();
 
   useEffect(() => {
@@ -76,11 +76,11 @@ export default function Home() {
             </span>
             <span className="h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
 
-            <span className=" hidden lg:block text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
+            <span className="  text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
               {"Low sugar"}
             </span>
-            <span className="hidden lg:block h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
-            <span className="hidden lg:block text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
+            <span className=" h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
+            <span className=" text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
               {"Electrolytes"}
             </span>
             <span className=" hidden lg:block h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
@@ -133,7 +133,7 @@ export default function Home() {
             <span className="text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
               {"Salt"}
             </span>
-            <span className="h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
+            <span className="hidden lg:block h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
 
             <span className="hidden lg:block text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
               {"Electrolytes"}
@@ -186,12 +186,11 @@ export default function Home() {
               {"Salt"}
             </span>
             <span className="h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
-
-            <span className=" hidden lg:block text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
+            <span className="  text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
               {"Low sugar"}
             </span>
-            <span className="hidden lg:block h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
-            <span className="hidden lg:block text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
+            <span className=" h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
+            <span className=" text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
               {"Electrolytes"}
             </span>
             <span className=" hidden lg:block h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
@@ -324,7 +323,7 @@ export default function Home() {
 
         <div
           disabled
-          className=" block lg:hidden absolute left-0 z-50  h-[35vh] w-[60vw]  pointer-events-none"
+          className=" block lg:hidden absolute left-0 z-50  h-[35vh] w-[80vw]  pointer-events-none"
         >
           <motion.div
             initial={{ y: "90vh" }}

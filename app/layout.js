@@ -21,6 +21,7 @@ import ConfirmModals from "@/components/ConfirmModals";
 import ViewOrderDetailsModal from "@/components/ViewOrderDetailsModal";
 import ReviewModal from "@/components/ReviewModal";
 import PrivacyPolicyModal from "@/components/PrivacyPolicyModal";
+import CartCTA from "@/components/CartCTA";
 
 const local = localFont({ src: "../public/ITCAvantGardePro-Md.otf" });
 
@@ -83,7 +84,10 @@ export default function RootLayout({ children }) {
           domain={"https://salesiq.zohopublic.in/widget"}
         /> */}
         <HydrosharkCoinsModal />
-        <Script src="https://checkout.razorpay.com/v1/checkout.js"></Script>
+        <Script
+          id="razorpay-checkout-js"
+          src="https://checkout.razorpay.com/v1/checkout.js"
+        ></Script>
         <TawkToComponent />
         <AddUserAddressModal />
         <GlobalLoader />
@@ -91,6 +95,7 @@ export default function RootLayout({ children }) {
         <ViewOrderDetailsModal />
         <ReviewModal />
         <PrivacyPolicyModal />
+        <CartCTA />
       </body>
     </html>
   );

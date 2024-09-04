@@ -29,6 +29,18 @@ html {
   background: transparent;
 }
 
+#address::-webkit-scrollbar {
+  width: 8px;  /* Remove scrollbar space */
+  background: #dcdbdb !important;  /* Optional: just make scrollbar invisible */
+  border-radius: 16px;
+  
+}
+
+#address::-webkit-scrollbar-thumb {
+  background: #4f4e4e;
+  border-radius: 16px;
+}
+
 
 body {
   color: rgb(var(--foreground-rgb));
