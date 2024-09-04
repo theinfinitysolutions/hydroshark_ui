@@ -4,6 +4,8 @@ import { useStore } from "@/utils/store";
 import { FaCheckCircle, FaLaptopHouse } from "react-icons/fa";
 import { MdOutlineErrorOutline } from "react-icons/md";
 import { useRouter } from "next/navigation";
+import { IoCloseOutline } from "react-icons/io5";
+
 const ConfirmModals = () => {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
@@ -34,6 +36,15 @@ const ConfirmModals = () => {
       } z-50 inset-0 flex items-center justify-center bg-black/20`}
     >
       <div className="bg-white w-11/12 lg:w-5/12 relative overflow-y-scroll  flex flex-col items-center justify-center shadow-xl px-[5%] py-[5vh]">
+        <div className=" absolute right-4 top-4">
+          <button
+            onClick={() => {
+              handleClose();
+            }}
+          >
+            <IoCloseOutline className=" text-black text-xl" />
+          </button>
+        </div>
         {mode === "success" ? (
           <FaCheckCircle className=" text-green-500 text-5xl" />
         ) : (

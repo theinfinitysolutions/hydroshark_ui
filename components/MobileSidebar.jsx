@@ -137,6 +137,10 @@ export default function MobileSidebar() {
                 setShow({
                   show: false,
                 });
+                setShow({
+                  show: false,
+                });
+                router.push("/");
               }}
               className=" w-11/12 py-2 bg-[#181818] text-white mx-4 mt-4"
             >

@@ -111,6 +111,7 @@ const ProductSectionHome = () => {
               autoPlay
               loop
               muted
+              controls
               className="w-full h-full object-cover z-10"
             />
           </div>
@@ -256,8 +257,8 @@ const ProductSectionHome = () => {
                 centeredSlides={true}
                 loop={true}
                 autoplay={{
-                  delay: 2000,
-                  disableOnInteraction: false,
+                  delay: 5000,
+                  disableOnInteraction: true,
                   pauseOnMouseEnter: true,
                 }}
                 modules={[Autoplay]}
