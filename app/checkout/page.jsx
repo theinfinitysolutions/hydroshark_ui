@@ -195,7 +195,7 @@ const Checkout = () => {
           description:
             "Some error has occured, please try again later or contact support",
           action: "/",
-          buttonText: "Back Home",
+          buttonText: "Back to products",
         });
         setShowLoading({ show: false });
         console.log("err", err);
@@ -224,7 +224,7 @@ const Checkout = () => {
             description:
               "You will recieve an email confirmation shortly , please visit the profile section for more details",
             action: "/products",
-            buttonText: "Back Home",
+            buttonText: "Back to products",
           });
         }
       })
@@ -239,7 +239,7 @@ const Checkout = () => {
           description:
             "Some error has occured, please try again later or contact support",
           action: "/products",
-          buttonText: "Back Home",
+          buttonText: "Back to products",
         });
       });
   };
@@ -274,7 +274,7 @@ const Checkout = () => {
             description:
               "You order has been successfully placed, you will recieve an email confirmation shortly , please visit the profile section for more details",
             action: "/products",
-            buttonText: "Back Home",
+            buttonText: "Back to products",
           });
           handleShowConfetti();
         },
@@ -306,7 +306,7 @@ const Checkout = () => {
         description:
           "Some error has occured, please try again later or contact support",
         action: "/products",
-        buttonText: "Back Home",
+        buttonText: "Back to products",
       });
     }
   };
