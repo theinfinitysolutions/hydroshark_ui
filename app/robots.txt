@@ -3,6 +3,10 @@ User-agent: Googlebot
 Disallow: 
 User-agent: googlebot-image
 Disallow: 
+User-agent: googlebot-mobile
+Disallow: 
 User-agent: *
 Disallow: 
-Sitemap: https://www.hydroshark.in/sitemap.xml
+Disallow: /cgi-bin/
+Sitemap: https://hydroshark.in
+
