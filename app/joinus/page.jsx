@@ -30,7 +30,7 @@ const JoinUs = () => {
         >
           <div className=" w-[90vw] h-[80vh] lg:w-[70vw] mr-[10vw] relative lg:h-[65vh] rounded-2xl bg-black flex flex-col lg:flex-row justify-center items-center">
             <div className=" w-11/12 lg:w-9/12 flex flex-col items-start px-[2.5vw] ">
-              <p className=" text-[3rem] leading-[2.75rem] text-[#DEE2E6]">
+              <p className=" text-[2rem] lg:text-[3rem] leading-[2rem] lg:leading-[2.75rem] text-[#DEE2E6]">
                 Unlock Opportunities with Hydroshark
               </p>
               <p className=" text-base text-[#DEE2E6] mt-4">
@@ -56,7 +56,7 @@ const JoinUs = () => {
               </div>
             </div>
             <div className=" w-11/12 lg:w-7/12 flex flex-col items-start pr-[2.5vw]">
-              <p className=" text-[3rem] leading-[2.75rem] text-[#5C6262]">
+              <p className=" text-[2rem] lg:text-[3rem] leading-[2rem] lg:leading-[2.75rem] text-[#5C6262]">
                 Distributors
               </p>
               <p className=" text-base text-[#5C6262] mt-4">
@@ -66,7 +66,7 @@ const JoinUs = () => {
               </p>
               <button
                 onClick={() => {
-                  router.push("/contactus");
+                  router.push("/contact");
                 }}
                 className=" px-4 py-2 mt-4 text-white bg-[#181818]"
               >
@@ -76,7 +76,7 @@ const JoinUs = () => {
           </div>
           <div className=" w-[90vw] h-[80vh] lg:w-[70vw] mr-[10vw] relative lg:h-[65vh] rounded-2xl bg-[#308918] flex flex-row justify-center items-center">
             <div className=" w-11/12 lg:w-7/12  flex-col items-start pl-[2.5vw]">
-              <p className=" text-[3rem] leading-[2.75rem] text-[#DEE2E6]">
+              <p className=" text-[2rem] lg:text-[3rem] leading-[2rem] lg:leading-[2.75rem] text-[#DEE2E6]">
                 Influencers
               </p>
               <p className=" text-base text-[#DEE2E6] mt-4">
@@ -86,7 +86,7 @@ const JoinUs = () => {
               </p>
               <button
                 onClick={() => {
-                  router.push("/contactus");
+                  router.push("/contact");
                 }}
                 className=" px-4 py-2 mt-4 text-white bg-[#181818]"
               >
@@ -105,7 +105,7 @@ const JoinUs = () => {
           </div>
           <div className=" w-[90vw] h-[80vh] lg:w-[70vw] mr-[10vw] relative lg:h-[65vh] rounded-2xl bg-[#91979d] flex flex-col lg:flex-row justify-center items-center">
             <div className=" w-11/12 lg:w-1/2 flex flex-col  items-start lg:pl-[2.5vw]">
-              <p className=" text-[3rem] leading-[2.75rem] text-[#181818]">
+              <p className=" text-[2rem] lg:text-[3rem] leading-[2rem] lg:leading-[2.75rem] text-[#181818]">
                 Join Us Today
               </p>
               <p className=" hidden lg:block text-base text-[#181818] mt-4">
@@ -114,7 +114,7 @@ const JoinUs = () => {
                 }
               </p>
             </div>
-            <div className=" flex flex-col  items-center justify-center w-11/12 lg:w-1/2 ">
+            <div className=" flex flex-col z-40 items-center justify-center w-11/12 lg:w-1/2 ">
               <ContactUs />
             </div>
           </div>
