@@ -236,6 +236,7 @@ const ViewProduct = ({ id }) => {
                       <button
                         onClick={() => setSelectedSection(section)}
                         key={index}
+                        disabled={!section.in_stock}
                         className={` px-4 lg:px-0 lg:w-[5vw] py-2 text-sm flex flex-col items-center border-[1px] border-white ${
                           !(selectedSection?.id == section?.id)
                             ? "bg-black text-white"

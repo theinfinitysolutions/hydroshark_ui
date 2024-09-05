@@ -5,6 +5,7 @@ import Image from "next/image";
 import { testimonials } from "@/utils/consts";
 import instance from "@/utils/instance";
 import { getUser } from "@/utils/helper";
+import { FaSlash } from "react-icons/fa6";
 
 // import "swiper/css";
 // import "swiper/css/effect-coverflow";
@@ -62,7 +63,11 @@ const Products = () => {
 
           let data = {
             ...response.data,
-            ...{ activeSection: response.data.product_sections[0].id },
+            ...{
+              activeSection: response.data.product_sections.find(
+                (item) => item.in_stock
+              ).id,
+            },
           };
 
           if (response) {
@@ -143,7 +148,8 @@ const Products = () => {
                         updateActiveProduct(section.id, product.id);
                       }}
                       key={index}
-                      className={` w-[5vh] h-[5vh] lg:h-[6vh] lg:w-[6vh] cursor-pointer   flex flex-col items-center justify-center rounded-full border-[1px] border-white ${
+                      disabled={!section.in_stock}
+                      className={` w-[5vh] h-[5vh] lg:h-[6vh] lg:w-[6vh] cursor-pointer  relative  flex flex-col items-center justify-center rounded-full border-[1px] border-white ${
                         product.activeSection == section.id
                           ? "bg-white text-black"
                           : "bg-transparent text-white"
@@ -152,6 +158,9 @@ const Products = () => {
                       <p className="  font-semibold text-[10px]">
                         {section.section_title}
                       </p>
+                      {!section.in_stock && (
+                        <FaSlash className=" absolute w-[4vh] h-[4vh] lg:h-[5vh] lg:w-[5vh] text-white/70 " />
+                      )}
                     </button>
                   ))}
                 </div>
