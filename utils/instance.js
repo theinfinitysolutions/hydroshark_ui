@@ -39,7 +39,6 @@ instance.interceptors.response.use(
       response.status.toString()[0] != "2"
     );
     if (response.status.toString()[0] != "2") {
-      console.log("res.datacheck1", response);
       throw response;
     }
     return response;
