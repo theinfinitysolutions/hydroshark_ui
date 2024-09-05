@@ -42,12 +42,10 @@ const Products = () => {
     instance
       .get("/drinks/product/")
       .then((res) => {
-        console.log("res", res.data.results);
         let productIds = res.data.results.map((item) => {
           return item.id;
         });
 
-        console.log("productIds", productIds);
         getProductDataDetailed(productIds);
       })
       .catch((err) => {

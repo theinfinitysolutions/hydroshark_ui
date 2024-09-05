@@ -49,7 +49,7 @@ export default function Home() {
             fill
           />
         </div>
-        <div className="absolute overflow-hidden flex flex-row  bg-black rotate-[7deg] lg:rotate-[4deg] top-[75vh] z-40  ">
+        <div className="absolute overflow-hidden flex flex-row  bg-black rotate-[7deg] lg:rotate-[4deg] top-[75vh] z-30  ">
           <div
             className="min-w-screen w-[100vw] flex flex-row  lg:py-1 items-center relative  transform-[translate3d(var(--move-initial),0,0)] animate-marqueebanner [animation-play-state:running]"
             aria-hidden="true"
@@ -160,7 +160,7 @@ export default function Home() {
             </span>
           </div>
         </div>
-        <div className="absolute overflow-hidden flex flex-row  bg-black rotate-[-7deg] lg:rotate-[-4deg] top-[75vh] z-40  ">
+        <div className="absolute overflow-hidden flex flex-row  bg-black rotate-[-7deg] lg:rotate-[-4deg] top-[75vh] z-30  ">
           <div
             className="min-w-screen w-[100vw] flex flex-row  lg:py-1 items-center relative  transform-[translate3d(var(--move-initial),0,0)] animate-marqueebanner [animation-play-state:running]"
             aria-hidden="true"
@@ -435,7 +435,7 @@ export default function Home() {
                 <div className="absolute inset-0 z-0 h-full w-full rounded-md transition-all duration-300 group-hover:-translate-x-3 group-hover:-translate-y-3 group-hover:[box-shadow:5px_5px_#a3a3a3,10px_10px_#d4d4d4,15px_15px_#e5e5e5] group-active:translate-x-0 group-active:translate-y-0 group-active:shadow-none"></div>
               </button> */}
 
-              <div className="mt-4">
+              <div className="mt-4 z-50">
                 <ShopNowButton onClick={() => router.push("/products")} />
               </div>
             </div>

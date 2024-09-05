@@ -333,8 +333,6 @@ const Checkout = () => {
         // });
         // setOrderId("");
       });
-
-      // console.log("rzp", paymentObject, options);
       paymentObject.open();
     } catch (error) {
       console.log("error payemnt", error);
