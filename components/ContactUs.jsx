@@ -120,7 +120,7 @@ const ContactUs = () => {
           />
         </div>
 
-        <div className="flex flex-row justify-end">
+        <div className="flex flex-row justify-end z-30">
           <button
             className={`px-8 py-2  ${
               emailSent ? "bg-green-600" : "bg-white"

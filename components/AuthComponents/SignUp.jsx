@@ -106,7 +106,9 @@ const SignUp = ({ BackToLogin }) => {
 
   return (
     <div className="flex flex-col w-full items-center px-4">
-      <div className="text-[1.5rem] font-[500] text-black">SignUp</div>
+      <div className="text-[1.5rem] font-[500] text-black">
+        {showOTP ? "Enter OTP" : "SignUp"}
+      </div>
       {showOTP ? (
         <div className=" w-full flex flex-col items-center justify-center mt-4">
           <OTPInput

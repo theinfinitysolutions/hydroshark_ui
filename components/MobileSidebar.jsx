@@ -121,9 +121,9 @@ export default function MobileSidebar() {
               <div className=" h-[5vh] w-[5vh] rounded-full bg-green-400 flex justify-center items-center">
                 <p className=" text-base text-white">{user.name[0]}</p>
               </div>
-              <div className=" flex flex-col items-start">
-                <p className=" text-base text-black">{user.name}</p>
-                <p className=" text-sm text-black">{user.email}</p>
+              <div className=" flex flex-col w-8/12 items-start">
+                <p className=" text-sm text-black">{user.name}</p>
+                <p className=" text-xs text-black">{user.email}</p>
               </div>
             </div>
           ) : null}
