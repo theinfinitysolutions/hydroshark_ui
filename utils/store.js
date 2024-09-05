@@ -8,6 +8,9 @@ export const useStore = create((set) => ({
   cartSidebar: {
     show: false,
   },
+
+  user: null,
+  setUser: (user) => set((state) => (state.user = user)),
   setCartSidebar: (cartSidebar) =>
     set((state) => (state.cartSidebar = cartSidebar)),
   cart: [],
@@ -45,9 +48,6 @@ export const useStore = create((set) => ({
   setShowAddressModal: (showAddressModal) =>
     set((state) => (state.showAddressModal = showAddressModal)),
 
-  user: null,
-  setUser: (user) => set((state) => (state.user = user)),
-
   showLoading: {
     show: false,
   },
@@ -62,6 +62,7 @@ export const useStore = create((set) => ({
     description: "",
     action: "",
     buttonText: "",
+    id: "",
   },
   setShowConfirmModal: (showConfirmModal) =>
     set((state) => (state.showConfirmModal = showConfirmModal)),
@@ -91,4 +92,12 @@ export const useStore = create((set) => ({
     listCount: 0,
   },
   setCartData: (cartData) => set((state) => (state.cartData = cartData)),
+
+  showRetryPaymentModal: {
+    show: false,
+    id: "",
+    type: "",
+  },
+  setShowRetryPaymentModal: (showRetryPaymentModal) =>
+    set((state) => (state.showRetryPaymentModal = showRetryPaymentModal)),
 }));
