@@ -222,10 +222,6 @@ export default function CartSidebar() {
       });
   };
 
-  useEffect(() => {
-    console.log("cart", cart, activeCart);
-  }, [cart]);
-
   return (
     <>
       <div

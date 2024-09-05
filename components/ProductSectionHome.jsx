@@ -111,7 +111,7 @@ const ProductSectionHome = () => {
               autoPlay
               loop
               muted
-              controls
+              controls={false}
               className="w-full h-full object-cover z-10"
             />
           </div>
