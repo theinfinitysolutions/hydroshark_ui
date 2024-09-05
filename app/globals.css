@@ -41,6 +41,18 @@ html {
   border-radius: 16px;
 }
 
+*::-webkit-media-controls-panel {
+  display: none!important;
+  -webkit-appearance: none;
+}
+
+
+video::-webkit-media-controls {
+  display:none !important;
+}
+
+
+
 
 body {
   color: rgb(var(--foreground-rgb));

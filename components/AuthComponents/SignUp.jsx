@@ -15,6 +15,7 @@ const SignUp = ({ BackToLogin }) => {
   const [showOTP, setShowOTP] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
   const [error, setError] = useState(null);
+  const { user, setUser, showAuthModal, setShowAuthModal } = useStore();
 
   const {
     register,
