@@ -9,7 +9,12 @@ import { IoCloseOutline } from "react-icons/io5";
 const ConfirmModals = () => {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
-  const { showConfirmModal, setShowConfirmModal } = useStore();
+  const {
+    showConfirmModal,
+    setShowConfirmModal,
+    setShowLoading,
+    setShowRetryPaymentModal,
+  } = useStore();
   const [mode, setMode] = useState("success");
 
   useEffect(() => {
@@ -40,6 +45,7 @@ const ConfirmModals = () => {
           <button
             onClick={() => {
               handleClose();
+              router.push("/");
             }}
           >
             <IoCloseOutline className=" text-black text-xl" />
@@ -73,8 +79,21 @@ const ConfirmModals = () => {
         <button
           onClick={() => {
             handleClose();
-            if (showConfirmModal.action) {
+            if (
+              showConfirmModal.action &&
+              showConfirmModal.action != "retry" &&
+              showConfirmModal.action != "retryOrder"
+            ) {
               router.push(showConfirmModal.action);
+            } else if (
+              showConfirmModal.action == "retry" ||
+              showConfirmModal.action == "retryOrder"
+            ) {
+              setShowRetryPaymentModal({
+                show: true,
+                id: showConfirmModal.id,
+                type: showConfirmModal.action,
+              });
             } else {
               router.push("/");
             }
