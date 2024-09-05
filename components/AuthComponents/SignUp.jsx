@@ -76,13 +76,11 @@ const SignUp = ({ BackToLogin }) => {
 
   const handleLogin = () => {
     setLoading(true);
-    console.log("phone_number", getValues("phone_number"));
     let obj = {
       phone_number: getValues("phone_number"),
       otp: otp,
     };
 
-    console.log("obj", obj);
     instance
       .post("/accounts/login/", obj)
       .then((res) => {

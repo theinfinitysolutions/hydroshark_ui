@@ -13,7 +13,7 @@ const CartCTA = () => {
       style={{ zIndex: 80 }}
       className=" fixed lg:hidden bottom-4 left-4 flex flex-col items-center bg-[#181818] h-[6vh] w-[6vh] justify-center rounded-full shadow-md "
     >
-      <FaShoppingCart className=" text-white text-2xl" />
+      <FaShoppingCart className=" text-white text-xl" />
     </button>
   );
 };

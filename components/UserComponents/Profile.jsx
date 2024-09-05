@@ -49,7 +49,6 @@ const Profile = () => {
       .get(`/rewards/wallet/`)
       .then((res) => {
         setWalletData(res.data);
-        console.log("wallet data");
         setLoading(false);
       })
       .catch((err) => {

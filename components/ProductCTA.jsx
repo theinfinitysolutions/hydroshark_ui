@@ -28,8 +28,7 @@ const ProductCTA = () => {
     productListTemp.forEach((item) => {
       if (item.id == productId) item.activeSection = id;
     }),
-      console.log("list temp", productListTemp);
-    setProductList([...productListTemp]);
+      setProductList([...productListTemp]);
   };
 
   const getAllProducts = () => {
@@ -43,8 +42,6 @@ const ProductCTA = () => {
         let productIds = res.data.results.map((item) => {
           return item.id;
         });
-
-        console.log("productIds", productIds);
         getProductDataDetailed(productIds);
       })
       .catch((err) => {

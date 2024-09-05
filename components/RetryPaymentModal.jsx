@@ -50,7 +50,6 @@ const RetryPaymentModal = () => {
         order: showRetryPaymentModal.id,
       })
       .then((res) => {
-        console.log("res create payment", res);
         setShowLoading({ show: false });
         if (paymentMethod === "razorpay" && res.data?.razorpay_order_id) {
           processPayment(res.data.razorpay_order_id);
@@ -97,7 +96,6 @@ const RetryPaymentModal = () => {
 
   const processPayment = async (orderId) => {
     try {
-      console.log("processPayment", orderId);
       const options = {
         key: process.env.RAZORPAY_KEY_ID,
         key_id: process.env.RAZORPAY_KEY_ID,
@@ -108,7 +106,6 @@ const RetryPaymentModal = () => {
         image: process.env.NEXT_PUBLIC_API_URL + "/hydroshark.png",
         order_id: orderId,
         handler: async function (response) {
-          console.log("razorpay response", response);
           setShowConfirmModal({
             show: true,
             mode: "success",
@@ -133,10 +130,7 @@ const RetryPaymentModal = () => {
         },
       };
 
-      // console.log("rzp", options);
-
       const paymentObject = window.Razorpay(options);
-      // console.log("rzp", paymentObject, options);
       paymentObject.open();
     } catch (error) {
       console.log(error);

@@ -94,7 +94,6 @@ const Navbar = () => {
   const [showProfile, setShowProfile] = useState(false);
 
   useEffect(() => {
-    console.log("cartDtaa test", cartData);
     getCart();
     getUser();
   }, []);
@@ -213,7 +212,6 @@ const Navbar = () => {
         <a
           onClick={() => {
             setCartSidebar({ show: true });
-            console.log("clicked");
           }}
           className=" py-2 mx-4 cursor-pointer relative z-10"
         >
@@ -251,7 +249,6 @@ const Navbar = () => {
         <a
           onClick={() => {
             setCartSidebar({ show: true });
-            console.log("clicked");
           }}
           className=" py-2 mx-4 cursor-pointer relative z-10"
         >
@@ -273,7 +270,6 @@ const Navbar = () => {
             setShow({
               show: true,
             });
-            console.log("clicked");
           }}
           className=" cursor-pointer"
         >

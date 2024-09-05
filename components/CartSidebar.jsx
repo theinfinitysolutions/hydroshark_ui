@@ -74,7 +74,6 @@ export default function CartSidebar() {
         console.log("res", res);
         setCartId(res.data.id);
         setCartList([...res.data.cart_items]);
-        console.log("cartList", cartList, user);
         useStore.setState({
           cartData: { listCount: res.data.cart_items.length },
         });
@@ -147,7 +146,6 @@ export default function CartSidebar() {
     }
 
     addToCart([]);
-    console.log("All API calls completed.");
     setShowLoading({ show: false });
   };
 

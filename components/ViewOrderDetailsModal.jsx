@@ -25,7 +25,6 @@ const ViewOrderDetailsModal = () => {
     instance
       .get(`/billing/shipping/track/${id}/`)
       .then((res) => {
-        console.log("res", res.data);
         setShippingDetails(res.data.data);
         setLoading(false);
       })
