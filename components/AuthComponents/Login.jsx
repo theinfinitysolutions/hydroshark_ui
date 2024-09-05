@@ -9,6 +9,7 @@ import Spinner from "../Spinner";
 const Login = ({ onSignUp }) => {
   const [loading, setLoading] = useState(false);
   const [showOTP, setShowOTP] = useState(false);
+  const [error, setError] = useState(null);
   const [otp, setOtp] = useState("");
   const { setUser, showAuthModal, setShowAuthModal } = useStore();
 
@@ -111,7 +112,7 @@ const Login = ({ onSignUp }) => {
               />
             )}
           />
-
+          {error && <span className="text-red-500 text-xs mt-1 ">{error}</span>}
           <button
             className="bg-black text-white px-8 py-2 mt-4"
             onClick={() => {
