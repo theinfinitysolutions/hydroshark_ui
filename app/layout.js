@@ -22,6 +22,7 @@ import ViewOrderDetailsModal from "@/components/ViewOrderDetailsModal";
 import ReviewModal from "@/components/ReviewModal";
 import PrivacyPolicyModal from "@/components/PrivacyPolicyModal";
 import CartCTA from "@/components/CartCTA";
+import RetryPaymentModal from "@/components/RetryPaymentModal";
 
 const local = localFont({ src: "../public/ITCAvantGardePro-Md.otf" });
 
@@ -96,6 +97,7 @@ export default function RootLayout({ children }) {
         <ReviewModal />
         <PrivacyPolicyModal />
         <CartCTA />
+        <RetryPaymentModal />
       </body>
     </html>
   );

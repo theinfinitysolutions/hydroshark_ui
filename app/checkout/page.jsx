@@ -14,8 +14,9 @@ import Spinner from "@/components/Spinner";
 import { IoIosAdd } from "react-icons/io";
 import { MdEdit } from "react-icons/md";
 import { IoMdAdd } from "react-icons/io";
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import Confetti from "react-confetti";
+import { create } from "zustand";
 
 const { width, height } = { width: 2400, height: 1200 };
 
@@ -41,6 +42,7 @@ const Checkout = () => {
   const [userDetails, setUserDetails] = useState(user);
   const [walletData, setWalletData] = useState({});
   const [addressList, setAddressList] = useState([]);
+  const [rzpOrderId, setRzpOrderId] = useState("");
   const [showConfetti, setShowConfetti] = React.useState(false);
   const [addressSelect, setAddressSelect] = useState({
     billingAddress: 0,
@@ -92,6 +94,7 @@ const Checkout = () => {
   const getCart = () => {
     setCartObject({});
     setLoading(true);
+    setOrderId("");
     instance
       .get(`/billing/cart/`)
       .then((res) => {
@@ -166,11 +169,19 @@ const Checkout = () => {
     setShowLoading({ show: false });
     getWalletData();
     getCart();
+    setOrderId("");
   }, []);
 
   const CreateOrder = () => {
     if (!addressSelect.shippingAddress || !addressSelect.billingAddress) {
       alert("Please select shipping and billing address");
+      return;
+    }
+
+    console.log("order id", orderId);
+
+    if (orderId != "") {
+      CreatePayment(orderId);
       return;
     }
 
@@ -196,6 +207,7 @@ const Checkout = () => {
             "Some error has occured, please try again later or contact support",
           action: "/",
           buttonText: "Back to products",
+          id: "",
         });
         setShowLoading({ show: false });
         console.log("err", err);
@@ -204,6 +216,12 @@ const Checkout = () => {
 
   const CreatePayment = (orderId) => {
     setShowLoading({ show: true });
+
+    if (rzpOrderId != "") {
+      processPayment(rzpOrderId);
+      return;
+    }
+
     instance
       .post("/billing/payment/", {
         payment_method: paymentMethod,
@@ -212,6 +230,7 @@ const Checkout = () => {
       .then((res) => {
         console.log("res create payment", res);
         setShowLoading({ show: false });
+        setRzpOrderId(res.data.razorpay_order_id);
         if (paymentMethod === "razorpay" && res.data?.razorpay_order_id) {
           processPayment(res.data.razorpay_order_id);
         } else {
@@ -225,6 +244,7 @@ const Checkout = () => {
               "You will recieve an email confirmation shortly , please visit the profile section for more details",
             action: "/products",
             buttonText: "Back to products",
+            id: orderId,
           });
         }
       })
@@ -237,9 +257,10 @@ const Checkout = () => {
           successText: "Error",
           title: "Some error has occured",
           description:
-            "Some error has occured, please try again later or contact support",
-          action: "/products",
-          buttonText: "Back to products",
+            "Some error has occured, Retry payment or contact support for further assistance",
+          action: "retryOrder",
+          buttonText: "Retry Payment",
+          id: orderId,
         });
       });
   };
@@ -253,6 +274,7 @@ const Checkout = () => {
   }, [user]);
 
   const processPayment = async (orderId) => {
+    setShowLoading({ show: false });
     try {
       console.log("processPayment", orderId);
       const options = {
@@ -277,11 +299,13 @@ const Checkout = () => {
             buttonText: "Back to products",
           });
           handleShowConfetti();
+          setOrderId("");
+          setRzpOrderId("");
         },
         prefill: {
-          name: "Hydroshark",
-          email: "test@hydroshark.in",
-          contact: "9876545678",
+          name: user?.name,
+          email: user?.email,
+          contact: user?.phone_number,
         },
         notes: {
           address: "Razorpay Corporate Office",
@@ -291,23 +315,41 @@ const Checkout = () => {
         },
       };
 
-      console.log("rzp", options);
-      setOrderId("");
+      // console.log("rzp", options);
+
       const paymentObject = window.Razorpay(options);
-      console.log("rzp", paymentObject, options);
+      paymentObject.on("payment.failed", function (response) {
+        console.log("payment failed", response);
+        // setShowConfirmModal({
+        //   show: true,
+        //   mode: "error",
+        //   successText: "Payment Failed",
+        //   title: "Payment Failed",
+        //   description:
+        //     "Payment has failed, Retry payment or contact support for further assistance",
+        //   action: "retry",
+        //   buttonText: "Retry Payment",
+        //   id: orderId,
+        // });
+        // setOrderId("");
+      });
+
+      // console.log("rzp", paymentObject, options);
       paymentObject.open();
     } catch (error) {
-      console.log(error);
+      console.log("error payemnt", error);
       setShowConfirmModal({
         show: true,
         mode: "error",
         successText: "Error",
         title: "Some error has occured",
         description:
-          "Some error has occured, please try again later or contact support",
-        action: "/products",
-        buttonText: "Back to products",
+          "Some error has occured, Retry payment or contact support for further assistance",
+        action: "retry",
+        buttonText: "Retry Payment",
+        id: rzpOrderId,
       });
+      setOrderId("");
     }
   };
 
