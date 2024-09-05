@@ -13,6 +13,7 @@ import { FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { AiOutlineYoutube } from "react-icons/ai";
 import { textColors } from "@/utils/consts";
+import { FaSlash } from "react-icons/fa6";
 
 const ProductSectionHome = () => {
   const router = useRouter();
@@ -79,7 +80,11 @@ const ProductSectionHome = () => {
 
           let data = {
             ...response.data,
-            ...{ activeSection: response.data.product_sections[0].id },
+            ...{
+              activeSection: response.data.product_sections.find(
+                (item) => item.in_stock
+              ).id,
+            },
           };
 
           if (response) {
@@ -212,6 +217,7 @@ const ProductSectionHome = () => {
                           onClick={() => {
                             updateActiveProduct(section.id, product.id);
                           }}
+                          disabled={!section.in_stock}
                           key={index}
                           className={` h-[6vh] w-[6vh] cursor-pointer   flex flex-col items-center justify-center rounded-full border-[1px] border-white ${
                             product.activeSection == section.id
@@ -222,6 +228,9 @@ const ProductSectionHome = () => {
                           <p className="  font-semibold text-[10px]">
                             {section.section_title}
                           </p>
+                          {!section.in_stock && (
+                            <FaSlash className=" absolute w-[4vh] h-[4vh] lg:h-[5vh] lg:w-[5vh] text-white/70 " />
+                          )}
                         </button>
                       ))}
                     </div>
@@ -315,6 +324,7 @@ const ProductSectionHome = () => {
                               onClick={() => {
                                 updateActiveProduct(section.id, product.id);
                               }}
+                              disabled={!section.in_stock}
                               key={index}
                               className={` h-[5vh] w-[5vh] cursor-pointer   flex flex-col items-center justify-center rounded-full border-[1px] border-black ${
                                 product.activeSection == section.id
@@ -325,6 +335,9 @@ const ProductSectionHome = () => {
                               <p className="  font-semibold text-[8px]">
                                 {section.section_title}
                               </p>
+                              {!section.in_stock && (
+                                <FaSlash className=" absolute w-[4vh] h-[4vh] lg:h-[5vh] lg:w-[5vh] text-white/70 " />
+                              )}
                             </button>
                           ))}
                         </div>

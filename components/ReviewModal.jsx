@@ -30,7 +30,6 @@ const ReviewModal = () => {
         review: review,
       })
       .then((res) => {
-        console.log("res", res);
         setLoading(false);
         setReviewSubmitted(true);
       })
