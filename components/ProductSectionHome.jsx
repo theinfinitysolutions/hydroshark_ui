@@ -112,7 +112,7 @@ const ProductSectionHome = () => {
         <div className=" flex flex-col w-full lg:w-4/12 items-center relative lg:items-start justify-center transition-all group">
           <div className="flex flex-col h-[80vh] lg:h-full w-full relative">
             <video
-              src={process.env.NEXT_PUBLIC_API_URL + `/hydrosharkvideo${2}.mp4`}
+              src={process.env.NEXT_PUBLIC_API_URL + `/hydrosharkvideo${4}.mp4`}
               autoPlay
               loop
               muted

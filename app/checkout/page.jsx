@@ -759,6 +759,20 @@ const Checkout = () => {
                     </p>
                   </div>
 
+                  {parseInt(cartObj?.cart_total_price) > 450 ? (
+                    <div className=" flex flex-row w-full justify-between items-center mt-2">
+                      <p className=" text-black text-sm lg:text-lg">
+                        Shipping Charges
+                      </p>
+                      <p className=" text-black text-sm lg:text-lg">
+                        ₹50
+                        {/* {cartList.reduce((acc, item) => {
+                      return acc + item.price;
+                    }, 0)} */}
+                      </p>
+                    </div>
+                  ) : null}
+
                   <div className=" flex flex-row justify-between items-center w-full mt-2">
                     <p className=" text-black text-sm lg:text-lg">
                       HydroShark Coins

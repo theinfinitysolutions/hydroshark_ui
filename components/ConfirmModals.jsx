@@ -51,7 +51,7 @@ const ConfirmModals = () => {
             <IoCloseOutline className=" text-black text-xl" />
           </button>
         </div>
-        {mode === "success" ? (
+        {mode == "success" ? (
           <FaCheckCircle className=" text-green-500 text-5xl" />
         ) : (
           <MdOutlineErrorOutline className=" text-red-500 text-5xl" />
