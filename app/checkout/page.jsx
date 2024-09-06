@@ -166,9 +166,14 @@ const Checkout = () => {
   }, [showAddressModal.show]);
 
   useEffect(() => {
+    if (!showAddressModal.show) {
+      getCart();
+    }
+  }, [showAddressModal.show]);
+
+  useEffect(() => {
     setShowLoading({ show: false });
     getWalletData();
-    getCart();
     setOrderId("");
   }, []);
 

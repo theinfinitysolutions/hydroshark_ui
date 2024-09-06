@@ -106,6 +106,7 @@ const ConfirmModals = () => {
         <a
           onClick={() => {
             router.push("/contact");
+            handleClose();
           }}
           className="text-black text-xs mt-4 underline"
         >
