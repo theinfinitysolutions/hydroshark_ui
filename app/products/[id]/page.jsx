@@ -6,7 +6,7 @@ import axios from "axios";
 async function fetchProductIds() {
   const response = await axios.get(`${BASE_URL}/drinks/product/`);
   const products = response.data.results;
-  return products.map((product) => ({ id: product.id + "" }));
+  return products.map((product) => ({ id: product.id + "" })) || [];
 }
 
 // Static generation of paths
@@ -16,9 +16,5 @@ export async function generateStaticParams() {
 }
 
 export default function ProductPage({ params }) {
-  return (
-    <div>
-      <ViewProduct id={params.id} />
-    </div>
-  );
+  return <div>{params.id ? <ViewProduct id={params.id} /> : null}</div>;
 }

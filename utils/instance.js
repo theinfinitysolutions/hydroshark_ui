@@ -1,7 +1,7 @@
 import axios from "axios";
 // export const BASE_URL = "http://144.24.111.231:7020";
 export const BASE_URL =
-  "http://a6a9c07fc28ba4a849b3df84e12c0d76-1039535980.us-east-1.elb.amazonaws.com";
+  "http://af08e05aaa6f34c1c9a51184d88204d6-116622961.us-east-1.elb.amazonaws.com";
 
 const instance = axios.create({
   baseURL: BASE_URL,
