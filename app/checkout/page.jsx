@@ -283,7 +283,7 @@ const Checkout = () => {
         amount: parseInt(cartObj?.cart_final_amount),
         currency: "INR",
         name: "Hydroshark",
-        description: "Test Transaction",
+        description: "Hydroshark Payment ",
         image: process.env.NEXT_PUBLIC_API_URL + "/hydroshark.png",
         order_id: orderId,
         handler: async function (response) {
@@ -308,10 +308,11 @@ const Checkout = () => {
           contact: user?.phone_number,
         },
         notes: {
-          address: "Razorpay Corporate Office",
+          address:
+            "Office #719, ARG Group Road, No-9A, Sikar Road, VKIA Area, Jaipur, Rajasthan, India",
         },
         theme: {
-          color: "#3399cc",
+          color: "#181818",
         },
       };
 
