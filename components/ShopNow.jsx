@@ -5,10 +5,12 @@ const ShopNowButton = ({ onClick }) => {
   return (
     <button
       onClick={onClick}
-      className="group relative inline-flex h-10 items-center overflow-hidden justify-center rounded-[1.5rem] border-[1px] border-neutral-950 bg-white px-[2rem] font-medium group text-black group-hover:text-white"
+      className="group relative inline-flex py-1 items-center overflow-hidden justify-center rounded-[1.5rem] border-[1px] border-neutral-950 bg-white px-4 lg:px-8 font-medium group text-black group-hover:text-white"
     >
       <span className="absolute h-0 w-0 rounded-full bg-black transition-all duration-300 group-hover:h-64 group-hover:w-64"></span>
-      <span className=" relative mt-1 group-hover:text-white">SHOP NOW</span>
+      <span className=" relative mt-1 text-sm lg:text-base group-hover:text-white">
+        SHOP NOW
+      </span>
       <div className="relative ml-1 h-5 w-5 overflow-hidden">
         <div className="absolute transition-all duration-200 group-hover:-translate-y-5 group-hover:translate-x-4">
           <svg
