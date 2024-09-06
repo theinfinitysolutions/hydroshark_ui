@@ -9,7 +9,7 @@ import Image from "next/image";
 const AuthModal = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { showAuthModal, setShowAuthModal } = useStore();
-  const [showSignup, setShowSignup] = useState(false);
+  const [showSignup, setShowSignup] = useState(true);
 
   useEffect(() => {
     setIsOpen(showAuthModal.show);
