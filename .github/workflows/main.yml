@@ -22,6 +22,7 @@ jobs:
         env:
           NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
           RAZORPAY_KEY_ID: ${{ secrets.RAZORPAY_KEY_ID }}
+          NEXT_PUBLIC_API: ${{ secrets.NEXT_PUBLIC_API }}
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
