@@ -10,7 +10,8 @@ async function fetchProductIds() {
 }
 
 export async function generateStaticParams() {
-  const ids = await fetchProductIds();
+  // const ids = await fetchProductIds();
+  const ids = [{ id: "1" }];
   return ids;
 }
 
