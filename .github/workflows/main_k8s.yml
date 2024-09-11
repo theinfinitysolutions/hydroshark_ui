@@ -6,7 +6,7 @@ on:
 
 permissions:
   id-token: write
-  contents: read   
+  contents: read
 
 jobs:
   deploy-to-k8s:
@@ -20,7 +20,7 @@ jobs:
         with:
           role-to-assume: arn:aws:iam::381492036637:role/github_actions_role
           aws-region: ${{ secrets.AWS_REGION }}
-          mask-aws-account-id: 'false'
+          mask-aws-account-id: "false"
 
       - name: Update Kubeconfig using AWS CLI
         run: |
@@ -29,13 +29,14 @@ jobs:
       - name: Login to ECR
         run: |
           aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | docker login --username AWS --password-stdin ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com
-          
+
       - name: Build and push Docker image with build-time environment variables
         run: |
           docker build \
             --build-arg NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }} \
             --build-arg NEXT_PUBLIC_API=${{ secrets.NEXT_PUBLIC_API }} \
             --build-arg RAZORPAY_KEY_ID=${{ secrets.RAZORPAY_KEY_ID }} \
+            --build-arg NEXT_PUBLIC_FACEBOOK_PIXEL_ID=${{ secrets.NEXT_PUBLIC_FACEBOOK_PIXEL_ID }} \
             --build-arg DEBUG=${{ secrets.DEBUG }} \
             -t ${{ secrets.ECR_REPOSITORY }} .
           docker tag ${{ secrets.ECR_REPOSITORY }}:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/${{ secrets.ECR_REPOSITORY }}:latest
