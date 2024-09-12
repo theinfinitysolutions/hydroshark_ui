@@ -806,7 +806,7 @@ const Checkout = () => {
                     </p>
                   </div>
 
-                  {parseInt(cartObj?.cart_total_price) > 450 ? (
+                  {parseInt(cartObj?.cart_total_price) < 450 ? (
                     <div className=" flex flex-row w-full justify-between items-center mt-2">
                       <p className=" text-black text-sm lg:text-lg">
                         Shipping Charges

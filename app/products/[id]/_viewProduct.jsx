@@ -81,9 +81,6 @@ const ViewProduct = ({ id }) => {
         setSelectedProduct(res.data);
         setSelectedSection({ ...res.data.product_sections[0] });
         setCurrentImage(res.data.product_primary_image.image.cloudfront);
-        if (with3DModel.includes(res.data.product_title)) {
-          setShow3dModel(true);
-        }
 
         setLoading(false);
       })
