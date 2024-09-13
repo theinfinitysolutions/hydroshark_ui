@@ -100,8 +100,11 @@ export default function RootLayout({ children }) {
         <RetryPaymentModal />
 
         {/* Facebook pixel */}
-        <Script id="facebook-pixel" strategy="afterInteractive">
-          {`
+        <Script
+          id="facebook-pixel"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
           !function(f,b,e,v,n,t,s)
             {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
             n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -112,14 +115,16 @@ export default function RootLayout({ children }) {
             'https://connect.facebook.net/en_US/fbevents.js');
             fbq('init', '1066527391554625');
             fbq('track', 'PageView');
-        `}
-        </Script>
+        `,
+          }}
+        />
         <noscript>
           <img
             height="1"
             width="1"
             style={{ display: "none" }}
             src={`https://www.facebook.com/tr?id=1066527391554625&ev=PageView&noscript=1`}
+            alt="Facebook Pixel"
           />
         </noscript>
       </body>
