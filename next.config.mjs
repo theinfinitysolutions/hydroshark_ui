@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // output: "export",
+  output: "export",
   reactStrictMode: false,
   // trailingSlash: true,
   images: {
@@ -36,6 +36,14 @@ const nextConfig = {
     });
 
     return config;
+  },
+  async rewrites() {
+    return [
+      {
+        source: "/api/:path*/",
+        destination: process.env.NEXT_PUBLIC_API + "/api/:path*/",
+      },
+    ];
   },
 };
 

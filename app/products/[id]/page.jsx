@@ -12,11 +12,10 @@ import { useEffect } from "react";
 //   return products.map((product) => ({ id: product.id + "" }));
 // }
 
-// // Static generation of paths
-// export async function generateStaticParams() {
-//   const ids = await fetchProductIds();
-//   return ids;
-// }
+export async function generateStaticParams() {
+  const ids = [{ id: "1" }];
+  return ids;
+}
 
 export default function ProductPage() {
   const params = useParams();

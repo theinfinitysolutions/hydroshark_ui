@@ -5,6 +5,7 @@ import { FaCheckCircle } from "react-icons/fa";
 import instance from "@/utils/instance";
 import Spinner from "../Spinner";
 import OTPInput from "react-otp-input";
+import { useStore } from "@/utils/store";
 
 const inputClass =
   "border-[1px] border-black  px-2 py-2 rounded-lg my-2 w-full text-black cursor-text";
@@ -15,6 +16,7 @@ const SignUp = ({ BackToLogin }) => {
   const [showOTP, setShowOTP] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
   const [error, setError] = useState(null);
+  const { user, setUser, showAuthModal, setShowAuthModal } = useStore();
 
   const {
     register,

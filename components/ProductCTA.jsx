@@ -9,6 +9,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Autoplay } from "swiper/modules";
 import { textColors } from "@/utils/consts";
+import { FaSlash } from "react-icons/fa6";
 
 const ProductCTA = () => {
   const {
@@ -58,7 +59,11 @@ const ProductCTA = () => {
 
           let data = {
             ...response.data,
-            ...{ activeSection: response.data.product_sections[0].id },
+            ...{
+              activeSection: response.data.product_sections.find(
+                (item) => item.in_stock
+              ).id,
+            },
           };
 
           if (response) {
@@ -189,6 +194,7 @@ const ProductCTA = () => {
                                 updateActiveProduct(section.id, product.id);
                               }}
                               key={index}
+                              disabled={!section.in_stock}
                               className={` h-[5vh] w-[5vh] cursor-pointer   flex flex-col items-center justify-center rounded-full border-[1px] border-black ${
                                 product.activeSection == section.id
                                   ? "bg-black text-white"
@@ -198,6 +204,9 @@ const ProductCTA = () => {
                               <p className="  font-semibold text-[8px]">
                                 {section.section_title}
                               </p>
+                              {!section.in_stock && (
+                                <FaSlash className=" absolute w-[4vh] h-[4vh] lg:h-[5vh] lg:w-[5vh] text-white/70 " />
+                              )}
                             </button>
                           ))}
                         </div>

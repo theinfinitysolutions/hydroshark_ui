@@ -29,8 +29,8 @@ const local = localFont({ src: "../public/ITCAvantGardePro-Md.otf" });
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Hydroshark - India's First Carbonated Hydration Drink",
-  description: "India's First Carbonated Hydration Drink",
+  title: "Hydroshark - India's First No Caffeine Hydration Drink",
+  description: "India's First No Caffeine Hydration Drink",
 };
 
 export default function RootLayout({ children }) {
@@ -41,13 +41,15 @@ export default function RootLayout({ children }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="description"
-          content="India's First Carbonated Hydration Drink"
+          content="India's First No Caffeine Hydration Drink"
         />
         <meta
           name="keywords"
           content="hydroshark, hydration, electrolytes, vitamins, healthy, energy drink, low sugar, energy, prime, gatorade, hell energy, cocacola, water, bisleri, drinks, carbonated, india, healthy, lifestyle, choice , water, soda, sparkling, water, health, fitness, wellness, beverage, energy, athletics, workout, hydration drinks, prime, gatorade"
         />
-        <title>{"Hydroshark - India's First Carbonated Hydration Drink"}</title>
+        <title>
+          {"Hydroshark - India's First No Caffeine Hydration Drink"}
+        </title>
         <link rel="canonical" href="//www.hydroshark.in/" />
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         <link
@@ -98,6 +100,36 @@ export default function RootLayout({ children }) {
         <PrivacyPolicyModal />
         <CartCTA />
         <RetryPaymentModal />
+
+        {/* Facebook pixel */}
+        <Script
+          id="facebook-pixel"
+          strategy="lazyOnload"
+          dangerouslySetInnerHTML={{
+            __html: `
+          !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '1066527391554625');
+            fbq('track', 'PageView');
+            console.log("Facebook Pixel Loaded");
+        `,
+          }}
+        />
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            style={{ display: "none" }}
+            src={`https://www.facebook.com/tr?id=1066527391554625&ev=PageView&noscript=1`}
+            alt="Facebook Pixel"
+          />
+        </noscript>
       </body>
     </html>
   );

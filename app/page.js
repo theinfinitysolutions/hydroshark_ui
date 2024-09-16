@@ -80,9 +80,6 @@ export default function Home() {
               {"Low sugar"}
             </span>
             <span className=" h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
-            <span className=" text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
-              {"Electrolytes"}
-            </span>
             <span className=" hidden lg:block h-1 w-1 lg:h-2 lg:w-2 rounded-full bg-white"></span>
             <span className=" hidden lg:block text-[8px] lg:text-[12px] p-[1vw_2vw] lg:p-[0_2vw] text-white">
               {"Low calorie"}
@@ -160,7 +157,7 @@ export default function Home() {
             </span>
           </div>
         </div>
-        <div className="absolute overflow-hidden flex flex-row  bg-black rotate-[-7deg] lg:rotate-[-4deg] top-[75vh] z-30  ">
+        <div className="absolute overflow-hidden hidden lg:flex flex-row  bg-black rotate-[-7deg] lg:rotate-[-4deg] top-[75vh] z-30  ">
           <div
             className="min-w-screen w-[100vw] flex flex-row  lg:py-1 items-center relative  transform-[translate3d(var(--move-initial),0,0)] animate-marqueebanner [animation-play-state:running]"
             aria-hidden="true"
@@ -335,10 +332,10 @@ export default function Home() {
           </motion.div>
         </div>
 
-        <div className="flex flex-col lg:flex-row h-[90vh] w-full px-[5vw] overflow-hidden pt-[5vh] relative ">
+        <div className="flex flex-col lg:flex-row h-[90vh] w-full px-[5vw] overflow-hidden  relative ">
           <div className="flex flex-col w-full lg:w-1/2 items-start">
             <h1 className=" text-black text-[2.5rem]  lg:text-[4rem] 2xl:text-[5rem] font-bold leading-[2.5rem] lg:leading-[4rem] 2xl:leading-[5rem]">
-              {"India's First Carbonated Hydration Drink"}
+              {"India's First No Caffeine Hydration Drink"}
             </h1>
             <div className=" hidden  w-7/12 lg:flex flex-col mt-[5vh]">
               <div className="flex flex-row justify-between items-center">
@@ -422,7 +419,7 @@ export default function Home() {
               <p className=" text-black text-xl font-semibold text-end">
                 Why choose Hydroshark?
               </p>
-              <p className="text-black/80 mt-1 w-10/12 lg:w-7/12 text-[0.75rem] text-end leading-[1rem]">
+              <p className="text-black/80 mt-1 w-11/12 lg:w-7/12 text-[0.75rem] text-end leading-[1rem]">
                 {
                   "Join us on our mission to change the way India hydrates. Let’s make every sip a step towards a healthier, more adventurous life."
                 }

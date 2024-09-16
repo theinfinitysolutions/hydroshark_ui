@@ -166,9 +166,14 @@ const Checkout = () => {
   }, [showAddressModal.show]);
 
   useEffect(() => {
+    if (!showAddressModal.show) {
+      getCart();
+    }
+  }, [showAddressModal.show]);
+
+  useEffect(() => {
     setShowLoading({ show: false });
     getWalletData();
-    getCart();
     setOrderId("");
   }, []);
 
@@ -283,24 +288,29 @@ const Checkout = () => {
         amount: parseInt(cartObj?.cart_final_amount),
         currency: "INR",
         name: "Hydroshark",
-        description: "Test Transaction",
+        description: "Hydroshark Payment ",
         image: process.env.NEXT_PUBLIC_API_URL + "/hydroshark.png",
         order_id: orderId,
         handler: async function (response) {
           console.log("razorpay response", response);
-          setShowConfirmModal({
-            show: true,
-            mode: "success",
-            successText: "Payment Successful",
-            title: "Your Order has been successfully placed",
-            description:
-              "You order has been successfully placed, you will recieve an email confirmation shortly , please visit the profile section for more details",
-            action: "/products",
-            buttonText: "Back to products",
-          });
-          handleShowConfetti();
-          setOrderId("");
-          setRzpOrderId("");
+          // setShowConfirmModal({
+          //   show: true,
+          //   mode: "success",
+          //   successText: "Payment Successful",
+          //   title: "Your Order has been successfully placed",
+          //   description:
+          //     "You order has been successfully placed, you will recieve an email confirmation shortly , please visit the profile section for more details",
+          //   action: "/products",
+          //   buttonText: "Back to products",
+          // });
+          completePayment(
+            response.razorpay_payment_id,
+            orderId,
+            response.razorpay_signature
+          );
+          // handleShowConfetti();
+          // setOrderId("");
+          // setRzpOrderId("");
         },
         prefill: {
           name: user?.name,
@@ -308,10 +318,11 @@ const Checkout = () => {
           contact: user?.phone_number,
         },
         notes: {
-          address: "Razorpay Corporate Office",
+          address:
+            "Office #719, ARG Group Road, No-9A, Sikar Road, VKIA Area, Jaipur, Rajasthan, India",
         },
         theme: {
-          color: "#3399cc",
+          color: "#181818",
         },
       };
 
@@ -349,6 +360,48 @@ const Checkout = () => {
       });
       setOrderId("");
     }
+  };
+
+  const completePayment = (paymentId, orderId, signature) => {
+    setShowLoading({ show: true });
+    instance
+      .post("billing/payment/verify/", {
+        razorpay_order_id: orderId,
+        razorpay_payment_id: paymentId,
+        razorpay_signature: signature,
+      })
+      .then((res) => {
+        console.log("res", res);
+        setShowConfirmModal({
+          show: true,
+          mode: "success",
+          successText: "Payment Successful",
+          title: "Your Order has been successfully placed",
+          description:
+            "You payment has been , you will recieve an email confirmation shortly , please visit the profile section for more details",
+          action: "/products",
+          buttonText: "Back to products",
+        });
+        handleShowConfetti();
+        setOrderId("");
+        setRzpOrderId("");
+        setShowLoading({ show: false });
+      })
+      .catch((err) => {
+        console.log("err", err);
+        setShowLoading({ show: false });
+        setShowConfirmModal({
+          show: true,
+          mode: "error",
+          successText: "Error",
+          title: "Some error has occured",
+          description:
+            "Some error has occured,contact support for further assistance",
+          action: "/",
+          buttonText: "Go back to home",
+          id: orderId,
+        });
+      });
   };
 
   return (
@@ -752,6 +805,20 @@ const Checkout = () => {
                     }, 0)} */}
                     </p>
                   </div>
+
+                  {parseInt(cartObj?.cart_total_price) < 450 ? (
+                    <div className=" flex flex-row w-full justify-between items-center mt-2">
+                      <p className=" text-black text-sm lg:text-lg">
+                        Shipping Charges
+                      </p>
+                      <p className=" text-black text-sm lg:text-lg">
+                        ₹50
+                        {/* {cartList.reduce((acc, item) => {
+                      return acc + item.price;
+                    }, 0)} */}
+                      </p>
+                    </div>
+                  ) : null}
 
                   <div className=" flex flex-row justify-between items-center w-full mt-2">
                     <p className=" text-black text-sm lg:text-lg">

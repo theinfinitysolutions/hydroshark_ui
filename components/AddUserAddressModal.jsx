@@ -46,6 +46,7 @@ const AddUserAddressModal = () => {
         getAddressDetails();
         reset();
         setLoading(false);
+        handleClose();
       })
       .catch((err) => {
         console.log(err);
@@ -64,6 +65,7 @@ const AddUserAddressModal = () => {
       .then((res) => {
         getAddressDetails();
         reset();
+        handleClose();
         setLoading(false);
       })
       .catch((err) => {
