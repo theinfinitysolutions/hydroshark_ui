@@ -125,7 +125,7 @@ const ProductCTA = () => {
               pauseOnMouseEnter: true,
             }}
             modules={[Autoplay]}
-            className="mySwiper w-full h-full bg-pi"
+            className="mySwiper w-full h-full "
           >
             {productList.map((product, index) => {
               return (
@@ -149,7 +149,7 @@ const ProductCTA = () => {
                         onClick={() => {
                           router.push(`/products/${product.id}`);
                         }}
-                        className=" flex h-[25vh] w-[25vh] lg:w-[15vw] relative"
+                        className=" flex h-[35vh] w-[25vh] lg:w-[15vw] relative"
                       >
                         <Image
                           src={

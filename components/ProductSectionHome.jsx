@@ -200,7 +200,34 @@ const ProductSectionHome = () => {
                         />
                       </a>
 
-                      <p className=" text-white mt-4">{`₹${
+                      <div className="flex flex-row justify-start items-center text-sm gap-x-2 mt-4">
+                        <p className=" text-red-400  line-through 	">
+                          {" "}
+                          {`₹ ${
+                            product.product_sections.find(
+                              (section) => section.id == product.activeSection
+                            )?.price
+                          }`}
+                        </p>
+                        <p className=" text-white	">
+                          {" "}
+                          {`₹ ${
+                            product.product_sections.find(
+                              (section) => section.id == product.activeSection
+                            )?.discounted_amount
+                          }`}
+                        </p>
+                        <p className=" text-white	">
+                          /{" "}
+                          {
+                            product.product_sections.find(
+                              (section) => section.id == product.activeSection
+                            )?.section_title
+                          }{" "}
+                        </p>
+                      </div>
+
+                      {/* <p className=" text-white mt-4">{`₹${
                         product.product_sections.find(
                           (section) => section.id == product.activeSection
                         ).discounted_amount
@@ -208,7 +235,7 @@ const ProductSectionHome = () => {
                         product.product_sections.find(
                           (section) => section.id == product.activeSection
                         ).section_title
-                      }`}</p>
+                      }`}</p> */}
                     </div>
 
                     <div className=" z-40 gap-x-4 mt-4  bottom-4 right-4 flex flex-row justify-between gap-y-2  ">
