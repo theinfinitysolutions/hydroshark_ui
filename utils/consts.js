@@ -14,6 +14,7 @@ export const flavorData = [
     quanity: "250ML",
     ingredients:
       " Carbonated water, Sugar, Stevia (INS 960), Acidity Regulator (INS 330), Class II Preservative (INS 211), Ascorbic Acid (Vit C), Niacin (Vit B3), Lemon Juice (1.8%), Mineral Salts, Vitamin premix (B2, B6, B12)",
+    image: process.env.NEXT_PUBLIC_API_URL + "/lemoncan.webp",
   },
   {
     title: "MANGO",
@@ -23,6 +24,7 @@ export const flavorData = [
     quanity: "250ML",
     ingredients:
       "Carbonated water, Sugar, Stevia (INS 960), Acidity Regulators (INS 330, INS 331), Class II Preservative (INS 211), Ascorbic Acid (Vit C), Niacin (Vit B3), LCLT (6 mg/ 100 ml), Inositol (2 mg / 100 ml), Mix Fruit Juice from Pulp (2%) (Mango, Guava, Apple, Passion Fruit, Apricot, Peach, Lemon), Mineral Salts, Stabiliser (INS415), Vitamin Premix (B2, B6, B12)",
+    image: process.env.NEXT_PUBLIC_API_URL + "/mangocan.webp",
   },
 ];
 
