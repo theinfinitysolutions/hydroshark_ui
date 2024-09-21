@@ -51,7 +51,7 @@ const Explore = () => {
         <div className=" flex flex-col items-center w-full mt-[10vh]">
           <h2 className=" text-base text-[#408289]">{"Discover Hydroshark"}</h2>
           <p className=" text-[2rem] text-center font-bold text-[#181818]">
-            {"India's First No Caffeine Hydration Drink"}
+            {"India's First Caffeine Free Energy Drink"}
           </p>
           <p className=" text-base text-[#181818] text-center px-1 md:px-[10vw] mt-2">
             {
