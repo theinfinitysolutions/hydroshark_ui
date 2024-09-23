@@ -93,8 +93,11 @@ const Footer = () => {
           >
             <FaInstagram className="text-[#DEE2E6] text-base" />
           </a>
-          <a onClick={() => {}}>
-            <FaXTwitter className="text-[#DEE2E6] text-base" />
+          <a
+            href="https://www.facebook.com/profile.php?id=61559620367714"
+            target="_blank"
+          >
+            <FaFacebook className="text-[#DEE2E6] text-base" />
           </a>
           <a
             href={"https://www.linkedin.com/in/kaushlendra-goyal-405674272/"}
