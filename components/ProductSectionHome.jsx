@@ -363,7 +363,7 @@ const ProductSectionHome = () => {
                                 {section.section_title}
                               </p>
                               {!section.in_stock && (
-                                <FaSlash className=" absolute w-[4vh] h-[4vh] lg:h-[5vh] lg:w-[5vh] text-white/70 " />
+                                <FaSlash className=" absolute w-[4vh] h-[4vh] lg:h-[5vh] lg:w-[5vh] text-black/80 " />
                               )}
                             </button>
                           ))}

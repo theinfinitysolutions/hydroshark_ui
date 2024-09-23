@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { set, useForm } from "react-hook-form";
 import OTPInput from "react-otp-input";
 import instance from "@/utils/instance";
@@ -25,8 +25,17 @@ const Login = ({ onSignUp }) => {
     },
   });
 
+  useEffect(() => {
+    if (showAuthModal.show) {
+      setShowOTP(false);
+      setError(null);
+      setOtp("");
+    }
+  }, [showAuthModal.show]);
+
   const onSubmit = (data) => {
     setLoading(true);
+    setError(null);
     let obj = {
       phone_number: data.phone,
     };
@@ -36,20 +45,34 @@ const Login = ({ onSignUp }) => {
         console.log("res", res);
         setShowOTP(true);
         setLoading(false);
+        setError(null);
       })
       .catch((err) => {
         setLoading(false);
         console.log("err", err);
-        setError(err.response.data.message);
+        if (err.response?.data?.message) {
+          setError(err.response.data.message);
+        } else {
+          setError("Some error has occurred!");
+        }
       });
   };
 
   const handleLogin = () => {
     setLoading(true);
+
+    if (otp.length != 6) {
+      setError("OTP should be of 6 digits");
+      setLoading(false);
+      return;
+    }
+
     let obj = {
       phone_number: getValues("phone"),
       otp: otp,
     };
+
+    setError(null);
 
     console.log("obj", obj);
     instance
@@ -125,6 +148,17 @@ const Login = ({ onSignUp }) => {
               "Verify"
             )}
           </button>
+
+          <a
+            className="text-black mt-4 underline text-sm cursor-pointer "
+            onClick={() => {
+              setShowOTP(false);
+              setError(null);
+              setOtp("");
+            }}
+          >
+            Resend OTP
+          </a>
         </div>
       ) : (
         <div className=" w-full flex flex-col items-center">
@@ -152,6 +186,10 @@ const Login = ({ onSignUp }) => {
               <span className="text-red-500 text-xs mt-1 ">
                 {errors.phone.message}
               </span>
+            )}
+
+            {error && (
+              <span className="text-red-500 text-xs mt-1 ">{error}</span>
             )}
             <button
               type="submit"
