@@ -331,7 +331,7 @@ export default function Home() {
         <div className="flex flex-col lg:flex-row h-[90vh] w-full px-[5vw] overflow-hidden  relative ">
           <div className="flex flex-col w-full lg:w-1/2 items-start">
             <h1 className=" text-black text-[2.5rem]  lg:text-[4rem] 2xl:text-[5rem] font-bold leading-[2.5rem] lg:leading-[4rem] 2xl:leading-[5rem]">
-              {"India's First No Caffeine Hydration Drink"}
+              {"India's First Caffeine Free Energy Drink"}
             </h1>
             <div className=" hidden  w-7/12 lg:flex flex-col mt-[5vh]">
               <div className="flex flex-row justify-between items-center">

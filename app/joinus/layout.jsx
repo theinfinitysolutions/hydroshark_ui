@@ -2,7 +2,7 @@ import React from "react";
 
 export const metadata = {
   title: "Join Us | Hydroshark",
-  description: "India's First No Caffeine Hydration Drink",
+  description: "India's First Caffeine Free Energy Drink",
 };
 
 const Layout = ({ children }) => {

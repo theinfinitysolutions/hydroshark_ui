@@ -29,8 +29,8 @@ const local = localFont({ src: "../public/ITCAvantGardePro-Md.otf" });
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Hydroshark - India's First No Caffeine Hydration Drink",
-  description: "India's First No Caffeine Hydration Drink",
+  title: "Hydroshark - India's First Caffeine Free Energy Drink",
+  description: "India's First Caffeine Free Energy Drink",
 };
 
 export default function RootLayout({ children }) {
@@ -41,15 +41,13 @@ export default function RootLayout({ children }) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta
           name="description"
-          content="India's First No Caffeine Hydration Drink"
+          content="India's First Caffeine Free Energy Drink"
         />
         <meta
           name="keywords"
           content="hydroshark, hydration, electrolytes, vitamins, healthy, energy drink, low sugar, energy, prime, gatorade, hell energy, cocacola, water, bisleri, drinks, carbonated, india, healthy, lifestyle, choice , water, soda, sparkling, water, health, fitness, wellness, beverage, energy, athletics, workout, hydration drinks, prime, gatorade"
         />
-        <title>
-          {"Hydroshark - India's First No Caffeine Hydration Drink"}
-        </title>
+        <title>{"Hydroshark - India's First Caffeine Free Energy Drink"}</title>
         <link rel="canonical" href="//www.hydroshark.in/" />
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
         <link
