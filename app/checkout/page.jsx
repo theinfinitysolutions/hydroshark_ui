@@ -490,7 +490,7 @@ const Checkout = () => {
                       return (
                         <div
                           key={index}
-                          className="flex flex-row justify-between bg-gray-100 p-4 rounded-lg mb-2"
+                          className="flex flex-row w-full justify-between bg-gray-100 p-4 rounded-lg mb-2"
                         >
                           <div
                             className={` w-1/12 flex flex-col justify-center items-start`}
@@ -569,7 +569,7 @@ const Checkout = () => {
                       return (
                         <div
                           key={index}
-                          className="flex flex-row justify-between bg-gray-100 p-4 rounded-lg mb-4"
+                          className="flex flex-row w-full justify-between bg-gray-100 p-4 rounded-lg mb-4"
                         >
                           <div
                             className={` w-1/12 flex flex-col justify-center items-start`}
@@ -640,7 +640,7 @@ const Checkout = () => {
                   className={` flex flex-row justify-between w-full py-4 px-2 border-[1px] ${
                     paymentMethod == "razorpay"
                       ? "border-black"
-                      : "border-white"
+                      : "border-white bg-gray-300"
                   } `}
                 >
                   <div className=" flex flex-row items-end justify-start">
@@ -682,7 +682,9 @@ const Checkout = () => {
                 <button
                   onClick={() => setPaymentMethod("cod")}
                   className={` flex flex-row justify-between w-full py-4 px-2 border-[1px] ${
-                    paymentMethod == "cod" ? "border-black" : "border-white"
+                    paymentMethod == "cod"
+                      ? "border-black"
+                      : "border-white bg-gray-300"
                   } `}
                 >
                   <div className=" flex flex-row items-end justify-start">
