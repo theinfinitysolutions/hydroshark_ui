@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export",
+  output: "standalone",
   reactStrictMode: false,
-  // trailingSlash: true,
+  trailingSlash: true,
   images: {
     unoptimized: true,
     remotePatterns: [
