@@ -14,7 +14,7 @@ const existingOptions = [
     end_date: "2022-12-31",
   },
   {
-    title: "Free shipping on all orders above Rs.450/-",
+    title: "Free shipping on all orders above 450/-",
     end_date: "2022-12-31",
   },
 ];
