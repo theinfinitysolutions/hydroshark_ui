@@ -14,6 +14,7 @@ export const flavorData = [
     quanity: "250ML",
     ingredients:
       " Carbonated water, Sugar, Stevia (INS 960), Acidity Regulator (INS 330), Class II Preservative (INS 211), Ascorbic Acid (Vit C), Niacin (Vit B3), Lemon Juice (1.8%), Mineral Salts, Vitamin premix (B2, B6, B12)",
+    image: process.env.NEXT_PUBLIC_API_URL + "/lemoncan.webp",
   },
   {
     title: "MANGO",
@@ -23,6 +24,7 @@ export const flavorData = [
     quanity: "250ML",
     ingredients:
       "Carbonated water, Sugar, Stevia (INS 960), Acidity Regulators (INS 330, INS 331), Class II Preservative (INS 211), Ascorbic Acid (Vit C), Niacin (Vit B3), LCLT (6 mg/ 100 ml), Inositol (2 mg / 100 ml), Mix Fruit Juice from Pulp (2%) (Mango, Guava, Apple, Passion Fruit, Apricot, Peach, Lemon), Mineral Salts, Stabiliser (INS415), Vitamin Premix (B2, B6, B12)",
+    image: process.env.NEXT_PUBLIC_API_URL + "/mangocan.webp",
   },
 ];
 
@@ -233,22 +235,22 @@ export const FAQ = [
   {
     question: "What is Hydroshark?",
     answer:
-      "Hydroshark is India’s first carbonated hydration drink, offering a healthy and delicious alternative to traditional energy drinks. It combines essential vitamins, salts, and electrolytes with a refreshing, bubbly twist.",
+      "Hydroshark is India’s first caffeine-free energy drink, offering a healthy and refreshing alternative to traditional options. Packed with essential vitamins, salts, and electrolytes, it delivers clean energy with a bubbly twist-keeping you hydrated and energized without the crash.",
   },
   {
     question: "Why choose Hydroshark over other drinks?",
     answer:
-      "Hydroshark prioritizes both taste and your well-being. It's low in sugar, using stevia as a natural sweetener, and caffeine-free, making it a healthier option than sugary energy drinks or sodas.",
+      "Because it’s crafted with your well-being in mind. Caffeine-free and low in sugar, Hydroshark uses stevia as a natural sweetener, offering a healthier, guilt-free alternative to sugary energy drinks and sodas—all while delivering a refreshing, delicious taste.",
   },
   {
     question: "How does Hydroshark benefit my health?",
     answer:
-      "Hydroshark is designed to support your physical and mental well-being. Its unique formula provides ultimate hydration with a blend of vitamins, minerals, and electrolytes, boosting energy levels and promoting overall health.",
+      "Hydroshark is specially formulated to enhance both physical and mental well-being. Packed with essential vitamins, minerals, and electrolytes, it delivers optimal hydration, naturally boosts energy levels, and supports overall health—all without caffeine or excess sugar.",
   },
   {
     question: "Is Hydroshark suitable for everyone?",
     answer:
-      "Yes! Hydroshark is a refreshing, low-calorie drink suitable for everyone. Whether you're an athlete, a student, or just looking for a healthy and flavourful beverage, Hydroshark fits your lifestyle.",
+      "Absolutely! Hydroshark is a refreshing, low-calorie drink that’s perfect for anyone—whether you’re an athlete, a busy professional, a student, or simply looking for a healthier, flavorful option. With its clean ingredients and hydrating formula, Hydroshark fits seamlessly into any lifestyle.",
   },
   {
     question: "Why is Hydroshark better for me than energy drinks?",

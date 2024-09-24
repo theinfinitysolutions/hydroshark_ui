@@ -125,7 +125,7 @@ const ProductCTA = () => {
               pauseOnMouseEnter: true,
             }}
             modules={[Autoplay]}
-            className="mySwiper w-full h-full bg-pi"
+            className="mySwiper w-full h-full "
           >
             {productList.map((product, index) => {
               return (
@@ -139,7 +139,7 @@ const ProductCTA = () => {
                     </p>
                     <p
                       className={`  block lg:hidden z-20 text-2xl text-[${
-                        textColors[product.product_title]
+                        textColors[product.product_title] || "black"
                       }]  font-medium`}
                     >
                       {product.product_title}
@@ -149,7 +149,7 @@ const ProductCTA = () => {
                         onClick={() => {
                           router.push(`/products/${product.id}`);
                         }}
-                        className=" flex h-[25vh] w-[25vh] lg:w-[15vw] relative"
+                        className=" flex h-[20vh] lg:h-[35vh] w-[25vh] lg:w-[15vw] relative"
                       >
                         <Image
                           src={
@@ -177,15 +177,32 @@ const ProductCTA = () => {
                         {product.product_description}
                       </p>
                       <div className=" flex flex-col lg:flex-row-reverse items-center justify-center lg:items-center lg:gap-x-4">
-                        <p className=" text-black mt-4 lg:mt-2">{`₹${
-                          product.product_sections.find(
-                            (section) => section.id == product.activeSection
-                          ).discounted_amount
-                        } / ${
-                          product.product_sections.find(
-                            (section) => section.id == product.activeSection
-                          ).section_title
-                        }`}</p>
+                        <div className="flex flex-row justify-start items-center text-sm gap-x-2 mt-4">
+                          <p className=" text-red-400  line-through 	">
+                            {" "}
+                            {`₹ ${
+                              product.product_sections.find(
+                                (section) => section.id == product.activeSection
+                              )?.price
+                            }`}
+                          </p>
+                          <p className=" text-black	">
+                            {" "}
+                            {`₹ ${
+                              product.product_sections.find(
+                                (section) => section.id == product.activeSection
+                              )?.discounted_amount
+                            }`}
+                          </p>
+                          <p className=" text-black	">
+                            /{" "}
+                            {
+                              product.product_sections.find(
+                                (section) => section.id == product.activeSection
+                              )?.section_title
+                            }{" "}
+                          </p>
+                        </div>
 
                         <div className=" z-40 gap-x-4 mt-4 lg:mt-2  bottom-4 right-4 flex flex-row justify-between gap-y-2  ">
                           {product.product_sections.map((section, index) => (
@@ -195,17 +212,17 @@ const ProductCTA = () => {
                               }}
                               key={index}
                               disabled={!section.in_stock}
-                              className={` h-[5vh] w-[5vh] cursor-pointer   flex flex-col items-center justify-center rounded-full border-[1px] border-black ${
+                              className={` h-[5vh] w-[5vh] cursor-pointer   flex flex-col items-center justify-center rounded-full border-[1.5px] lg:border-[1px] border-black ${
                                 product.activeSection == section.id
                                   ? "bg-black text-white"
                                   : "bg-transparent text-black"
                               } `}
                             >
-                              <p className="  font-semibold text-[8px]">
+                              <p className="  font-semibold text-xs lg:text-[8px]">
                                 {section.section_title}
                               </p>
                               {!section.in_stock && (
-                                <FaSlash className=" absolute w-[4vh] h-[4vh] lg:h-[5vh] lg:w-[5vh] text-white/70 " />
+                                <FaSlash className=" absolute w-[4vh] h-[4vh] lg:h-[5vh] lg:w-[5vh] text-black/70 " />
                               )}
                             </button>
                           ))}

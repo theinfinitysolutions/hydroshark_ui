@@ -23,6 +23,7 @@ import { getUser } from "@/utils/helper";
 import { textColors } from "@/utils/consts";
 import { with3DModel } from "@/utils/consts";
 import { TbCube3dSphere } from "react-icons/tb";
+import { FaSlash } from "react-icons/fa";
 
 const ratings = [
   {
@@ -65,6 +66,7 @@ const ViewProduct = ({ id }) => {
   } = useStore();
   const [selectedProduct, setSelectedProduct] = useState({});
   const [selectedSection, setSelectedSection] = useState({});
+  const [show3d, setShow3d] = useState(false);
   const [show3dModel, setShow3dModel] = useState(false);
   const [currentImage, setCurrentImage] = useState("");
 
@@ -79,7 +81,10 @@ const ViewProduct = ({ id }) => {
       .then((res) => {
         console.log("products", res.data);
         setSelectedProduct(res.data);
-        setSelectedSection({ ...res.data.product_sections[0] });
+
+        setSelectedSection({
+          ...res.data.product_sections.find((item) => item.in_stock),
+        });
         setCurrentImage(res.data.product_primary_image.image.cloudfront);
 
         setLoading(false);
@@ -147,7 +152,7 @@ const ViewProduct = ({ id }) => {
                   orbital={true}
                 />
               ) : (
-                <div className="flex h-[55vh] w-full relative">
+                <div className="flex h-[45vh] lg:h-[55vh] w-full relative">
                   <Image
                     src={currentImage}
                     fill
@@ -159,19 +164,22 @@ const ViewProduct = ({ id }) => {
               )}
 
               <div className=" absolute left-4 top-4 flex flex-col items-start gap-y-[2.5vh]">
-                <a
-                  onClick={() => {
-                    setShow3dModel(true);
-                  }}
-                  className={`w-[5vh] h-[5vh] lg:w-[7.5vh] lg:h-[7.5vh] flex flex-col items-center justify-center border-[1px] ${
-                    show3dModel
-                      ? "text-black border-black"
-                      : "text-gray-500 border-gray-500"
-                  }  cursor-pointer rounded-full   `}
-                >
-                  <TbCube3dSphere className=" text-xl " />
-                  <p className="  text-xs">3D</p>
-                </a>
+                {with3DModel.includes(selectedProduct.product_title) ? (
+                  <a
+                    onClick={() => {
+                      setShow3dModel(true);
+                    }}
+                    className={`w-[5vh] h-[5vh] lg:w-[7.5vh] lg:h-[7.5vh] flex flex-col items-center justify-center border-[1px] ${
+                      show3dModel
+                        ? "text-black border-black"
+                        : "text-gray-500 border-gray-500"
+                    }  cursor-pointer rounded-full   `}
+                  >
+                    <TbCube3dSphere className=" text-xl " />
+                    <p className="  text-xs">3D</p>
+                  </a>
+                ) : null}
+
                 {[...selectedProduct?.product_images].map((image, index) => {
                   return (
                     <a
@@ -198,19 +206,19 @@ const ViewProduct = ({ id }) => {
                 })}
               </div>
             </div>
-            <div className=" w-full lg:w-5/12 h-full py-8 lg:py-0 bg-[#181818] relative flex flex-col items-start pl-8 pr-[7.5vw] justify-center  ">
+            <div className=" w-full lg:w-5/12 h-full py-8 lg:py-0 bg-[#181818] relative flex flex-col items-start pl-8 pr-[5vw] justify-center  ">
               <div className=" flex flex-row w-full justify-between items-end">
                 <div className=" flex flex-col items-start">
                   <p className=" text-white text-sm ">HYDROSHARK</p>
-                  <div
-                    className={`text-[3rem] font-[500] text-[${
+                  <h1
+                    className={`text-[3rem] leading-[3rem] my-0 mt-4 font-[500] text-[${
                       textColors[selectedProduct?.product_title] || "#ffff"
                     }]`}
                   >
                     {selectedProduct?.product_title}
-                  </div>
+                  </h1>
                 </div>
-                <div className="flex flex-row justify-end items-center text-xl mb-2 gap-x-2">
+                {/* <div className="flex flex-row justify-end items-center text-xl mb-2 gap-x-2">
                   <p className=" text-red-400  line-through 	">
                     {" "}
                     {`₹ ${selectedSection?.price}`}
@@ -219,11 +227,11 @@ const ViewProduct = ({ id }) => {
                     {" "}
                     {`₹ ${selectedSection?.discounted_amount}`}
                   </p>
-                </div>
+                </div> */}
               </div>
-              <div className=" text-[1rem] text-white mt-4">
+              <h2 className=" text-[1rem] text-white mt-4">
                 {selectedProduct?.product_description}
-              </div>
+              </h2>
 
               <div className=" flex flex-col w-full items-start mt-[5vh]">
                 <p>Quantity</p>
@@ -234,13 +242,24 @@ const ViewProduct = ({ id }) => {
                         onClick={() => setSelectedSection(section)}
                         key={index}
                         disabled={!section.in_stock}
-                        className={` px-4 lg:px-0 lg:w-[5vw] py-2 text-sm flex flex-col items-center border-[1px] border-white ${
+                        className={` px-4 lg:px-0 lg:w-[5vw] text-sm flex flex-col items-center border-[1px] border-white ${
                           !(selectedSection?.id == section?.id)
                             ? "bg-black text-white"
                             : "bg-white text-black"
                         } `}
                       >
-                        <p>{section?.section_title}</p>
+                        <p
+                          className={` ${
+                            !(selectedSection?.id == section?.id)
+                              ? "text-white"
+                              : "text-black"
+                          } my-2`}
+                        >
+                          {section?.section_title}
+                        </p>
+                        {!section.in_stock && (
+                          <FaSlash className=" absolute w-[7vh] h-[4vh] lg:h-[4vh] lg:w-[7vh] text-white/70 " />
+                        )}
                       </button>
                     );
                   })}
@@ -248,15 +267,15 @@ const ViewProduct = ({ id }) => {
               </div>
               <div className=" flex flex-col lg:flex-row items-start lg:items-center lg:justify-between w-full  mt-4 lg:mt-8">
                 <div className="flex flex-row justify-start items-center text-sm gap-x-2">
-                  <p className=" text-red-400  line-through 	">
+                  <p className=" text-red-400 text-lg line-through 	">
                     {" "}
                     {`₹ ${selectedSection?.price}`}
                   </p>
-                  <p className=" text-white	">
+                  <p className=" text-white text-lg	">
                     {" "}
                     {`₹ ${selectedSection?.discounted_amount}`}
                   </p>
-                  <p className=" text-white	">
+                  <p className=" text-white text-lg	">
                     / {selectedSection?.section_title}{" "}
                   </p>
                 </div>
@@ -269,7 +288,7 @@ const ViewProduct = ({ id }) => {
                 </div>
               </div>
 
-              <div className="flex flex-row items-center justify-between gap-x-4 w-full mt-[5vh]">
+              <div className="flex flex-row items-center justify-between gap-x-4 w-full mt-[2.5vh]">
                 <button
                   onClick={() => {
                     let obj = {
@@ -303,19 +322,19 @@ const ViewProduct = ({ id }) => {
               <div className=" lg:h-12 absolute  w-full left-0 bottom-2 flex flex-row justify-center lg:justify-start gap-x-4 lg:gap-x-[10%] px-2 lg:px-8">
                 <div className=" flex flex-row items-center justify-start">
                   <IoTrendingDownOutline className=" text-white text-lg" />
-                  <p className=" text-sm lg:text-base text-white mt-1 ml-1">
+                  <p className=" text-sm  text-white mt-1 ml-1">
                     {"Low Sugar"}
                   </p>
                 </div>
                 <div className=" flex flex-row items-center justify-start">
                   <IoBanOutline className=" text-white text-lg" />
-                  <p className=" text-sm lg:text-base text-white mt-1 ml-1">
+                  <p className=" text-sm  text-white mt-1 ml-1">
                     {"No Caffeine"}
                   </p>
                 </div>
                 <div className=" flex flex-row items-center justify-start">
                   <MdOutlineHealthAndSafety className=" text-white text-lg" />
-                  <p className=" text-sm lg:text-base text-white mt-1 ml-1">
+                  <p className=" text-sm  text-white mt-1 ml-1">
                     {"Vitamins & Minerals"}
                   </p>
                 </div>

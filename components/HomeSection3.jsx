@@ -24,7 +24,7 @@ const HomeSection3 = () => {
         <ParallaxScroll targetRef={targetRef} />
       </div>
       <div className=" relative flex flex-col items-start w-screen lg:w-[65%] h-full px-4 lg:px-8">
-        <div className="hidden lg:block absolute -left-[75vw] -bottom-[0vh] overflow-hidden [--offset:60vw]  bg-black rotate-[90deg] z-40 [--move-initial:calc(-25%_+_var(--offset))] [--move-final:calc(-50%_+_var(--offset))] ">
+        {/* <div className="hidden lg:block absolute -left-[75vw] -bottom-[0vh] overflow-hidden [--offset:60vw]  bg-black rotate-[90deg] z-40 [--move-initial:calc(-25%_+_var(--offset))] [--move-final:calc(-50%_+_var(--offset))] ">
           <div
             className="min-w-screen w-[150vw] flex flex-row py-2 border-y-[2px] border-white border-dotted items-center relative  transform-[translate3d(var(--move-initial),0,0)] animate-marqueebanner [animation-play-state:running]"
             aria-hidden="true"
@@ -65,7 +65,7 @@ const HomeSection3 = () => {
               {"Low calorie"}
             </span>
           </div>
-        </div>
+        </div> */}
         <p className=" text-base w-full lg:text-3xl text-[#3997a1] italic mt-[5vh] lg:mt-[10vh]">
           {"Experience the Hydroshark Difference "}
         </p>

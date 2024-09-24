@@ -34,12 +34,14 @@ const SignUp = ({ BackToLogin }) => {
 
   const onSubmit = (data) => {
     setLoading(true);
+    setError(null);
     instance
       .post("/accounts/signup/", data)
       .then((res) => {
         console.log("res", res);
         setLoading(false);
         handleLoginRequest(data);
+        setError(null);
       })
       .catch((err) => {
         console.log("err", err.response);

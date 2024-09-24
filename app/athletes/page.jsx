@@ -19,9 +19,9 @@ const Athletes = () => {
           </div>
 
           <div className="flex mt-8 lg:mt-0">
-            <h3 className=" text-[4rem] text-center lg:text-[6rem] text-white">
+            <h1 className=" text-[4rem] text-center lg:text-[6rem] text-white">
               ATHLETES
-            </h3>
+            </h1>
           </div>
         </div>
 
@@ -58,9 +58,9 @@ const Athletes = () => {
           </div>
 
           <div className=" h-full w-full lg:w-[70vw] px-4 py-8 lg:py-0 lg:px-8 flex flex-col items-start justify-center">
-            <h3 className=" text-white text-4xl">
+            <h2 className=" text-white text-4xl">
               {"Ritesh Singh Bisht’s Collaboration with Hydroshark"}
-            </h3>
+            </h2>
             <p className=" text-white text-lg italic ">Boxing</p>
 
             <p className=" text-white text-base mt-[2.5vh]">
