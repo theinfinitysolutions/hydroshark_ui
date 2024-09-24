@@ -205,15 +205,32 @@ const Products = () => {
                       />
                     </a>
 
-                    <p className=" text-white mt-4">{`₹${
-                      product.product_sections.find(
-                        (section) => section.id == product.activeSection
-                      ).discounted_amount
-                    } / ${
-                      product.product_sections.find(
-                        (section) => section.id == product.activeSection
-                      ).section_title
-                    }`}</p>
+                    <div className="flex flex-row justify-start items-center text-sm gap-x-2 mt-4">
+                      <p className=" text-red-400  line-through text-sm	">
+                        {" "}
+                        {`₹ ${
+                          product.product_sections.find(
+                            (section) => section.id == product.activeSection
+                          )?.price
+                        }`}
+                      </p>
+                      <p className=" text-white	text-sm">
+                        {" "}
+                        {`₹ ${
+                          product.product_sections.find(
+                            (section) => section.id == product.activeSection
+                          )?.discounted_amount
+                        }`}
+                      </p>
+                      <p className=" text-white text-sm	">
+                        /{" "}
+                        {
+                          product.product_sections.find(
+                            (section) => section.id == product.activeSection
+                          )?.section_title
+                        }{" "}
+                      </p>
+                    </div>
                     <button
                       onClick={() => {
                         let obj = {
@@ -236,7 +253,7 @@ const Products = () => {
                 </div>
               </div>
             ))}
-            {productList.length % 3 != 1 && productList.length > 0 ? (
+            {productList.length % 3 != 0 && productList.length > 0 ? (
               <div className=" w-full h-[60vh] flex flex-col items-center mb-0 relative  border-[1px] border-white  z-0 justify-center">
                 <div className=" absolute w-full h-full z-0 ">
                   <Image
@@ -270,7 +287,7 @@ const Products = () => {
                     />
                   </div>
                   <p className=" text-white text-3xl text-center w-8/12 mt-8 font-semibold">
-                    New Products Coming Soon
+                    New Products Coming Soon {productList.length}
                   </p>
                 </div>
               </div>

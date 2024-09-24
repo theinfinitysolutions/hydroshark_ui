@@ -503,35 +503,35 @@ export default function Home() {
             <div className="flex flex-col items-center mt-8 lg:mt-0 w-full lg:w-1/3 px-[5vw]">
               <div className=" border-[1px] border-[#5C6262] border-dashed z-0 w-full h-[60vh] p-2 flex flex-col rounded-[2rem] items-center justify-center">
                 <div className=" flex lg:hidden w-full h-full group relative border-[1px] border-[#5C6262]/40 rounded-[3rem] pointer-events-none  ">
-                  {/* <ReplaceScene
+                  <ReplaceScene
                     scene={
                       flavorData[currentFlavour].id == 1 ? "lemon" : "mango"
                     }
                     orbital={false}
-                  /> */}
+                  />
 
-                  <Image
+                  {/* <Image
                     src={flavorData[currentFlavour].image}
                     fill
                     alt="flavor"
                     className=" scale-90 transition-all duration-300 group-hover:scale-120 "
                     style={{ objectFit: "contain" }}
-                  />
+                  /> */}
                 </div>
                 <div className=" hidden lg:flex w-full h-full group relative border-[1px] border-[#5C6262]/40 rounded-[3rem] pointer-events-none  ">
-                  {/* <ReplaceScene
+                  <ReplaceScene
                     scene={
                       flavorData[currentFlavour].id == 1 ? "lemon" : "mango"
                     }
                     orbital={true}
-                  /> */}
-                  <Image
+                  />
+                  {/* <Image
                     src={flavorData[currentFlavour].image}
                     fill
                     alt="flavor"
                     className=" scale-90 transition-all duration-300 group-hover:scale-120 "
                     style={{ objectFit: "contain" }}
-                  />
+                  /> */}
                 </div>
               </div>
               <div className="flex flex-row justify-center mt-4 z-20 items-center gap-x-4">
