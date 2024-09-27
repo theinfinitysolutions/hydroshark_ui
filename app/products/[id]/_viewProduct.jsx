@@ -74,6 +74,25 @@ const ViewProduct = ({ id }) => {
     if (!user) getUser();
   }, [user]);
 
+  useEffect(() => {
+    if (typeof window !== "undefined" && typeof window.fbq === "function") {
+      console.log("track event ", {
+        value: selectedSection?.discounted_amount,
+        currency: "INR",
+        content_ids:
+          selectedProduct?.product_title + " " + selectedSection?.section_title,
+        content_type: "product",
+      });
+      window.fbq("track", "ViewContent", {
+        value: selectedSection?.discounted_amount,
+        currency: "INR",
+        content_ids:
+          selectedProduct?.product_title + " " + selectedSection?.section_title,
+        content_type: "product",
+      });
+    }
+  }, [selectedSection]);
+
   const getProductById = (id) => {
     setLoading(true);
     instance
@@ -163,16 +182,16 @@ const ViewProduct = ({ id }) => {
                 </div>
               )}
 
-              <div className=" absolute left-4 top-4 flex flex-col items-start gap-y-[2.5vh]">
+              <div className=" absolute left-4 top-[52.5vh] lg:top-4 px-2 py-2 lg:py-4 rounded-xl bg-gray-300 flex flex-row lg:flex-col items-center  lg:items-start gap-x-6 lg:gap-x-0 gap-y-[2.5vh]">
                 {with3DModel.includes(selectedProduct.product_title) ? (
                   <a
                     onClick={() => {
                       setShow3dModel(true);
                     }}
-                    className={`w-[5vh] h-[5vh] lg:w-[7.5vh] lg:h-[7.5vh] flex flex-col items-center justify-center border-[1px] ${
+                    className={`w-[5vh] h-[5vh] lg:w-[5vh] lg:h-[5vh] flex flex-col items-center justify-center border-[1px] ${
                       show3dModel
                         ? "text-black border-black"
-                        : "text-gray-500 border-gray-500"
+                        : "text-gray-600 border-gray-600"
                     }  cursor-pointer rounded-full   `}
                   >
                     <TbCube3dSphere className=" text-xl " />
@@ -188,7 +207,7 @@ const ViewProduct = ({ id }) => {
                         setShow3dModel(false);
                       }}
                       key={index}
-                      className={` w-[5vh] h-[5vh] lg:w-[7.5vh] lg:h-[7.5vh] flex flex-col items-center relative  justify-center cursor-pointer rounded-full border-[1px] border-white ${
+                      className={` w-[5vh] h-[5vh] lg:w-[5vh] lg:h-[5vh] flex flex-col items-center relative  justify-center cursor-pointer rounded-full border-[1px] border-white ${
                         image?.image?.cloudfront == currentImage && !show3dModel
                           ? "bg-white"
                           : "bg-black/60"
@@ -211,7 +230,7 @@ const ViewProduct = ({ id }) => {
                 <div className=" flex flex-col items-start">
                   <p className=" text-white text-sm ">HYDROSHARK</p>
                   <h1
-                    className={`text-[3rem] leading-[3rem] my-0 mt-4 font-[500] text-[${
+                    className={`text-[3rem] leading-[3rem] my-0 lg:mt-4 font-[500] text-[${
                       textColors[selectedProduct?.product_title] || "#ffff"
                     }]`}
                   >
@@ -229,7 +248,7 @@ const ViewProduct = ({ id }) => {
                   </p>
                 </div> */}
               </div>
-              <h2 className=" text-[1rem] text-white mt-4">
+              <h2 className=" text-[1rem] text-white lg:mt-4">
                 {selectedProduct?.product_description}
               </h2>
 

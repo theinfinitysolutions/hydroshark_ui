@@ -128,6 +128,26 @@ export default function RootLayout({ children }) {
             alt="Facebook Pixel"
           />
         </noscript>
+
+        {/* Google Tag Manager */}
+        <Script
+          async
+          id="google-tag"
+          src="https://www.googletagmanager.com/gtag/js?id=G-16MMMXB7FD"
+        />
+        <Script
+          id="google-tag-manager"
+          strategy="lazyOnload"
+          dangerouslySetInnerHTML={{
+            __html: `
+           window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-16MMMXB7FD');
+        `,
+          }}
+        />
       </body>
     </html>
   );

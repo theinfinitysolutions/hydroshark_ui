@@ -102,8 +102,27 @@ const Checkout = () => {
         console.log("res", res.data);
 
         setCartObject(res.data);
+
         if (res.data.cart_items.length == 0) {
           router.push("/products");
+        }
+
+        let list = res.data.cart_items.map((item) => {
+          return {
+            id: item.product_section.id,
+            quantity: item.quantity,
+          };
+        });
+
+        if (list.length > 0) {
+          // addToCart
+          window.fbq("track", "AddToCart", {
+            value: res.data?.cart_final_amount,
+            currency: "INR",
+            contents: [...list],
+            content_ids: "product_title",
+            content_type: "product",
+          });
         }
       })
       .catch((err) => {
@@ -198,9 +217,16 @@ const Checkout = () => {
       })
       .then((res) => {
         console.log("res", res);
+
         setOrderId(res.data.id);
         CreatePayment(res.data.id);
         setShowLoading({ show: false });
+
+        // initiate checkout
+        window.fbq("track", "InitiateCheckout", {
+          value: cartObj?.cart_final_amount,
+          currency: "INR",
+        });
       })
       .catch((err) => {
         setShowConfirmModal({
@@ -293,21 +319,12 @@ const Checkout = () => {
         order_id: orderId,
         handler: async function (response) {
           console.log("razorpay response", response);
-          // setShowConfirmModal({
-          //   show: true,
-          //   mode: "success",
-          //   successText: "Payment Successful",
-          //   title: "Your Order has been successfully placed",
-          //   description:
-          //     "You order has been successfully placed, you will recieve an email confirmation shortly , please visit the profile section for more details",
-          //   action: "/products",
-          //   buttonText: "Back to products",
-          // });
           completePayment(
             response.razorpay_payment_id,
             orderId,
             response.razorpay_signature
           );
+
           // handleShowConfetti();
           // setOrderId("");
           // setRzpOrderId("");
@@ -386,6 +403,26 @@ const Checkout = () => {
         setOrderId("");
         setRzpOrderId("");
         setShowLoading({ show: false });
+
+        // facebook pixel
+
+        let list = res.data.cart_items.map((item) => {
+          return {
+            id: item.product_section.id,
+            quantity: item.quantity,
+          };
+        });
+
+        if (list.length > 0) {
+          // addToCart
+          window.fbq("track", "Purchase", {
+            value: final_amount,
+            currency: "INR",
+            contents: [...list],
+            content_ids: "product_title",
+            content_type: "product",
+          });
+        }
       })
       .catch((err) => {
         console.log("err", err);
