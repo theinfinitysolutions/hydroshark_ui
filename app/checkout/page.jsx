@@ -120,7 +120,6 @@ const Checkout = () => {
             value: res.data?.cart_final_amount,
             currency: "INR",
             contents: [...list],
-            content_ids: "product_title",
             content_type: "product",
           });
         }
@@ -389,6 +388,7 @@ const Checkout = () => {
       })
       .then((res) => {
         console.log("res", res);
+
         setShowConfirmModal({
           show: true,
           mode: "success",
@@ -416,7 +416,7 @@ const Checkout = () => {
         if (list.length > 0) {
           // addToCart
           window.fbq("track", "Purchase", {
-            value: final_amount,
+            value: cartObj?.cart_final_amount,
             currency: "INR",
             contents: [...list],
             content_ids: "product_title",
@@ -877,6 +877,10 @@ const Checkout = () => {
                   <button
                     onClick={() => {
                       CreateOrder();
+                      fbq("track", "InitiateCheckout", {
+                        value: cartObj?.cart_final_amount,
+                        currency: "INR",
+                      });
                     }}
                     className=" w-full bg-black text-white py-2 cursor-pointer rounded-md border-[1px] border-black group hover:bg-white "
                   >
