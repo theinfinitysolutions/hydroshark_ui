@@ -15,6 +15,9 @@ export async function generateStaticParams() {
 }
 
 export default function ProductPage({ params }) {
+
+  
+
   return (
     <div>
       <ViewProduct id={params.id} />
