@@ -380,7 +380,7 @@ const Checkout = () => {
 
   const completePayment = (paymentId, orderId, signature) => {
     setShowLoading({ show: true });
-    instance
+    instance 
       .post("billing/payment/verify/", {
         razorpay_order_id: orderId,
         razorpay_payment_id: paymentId,
