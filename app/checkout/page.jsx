@@ -265,6 +265,25 @@ const Checkout = () => {
           processPayment(res.data.razorpay_order_id);
         } else {
           handleShowConfetti();
+
+          let list = cartObj.cart_items.map((item) => {
+            return {
+              id: item.product_section.id,
+              quantity: item.quantity,
+            };
+          });
+
+          if (list.length > 0) {
+            // addToCart
+            window.fbq("track", "Purchase", {
+              value: cartObj?.cart_final_amount,
+              currency: "INR",
+              contents: [...list],
+              content_ids: "product_title",
+              content_type: "product",
+            });
+          }
+
           setShowConfirmModal({
             show: true,
             mode: "success",

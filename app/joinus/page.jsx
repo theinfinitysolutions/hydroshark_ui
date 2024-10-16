@@ -30,9 +30,9 @@ const JoinUs = () => {
         >
           <div className=" w-[90vw] h-[80vh] lg:w-[70vw] mr-[10vw] relative lg:h-[65vh] rounded-2xl bg-black flex flex-col lg:flex-row justify-center items-center">
             <div className=" w-11/12 lg:w-9/12 flex flex-col items-start px-[2.5vw] ">
-              <p className=" text-[2rem] lg:text-[3rem] leading-[2rem] lg:leading-[2.75rem] text-[#DEE2E6]">
+              <h2 className=" text-[2rem] lg:text-[3rem] leading-[2rem] lg:leading-[2.75rem] text-[#DEE2E6]">
                 Unlock Opportunities with Hydroshark
-              </p>
+              </h2>
               <p className=" text-base text-[#DEE2E6] mt-4">
                 {
                   "At Hydroshark, we believe in the power of collaboration to create extraordinary experiences and innovative solutions. Partner with us and leverage our expertise, reach, and commitment to quality to amplify your brand and reach new heights."

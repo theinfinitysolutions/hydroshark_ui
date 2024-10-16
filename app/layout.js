@@ -116,7 +116,7 @@ export default function RootLayout({ children }) {
             fbq('init', '1066527391554625');
             fbq('track', 'PageView');
             console.log("Facebook Pixel Loaded");
-        `,
+          `,
           }}
         />
         <noscript>
@@ -143,7 +143,6 @@ export default function RootLayout({ children }) {
            window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-
           gtag('config', 'G-16MMMXB7FD');
         `,
           }}

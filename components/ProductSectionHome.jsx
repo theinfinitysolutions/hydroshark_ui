@@ -288,17 +288,25 @@ const ProductSectionHome = () => {
           <div className=" flex lg:hidden flex-col w-full items-center justify-center py-8">
             <div className="h-[60vh] w-11/12 lg:w-9/12 bg-white rounded-3xl flex flex-row relative ">
               <Swiper
+                // slidesPerView={1}
+                // spaceBetween={30}
+                // centeredSlides={true}
+                // loop={true}
+                // autoplay={{
+                //   delay: 5000,
+                //   disableOnInteraction: true,
+                //   pauseOnMouseEnter: true,
+                // }}
+                // modules={[Autoplay]}
+                // className="mySwiper w-full h-full bg-pi"
                 slidesPerView={1}
                 spaceBetween={30}
                 centeredSlides={true}
-                loop={true}
-                autoplay={{
-                  delay: 5000,
-                  disableOnInteraction: true,
-                  pauseOnMouseEnter: true,
+                pagination={{
+                  clickable: true,
                 }}
-                modules={[Autoplay]}
-                className="mySwiper w-full h-full bg-pi"
+                loop={true}
+                className="mySwiper"
               >
                 {productList.map((product, index) => {
                   return (

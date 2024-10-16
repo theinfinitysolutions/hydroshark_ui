@@ -29,9 +29,9 @@ const About = () => {
               threshold={0.3}
               addedClasses="flex flex-col items-start"
             >
-              <p className=" text-[3rem] text-[#DEE2E6] animate-slideUp">
+              <h2 className=" text-[3rem] text-[#DEE2E6] animate-slideUp">
                 ABOUT US
-              </p>
+              </h2>
               <p className=" text-base text-[#DEE2E6]/80 animate-slideUp">
                 {
                   " Hydroshark is a company that specializes in creating the best sports drinks for athletes, gamers, and daredevils. Our drinks are packed with no caffeine, low sugar, electrolytes, vitamins, and minerals. Our drinks are loved by athletes, gamers, and everyone who loves adventure."
