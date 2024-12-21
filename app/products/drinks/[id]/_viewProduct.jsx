@@ -4,17 +4,12 @@ import { useStore } from "@/utils/store";
 import { products, comments } from "@/utils/consts";
 import Image from "next/image";
 import { ReplaceScene } from "@/components/CanModel";
-import { LuMinus, LuPlus } from "react-icons/lu";
-import { MdOutlineLocalShipping } from "react-icons/md";
-import { useParams } from "next/navigation";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { useRouter } from "next/navigation";
 import { IoTrendingDownOutline } from "react-icons/io5";
 import { IoBanOutline } from "react-icons/io5";
 import { MdOutlineHealthAndSafety } from "react-icons/md";
 import { IoMdStar } from "react-icons/io";
-import { LuThumbsUp } from "react-icons/lu";
-import { LuThumbsDown } from "react-icons/lu";
 import ProductCTA from "@/components/ProductCTA";
 import { PiCoinsFill } from "react-icons/pi";
 import instance from "@/utils/instance";
@@ -66,7 +61,6 @@ const ViewProduct = ({ id }) => {
   } = useStore();
   const [selectedProduct, setSelectedProduct] = useState({});
   const [selectedSection, setSelectedSection] = useState({});
-  const [show3d, setShow3d] = useState(false);
   const [show3dModel, setShow3dModel] = useState(false);
   const [currentImage, setCurrentImage] = useState("");
 
