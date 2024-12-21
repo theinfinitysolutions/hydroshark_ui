@@ -22,8 +22,12 @@ const navItems = [
     path: "/events",
   },
   {
-    title: "Join Us!",
-    path: "/joinus",
+    title: "Drinks",
+    path: "/products/drinks",
+  },
+  {
+    title: "Gymwear",
+    path: "/products/gymwear",
   },
 ];
 
@@ -37,8 +41,8 @@ const altItems = [
     path: "/contact",
   },
   {
-    title: "Products",
-    path: "/products",
+    title: "Join Us!",
+    path: "/joinus",
   },
 ];
 
