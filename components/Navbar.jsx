@@ -24,12 +24,12 @@ const navItems = [
     path: "/about",
   },
   {
-    title: "Contact",
-    path: "/contact",
+    title: "Drinks",
+    path: "/products/drinks",
   },
   {
-    title: "Products",
-    path: "/products",
+    title: "Gymwear",
+    path: "/products/gymwear",
   },
 ];
 
@@ -45,6 +45,10 @@ let subItemsExplore = [
   {
     title: "Events & Media",
     path: "/events",
+  },
+  {
+    title: "Contact",
+    path: "/contact",
   },
 ];
 
