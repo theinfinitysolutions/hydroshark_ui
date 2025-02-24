@@ -1,98 +1,369 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import Image from "next/image";
-import instance from "@/utils/instance";
-import { getUser } from "@/utils/helper";
-import { useStore } from "@/utils/store";
-import { useRouter } from "next/navigation";
-import Spinner from "@/components/Spinner";
-import TestimonalsHome from "@/components/TestimonalsHome";
+'use client';
+import React, { useState, useEffect } from 'react';
+import { IoFilterOutline } from 'react-icons/io5';
+import { FaStar } from 'react-icons/fa';
+import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+import { FaRegEye } from 'react-icons/fa';
 
-const Gymwear = () => {
-  const router = useRouter();
-  const [loading, setLoading] = useState(false);
-  const [productList, setProductList] = React.useState([]);
-  const {
-    showProductModal,
-    setShowProductModal,
-    addToCart,
-    cart,
-    user,
-    setCartSidebar,
-  } = useStore();
+import Image from 'next/image';
+import Link from 'next/link';
+import instance from '@/utils/instance';
+import Spinner from '@/components/Spinner';
+import { PiShoppingCartSimpleFill } from 'react-icons/pi';
+
+const priceRanges = [
+  { minValue: 0, maxValue: 10000, label: 'All Prices', id: 'all' },
+  { minValue: 0, maxValue: 1000, label: 'Under ₹1000', id: '0-1000' },
+  { minValue: 1000, maxValue: 2000, label: '₹1000 - ₹2000', id: '1000-2000' },
+  { minValue: 2000, maxValue: 10000, label: 'Above ₹2000', id: '2000+' },
+];
+
+const GymwearPage = () => {
+  const [loading, setLoading] = useState(true);
+  const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const productsPerPage = 6;
+  const [filters, setFilters] = useState({
+    color: '',
+    size: '',
+    minPrice: 0,
+    maxPrice: 10000,
+    sortBy: 'popular',
+  });
+  const [merchandiseColors, setMerchandiseColors] = useState([]);
+  const [activeParams, setActiveParams] = useState({});
+
+  const fetchMerchandiseColors = async () => {
+    try {
+      setLoading(true);
+      const response = await instance.get('/merchandise/merchandise-color/');
+      setLoading(false);
+      setMerchandiseColors(response.data.results);
+    } catch (error) {
+      console.error('Error fetching merchandise colors:', error);
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    if (!user) getUser();
-  }, [user]);
+    fetchMerchandiseColors();
+  }, []);
+
+  const fetchMerchandise = async (params) => {
+    try {
+      setLoading(true);
+      if (params) {
+        const response = await instance.get('/merchandise/merchandise/', { params });
+        setLoading(false);
+        return response.data.results;
+      } else {
+        const response = await instance.get('/merchandise/merchandise/');
+        setLoading(false);
+        return response.data.results;
+      }
+    } catch (error) {
+      console.error('Error fetching merchandise:', error);
+      setLoading(false);
+    }
+  };
+
+  const getMerchandise = async (params) => {
+    const data = await fetchMerchandise(params);
+    setProducts(data);
+    setFilteredProducts(data);
+  };
+
+  useEffect(() => {
+    getMerchandise();
+  }, []);
+
+  // Pagination logic
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
+  const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+
+  // Filter and sort products
+  const applyFilters = () => {
+    const params = {};
+
+    // Add color filters to params
+    if (filters.color) {
+      params.color = filters.color;
+    }
+
+    // Add size filters to params
+    if (filters.size) {
+      params.size = filters.size;
+    }
+
+    if (filters.priceRange) {
+      params.price_min = priceRanges.find((range) => range.id === filters.priceRange).minValue;
+      params.price_max = priceRanges.find((range) => range.id === filters.priceRange).maxValue;
+    }
+
+    // Add sorting to params
+    if (filters.sortBy) {
+      params.sortBy = filters.sortBy;
+    }
+
+    // Call getMerchandise with the updated params
+    setActiveParams(params);
+    getMerchandise(params);
+  };
+
+  useEffect(() => {
+    applyFilters();
+  }, [filters]);
+
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  if (loading) {
+    return (
+      <div className='flex justify-center items-center h-[80vh] bg-[#f0f2f4] w-full'>
+        <Spinner loading={loading} size={48} color='#000000' />
+      </div>
+    );
+  }
 
   return (
-    <div className="w-full min-h-screen relative bg-[#f0f2f4] flex flex-col items-center overflow-hidden">
-      <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:72px_72px]"></div>
-      <div className=" flex flex-col items-center w-11/12 z-20 mt-[5vh] lg:mt-[7.5vh] ">
-        <h2 className=" text-xl text-[#408289]">Hydroshark Gymwear</h2>
-        <p className=" text-[2rem] lg:text-[2.5rem] text-center font-bold text-[#181818]">
-          {"Energize and Gear Up: Your Ultimate Fitness Collection"}
-        </p>
+    <div className='w-full min-h-screen relative bg-[#f0f2f4] flex flex-col items-center overflow-hidden px-4 md:px-8'>
+      <div className=' z-0 absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:72px_72px]'></div>
+
+      {/* Header Section */}
+      <div className='mb-8 w-full z-30'>
+        <h1 className='text-4xl font-bold mb-2 text-black'>Hydroshark Gymwear</h1>
+        <p className='text-gray-600'>Premium fitness apparel for peak performance</p>
       </div>
-      <div className=" flex w-11/12 lg:w-11/12 my-[5vh] lg:my-[7.5vh]">
-        {loading ? (
-          <div className=" w-full h-[40vh] flex flex-col items-center justify-center">
-            <Spinner loading={loading} size={48} color="#000000" />
-          </div>
-        ) : (
-          <div className=" w-full flex flex-col lg:grid lg:grid-cols-3 lg:place-items-center justify-center gap-8 items-center ">
-            {productList.length % 3 != 0 && productList.length > 0 ? (
-              <div className=" w-full h-[60vh] flex flex-col items-center mb-0 relative  border-[1px] border-white  z-0 justify-center">
-                <div className=" absolute w-full h-full z-0 ">
-                  <Image
-                    src={process.env.NEXT_PUBLIC_API_URL + "/bgasset21.png"}
-                    fill
-                    style={{ objectFit: "cover" }}
-                  />
-                </div>
-                <div className=" absolute h-[5vh] w-[20vh] lg:w-[30vh] -right-4 top-0  z-0 ">
-                  <Image
-                    src={process.env.NEXT_PUBLIC_API_URL + "/icon5.png"}
-                    fill
-                    style={{ objectFit: "contain" }}
-                  />
-                </div>
-                <div className=" absolute h-[15vh] w-[15vh] lg:w-[15vh] z-10 left-0 -top-[2.5vh] ">
-                  <Image
-                    src={process.env.NEXT_PUBLIC_API_URL + "/icon4.png"}
-                    fill
-                    style={{ objectFit: "contain" }}
-                  />
-                </div>
-                <div className=" flex z-30 flex-col items-center cursor-pointer justify-center w-full h-[60vh] bg-white  bg-opacity-10">
-                  <div className=" h-[20vh] w-[20vh] relative">
-                    <Image
-                      src={
-                        process.env.NEXT_PUBLIC_API_URL + "/hydroshark_logo.png"
-                      }
-                      fill
-                      style={{ objectFit: "contain" }}
-                    />
-                  </div>
-                  <p className=" text-white text-3xl text-center w-8/12 mt-8 font-semibold">
-                    New Products Coming Soon {productList.length}
-                  </p>
-                </div>
+
+      {/* Filters and Products Container */}
+      <div className='flex flex-col w-full md:flex-row gap-8 z-30  '>
+        {/* Filters Sidebar */}
+        <div className='md:w-1/4 z-40 '>
+          <div className='bg-white border border-gray-400 p-4 rounded-lg shadow-sm '>
+            <div className='flex items-center gap-2 mb-4'>
+              <IoFilterOutline className='text-xl text-black' />
+              <h2 className='text-xl font-semibold text-black'>Filters</h2>
+            </div>
+
+            {/* Price Filter */}
+            <div className='mb-6 z-40'>
+              <h3 className='font-medium mb-2 text-black'>Price Range</h3>
+              <select
+                className='w-full bg-white text-black p-2 rounded border border-gray-400'
+                value={filters.priceRange}
+                onChange={(e) => setFilters({ ...filters, priceRange: e.target.value })}
+              >
+                {priceRanges.map((range) => (
+                  <option key={range.id} value={range.id}>
+                    {range.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Size Filter */}
+            <div className='mb-6'>
+              <h3 className='font-medium mb-2 text-black'>Size</h3>
+              <div className='flex flex-wrap gap-2'>
+                {['S', 'M', 'L', 'XL'].map((size) => (
+                  <button
+                    key={size}
+                    className={`px-2 py-1 border text-black ${
+                      filters.size === size ? 'border-blue-600' : 'border-gray-400'
+                    }`}
+                    onClick={() => {
+                      setFilters({ ...filters, size: size });
+                    }}
+                  >
+                    {size}
+                  </button>
+                ))}
               </div>
-            ) : null}
+            </div>
+
+            {/* Color Filter */}
+            <div className='mb-6'>
+              <h3 className='font-medium mb-2 text-black'>Color</h3>
+              <div className='flex flex-wrap gap-2'>
+                {merchandiseColors.map((color) => (
+                  <button
+                    key={color.id}
+                    className={`w-6 h-6 rounded-full border-2 ${
+                      filters.color === color.id ? 'border-blue-600' : 'border-gray-400'
+                    }`}
+                    style={{ backgroundColor: color.color_code }}
+                    onClick={() => {
+                      setFilters({ ...filters, color: color.id });
+                    }}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Clear Filters Button */}
+            {Object.keys(activeParams).length > 0 && (
+              <div className='mt-4'>
+                <button
+                  className='w-full bg-black text-white p-2 rounded'
+                  onClick={() => {
+                    setFilters({ color: '', size: '', priceRange: 'all', sortBy: 'popular' });
+                    setActiveParams({});
+                  }}
+                >
+                  Clear Filters
+                </button>
+              </div>
+            )}
           </div>
-        )}
-      </div>
-      <TestimonalsHome />
-      <div className=" flex flex-col relative h-[30vh] lg:h-[80vh] w-full">
-        <Image
-          src={process.env.NEXT_PUBLIC_API_URL + "/img11alt.jpeg"}
-          fill
-          className=" absolute"
-        />
+        </div>
+
+        {/* Products Grid */}
+        <div className='md:w-3/4 mb-12'>
+          {/* Sort Options */}
+          {/* <div className='flex justify-between items-center mb-6'>
+            <p className='text-gray-600'>{filteredProducts.length} Products</p>
+            <select
+              className='bg-white border text-black border-gray-400 p-2 rounded'
+              value={filters.sortBy}
+              onChange={(e) => setFilters({ ...filters, sortBy: e.target.value })}
+            >
+              <option value='popular'>Most Popular</option>
+              <option value='newest'>Newest</option>
+              <option value='price-low'>Price: Low to High</option>
+              <option value='price-high'>Price: High to Low</option>
+            </select>
+          </div> */}
+
+          {/* Products Grid */}
+          {currentProducts.length === 0 ? (
+            <div className='text-center py-12 '>
+              <h3 className='text-xl font-semibold mb-2 text-black'>No Products Found</h3>
+              <p className='text-gray-600'>Try adjusting your filters or check back later for new arrivals</p>
+            </div>
+          ) : loading ? (
+            <div className='flex justify-center items-center h-[80vh] w-full'>
+              <Spinner loading={loading} size={48} color='#000000' />
+            </div>
+          ) : (
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 min-h-[60vh]'>
+              {currentProducts.map((product) => (
+                <Link href={`/products/gymwear/${product.slug}`} key={product.id}>
+                  <div className='bg-white border border-gray-400 rounded-lg overflow-hidden hover:shadow-lg transition-all group'>
+                    <div className='relative'>
+                      <div className='relative h-64 w-full overflow-hidden bg-gray-100'>
+                        <Image
+                          src={product.product_primary_image?.image?.cloudfront}
+                          alt={product.product_title}
+                          fill
+                          className='object-contain transform transition-transform z-20 duration-300 group-hover:scale-110'
+                        />
+                        <div className='absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300'></div>
+
+                        <div className=' absolute w-full h-full z-0 '>
+                          <Image
+                            src={process.env.NEXT_PUBLIC_API_URL + '/bgasset21.png'}
+                            fill
+                            className='opacity-60'
+                            style={{ objectFit: 'cover' }}
+                          />
+                        </div>
+                      </div>
+                      {/* Quick Options Overlay */}
+                      <div className='absolute right-2 top-2 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity'>
+                        <button className='p-2 bg-white rounded-full shadow-md hover:bg-gray-100'>
+                          <PiShoppingCartSimpleFill className='w-5 h-5 text-black' />
+                        </button>
+                      </div>
+                    </div>
+                    <div className='px-4 py-2'>
+                      <h3 className='font-semibold mt-2 text-black'>{product.product_title}</h3>
+
+                      <div className='flex items-center mt-2 gap-2'>
+                        <span className='text-lg font-bold text-black'>
+                          ₹{product.product_sections[0].discounted_amount}
+                        </span>
+                        {product.product_sections[0].discount_percentage > 0 && (
+                          <>
+                            <span className='text-red-500 line-through ml-2'>₹{product.product_sections[0].price}</span>
+                            <span className='text-green-500 ml-2'>
+                              ({product.product_sections[0].discount_percentage}% off)
+                            </span>
+                          </>
+                        )}
+                      </div>
+                      {/* Available Sizes */}
+                    </div>
+                    <div className='w-full border-t border-gray-400 py-2 px-4'>
+                      <p className='text-sm text-gray-600 mb-1'>Available Sizes:</p>
+                      <div className='flex gap-1'>
+                        {product.product_sections.map((item) => (
+                          <span key={item.id} className='text-xs border text-black border-gray-400 px-2 py-1 rounded'>
+                            {item.size}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    {/* <div className='w-full border-t border-gray-400 py-2 px-4'>
+                      <p className='text-sm text-gray-600 mb-1'>Available Colors:</p>
+                      <div className='flex gap-1'>
+                        {product.product_sections[0].colors.map((item) => (
+                          <div
+                            key={item.id}
+                            className='w-6 h-6 rounded-full border-2 border-gray-400'
+                            style={{ backgroundColor: item.product_color.color_code }}
+                          />
+                        ))}
+                      </div>
+                    </div> */}
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
+
+          {/* Pagination Controls */}
+          <div className='mt-8 flex justify-center items-center gap-2'>
+            <button
+              onClick={() => paginate(currentPage - 1)}
+              disabled={currentPage === 1}
+              className={`p-2 rounded-full ${
+                currentPage === 1 ? 'text-gray-400 cursor-not-allowed' : 'text-black hover:bg-gray-100'
+              }`}
+            >
+              <IoIosArrowBack className='text-xl' />
+            </button>
+
+            {[...Array(totalPages)].map((_, index) => (
+              <button
+                key={index + 1}
+                onClick={() => paginate(index + 1)}
+                className={`w-8 h-8 rounded-full ${
+                  currentPage === index + 1 ? 'bg-black text-white' : 'text-black hover:bg-gray-100'
+                }`}
+              >
+                {index + 1}
+              </button>
+            ))}
+
+            <button
+              onClick={() => paginate(currentPage + 1)}
+              disabled={currentPage === totalPages}
+              className={`p-2 rounded-full ${
+                currentPage === totalPages ? 'text-gray-400 cursor-not-allowed' : 'text-black hover:bg-gray-100'
+              }`}
+            >
+              <IoIosArrowForward className='text-xl' />
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
 };
 
-export default Gymwear;
+export default GymwearPage;

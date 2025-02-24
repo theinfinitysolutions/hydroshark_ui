@@ -45,6 +45,15 @@ const nextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      {
+        source: "/products",
+        destination: "/products/drinks",
+        permanent: false,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
