@@ -1,35 +1,35 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "standalone",
+  output: 'standalone',
   reactStrictMode: false,
   trailingSlash: true,
   images: {
     unoptimized: true,
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "d2g3h1gpjmm5ra.cloudfront.net",
+        protocol: 'https',
+        hostname: 'd2g3h1gpjmm5ra.cloudfront.net',
       },
-      { protocol: "https", hostname: "d39g9o3xvlax7g.cloudfront.net" },
+      { protocol: 'https', hostname: 'd39g9o3xvlax7g.cloudfront.net' },
     ],
   },
   modularizeImports: {
-    "react-icons/?(((\\w*)?/?)*)": {
-      transform: "@react-icons/all-files/{{ matches.[1] }}/{{ member }}",
+    'react-icons/?(((\\w*)?/?)*)': {
+      transform: '@react-icons/all-files/{{ matches.[1] }}/{{ member }}',
       skipDefaultConversion: true,
     },
   },
-  transpilePackages: ["three"],
+  transpilePackages: ['three'],
   webpack: (config, { isServer }) => {
     config.module.rules.push({
       test: /\.obj$/,
       use: [
         {
-          loader: "file-loader",
+          loader: 'file-loader',
           options: {
-            name: "[name].[ext]",
-            outputPath: "static/models/",
-            publicPath: "/_next/static/models/",
+            name: '[name].[ext]',
+            outputPath: 'static/models/',
+            publicPath: '/_next/static/models/',
           },
         },
       ],
@@ -37,19 +37,19 @@ const nextConfig = {
 
     return config;
   },
-  async rewrites() {
-    return [
-      {
-        source: "/api/:path*/",
-        destination: process.env.NEXT_PUBLIC_API + "/api/:path*/",
-      },
-    ];
-  },
+  // async rewrites() {
+  //   return [
+  //     {
+  //       source: "/api/:path*/",
+  //       destination: process.env.NEXT_PUBLIC_API + "/api/:path*/",
+  //     },
+  //   ];
+  // },
   async redirects() {
     return [
       {
-        source: "/products",
-        destination: "/products/drinks",
+        source: '/products',
+        destination: '/products/drinks',
         permanent: false,
       },
     ];

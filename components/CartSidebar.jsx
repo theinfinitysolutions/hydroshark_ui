@@ -269,6 +269,24 @@ export default function CartSidebar() {
               cart.length > 0 ? (
                 <div className='flex flex-col mt-4 w-full max-h-[80%] overflow-y-scroll'>
                   {cart.map((item, index) => {
+                    if (item.product_type == 'merchandise') {
+                      return (
+                        <CartCardMerchandise
+                          key={index}
+                          item={item}
+                          image={item.image}
+                          product_section={item.section}
+                          product_title={item.product_title}
+                          quantity={item.product_quantity}
+                          onDelete={() => {
+                            handleCartQuantityChange(item.id, 'delete');
+                          }}
+                          onQuantityChange={(type) => {
+                            handleCartQuantityChange(item.id, type, item.quantity);
+                          }}
+                        />
+                      );
+                    }
                     return (
                       <CartCard
                         key={index}
@@ -301,6 +319,13 @@ export default function CartSidebar() {
                       <CartCardMerchandise
                         key={index}
                         item={item}
+                        image={item.product_section?.product_primary_image?.image?.cloudfront}
+                        product_title={item.product_section?.linked_product?.product_title}
+                        product_section={item.product_section}
+                        quantity={item.quantity}
+                        onDelete={() => {
+                          handleDeleteCartItem(item.id);
+                        }}
                         onQuantityChange={(type) => {
                           patchSectionQuantity(item.id, type, item.quantity);
                         }}

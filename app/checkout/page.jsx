@@ -776,6 +776,13 @@ const Checkout = () => {
                             <CartCardMerchandise
                               key={index}
                               item={item}
+                              image={item.product_section?.product_primary_image?.image?.cloudfront}
+                              product_title={item.product_section?.linked_product?.product_title}
+                              product_section={item.product_section}
+                              quantity={item.quantity}
+                              onDelete={() => {
+                                handleDeleteCartItem(item.id);
+                              }}
                               onQuantityChange={(type) => {
                                 patchSectionQuantity(item.id, type, item.quantity);
                               }}
@@ -813,32 +820,34 @@ const Checkout = () => {
 
                 <div className='flex flex-col items-start justify-between w-full mt-4 z-20'>
                   <p className='text-black text-sm lg:text-base font-semibold mb-2'>Redeem HydroShark Coins</p>
-                  <div className='flex flex-row items-center justify-start w-full'>
-                    <input
-                      type='number'
-                      value={coinsToRedeem}
-                      disabled={
-                        walletData?.wallet_balance === 0 ||
-                        !cartObj?.cart_items?.find((item) => item.product_type === 'merchandise')
-                      }
-                      onChange={(e) => setCoinsToRedeem(Number(e.target.value))}
-                      className='border border-gray-300 w-9/12 disabled:opacity-50 p-2 rounded-md text-black bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200'
-                      placeholder={`Enter coins to redeem (Balance: ${walletData?.wallet_balance})`}
-                    />
-                    <button
-                      disabled={
-                        walletData?.wallet_balance === 0 ||
-                        !cartObj?.cart_items?.find((item) => item.product_type === 'merchandise')
-                      }
-                      onClick={applyCoins}
-                      className='ml-2 bg-black disabled:opacity-50 w-3/12 text-white py-2 px-4 rounded-md hover:bg-gray-800 transition duration-200'
-                    >
-                      Apply
-                    </button>
-                  </div>
+                  {cartObj.coins_used == 0 ? (
+                    <div className='flex flex-row items-center justify-start w-full mb-2'>
+                      <input
+                        type='number'
+                        value={coinsToRedeem}
+                        disabled={
+                          walletData?.wallet_balance === 0 ||
+                          !cartObj?.cart_items?.find((item) => item.product_type === 'merchandise')
+                        }
+                        onChange={(e) => setCoinsToRedeem(Number(e.target.value))}
+                        className='border border-gray-300 w-9/12 disabled:opacity-50 p-2 rounded-md text-black bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200'
+                        placeholder={`Enter coins to redeem (Balance: ${walletData?.wallet_balance})`}
+                      />
+                      <button
+                        disabled={
+                          walletData?.wallet_balance === 0 ||
+                          !cartObj?.cart_items?.find((item) => item.product_type === 'merchandise')
+                        }
+                        onClick={applyCoins}
+                        className='ml-2 bg-black disabled:opacity-50 w-3/12 text-white py-2 px-4 rounded-md hover:bg-gray-800 transition duration-200'
+                      >
+                        Apply
+                      </button>
+                    </div>
+                  ) : null}
 
                   {cartObj?.coins_used > 0 && (
-                    <div className='flex flex-row items-center justify-between bg-white/60 p-2 rounded-md w-full mt-2'>
+                    <div className='flex flex-row items-center justify-between bg-white/60 p-2 rounded-md w-full'>
                       <p className='text-black text-base'>{`Redeemed Coins: ${cartObj.coins_used}`}</p>
                       <button
                         onClick={cancelRedeem}
