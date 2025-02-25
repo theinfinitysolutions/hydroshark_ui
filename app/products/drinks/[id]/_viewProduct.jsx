@@ -81,7 +81,7 @@ const ViewProduct = ({ id }) => {
   const getProductById = (id) => {
     setLoading(true);
     instance
-      .get(`/drinks/product/${id}/`)
+      .get(`/drinks/product/slug/${id}/`)
       .then((res) => {
         console.log('products', res.data);
         setSelectedProduct(res.data);

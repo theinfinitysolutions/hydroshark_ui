@@ -252,7 +252,7 @@ const GymwearPage = () => {
           ) : (
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 min-h-[60vh]'>
               {currentProducts.map((product) => (
-                <Link href={`/products/gymwear/${product.slug}`} key={product.id}>
+                <Link href={`/products/gymwear/${product.id}`} key={product.id}>
                   <div className='bg-white border border-gray-400 rounded-lg overflow-hidden hover:shadow-lg transition-all group'>
                     <div className='relative'>
                       <div className='relative h-64 w-full overflow-hidden bg-gray-100'>
