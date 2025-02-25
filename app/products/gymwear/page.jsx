@@ -36,13 +36,11 @@ const GymwearPage = () => {
 
   const fetchMerchandiseColors = async () => {
     try {
-      setLoading(true);
       const response = await instance.get('/merchandise/merchandise-color/');
-      setLoading(false);
+
       setMerchandiseColors(response.data.results);
     } catch (error) {
       console.error('Error fetching merchandise colors:', error);
-      setLoading(false);
     }
   };
 
