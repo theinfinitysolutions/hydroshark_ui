@@ -181,7 +181,9 @@ const ViewProductMerchandise = ({ id }) => {
       .then((res) => {
         console.log('products', res.data);
         setSelectedProduct(res.data);
-        setCurrentImage(res.data.product_primary_image.image.cloudfront);
+        if (res.data.product_primary_image && res.data.product_primary_image.image) {
+          setCurrentImage(res.data.product_primary_image.image.cloudfront);
+        }
         // Set initial section and color if available
         if (res.data.product_sections && res.data.product_sections.length > 0) {
           setSelectedSection(res.data.product_sections[0]);
@@ -193,6 +195,8 @@ const ViewProductMerchandise = ({ id }) => {
       })
       .catch((err) => {
         setLoading(false);
+        navigate('/products/gymwear');
+        setSelectedProduct(null);
         console.log('err', err);
       });
   };
@@ -334,7 +338,9 @@ const ViewProductMerchandise = ({ id }) => {
                     key={section.id}
                     onClick={() => setSelectedSection(section)}
                     className={`px-6 py-2 border ${
-                      selectedSection.id === section.id ? 'bg-white text-black' : 'border-white text-white'
+                      selectedSection && selectedSection.id === section.id
+                        ? 'bg-white text-black'
+                        : 'border-white text-white'
                     }`}
                   >
                     {section.size}
@@ -347,22 +353,23 @@ const ViewProductMerchandise = ({ id }) => {
             <div className='flex flex-col w-full items-start mt-4'>
               <p className='text-white mb-2'>Color</p>
               <div className='flex flex-wrap gap-3'>
-                {selectedSection.colors.map((color) => (
-                  <button
-                    key={color.color_name}
-                    onClick={() => setSelectedColor(color.product_color.id)}
-                    className={`w-10 h-10 rounded-full border-2 relative ${
-                      selectedColor === color.product_color.id ? ' border-white  ' : 'border-gray-400'
-                    }`}
-                    style={{ backgroundColor: color.product_color.color_code }}
-                  >
-                    {selectedColor === color.product_color.id && (
-                      <span className='absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-xs text-white'>
-                        {color.product_color.color_name}
-                      </span>
-                    )}
-                  </button>
-                ))}
+                {selectedSection &&
+                  selectedSection.colors.map((color) => (
+                    <button
+                      key={color.color_name}
+                      onClick={() => setSelectedColor(color.product_color.id)}
+                      className={`w-10 h-10 rounded-full border-2 relative ${
+                        selectedColor === color.product_color.id ? ' border-white  ' : 'border-gray-400'
+                      }`}
+                      style={{ backgroundColor: color.product_color.color_code }}
+                    >
+                      {selectedColor === color.product_color.id && (
+                        <span className='absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-xs text-white'>
+                          {color.product_color.color_name}
+                        </span>
+                      )}
+                    </button>
+                  ))}
               </div>
             </div>
 
