@@ -57,6 +57,8 @@ const ViewProduct = ({ id }) => {
   const [show3dModel, setShow3dModel] = useState(false);
   const [currentImage, setCurrentImage] = useState('');
 
+  console.log('selectedProduct', selectedProduct);
+
   useEffect(() => {
     if (!user) getUser();
   }, [user]);
@@ -73,19 +75,27 @@ const ViewProduct = ({ id }) => {
   }, [selectedSection]);
 
   const getProductById = (id) => {
+    console.log('id', id);
     setLoading(true);
     instance
       .get(`/drinks/product/slug/${id}/`)
       .then((res) => {
         //console.log('products', res.data);
-        setSelectedProduct(res.data);
 
-        setSelectedSection({
-          ...res.data.product_sections.find((item) => item.in_stock),
-        });
-        setCurrentImage(res.data.product_primary_image.image.cloudfront);
+        if (res.data) {
+          instance.get(`/drinks/product/${res.data.id}/`).then((res) => {
+            if (res.data) {
+              setSelectedProduct(res.data);
 
-        setLoading(false);
+              setSelectedSection({
+                ...res.data.product_sections.find((item) => item.in_stock),
+              });
+              setCurrentImage(res.data.product_primary_image.image.cloudfront);
+
+              setLoading(false);
+            }
+          });
+        }
       })
       .catch((err) => {
         setLoading(false);
@@ -98,7 +108,13 @@ const ViewProduct = ({ id }) => {
   }, [id]);
 
   useEffect(() => {
-    setSelectedProduct(products.find((product) => product.id == id));
+    if (products.length > 0 && id) {
+      let obj = products.find((product) => product.slug == id);
+      console.log('obj', obj);
+      if (obj) {
+        setSelectedProduct(obj);
+      }
+    }
   }, [id]);
 
   const addToCartHandler = (item) => {
@@ -173,7 +189,7 @@ const ViewProduct = ({ id }) => {
                   </a>
                 ) : null}
 
-                {[...selectedProduct?.product_images].map((image, index) => {
+                {(selectedProduct?.product_images || []).map((image, index) => {
                   return (
                     <a
                       onClick={() => {

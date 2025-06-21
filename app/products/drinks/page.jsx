@@ -100,10 +100,6 @@ const Drinks = () => {
     setCartSidebar({ show: true });
   };
 
-  useEffect(() => {
-    //console.log('productList', productList);
-  }, [productList]);
-
   return (
     <div className='w-full min-h-screen relative bg-[#f0f2f4] flex flex-col items-center overflow-hidden'>
       <div className='absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:72px_72px]'></div>
@@ -160,7 +156,7 @@ const Drinks = () => {
                   <div className='  z-20 flex flex-col items-center justify-center w-full'>
                     <a
                       onClick={() => {
-                        router.push(`/products/drinks/${product.id}`);
+                        router.push(`/products/drinks/${product.slug}`);
                       }}
                       className=' flex h-[30vh] w-[30vh] relative'
                     >
