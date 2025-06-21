@@ -226,9 +226,7 @@ const Drinks = () => {
                       style={{ objectFit: 'contain' }}
                     />
                   </div>
-                  <p className=' text-white text-3xl text-center w-8/12 mt-8 font-semibold'>
-                    New Products Coming Soon {productList.length}
-                  </p>
+                  <p className=' text-white text-3xl text-center w-8/12 mt-8 font-semibold'>New Products Coming Soon</p>
                 </div>
               </div>
             ) : null}
