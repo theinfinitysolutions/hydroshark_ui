@@ -63,12 +63,6 @@ const ViewProduct = ({ id }) => {
 
   useEffect(() => {
     if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
-      //console.log('track event ', {
-        value: selectedSection?.discounted_amount,
-        currency: 'INR',
-        content_ids: selectedProduct?.product_title + ' ' + selectedSection?.section_title,
-        content_type: 'product',
-      });
       window.fbq('track', 'ViewContent', {
         value: selectedSection?.discounted_amount,
         currency: 'INR',
