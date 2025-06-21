@@ -62,7 +62,7 @@ export default function MobileSidebar() {
   }, [user]);
 
   useEffect(() => {
-    console.log(sidebar.show);
+    //console.log(sidebar.show);
     setter(sidebar.show);
   }, [sidebar.show]);
   // Define our base class

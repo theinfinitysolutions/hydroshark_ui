@@ -35,7 +35,7 @@ const AddUserAddressModal = () => {
         setLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        //console.log(err);
         setLoading(false);
       });
   };
@@ -45,7 +45,7 @@ const AddUserAddressModal = () => {
       const res = await instance.post('/utils/pincodeserviciable/', { pincode: pinCode });
       return res.data;
     } catch (err) {
-      console.log(err);
+      //console.log(err);
     }
   };
 
@@ -74,7 +74,7 @@ const AddUserAddressModal = () => {
         handleClose();
       })
       .catch((err) => {
-        console.log(err);
+        //console.log(err);
         setLoading(false);
       });
   };
@@ -94,13 +94,13 @@ const AddUserAddressModal = () => {
         setLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        //console.log(err);
         setLoading(false);
       });
   };
 
   const onSubmit = (data) => {
-    console.log('data', data, mode);
+    //console.log('data', data, mode);
     if (mode == 'edit') {
       patchAddress(data);
     } else {
@@ -117,7 +117,7 @@ const AddUserAddressModal = () => {
         setLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        //console.log(err);
         setLoading(false);
       });
   };

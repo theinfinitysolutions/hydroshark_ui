@@ -37,7 +37,7 @@ const Drinks = () => {
       })
       .catch((err) => {
         setLoading(false);
-        console.log('err', err);
+        //console.log('err', err);
       });
   };
 
@@ -59,7 +59,7 @@ const Drinks = () => {
           }
         } catch (err) {
           setLoading(false);
-          console.log('err', err);
+          //console.log('err', err);
         }
       })
     ).then(() => {
@@ -76,8 +76,8 @@ const Drinks = () => {
     productListTemp.forEach((item) => {
       if (item.id == productId) item.activeSection = id;
     }),
-      console.log('list temp', productListTemp);
-    setProductList([...productListTemp]);
+      //console.log('list temp', productListTemp);
+      setProductList([...productListTemp]);
   };
 
   const addToCartHandler = (item) => {
@@ -101,7 +101,7 @@ const Drinks = () => {
   };
 
   useEffect(() => {
-    console.log('productList', productList);
+    //console.log('productList', productList);
   }, [productList]);
 
   return (

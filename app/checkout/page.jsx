@@ -85,10 +85,10 @@ const Checkout = () => {
       .get('/accounts/address/')
       .then((res) => {
         setAddressList(res.data);
-        console.log('res ADDRESS', res.data);
+        //console.log('res ADDRESS', res.data);
       })
       .catch((err) => {
-        console.log('err', err);
+        //console.log('err', err);
       });
   };
 
@@ -100,7 +100,7 @@ const Checkout = () => {
       .get(`/billing/cart/`)
       .then((res) => {
         setLoading(false);
-        console.log('res', res.data);
+        //console.log('res', res.data);
         getWalletData();
         setCartObject(res.data);
 
@@ -127,7 +127,7 @@ const Checkout = () => {
       })
       .catch((err) => {
         setLoading(false);
-        console.log('err', err);
+        //console.log('err', err);
       });
   };
 
@@ -138,13 +138,13 @@ const Checkout = () => {
         quantity: type == 'add' ? quantity + 1 : quantity - 1,
       })
       .then((res) => {
-        console.log('res', res);
+        //console.log('res', res);
         setLoading(false);
         getCart();
       })
       .catch((err) => {
         setLoading(false);
-        console.log('err', err);
+        //console.log('err', err);
       });
   };
 
@@ -156,12 +156,12 @@ const Checkout = () => {
       })
       .then((res) => {
         setLoading(false);
-        console.log('res', res);
+        //console.log('res', res);
         getCart();
       })
       .catch((err) => {
         setLoading(false);
-        console.log('err', err);
+        //console.log('err', err);
       });
   };
 
@@ -170,10 +170,10 @@ const Checkout = () => {
       .get(`/rewards/wallet/`)
       .then((res) => {
         setWalletData(res.data);
-        console.log('wallet data');
+        //console.log('wallet data');
       })
       .catch((err) => {
-        console.log('err', err);
+        //console.log('err', err);
       });
   };
 
@@ -201,7 +201,7 @@ const Checkout = () => {
       return;
     }
 
-    console.log('order id', orderId);
+    //console.log('order id', orderId);
 
     if (orderId != '') {
       CreatePayment(orderId);
@@ -216,7 +216,7 @@ const Checkout = () => {
         payment_method: paymentMethod,
       })
       .then((res) => {
-        console.log('res', res);
+        //console.log('res', res);
 
         setOrderId(res.data.id);
         CreatePayment(res.data.id);
@@ -240,7 +240,7 @@ const Checkout = () => {
           id: '',
         });
         setShowLoading({ show: false });
-        console.log('err', err);
+        //console.log('err', err);
       });
   };
 
@@ -258,7 +258,7 @@ const Checkout = () => {
         order: orderId,
       })
       .then((res) => {
-        console.log('res create payment', res);
+        //console.log('res create payment', res);
         setShowLoading({ show: false });
         setRzpOrderId(res.data.razorpay_order_id);
         if (paymentMethod === 'razorpay' && res.data?.razorpay_order_id) {
@@ -299,7 +299,7 @@ const Checkout = () => {
       })
       .catch((err) => {
         setShowLoading({ show: false });
-        console.log('err', err);
+        //console.log('err', err);
         setShowConfirmModal({
           show: true,
           mode: 'error',
@@ -324,7 +324,7 @@ const Checkout = () => {
   const processPayment = async (orderId) => {
     setShowLoading({ show: false });
     try {
-      console.log('processPayment', orderId);
+      //console.log('processPayment', orderId);
       const options = {
         key: process.env.RAZORPAY_KEY_ID,
         key_id: process.env.RAZORPAY_KEY_ID,
@@ -335,7 +335,7 @@ const Checkout = () => {
         image: process.env.NEXT_PUBLIC_API_URL + '/hydroshark.png',
         order_id: orderId,
         handler: async function (response) {
-          console.log('razorpay response', response);
+          //console.log('razorpay response', response);
           completePayment(response.razorpay_payment_id, orderId, response.razorpay_signature);
 
           // handleShowConfetti();
@@ -355,11 +355,11 @@ const Checkout = () => {
         },
       };
 
-      // console.log("rzp", options);
+      // //console.log("rzp", options);
 
       const paymentObject = window.Razorpay(options);
       paymentObject.on('payment.failed', function (response) {
-        console.log('payment failed', response);
+        //console.log('payment failed', response);
         // setShowConfirmModal({
         //   show: true,
         //   mode: "error",
@@ -375,7 +375,7 @@ const Checkout = () => {
       });
       paymentObject.open();
     } catch (error) {
-      console.log('error payemnt', error);
+      //console.log('error payemnt', error);
       setShowConfirmModal({
         show: true,
         mode: 'error',
@@ -399,7 +399,7 @@ const Checkout = () => {
         razorpay_signature: signature,
       })
       .then((res) => {
-        console.log('res', res);
+        //console.log('res', res);
 
         setShowConfirmModal({
           show: true,
@@ -437,7 +437,7 @@ const Checkout = () => {
         }
       })
       .catch((err) => {
-        console.log('err', err);
+        //console.log('err', err);
         setShowLoading({ show: false });
         setShowConfirmModal({
           show: true,
@@ -468,7 +468,7 @@ const Checkout = () => {
       })
       .catch((err) => {
         setLoading(false);
-        console.log('err', err);
+        //console.log('err', err);
       });
   };
 
@@ -483,7 +483,7 @@ const Checkout = () => {
       })
       .catch((err) => {
         setLoading(false);
-        console.log('err', err);
+        //console.log('err', err);
       });
   };
 
@@ -801,7 +801,7 @@ const Checkout = () => {
                             section_title={item.product_section?.section_title}
                             product_quantity={item.quantity}
                             onDelete={() => {
-                              console.log('delete called');
+                              //console.log('delete called');
                               handleDeleteCartItem(item.id);
                             }}
                             onQuantityChange={(type) => {

@@ -18,6 +18,7 @@ import TestimonalsHome from '@/components/TestimonalsHome';
 import { getUser } from '@/utils/helper';
 import { useStore } from '@/utils/store';
 import AthleteCard from '@/components/AthletesSection/AtheleteCard';
+import EventsHome from '@/components/Events/EventsHome';
 
 export default function Home() {
   const ref = useRef();
@@ -476,6 +477,7 @@ export default function Home() {
           </div>
         </RevealOnScroll>
         <AthleteCard />
+        <EventsHome />
         <TestimonalsHome />
         <HomeSection3 />
       </div>

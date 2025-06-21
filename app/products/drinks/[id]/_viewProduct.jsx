@@ -63,7 +63,7 @@ const ViewProduct = ({ id }) => {
 
   useEffect(() => {
     if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
-      console.log('track event ', {
+      //console.log('track event ', {
         value: selectedSection?.discounted_amount,
         currency: 'INR',
         content_ids: selectedProduct?.product_title + ' ' + selectedSection?.section_title,
@@ -83,7 +83,7 @@ const ViewProduct = ({ id }) => {
     instance
       .get(`/drinks/product/slug/${id}/`)
       .then((res) => {
-        console.log('products', res.data);
+        //console.log('products', res.data);
         setSelectedProduct(res.data);
 
         setSelectedSection({
@@ -95,7 +95,7 @@ const ViewProduct = ({ id }) => {
       })
       .catch((err) => {
         setLoading(false);
-        console.log('err', err);
+        //console.log('err', err);
       });
   };
 

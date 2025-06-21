@@ -42,14 +42,14 @@ const Login = ({ onSignUp }) => {
     instance
       .post('/accounts/send-otp/', obj)
       .then((res) => {
-        console.log('res', res);
+        //console.log('res', res);
         setShowOTP(true);
         setLoading(false);
         setError(null);
       })
       .catch((err) => {
         setLoading(false);
-        console.log('err', err);
+        //console.log('err', err);
         if (err.response?.data?.message) {
           setError(err.response.data.message);
         } else {
@@ -74,11 +74,11 @@ const Login = ({ onSignUp }) => {
 
     setError(null);
 
-    console.log('obj', obj);
+    //console.log('obj', obj);
     instance
       .post('/accounts/login/', obj)
       .then((res) => {
-        console.log('res', res);
+        //console.log('res', res);
         setLoading(false);
         localStorage.setItem('token', res.data.access_token);
         setUser(res.data.user);
@@ -88,7 +88,7 @@ const Login = ({ onSignUp }) => {
         setShowOTP(false);
       })
       .catch((err) => {
-        console.log('err', err);
+        //console.log('err', err);
         setLoading(false);
         if (err.response?.data?.message) {
           setError(err.response.data.message);

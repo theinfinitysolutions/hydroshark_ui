@@ -34,7 +34,7 @@ instance.interceptors.request.use(
 // Add an interceptor that checks if the response has a code of 401, then log the user out and throw him at /login
 instance.interceptors.response.use(
   (response) => {
-    console.log('res.datacheck', response.status, response.status.toString()[0] != '2');
+    //console.log('res.datacheck', response.status, response.status.toString()[0] != '2');
     if (response.status.toString()[0] != '2') {
       throw response;
     }
@@ -48,7 +48,7 @@ instance.interceptors.response.use(
     //   //   toast.error("Session expired, please login again");
     // }
 
-    console.log('res.errres', error);
+    //console.log('res.errres', error);
     throw error;
   }
 );

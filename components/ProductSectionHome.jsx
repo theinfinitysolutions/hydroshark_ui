@@ -27,8 +27,8 @@ const ProductSectionHome = () => {
     productListTemp.forEach((item) => {
       if (item.id == productId) item.activeSection = id;
     }),
-      console.log('list temp', productListTemp);
-    setProductList([...productListTemp]);
+      //console.log('list temp', productListTemp);
+      setProductList([...productListTemp]);
   };
 
   const addToCartHandler = (item) => {
@@ -58,17 +58,17 @@ const ProductSectionHome = () => {
     instance
       .get('/drinks/product/')
       .then((res) => {
-        console.log('res', res.data.results);
+        //console.log('res', res.data.results);
         let productIds = res.data.results.map((item) => {
           return item.id;
         });
 
-        console.log('productIds', productIds);
+        //console.log('productIds', productIds);
         getProductDataDetailed(productIds);
       })
       .catch((err) => {
         setLoading(false);
-        console.log('err', err);
+        //console.log('err', err);
       });
   };
 
@@ -90,7 +90,7 @@ const ProductSectionHome = () => {
           }
         } catch (err) {
           setLoading(false);
-          console.log('err', err);
+          //console.log('err', err);
         }
       })
     ).then(() => {

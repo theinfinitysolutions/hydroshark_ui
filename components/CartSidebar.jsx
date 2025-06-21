@@ -31,15 +31,13 @@ export default function CartSidebar() {
     setter(cartSidebar.show);
   }, [cartSidebar]);
 
-  console.log('caert', cart);
-
   useEffect(() => {
     if (cartSidebar.show) {
       setLoading(true);
       instance
         .get('/billing/cart/')
         .then((res) => {
-          console.log('res', res);
+          //console.log('res', res);
           setCartId(res.data.id);
           setCartList(res.data.cart_items);
           if (res.data.id) {
@@ -51,7 +49,7 @@ export default function CartSidebar() {
           }
         })
         .catch((err) => {
-          console.log('err', err);
+          //console.log('err', err);
           setLoading(false);
         });
     }
@@ -72,7 +70,7 @@ export default function CartSidebar() {
     instance
       .get('/billing/cart/')
       .then((res) => {
-        console.log('res', res);
+        //console.log('res', res);
         setCartId(res.data.id);
         setCartList([...res.data.cart_items]);
         useStore.setState({
@@ -81,7 +79,7 @@ export default function CartSidebar() {
         setLoading(false);
       })
       .catch((err) => {
-        console.log('err', err);
+        //console.log('err', err);
         setLoading(false);
       });
   };
@@ -152,7 +150,7 @@ export default function CartSidebar() {
 
     // Process the responses
     responses.forEach((response) => {
-      console.log(response.data);
+      //console.log(response.data);
     });
 
     if (type == 'checkout') {
@@ -185,19 +183,19 @@ export default function CartSidebar() {
         quantity: type == 'add' ? quantity + 1 : quantity - 1,
       })
       .then((res) => {
-        console.log('res', res);
+        //console.log('res', res);
         setLoading(false);
         getCartList();
       })
       .catch((err) => {
         setLoading(false);
-        console.log('err', err);
+        //console.log('err', err);
       });
   };
 
   const handleCartQuantityChange = (id, action) => {
-    console.log('id', id);
-    console.log('action', action);
+    //console.log('id', id);
+    //console.log('action', action);
     let cartObj = [...cart];
 
     if (action == 'add') {
@@ -222,7 +220,7 @@ export default function CartSidebar() {
       });
     }
 
-    console.log('cartObj', cartObj);
+    //console.log('cartObj', cartObj);
 
     addToCart(cartObj);
   };
@@ -235,12 +233,12 @@ export default function CartSidebar() {
       })
       .then((res) => {
         setLoading(false);
-        console.log('res', res);
+        //console.log('res', res);
         getCartList();
       })
       .catch((err) => {
         setLoading(false);
-        console.log('err', err);
+        //console.log('err', err);
       });
   };
 
@@ -343,7 +341,7 @@ export default function CartSidebar() {
                       section_title={item.product_section?.section_title}
                       product_quantity={item.quantity}
                       onDelete={() => {
-                        console.log('delete called');
+                        //console.log('delete called');
                         handleDeleteCartItem(item.id);
                       }}
                       onQuantityChange={(type) => {

@@ -179,7 +179,7 @@ const ViewProductMerchandise = ({ id }) => {
     instance
       .get(`/merchandise/merchandise/slug/${id}/`)
       .then((res) => {
-        console.log('products', res.data);
+        //console.log('products', res.data);
         setSelectedProduct(res.data);
         if (res.data.product_primary_image && res.data.product_primary_image.image) {
           setCurrentImage(res.data.product_primary_image.image.cloudfront);
@@ -197,7 +197,7 @@ const ViewProductMerchandise = ({ id }) => {
         setLoading(false);
         navigate('/products/gymwear');
         setSelectedProduct(null);
-        console.log('err', err);
+        //console.log('err', err);
       });
   };
 

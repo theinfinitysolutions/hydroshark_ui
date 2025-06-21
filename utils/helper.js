@@ -11,11 +11,11 @@ export const getUser = () => {
   instance
     .get('/accounts/user/')
     .then((res) => {
-      console.log('res', res);
+      //console.log('res', res);
       useStore.setState({ user: res.data });
     })
     .catch((err) => {
-      console.log('err', err);
+      //console.log('err', err);
     });
 };
 
@@ -37,7 +37,7 @@ export const getCart = () => {
     })
     .catch((err) => {
       useStore.setState({ activeCartId: { id: '' } });
-      console.log('err', err);
+      //console.log('err', err);
     });
 
   return cartId;
