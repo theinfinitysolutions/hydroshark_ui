@@ -231,6 +231,39 @@ export const comments = [
   },
 ];
 
+export const gymwearComments = [
+{
+    name: "Rahul",
+    description:
+      "The gymwear is incredibly comfortable and fits perfectly. The quality of the fabric is top-notch, and I love the stylish design. It's my go-to choice for workouts.",
+    rating: 5,
+  },
+  {
+    name: "Anjali",
+    description:
+      "I am impressed with the quality of this gymwear. It's both durable and stylish, making it perfect for my yoga sessions. The comfort level is unmatched.",
+    rating: 5,
+  },
+  {
+    name: "Sandeep",
+    description:
+      "This gymwear combines style and comfort effortlessly. The fabric is breathable and soft, and the design is modern and sleek. Highly recommend it!",
+    rating: 4,
+  },
+  {
+    name: "Neha",
+    description:
+      "The comfort and quality of this gymwear are outstanding. It feels great on the skin, and the stylish look makes me feel confident during my workouts.",
+    rating: 5,
+  },
+  {
+    name: "Priya",
+    description:
+      "I love how stylish and comfortable this gymwear is. The quality is excellent, and it provides great support during intense workouts. A must-have for fitness enthusiasts!",
+    rating: 5,
+  },
+];
+
 export const FAQ = [
   {
     question: "What is Hydroshark?",

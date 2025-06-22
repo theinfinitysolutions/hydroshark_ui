@@ -1,26 +1,26 @@
-import instance from "./instance";
-import { useStore } from "./store";
+import instance from './instance';
+import { useStore } from './store';
 
 export const getUser = () => {
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem('token');
 
   if (!token) {
     return;
   }
 
   instance
-    .get("/accounts/user/")
+    .get('/accounts/user/')
     .then((res) => {
-      console.log("res", res);
+      //console.log('res', res);
       useStore.setState({ user: res.data });
     })
     .catch((err) => {
-      console.log("err", err);
+      //console.log('err', err);
     });
 };
 
 export const getCart = () => {
-  const token = localStorage.getItem("token");
+  const token = localStorage.getItem('token');
   let cartId = null;
 
   if (!token) {
@@ -28,7 +28,7 @@ export const getCart = () => {
   }
 
   instance
-    .get("/billing/cart/")
+    .get('/billing/cart/')
     .then((res) => {
       cartId = res.data.id;
       useStore.setState({
@@ -36,8 +36,8 @@ export const getCart = () => {
       });
     })
     .catch((err) => {
-      useStore.setState({ activeCartId: { id: "" } });
-      console.log("err", err);
+      useStore.setState({ activeCartId: { id: '' } });
+      //console.log('err', err);
     });
 
   return cartId;

@@ -1,16 +1,16 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import { set, useForm } from "react-hook-form";
-import OTPInput from "react-otp-input";
-import instance from "@/utils/instance";
-import { useStore } from "@/utils/store";
-import Spinner from "../Spinner";
+'use client';
+import React, { useEffect, useState } from 'react';
+import { set, useForm } from 'react-hook-form';
+import OTPInput from 'react-otp-input';
+import instance from '@/utils/instance';
+import { useStore } from '@/utils/store';
+import Spinner from '../Spinner';
 
 const Login = ({ onSignUp }) => {
   const [loading, setLoading] = useState(false);
-  const [showOTP, setShowOTP] = useState(false);
+  const [showOTP, setShowOTP] = useState(true);
   const [error, setError] = useState(null);
-  const [otp, setOtp] = useState("");
+  const [otp, setOtp] = useState('');
   const { setUser, showAuthModal, setShowAuthModal } = useStore();
 
   const {
@@ -21,15 +21,15 @@ const Login = ({ onSignUp }) => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      phone: "",
+      phone: '',
     },
   });
 
   useEffect(() => {
     if (showAuthModal.show) {
-      setShowOTP(false);
+      setShowOTP(true);
       setError(null);
-      setOtp("");
+      setOtp('');
     }
   }, [showAuthModal.show]);
 
@@ -40,20 +40,20 @@ const Login = ({ onSignUp }) => {
       phone_number: data.phone,
     };
     instance
-      .post("/accounts/send-otp/", obj)
+      .post('/accounts/send-otp/', obj)
       .then((res) => {
-        console.log("res", res);
+        //console.log('res', res);
         setShowOTP(true);
         setLoading(false);
         setError(null);
       })
       .catch((err) => {
         setLoading(false);
-        console.log("err", err);
+        //console.log('err', err);
         if (err.response?.data?.message) {
           setError(err.response.data.message);
         } else {
-          setError("Some error has occurred!");
+          setError('Some error has occurred!');
         }
       });
   };
@@ -62,144 +62,120 @@ const Login = ({ onSignUp }) => {
     setLoading(true);
 
     if (otp.length != 6) {
-      setError("OTP should be of 6 digits");
+      setError('OTP should be of 6 digits');
       setLoading(false);
       return;
     }
 
     let obj = {
-      phone_number: getValues("phone"),
+      phone_number: getValues('phone') || '9398542806',
       otp: otp,
     };
 
     setError(null);
 
-    console.log("obj", obj);
+    //console.log('obj', obj);
     instance
-      .post("/accounts/login/", obj)
+      .post('/accounts/login/', obj)
       .then((res) => {
-        console.log("res", res);
+        //console.log('res', res);
         setLoading(false);
-        localStorage.setItem("token", res.data.access_token);
+        localStorage.setItem('token', res.data.access_token);
         setUser(res.data.user);
-        setShowAuthModal({ show: false, message: "" });
+        setShowAuthModal({ show: false, message: '' });
         reset();
-        setOtp("");
+        setOtp('');
         setShowOTP(false);
       })
       .catch((err) => {
-        console.log("err", err);
+        //console.log('err', err);
         setLoading(false);
         if (err.response?.data?.message) {
           setError(err.response.data.message);
         } else {
-          setError("Some error has occurred!");
+          setError('Some error has occurred!');
         }
       });
   };
 
   return (
-    <div className="flex flex-col w-full items-center px-4">
-      <div className=" w-full flex flex-col justify-center items-center ">
-        <p className=" text-[1.5rem] font-[500] text-black">
-          {showOTP ? "OTP" : "Login"}
-        </p>
-        {showAuthModal?.message != "" ? (
-          <p className=" text-sm text-black">{showAuthModal.message}</p>
-        ) : null}
+    <div className='flex flex-col w-full items-center px-4'>
+      <div className=' w-full flex flex-col justify-center items-center '>
+        <p className=' text-[1.5rem] font-[500] text-black'>{showOTP ? 'OTP' : 'Login'}</p>
+        {showAuthModal?.message != '' ? <p className=' text-sm text-black'>{showAuthModal.message}</p> : null}
       </div>
 
       {showOTP ? (
-        <div className=" w-full flex flex-col items-center justify-center mt-4">
+        <div className=' w-full flex flex-col items-center justify-center mt-4'>
           <OTPInput
             value={otp}
             onChange={setOtp}
             numInputs={6}
-            inputType={"number"}
-            placeholder="123456"
+            inputType={'number'}
+            placeholder='123456'
             inputStyle={{
-              width: "40px",
-              height: "40px",
-              borderWidth: "1px",
+              width: '40px',
+              height: '40px',
+              borderWidth: '1px',
               marginRight: 8,
-              textAlign: "center",
-              color: "#000000",
+              textAlign: 'center',
+              color: '#000000',
             }}
             containerStyle={{}}
             renderInput={(props) => (
               <input
-                autoComplete="off"
-                aria-label="Please enter OTP character 1"
-                className="inputStyle rounded-lg"
+                autoComplete='off'
+                aria-label='Please enter OTP character 1'
+                className='inputStyle rounded-lg'
                 {...props}
               />
             )}
           />
-          {error && <span className="text-red-500 text-xs mt-1 ">{error}</span>}
+          {error && <span className='text-red-500 text-xs mt-1 '>{error}</span>}
           <button
-            className="bg-black text-white px-8 py-2 mt-4"
+            className='bg-black text-white px-8 py-2 mt-4'
             onClick={() => {
               handleLogin();
             }}
           >
-            {loading ? (
-              <Spinner loading={loading} size={24} color="#ffffff" />
-            ) : (
-              "Verify"
-            )}
+            {loading ? <Spinner loading={loading} size={24} color='#ffffff' /> : 'Verify'}
           </button>
 
           <a
-            className="text-black mt-4 underline text-sm cursor-pointer "
+            className='text-black mt-4 underline text-sm cursor-pointer '
             onClick={() => {
               setShowOTP(false);
               setError(null);
-              setOtp("");
+              setOtp('');
             }}
           >
             Resend OTP
           </a>
         </div>
       ) : (
-        <div className=" w-full flex flex-col items-center">
-          <form
-            className="flex flex-col w-full items-center mt-4"
-            onSubmit={handleSubmit(onSubmit)}
-          >
+        <div className=' w-full flex flex-col items-center'>
+          <form className='flex flex-col w-full items-center mt-4' onSubmit={handleSubmit(onSubmit)}>
             <input
-              type="phone"
-              placeholder=" Phone Number"
-              {...register("phone", {
-                required: "Phone Number is required",
+              type='phone'
+              placeholder=' Phone Number'
+              {...register('phone', {
+                required: 'Phone Number is required',
                 minLength: {
                   value: 10,
-                  message: "Phone number should be of 10 digits",
+                  message: 'Phone number should be of 10 digits',
                 },
                 maxLength: {
                   value: 10,
-                  message: "Phone number should be of 10 digits",
+                  message: 'Phone number should be of 10 digits',
                 },
               })}
-              className="border-[1px] cursor-text border-black text-black  px-2 py-2 w-full rounded-lg"
+              className='border-[1px] cursor-text border-black text-black  px-2 py-2 w-full rounded-lg'
             />
-            {errors.phone && (
-              <span className="text-red-500 text-xs mt-1 ">
-                {errors.phone.message}
-              </span>
-            )}
+            {errors.phone && <span className='text-red-500 text-xs mt-1 '>{errors.phone.message}</span>}
 
-            {error && (
-              <span className="text-red-500 text-xs mt-1 ">{error}</span>
-            )}
-            <button
-              type="submit"
-              className="bg-black text-white px-8 py-2 mt-4"
-            >
-              {loading ? (
-                <Spinner loading={loading} size={24} color="#ffffff" />
-              ) : (
-                "Login"
-              )}
+            {error && <span className='text-red-500 text-xs mt-1 '>{error}</span>}
+            <button type='submit' className='bg-black text-white px-8 py-2 mt-4'>
+              {loading ? <Spinner loading={loading} size={24} color='#ffffff' /> : 'Login'}
             </button>
           </form>
         </div>

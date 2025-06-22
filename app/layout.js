@@ -96,7 +96,7 @@ export default function RootLayout({ children }) {
             'https://connect.facebook.net/en_US/fbevents.js');
             fbq('init', '1066527391554625');
             fbq('track', 'PageView');
-            console.log("Facebook Pixel Loaded");
+            //console.log("Facebook Pixel Loaded");
           `,
           }}
         />

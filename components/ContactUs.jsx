@@ -1,10 +1,10 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
-import emailjs from "@emailjs/browser";
+'use client';
+import React, { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import emailjs from '@emailjs/browser';
 
-let formDiv = "flex flex-col  items-start mb-4";
-let input = "w-full p-2 border-gray-300 mt-1 text-black text-md rounded-md";
+let formDiv = 'flex flex-col  items-start mb-4';
+let input = 'w-full p-2 border-gray-300 mt-1 text-black text-md rounded-md';
 
 const ContactUs = () => {
   const [emailSent, setEmailSent] = useState(false);
@@ -13,8 +13,8 @@ const ContactUs = () => {
   const onSubmit = (data) => {
     emailjs
       .send(
-        "service_vb4wq9q",
-        "template_1e53gs5",
+        'service_vb4wq9q',
+        'template_1e53gs5',
         {
           from_name: data.name,
           from_query: data.query,
@@ -23,7 +23,7 @@ const ContactUs = () => {
           from_message: data.message,
         },
         {
-          publicKey: "h789tmXFbcca8_uBo",
+          publicKey: 'h789tmXFbcca8_uBo',
         }
       )
       .then((res) => {
@@ -31,7 +31,7 @@ const ContactUs = () => {
         reset();
       })
       .catch((err) => {
-        console.log("error", err);
+        //console.log("error", err);
       });
   };
 
@@ -44,90 +44,85 @@ const ContactUs = () => {
   }, [emailSent]);
 
   return (
-    <div className="flex flex-col w-full px-0 lg:px-8 py-4">
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col w-full mt-4"
-      >
-        <div className="flex flex-row w-full justify-between items-center">
+    <div className='flex flex-col w-full px-0 lg:px-8 py-4'>
+      <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col w-full mt-4'>
+        <div className='flex flex-row w-full justify-between items-center'>
           <div className={`${formDiv} w-[47.5%]`}>
-            <label htmlFor="name" className="text-sm text-black">
+            <label htmlFor='name' className='text-sm text-black'>
               Name
             </label>
             <input
-              itemProp="name"
+              itemProp='name'
               className={`${input}`}
-              type="text"
-              id="name"
-              placeholder="Name"
-              {...register("name")}
+              type='text'
+              id='name'
+              placeholder='Name'
+              {...register('name')}
             />
           </div>
 
           <div className={`${formDiv} w-[47.5%]`}>
-            <label htmlFor="query" className="text-sm text-black">
+            <label htmlFor='query' className='text-sm text-black'>
               Query
             </label>
             <input
-              itemProp="query"
+              itemProp='query'
               className={`${input}`}
-              type="text"
-              id="query"
-              placeholder="Query"
-              {...register("query")}
+              type='text'
+              id='query'
+              placeholder='Query'
+              {...register('query')}
             />
           </div>
         </div>
 
         <div className={`${formDiv}`}>
-          <label htmlFor="email" className="text-sm text-black">
+          <label htmlFor='email' className='text-sm text-black'>
             Email
           </label>
           <input
-            itemProp="email"
+            itemProp='email'
             className={`${input}`}
-            type="email"
-            id="email"
-            placeholder="Email"
-            {...register("email")}
+            type='email'
+            id='email'
+            placeholder='Email'
+            {...register('email')}
           />
         </div>
 
         <div className={`${formDiv}`}>
-          <label htmlFor="phonenumber" className="text-sm text-black">
+          <label htmlFor='phonenumber' className='text-sm text-black'>
             Phone Number
           </label>
           <input
-            itemProp="phoneNumber"
+            itemProp='phoneNumber'
             className={`${input}`}
-            type="phonenumber"
-            id="phonenumber"
-            placeholder="Phone Number"
-            {...register("phoneNumber")}
+            type='phonenumber'
+            id='phonenumber'
+            placeholder='Phone Number'
+            {...register('phoneNumber')}
           />
         </div>
 
         <div className={`${formDiv}`}>
-          <label htmlFor="message" className="text-sm text-black">
+          <label htmlFor='message' className='text-sm text-black'>
             Message
           </label>
           <textarea
-            itemProp="message"
+            itemProp='message'
             className={`${input}`}
-            id="message"
-            placeholder="Message"
-            {...register("message")}
+            id='message'
+            placeholder='Message'
+            {...register('message')}
           />
         </div>
 
-        <div className="flex flex-row justify-end z-30">
+        <div className='flex flex-row justify-end z-30'>
           <button
-            className={`px-8 py-2  ${
-              emailSent ? "bg-green-600" : "bg-white"
-            }  text-[black] rounded-md`}
-            type="submit"
+            className={`px-8 py-2  ${emailSent ? 'bg-green-600' : 'bg-white'}  text-[black] rounded-md`}
+            type='submit'
           >
-            {emailSent ? "Sent" : "Submit"}
+            {emailSent ? 'Sent' : 'Submit'}
           </button>
         </div>
       </form>

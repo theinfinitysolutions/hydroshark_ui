@@ -1,19 +1,19 @@
-"use client";
-import React, { useRef, useEffect, useState } from "react";
-import Image from "next/image";
-import instance from "@/utils/instance";
-import { useRouter } from "next/navigation";
-import { useStore } from "@/utils/store";
-import ShopNowButton from "./ShopNow";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import { Autoplay } from "swiper/modules";
-import { RxExternalLink } from "react-icons/rx";
-import { FaInstagram } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
-import { AiOutlineYoutube } from "react-icons/ai";
-import { textColors } from "@/utils/consts";
-import { FaSlash } from "react-icons/fa6";
+'use client';
+import React, { useRef, useEffect, useState } from 'react';
+import Image from 'next/image';
+import instance from '@/utils/instance';
+import { useRouter } from 'next/navigation';
+import { useStore } from '@/utils/store';
+import ShopNowButton from './ShopNow';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import { Autoplay } from 'swiper/modules';
+import { RxExternalLink } from 'react-icons/rx';
+import { FaInstagram } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
+import { AiOutlineYoutube } from 'react-icons/ai';
+import { textColors } from '@/utils/consts';
+import { FaSlash } from 'react-icons/fa6';
 
 const ProductSectionHome = () => {
   const router = useRouter();
@@ -27,8 +27,8 @@ const ProductSectionHome = () => {
     productListTemp.forEach((item) => {
       if (item.id == productId) item.activeSection = id;
     }),
-      console.log("list temp", productListTemp);
-    setProductList([...productListTemp]);
+      //console.log('list temp', productListTemp);
+      setProductList([...productListTemp]);
   };
 
   const addToCartHandler = (item) => {
@@ -56,19 +56,19 @@ const ProductSectionHome = () => {
 
     setLoading(true);
     instance
-      .get("/drinks/product/")
+      .get('/drinks/product/')
       .then((res) => {
-        console.log("res", res.data.results);
+        //console.log('res', res.data.results);
         let productIds = res.data.results.map((item) => {
           return item.id;
         });
 
-        console.log("productIds", productIds);
+        //console.log('productIds', productIds);
         getProductDataDetailed(productIds);
       })
       .catch((err) => {
         setLoading(false);
-        console.log("err", err);
+        //console.log('err', err);
       });
   };
 
@@ -81,9 +81,7 @@ const ProductSectionHome = () => {
           let data = {
             ...response.data,
             ...{
-              activeSection: response.data.product_sections.find(
-                (item) => item.in_stock
-              ).id,
+              activeSection: response.data.product_sections.find((item) => item.in_stock).id,
             },
           };
 
@@ -92,7 +90,7 @@ const ProductSectionHome = () => {
           }
         } catch (err) {
           setLoading(false);
-          console.log("err", err);
+          //console.log('err', err);
         }
       })
     ).then(() => {
@@ -105,125 +103,104 @@ const ProductSectionHome = () => {
   }, []);
 
   return (
-    <div className=" flex flex-col items-center justify-center bg-black  overflow-hidden relative w-full h-full lg:h-full">
-      <div className="absolute z-0 inset-0 h-[200vh] -top-[10vh] w-full bg-[linear-gradient(to_right,#ababab55_1px,transparent_1px),linear-gradient(to_bottom,#ababab55_1px,transparent_1px)] bg-[size:72px_72px]"></div>
+    <div className=' flex flex-col items-center justify-center bg-black  overflow-hidden relative w-full h-full lg:h-full'>
+      <div className='absolute z-0 inset-0 h-[200vh] -top-[10vh] w-full bg-[linear-gradient(to_right,#ababab55_1px,transparent_1px),linear-gradient(to_bottom,#ababab55_1px,transparent_1px)] bg-[size:72px_72px]'></div>
 
-      <div className=" flex flex-col lg:flex-row justify-between w-full h-full z-20">
-        <div className=" flex flex-col w-full lg:w-4/12 items-center relative lg:items-start justify-center transition-all group">
-          <div className="flex flex-col h-[80vh] lg:h-full w-full relative">
+      <div className=' flex flex-col lg:flex-row justify-between w-full h-full z-20'>
+        <div className=' flex flex-col w-full lg:w-4/12 items-center relative lg:items-start justify-center transition-all group'>
+          <div className='flex flex-col h-[80vh] lg:h-full w-full relative'>
             <video
               src={process.env.NEXT_PUBLIC_API_URL + `/hydrosharkvideo${1}.mp4`}
               autoPlay
               loop
               muted
               controls={false}
-              className="w-full h-full object-cover z-10"
+              className='w-full h-full object-cover z-10'
             />
           </div>
-          <div className=" h-[50vh] w-full flex flex-col items-center transition-all duration-400  justify-end group-hover:animate-slideUpfast absolute z-40 bottom-0 bg-gradient-to-t from-black/80 to-transparent py-8">
-            <h2 className=" text-base lg:text-xl text-center lg:text-start text-[#45dced]">
-              Love from the community
+          <div className=' h-[50vh] w-full flex flex-col items-center transition-all duration-400  justify-end group-hover:animate-slideUpfast absolute z-40 bottom-0 bg-gradient-to-t from-black/80 to-transparent py-8'>
+            <h2 className=' text-base lg:text-xl text-center lg:text-start text-[#45dced]'>Love from the community</h2>
+            <h2 className=' text-white text-4xl lg:text-[2.5rem] text-center font-semibold  lg:leading-[2.25rem] text-pretty lg:mt-4'>
+              {'Collaborations with Hydroshark'}
             </h2>
-            <h2 className=" text-white text-4xl lg:text-[2.5rem] text-center font-semibold  lg:leading-[2.25rem] text-pretty lg:mt-4">
-              {"Collaborations with Hydroshark"}
-            </h2>
-            <div className=" hidden group-hover:flex  flex-col items-center justify-center mt-8">
+            <div className=' hidden group-hover:flex  flex-col items-center justify-center mt-8'>
               <p>Follow us on :</p>
-              <div className=" flex flex-row justify-center items-center gap-x-8 mt-4">
+              <div className=' flex flex-row justify-center items-center gap-x-8 mt-4'>
                 <a
-                  href={
-                    "https://www.instagram.com/_hydroshark_beverages/?locale=bz-hans&hl=am-et"
-                  }
-                  target="_blank"
-                  className=" cursor-pointer"
+                  href={'https://www.instagram.com/_hydroshark_beverages/?locale=bz-hans&hl=am-et'}
+                  target='_blank'
+                  className=' cursor-pointer'
                 >
-                  <FaInstagram className="text-[#DEE2E6] text-xl" />
+                  <FaInstagram className='text-[#DEE2E6] text-xl' />
                 </a>
-                <a className=" cursor-pointer" onClick={() => {}}>
-                  <FaXTwitter className="text-[#DEE2E6] text-xl" />
+                <a className=' cursor-pointer' onClick={() => {}}>
+                  <FaXTwitter className='text-[#DEE2E6] text-xl' />
                 </a>
 
                 <a
-                  href="https://www.youtube.com/channel/UC3urYQuJgMUJlPYW3hzXbpg"
-                  target="_blank"
-                  className=" cursor-pointer"
+                  href='https://www.youtube.com/channel/UC3urYQuJgMUJlPYW3hzXbpg'
+                  target='_blank'
+                  className=' cursor-pointer'
                 >
-                  <AiOutlineYoutube className="text-[#DEE2E6] text-xl" />
+                  <AiOutlineYoutube className='text-[#DEE2E6] text-xl' />
                 </a>
               </div>
             </div>
           </div>
         </div>
-        <div className=" flex flex-col-reverse lg:flex-col w-full lg:w-8/12 items-center lg:items-start justify-center ">
-          <div className=" flex flex-col items-center lg:items-start justify-center w-full py-8 lg:pl-[5%]">
-            <h2 className=" text-lg lg:text-2xl text-center lg:text-start text-[#45dced]">
-              Hydroshark Products
+        <div className=' flex flex-col-reverse lg:flex-col w-full lg:w-8/12 items-center lg:items-start justify-center '>
+          <div className=' flex flex-col items-center lg:items-start justify-center w-full py-8 lg:pl-[5%]'>
+            <h2 className=' text-lg lg:text-2xl text-center lg:text-start text-[#45dced]'>Hydroshark Products</h2>
+            <h2 className=' text-white text-4xl lg:text-[3.5rem] font-semibold text-center lg:text-start lg:leading-[3.25rem] text-pretty lg:mt-4'>
+              {'GEAR UP FOR NEXT ADVENTURE WITH HYDROSHARK'}
             </h2>
-            <h2 className=" text-white text-4xl lg:text-[3.5rem] font-semibold text-center lg:text-start lg:leading-[3.25rem] text-pretty lg:mt-4">
-              {"GEAR UP FOR NEXT ADVENTURE WITH HYDROSHARK"}
-            </h2>
-            <div className=" flex flex-col  text-center lg:text-start mt-4">
-              <ShopNowButton onClick={() => router.push("/products")} />
+            <div className=' flex flex-col  text-center lg:text-start mt-4'>
+              <ShopNowButton onClick={() => router.push('/products')} />
             </div>
           </div>
-          <div className=" hidden lg:flex flex-row justify-center items-center w-full z-40 relative lg:pl-[5%]">
+          <div className=' hidden lg:flex flex-row justify-center items-center w-full z-40 relative lg:pl-[5%]'>
             {productList.map((product, index) => {
               return (
-                <div
-                  className="w-[35vw] h-[60vh] flex flex-col items-center relative  z-40 justify-center"
-                  key={index}
-                >
-                  <div className=" flex z-30 flex-col items-center cursor-pointer justify-center w-full h-[60vh] bg-opacity-10">
-                    <p className=" mt-4 z-20 text-xl text-[#e3fafc]">
-                      {"HYDROSHARK"}
-                    </p>
-                    <p
-                      className={`  z-20 text-3xl text-[${
-                        textColors[product.product_title]
-                      }]  font-medium`}
-                    >
+                <div className='w-[35vw] h-[60vh] flex flex-col items-center relative  z-40 justify-center' key={index}>
+                  <div className=' flex z-30 flex-col items-center cursor-pointer justify-center w-full h-[60vh] bg-opacity-10'>
+                    <p className=' mt-4 z-20 text-xl text-[#e3fafc]'>{'HYDROSHARK'}</p>
+                    <p className={`  z-20 text-3xl text-[${textColors[product.product_title]}]  font-medium`}>
                       {product.product_title}
                     </p>
-                    <div className="  z-20 flex flex-col items-center justify-center w-full">
+                    <div className='  z-20 flex flex-col items-center justify-center w-full'>
                       <a
                         onClick={() => {
-                          router.push(`/products/${product.id}`);
+                          router.push(`/products/drinks/${product.id}`);
                         }}
-                        className=" flex h-[30vh] w-[30vh] relative"
+                        className=' flex h-[30vh] w-[30vh] relative'
                       >
                         <Image
-                          src={
-                            product?.product_primary_image?.image?.cloudfront
-                          }
+                          src={product?.product_primary_image?.image?.cloudfront}
                           fill
-                          style={{ objectFit: "contain" }}
+                          style={{ objectFit: 'contain' }}
                         />
                       </a>
 
-                      <div className="flex flex-row justify-start items-center text-sm gap-x-2 mt-4">
-                        <p className=" text-red-400  line-through 	">
-                          {" "}
+                      <div className='flex flex-row justify-start items-center text-sm gap-x-2 mt-4'>
+                        <p className=' text-red-400  line-through 	'>
+                          {' '}
                           {`₹ ${
-                            product.product_sections.find(
-                              (section) => section.id == product.activeSection
-                            )?.price
+                            product.product_sections.find((section) => section.id == product.activeSection)?.price
                           }`}
                         </p>
-                        <p className=" text-white	">
-                          {" "}
+                        <p className=' text-white	'>
+                          {' '}
                           {`₹ ${
-                            product.product_sections.find(
-                              (section) => section.id == product.activeSection
-                            )?.discounted_amount
+                            product.product_sections.find((section) => section.id == product.activeSection)
+                              ?.discounted_amount
                           }`}
                         </p>
-                        <p className=" text-white	">
-                          /{" "}
+                        <p className=' text-white	'>
+                          /{' '}
                           {
-                            product.product_sections.find(
-                              (section) => section.id == product.activeSection
-                            )?.section_title
-                          }{" "}
+                            product.product_sections.find((section) => section.id == product.activeSection)
+                              ?.section_title
+                          }{' '}
                         </p>
                       </div>
 
@@ -238,7 +215,7 @@ const ProductSectionHome = () => {
                       }`}</p> */}
                     </div>
 
-                    <div className=" z-40 gap-x-4 mt-4  bottom-4 right-4 flex flex-row justify-between gap-y-2  ">
+                    <div className=' z-40 gap-x-4 mt-4  bottom-4 right-4 flex flex-row justify-between gap-y-2  '>
                       {product.product_sections.map((section, index) => (
                         <button
                           onClick={() => {
@@ -247,16 +224,12 @@ const ProductSectionHome = () => {
                           disabled={!section.in_stock}
                           key={index}
                           className={` h-[6vh] w-[6vh] cursor-pointer   flex flex-col items-center justify-center rounded-full border-[1px] border-white ${
-                            product.activeSection == section.id
-                              ? "bg-white text-black"
-                              : "bg-transparent text-white"
+                            product.activeSection == section.id ? 'bg-white text-black' : 'bg-transparent text-white'
                           } `}
                         >
-                          <p className="  font-semibold text-[10px]">
-                            {section.section_title}
-                          </p>
+                          <p className='  font-semibold text-[10px]'>{section.section_title}</p>
                           {!section.in_stock && (
-                            <FaSlash className=" absolute w-[4vh] h-[4vh] lg:h-[5vh] lg:w-[5vh] text-white/70 " />
+                            <FaSlash className=' absolute w-[4vh] h-[4vh] lg:h-[5vh] lg:w-[5vh] text-white/70 ' />
                           )}
                         </button>
                       ))}
@@ -265,28 +238,25 @@ const ProductSectionHome = () => {
                     <button
                       onClick={() => {
                         let obj = {
-                          ...product.product_sections.find(
-                            (item) => item.id == product.activeSection
-                          ),
+                          ...product.product_sections.find((item) => item.id == product.activeSection),
                           product_title: product.product_title,
-                          image:
-                            product?.product_primary_image?.image?.cloudfront,
+                          image: product?.product_primary_image?.image?.cloudfront,
                           product_quantity: 1,
                         };
 
                         addToCartHandler(obj);
                       }}
-                      className=" flex flex-col items-center transition-all duration-200 mt-4 px-6 border-[1px] border-white py-2 bg-transparent text-white hover:bg-white hover:text-black"
+                      className=' flex flex-col items-center transition-all duration-200 mt-4 px-6 border-[1px] border-white py-2 bg-transparent text-white hover:bg-white hover:text-black'
                     >
-                      <p className=" mt-1">ADD TO CART</p>
+                      <p className=' mt-1'>ADD TO CART</p>
                     </button>
                   </div>
                 </div>
               );
             })}
           </div>
-          <div className=" flex lg:hidden flex-col w-full items-center justify-center py-8">
-            <div className="h-[60vh] w-11/12 lg:w-9/12 bg-white rounded-3xl flex flex-row relative ">
+          <div className=' flex lg:hidden flex-col w-full items-center justify-center py-8'>
+            <div className='h-[60vh] w-11/12 lg:w-9/12 bg-white rounded-3xl flex flex-row relative '>
               <Swiper
                 // slidesPerView={1}
                 // spaceBetween={30}
@@ -306,54 +276,43 @@ const ProductSectionHome = () => {
                   clickable: true,
                 }}
                 loop={true}
-                className="mySwiper"
+                className='mySwiper'
               >
                 {productList.map((product, index) => {
                   return (
                     <SwiperSlide
-                      className="w-[35vw] h-[0vh] flex flex-col items-center relative  z-0 justify-center"
+                      className='w-[35vw] h-[0vh] flex flex-col items-center relative  z-0 justify-center'
                       key={index}
                     >
-                      <div className=" flex z-30 flex-col items-center cursor-pointer justify-center w-full h-[60vh] bg-opacity-10">
-                        <p className=" mt-4 z-20 text-lg text-[#181818]">
-                          {"HYDROSHARK"}
-                        </p>
-                        <p
-                          className={`  z-20 text-2xl text-[${
-                            textColors[product.product_title]
-                          }]  font-medium`}
-                        >
+                      <div className=' flex z-30 flex-col items-center cursor-pointer justify-center w-full h-[60vh] bg-opacity-10'>
+                        <p className=' mt-4 z-20 text-lg text-[#181818]'>{'HYDROSHARK'}</p>
+                        <p className={`  z-20 text-2xl text-[${textColors[product.product_title]}]  font-medium`}>
                           {product.product_title}
                         </p>
-                        <div className="  z-20 flex flex-col items-center justify-center w-full">
+                        <div className='  z-20 flex flex-col items-center justify-center w-full'>
                           <a
                             onClick={() => {
-                              router.push(`/products/${product.id}`);
+                              router.push(`/products/drinks/${product.id}`);
                             }}
-                            className=" flex h-[25vh] w-[25vh] relative"
+                            className=' flex h-[25vh] w-[25vh] relative'
                           >
                             <Image
-                              src={
-                                product?.product_primary_image?.image
-                                  ?.cloudfront
-                              }
+                              src={product?.product_primary_image?.image?.cloudfront}
                               fill
-                              style={{ objectFit: "contain" }}
+                              style={{ objectFit: 'contain' }}
                             />
                           </a>
 
-                          <p className=" text-black mt-4">{`₹${
-                            product.product_sections.find(
-                              (section) => section.id == product.activeSection
-                            ).discounted_amount
+                          <p className=' text-black mt-4'>{`₹${
+                            product.product_sections.find((section) => section.id == product.activeSection)
+                              .discounted_amount
                           } / ${
-                            product.product_sections.find(
-                              (section) => section.id == product.activeSection
-                            ).section_title
+                            product.product_sections.find((section) => section.id == product.activeSection)
+                              .section_title
                           }`}</p>
                         </div>
 
-                        <div className=" z-40 gap-x-4 mt-4  bottom-4 right-4 flex flex-row justify-between gap-y-2  ">
+                        <div className=' z-40 gap-x-4 mt-4  bottom-4 right-4 flex flex-row justify-between gap-y-2  '>
                           {product.product_sections.map((section, index) => (
                             <button
                               onClick={() => {
@@ -363,15 +322,13 @@ const ProductSectionHome = () => {
                               key={index}
                               className={` h-[5vh] w-[5vh] cursor-pointer   flex flex-col items-center justify-center rounded-full border-[1px] border-black ${
                                 product.activeSection == section.id
-                                  ? "bg-black text-white"
-                                  : "bg-transparent text-black"
+                                  ? 'bg-black text-white'
+                                  : 'bg-transparent text-black'
                               } `}
                             >
-                              <p className="  font-semibold text-[8px]">
-                                {section.section_title}
-                              </p>
+                              <p className='  font-semibold text-[8px]'>{section.section_title}</p>
                               {!section.in_stock && (
-                                <FaSlash className=" absolute w-[4vh] h-[4vh] lg:h-[5vh] lg:w-[5vh] text-black/80 " />
+                                <FaSlash className=' absolute w-[4vh] h-[4vh] lg:h-[5vh] lg:w-[5vh] text-black/80 ' />
                               )}
                             </button>
                           ))}
@@ -380,21 +337,17 @@ const ProductSectionHome = () => {
                         <button
                           onClick={() => {
                             let obj = {
-                              ...product.product_sections.find(
-                                (item) => item.id == product.activeSection
-                              ),
+                              ...product.product_sections.find((item) => item.id == product.activeSection),
                               product_title: product.product_title,
-                              image:
-                                product?.product_primary_image?.image
-                                  ?.cloudfront,
+                              image: product?.product_primary_image?.image?.cloudfront,
                               product_quantity: 1,
                             };
 
                             addToCartHandler(obj);
                           }}
-                          className=" flex flex-col items-center transition-all duration-200 mt-4 px-6 border-[1px] border-black py-2 bg-transparent text-black hover:bg-black hover:text-white"
+                          className=' flex flex-col items-center transition-all duration-200 mt-4 px-6 border-[1px] border-black py-2 bg-transparent text-black hover:bg-black hover:text-white'
                         >
-                          <p className=" mt-1">ADD TO CART</p>
+                          <p className=' mt-1'>ADD TO CART</p>
                         </button>
                       </div>
                     </SwiperSlide>
