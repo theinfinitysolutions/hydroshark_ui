@@ -20,6 +20,7 @@ const priceRanges = [
 
 const GymwearPage = () => {
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -37,10 +38,11 @@ const GymwearPage = () => {
   const fetchMerchandiseColors = async () => {
     try {
       const response = await instance.get('/merchandise/merchandise-color/');
-
-      setMerchandiseColors(response.data.results);
+      const colors = response?.data?.results || [];
+      setMerchandiseColors(colors);
     } catch (error) {
       console.error('Error fetching merchandise colors:', error);
+      setMerchandiseColors([]); // Set empty array on error
     }
   };
 
@@ -51,25 +53,30 @@ const GymwearPage = () => {
   const fetchMerchandise = async (params) => {
     try {
       setLoading(true);
-      if (params) {
-        const response = await instance.get('/merchandise/merchandise/', { params });
-        setLoading(false);
-        return response.data.results;
-      } else {
-        const response = await instance.get('/merchandise/merchandise/');
-        setLoading(false);
-        return response.data.results;
-      }
+      setError(null);
+
+      const response = params
+        ? await instance.get('/merchandise/merchandise/', { params })
+        : await instance.get('/merchandise/merchandise/');
+
+      const results = response?.data?.results || [];
+      setLoading(false);
+      return results;
     } catch (error) {
       console.error('Error fetching merchandise:', error);
+      setError('Failed to load products. Please try again later.');
       setLoading(false);
+      return [];
     }
   };
 
   const getMerchandise = async (params) => {
     const data = await fetchMerchandise(params);
-    setProducts(data);
-    setFilteredProducts(data);
+    const products = Array.isArray(data) ? data : [];
+    setProducts(products);
+    setFilteredProducts(products);
+    // Reset to first page when new data is loaded
+    setCurrentPage(1);
   };
 
   useEffect(() => {
@@ -97,8 +104,11 @@ const GymwearPage = () => {
     }
 
     if (filters.priceRange) {
-      params.price_min = priceRanges.find((range) => range.id === filters.priceRange).minValue;
-      params.price_max = priceRanges.find((range) => range.id === filters.priceRange).maxValue;
+      const priceRange = priceRanges.find((range) => range.id === filters.priceRange);
+      if (priceRange) {
+        params.price_min = priceRange.minValue;
+        params.price_max = priceRange.maxValue;
+      }
     }
 
     // Add sorting to params
@@ -124,6 +134,26 @@ const GymwearPage = () => {
     return (
       <div className='flex justify-center items-center h-[80vh] bg-[#f0f2f4] w-full'>
         <Spinner loading={loading} size={48} color='#000000' />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className='flex flex-col justify-center items-center h-[80vh] bg-[#f0f2f4] w-full px-4'>
+        <div className='text-center'>
+          <h2 className='text-2xl font-bold text-red-600 mb-4'>Oops! Something went wrong</h2>
+          <p className='text-gray-600 mb-6'>{error}</p>
+          <button
+            onClick={() => {
+              setError(null);
+              getMerchandise();
+            }}
+            className='bg-black text-white px-6 py-2 rounded hover:bg-gray-800 transition-colors'
+          >
+            Try Again
+          </button>
+        </div>
       </div>
     );
   }
@@ -185,23 +215,26 @@ const GymwearPage = () => {
             </div>
 
             {/* Color Filter */}
-            <div className='mb-6'>
-              <h3 className='font-medium mb-2 text-black'>Color</h3>
-              <div className='flex flex-wrap gap-2'>
-                {merchandiseColors.map((color) => (
-                  <button
-                    key={color.id}
-                    className={`w-6 h-6 rounded-full border-2 ${
-                      filters.color === color.id ? 'border-blue-600' : 'border-gray-400'
-                    }`}
-                    style={{ backgroundColor: color.color_code }}
-                    onClick={() => {
-                      setFilters({ ...filters, color: color.id });
-                    }}
-                  />
-                ))}
+            {merchandiseColors && merchandiseColors.length > 0 && (
+              <div className='mb-6'>
+                <h3 className='font-medium mb-2 text-black'>Color</h3>
+                <div className='flex flex-wrap gap-2'>
+                  {merchandiseColors.map((color) => (
+                    <button
+                      key={color?.id || Math.random()}
+                      className={`w-6 h-6 rounded-full border-2 ${
+                        filters.color === color?.id ? 'border-blue-600' : 'border-gray-400'
+                      }`}
+                      style={{ backgroundColor: color?.color_code || '#cccccc' }}
+                      onClick={() => {
+                        setFilters({ ...filters, color: color?.id });
+                      }}
+                      title={color?.name || 'Color'}
+                    />
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
 
             {/* Clear Filters Button */}
             {Object.keys(activeParams).length > 0 && (
@@ -239,9 +272,27 @@ const GymwearPage = () => {
 
           {/* Products Grid */}
           {currentProducts.length === 0 ? (
-            <div className='text-center py-12 '>
+            <div className='text-center py-12'>
+              <div className='mb-4'>
+                <PiShoppingCartSimpleFill className='text-6xl text-gray-400 mx-auto mb-4' />
+              </div>
               <h3 className='text-xl font-semibold mb-2 text-black'>No Products Found</h3>
-              <p className='text-gray-600'>Try adjusting your filters or check back later for new arrivals</p>
+              <p className='text-gray-600 mb-4'>
+                {Object.keys(activeParams).length > 0
+                  ? 'No products match your current filters. Try adjusting your search criteria.'
+                  : 'No products are currently available. Check back later for new arrivals!'}
+              </p>
+              {Object.keys(activeParams).length > 0 && (
+                <button
+                  onClick={() => {
+                    setFilters({ color: '', size: '', priceRange: 'all', sortBy: 'popular' });
+                    setActiveParams({});
+                  }}
+                  className='bg-black text-white px-4 py-2 rounded hover:bg-gray-800 transition-colors'
+                >
+                  Clear All Filters
+                </button>
+              )}
             </div>
           ) : loading ? (
             <div className='flex justify-center items-center h-[80vh] w-full'>
@@ -254,20 +305,33 @@ const GymwearPage = () => {
                   <div className='bg-white border border-gray-400 rounded-lg overflow-hidden hover:shadow-lg transition-all group'>
                     <div className='relative'>
                       <div className='relative h-64 w-full overflow-hidden bg-gray-100'>
-                        <Image
-                          src={product.product_primary_image?.image?.cloudfront}
-                          alt={product.product_title}
-                          fill
-                          className='object-contain transform transition-transform z-20 duration-300 group-hover:scale-110'
-                        />
+                        {product?.product_primary_image?.image?.cloudfront ? (
+                          <Image
+                            src={product.product_primary_image.image.cloudfront}
+                            alt={product?.product_title || 'Product Image'}
+                            fill
+                            className='object-contain transform transition-transform z-20 duration-300 group-hover:scale-110'
+                            onError={(e) => {
+                              e.target.style.display = 'none';
+                            }}
+                          />
+                        ) : (
+                          <div className='flex items-center justify-center h-full bg-gray-200'>
+                            <span className='text-gray-500'>No Image Available</span>
+                          </div>
+                        )}
                         <div className='absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300'></div>
 
-                        <div className=' absolute w-full h-full z-0 '>
+                        <div className='absolute w-full h-full z-0'>
                           <Image
                             src={process.env.NEXT_PUBLIC_API_URL + '/bgasset21.png'}
                             fill
                             className='opacity-60'
                             style={{ objectFit: 'cover' }}
+                            alt='Background'
+                            onError={(e) => {
+                              e.target.style.display = 'none';
+                            }}
                           />
                         </div>
                       </div>
@@ -279,31 +343,52 @@ const GymwearPage = () => {
                       </div>
                     </div>
                     <div className='px-4 py-2'>
-                      <h3 className='font-semibold mt-2 text-black'>{product.product_title}</h3>
+                      <h3 className='font-semibold mt-2 text-black'>
+                        {product?.product_title || 'Product Name Not Available'}
+                      </h3>
 
                       <div className='flex items-center mt-2 gap-2'>
-                        <span className='text-lg font-bold text-black'>
-                          ₹{product.product_sections[0].discounted_amount}
-                        </span>
-                        {product.product_sections[0].discount_percentage > 0 && (
+                        {product?.product_sections?.[0] ? (
                           <>
-                            <span className='text-red-500 line-through ml-2'>₹{product.product_sections[0].price}</span>
-                            <span className='text-green-500 ml-2'>
-                              ({product.product_sections[0].discount_percentage}% off)
+                            <span className='text-lg font-bold text-black'>
+                              ₹
+                              {product.product_sections[0].discounted_amount ||
+                                product.product_sections[0].price ||
+                                'N/A'}
                             </span>
+                            {product.product_sections[0].discount_percentage > 0 && (
+                              <>
+                                <span className='text-red-500 line-through ml-2'>
+                                  ₹{product.product_sections[0].price}
+                                </span>
+                                <span className='text-green-500 ml-2'>
+                                  ({product.product_sections[0].discount_percentage}% off)
+                                </span>
+                              </>
+                            )}
                           </>
+                        ) : (
+                          <span className='text-lg font-bold text-gray-500'>Price Not Available</span>
                         )}
                       </div>
-                      {/* Available Sizes */}
                     </div>
                     <div className='w-full border-t border-gray-400 py-2 px-4'>
                       <p className='text-sm text-gray-600 mb-1'>Available Sizes:</p>
                       <div className='flex gap-1'>
-                        {product.product_sections.map((item) => (
-                          <span key={item.id} className='text-xs border text-black border-gray-400 px-2 py-1 rounded'>
-                            {item.size}
-                          </span>
-                        ))}
+                        {product?.product_sections &&
+                        Array.isArray(product.product_sections) &&
+                        product.product_sections.length > 0 ? (
+                          product.product_sections.map((item) => (
+                            <span
+                              key={item?.id || Math.random()}
+                              className='text-xs border text-black border-gray-400 px-2 py-1 rounded'
+                            >
+                              {item?.size || 'N/A'}
+                            </span>
+                          ))
+                        ) : (
+                          <span className='text-xs text-gray-500'>No sizes available</span>
+                        )}
                       </div>
                     </div>
                     {/* <div className='w-full border-t border-gray-400 py-2 px-4'>
@@ -325,39 +410,41 @@ const GymwearPage = () => {
           )}
 
           {/* Pagination Controls */}
-          <div className='mt-8 flex justify-center items-center gap-2'>
-            <button
-              onClick={() => paginate(currentPage - 1)}
-              disabled={currentPage === 1}
-              className={`p-2 rounded-full ${
-                currentPage === 1 ? 'text-gray-400 cursor-not-allowed' : 'text-black hover:bg-gray-100'
-              }`}
-            >
-              <IoIosArrowBack className='text-xl' />
-            </button>
-
-            {[...Array(totalPages)].map((_, index) => (
+          {totalPages > 1 && (
+            <div className='mt-8 flex justify-center items-center gap-2'>
               <button
-                key={index + 1}
-                onClick={() => paginate(index + 1)}
-                className={`w-8 h-8 rounded-full ${
-                  currentPage === index + 1 ? 'bg-black text-white' : 'text-black hover:bg-gray-100'
+                onClick={() => paginate(currentPage - 1)}
+                disabled={currentPage === 1}
+                className={`p-2 rounded-full ${
+                  currentPage === 1 ? 'text-gray-400 cursor-not-allowed' : 'text-black hover:bg-gray-100'
                 }`}
               >
-                {index + 1}
+                <IoIosArrowBack className='text-xl' />
               </button>
-            ))}
 
-            <button
-              onClick={() => paginate(currentPage + 1)}
-              disabled={currentPage === totalPages}
-              className={`p-2 rounded-full ${
-                currentPage === totalPages ? 'text-gray-400 cursor-not-allowed' : 'text-black hover:bg-gray-100'
-              }`}
-            >
-              <IoIosArrowForward className='text-xl' />
-            </button>
-          </div>
+              {[...Array(totalPages)].map((_, index) => (
+                <button
+                  key={index + 1}
+                  onClick={() => paginate(index + 1)}
+                  className={`w-8 h-8 rounded-full ${
+                    currentPage === index + 1 ? 'bg-black text-white' : 'text-black hover:bg-gray-100'
+                  }`}
+                >
+                  {index + 1}
+                </button>
+              ))}
+
+              <button
+                onClick={() => paginate(currentPage + 1)}
+                disabled={currentPage === totalPages}
+                className={`p-2 rounded-full ${
+                  currentPage === totalPages ? 'text-gray-400 cursor-not-allowed' : 'text-black hover:bg-gray-100'
+                }`}
+              >
+                <IoIosArrowForward className='text-xl' />
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>
