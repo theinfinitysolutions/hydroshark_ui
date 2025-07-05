@@ -72,6 +72,13 @@ const Checkout = () => {
   });
 
   useEffect(() => {
+    if (!showAddressModal.show) {
+      getAddressDetails();
+      // Only refresh cart if we actually need to after address modal closes
+    }
+  }, [showAddressModal.show]);
+
+  useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
       getUser();
@@ -79,6 +86,40 @@ const Checkout = () => {
       router.push('/');
     }
   }, []);
+
+  useEffect(() => {
+    setShowLoading({ show: false });
+    setOrderId('');
+    setRzpOrderId('');
+    setCoinsToRedeem(null);
+    // Initial data load
+    getCart();
+    getWalletData();
+    getAddressDetails();
+  }, []);
+
+  // Refresh data when user changes - but only once
+  useEffect(() => {
+    if (user) {
+      setValue('email', user.email);
+      setValue('name', user.name);
+      setValue('phone_number', user.phone_number);
+    }
+  }, [user]);
+
+  // Add a general refresh function
+  const refreshAllData = () => {
+    getCart();
+    getWalletData();
+    getAddressDetails();
+  };
+
+  // Add a manual refresh button (optional)
+  const handleManualRefresh = () => {
+    setLoading(true);
+    refreshAllData();
+    setTimeout(() => setLoading(false), 1000);
+  };
 
   const getAddressDetails = () => {
     instance
@@ -101,7 +142,6 @@ const Checkout = () => {
       .then((res) => {
         setLoading(false);
         //console.log('res', res.data);
-        getWalletData();
         setCartObject(res.data);
 
         if (res.data.cart_items.length == 0) {
@@ -140,10 +180,11 @@ const Checkout = () => {
       .then((res) => {
         //console.log('res', res);
         setLoading(false);
-        getCart();
+        getCart(); // Only refresh cart data
       })
       .catch((err) => {
         setLoading(false);
+        alert('Failed to update quantity. Please try again.');
         //console.log('err', err);
       });
   };
@@ -157,10 +198,11 @@ const Checkout = () => {
       .then((res) => {
         setLoading(false);
         //console.log('res', res);
-        getCart();
+        getCart(); // Only refresh cart data
       })
       .catch((err) => {
         setLoading(false);
+        alert('Failed to remove item. Please try again.');
         //console.log('err', err);
       });
   };
@@ -176,24 +218,6 @@ const Checkout = () => {
         //console.log('err', err);
       });
   };
-
-  useEffect(() => {
-    if (!showAddressModal.show) {
-      getAddressDetails();
-    }
-  }, [showAddressModal.show]);
-
-  useEffect(() => {
-    if (!showAddressModal.show) {
-      getCart();
-    }
-  }, [showAddressModal.show]);
-
-  useEffect(() => {
-    setShowLoading({ show: false });
-    getWalletData();
-    setOrderId('');
-  }, []);
 
   const CreateOrder = () => {
     if (!addressSelect.shippingAddress || !addressSelect.billingAddress) {
@@ -222,25 +246,25 @@ const Checkout = () => {
         CreatePayment(res.data.id);
         setShowLoading({ show: false });
 
-        // initiate checkout
+        // Initiate checkout tracking
         window.fbq('track', 'InitiateCheckout', {
           value: cartObj?.cart_final_amount,
           currency: 'INR',
         });
       })
       .catch((err) => {
+        setShowLoading({ show: false });
+        //console.log('err', err);
         setShowConfirmModal({
           show: true,
           mode: 'error',
           successText: 'Error',
-          title: 'Some error has occured',
-          description: 'Some error has occured, please try again later or contact support',
+          title: 'Some error has occurred',
+          description: 'Some error has occurred. Please try again later or contact support.',
           action: '/',
           buttonText: 'Back to products',
           id: '',
         });
-        setShowLoading({ show: false });
-        //console.log('err', err);
       });
   };
 
@@ -261,10 +285,17 @@ const Checkout = () => {
         //console.log('res create payment', res);
         setShowLoading({ show: false });
         setRzpOrderId(res.data.razorpay_order_id);
+
         if (paymentMethod === 'razorpay' && res.data?.razorpay_order_id) {
           processPayment(res.data.razorpay_order_id);
         } else {
+          // COD Order success
           handleShowConfetti();
+
+          // Clean up state after successful COD order
+          setOrderId('');
+          setRzpOrderId('');
+          setCoinsToRedeem(null);
 
           let list = cartObj.cart_items.map((item) => {
             return {
@@ -274,7 +305,7 @@ const Checkout = () => {
           });
 
           if (list.length > 0) {
-            // addToCart
+            // Purchase tracking for COD
             window.fbq('track', 'Purchase', {
               value: cartObj?.cart_final_amount,
               currency: 'INR',
@@ -290,7 +321,7 @@ const Checkout = () => {
             successText: 'COD Order Placed',
             title: 'Your Order has been successfully placed',
             description:
-              'You will recieve an email confirmation shortly , please visit the profile section for more details',
+              'You will receive an email confirmation shortly. Please visit the profile section for more details.',
             action: '/products',
             buttonText: 'Back to products',
             id: orderId,
@@ -304,22 +335,14 @@ const Checkout = () => {
           show: true,
           mode: 'error',
           successText: 'Error',
-          title: 'Some error has occured',
-          description: 'Some error has occured, Retry payment or contact support for further assistance',
+          title: 'Some error has occurred',
+          description: 'Some error has occurred. Retry payment or contact support for further assistance.',
           action: 'retryOrder',
           buttonText: 'Retry Payment',
           id: orderId,
         });
       });
   };
-
-  useEffect(() => {
-    if (user) {
-      setValue('email', user.email);
-      setValue('name', user.name);
-      setValue('phone_number', user.phone_number);
-    }
-  }, [user]);
 
   const processPayment = async (orderId) => {
     setShowLoading({ show: false });
@@ -401,23 +424,26 @@ const Checkout = () => {
       .then((res) => {
         //console.log('res', res);
 
+        // Clean up state after successful payment
+        setOrderId('');
+        setRzpOrderId('');
+        setCoinsToRedeem(null);
+        setShowLoading({ show: false });
+
         setShowConfirmModal({
           show: true,
           mode: 'success',
           successText: 'Payment Successful',
           title: 'Your Order has been successfully placed',
           description:
-            'You payment has been , you will recieve an email confirmation shortly , please visit the profile section for more details',
+            'Your payment has been processed successfully. You will receive an email confirmation shortly. Please visit the profile section for more details.',
           action: '/products',
           buttonText: 'Back to products',
         });
+
         handleShowConfetti();
-        setOrderId('');
-        setRzpOrderId('');
-        setShowLoading({ show: false });
 
         // facebook pixel
-
         let list = res.data.cart_items.map((item) => {
           return {
             id: item.product_section.id,
@@ -426,7 +452,7 @@ const Checkout = () => {
         });
 
         if (list.length > 0) {
-          // addToCart
+          // Purchase tracking
           window.fbq('track', 'Purchase', {
             value: cartObj?.cart_final_amount,
             currency: 'INR',
@@ -443,8 +469,8 @@ const Checkout = () => {
           show: true,
           mode: 'error',
           successText: 'Error',
-          title: 'Some error has occured',
-          description: 'Some error has occured,contact support for further assistance',
+          title: 'Some error has occurred',
+          description: 'Some error has occurred. Please contact support for further assistance.',
           action: '/',
           buttonText: 'Go back to home',
           id: orderId,
@@ -458,16 +484,23 @@ const Checkout = () => {
       return;
     }
 
+    if (!coinsToRedeem || coinsToRedeem <= 0) {
+      alert('Please enter a valid amount of coins to redeem');
+      return;
+    }
+
     setLoading(true);
     instance
       .patch(`/billing/cart/`, { coins_used: coinsToRedeem })
       .then((res) => {
         setLoading(false);
-        setRedeemedCoins(coinsToRedeem);
-        getCart();
+        setCoinsToRedeem(null); // Reset the input
+        getCart(); // Refresh cart data
+        getWalletData(); // Refresh wallet data since coins were used
       })
       .catch((err) => {
         setLoading(false);
+        alert('Failed to apply coins. Please try again.');
         //console.log('err', err);
       });
   };
@@ -475,17 +508,21 @@ const Checkout = () => {
   const cancelRedeem = () => {
     setLoading(true);
     instance
-      .patch(`/billing/cart/`, { coins_used: -1 })
+      .patch(`/billing/cart/`, { coins_used: 0 })
       .then((res) => {
         setLoading(false);
-        setRedeemedCoins(0);
-        getCart();
+        setCoinsToRedeem(null); // Reset the input
+        getCart(); // Refresh cart data
+        getWalletData(); // Refresh wallet data since coins were restored
       })
       .catch((err) => {
         setLoading(false);
+        alert('Failed to cancel coin redemption. Please try again.');
         //console.log('err', err);
       });
   };
+
+  console.log('cartObj', cartObj, walletData);
 
   return (
     <div className='w-full min-h-screen relative bg-[#f0f2f4] flex flex-col items-center'>
@@ -553,11 +590,14 @@ const Checkout = () => {
                 </div>
               ) : (
                 <div className=' flex flex-col items-start w-full mt-4'>
-                  <div id='address' className=' w-full max-h-[20vh] flex flex-col items-start overflow-y-scroll'>
+                  <div
+                    id='shipping-address'
+                    className=' w-full max-h-[20vh] flex flex-col items-start overflow-y-scroll'
+                  >
                     {addressList.map((address, index) => {
                       return (
                         <div
-                          key={index}
+                          key={`shipping-${address.id}-${addressSelect.shippingAddress}`}
                           className='flex flex-row w-full justify-between bg-gray-100 p-4 rounded-lg mb-2'
                         >
                           <div className={` w-1/12 flex flex-col justify-center items-start`}>
@@ -619,11 +659,14 @@ const Checkout = () => {
                 </div>
               ) : (
                 <div className=' flex flex-col items-start w-full mt-4'>
-                  <div id='address' className=' w-full max-h-[20vh] flex flex-col items-start overflow-y-scroll'>
+                  <div
+                    id='billing-address'
+                    className=' w-full max-h-[20vh] flex flex-col items-start overflow-y-scroll'
+                  >
                     {addressList.map((address, index) => {
                       return (
                         <div
-                          key={index}
+                          key={`billing-${address.id}-${addressSelect.billingAddress}`}
                           className='flex flex-row w-full justify-between bg-gray-100 p-4 rounded-lg mb-4'
                         >
                           <div className={` w-1/12 flex flex-col justify-center items-start`}>
@@ -774,7 +817,7 @@ const Checkout = () => {
                         if (item.product_type == 'merchandise') {
                           return (
                             <CartCardMerchandise
-                              key={index}
+                              key={`merchandise-${item.id}-${item.quantity}`}
                               item={item}
                               image={item.product_section?.product_primary_image?.image?.cloudfront}
                               product_title={item.product_section?.linked_product?.product_title}
@@ -792,7 +835,7 @@ const Checkout = () => {
 
                         return (
                           <CartCard
-                            key={index}
+                            key={`product-${item.id}-${item.quantity}`}
                             cartItemId={item.id}
                             image={item.product_section?.linked_product?.product_primary_image?.image?.cloudfront}
                             product_title={item.product_section?.linked_product?.product_title}
